@@ -1,5 +1,4 @@
-@startuml Database-structure
-
+@startuml main
 
 
 class utasok{
@@ -23,6 +22,7 @@ class utasok{
     biztnev
     fizmod
     aktiv
+
 }
 
 class utazas{
@@ -91,13 +91,7 @@ class szolgaltatasok {
 }
 
 
-utasok::utasazon -right- utazas::utasazon
-utasok::utasazon -down- userdata::utasid
-csoport::utasid -right- utasok::utasazon
-csoport::utazasid --- utazas::utazasazon
-helyszin::nev --- utazas::celpont
-csomagok::celpont -left- helyszin::nev
-szolgaltatasok::nev -left- helyszin::nev
+
 
 
 @enduml
