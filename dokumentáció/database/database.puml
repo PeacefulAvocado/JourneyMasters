@@ -1,0 +1,103 @@
+@startuml Database-structure
+
+
+
+object utasok{
+    utasazon
+    nev
+    szulnev
+    szulho
+    szulnap
+    kor
+    nem
+    igtipus
+    igszam
+    tel
+    email
+    orszag
+    irszam
+    varos
+    utca
+    erttel
+    ertemail
+    biztnev
+    fizmod
+    aktiv
+}
+
+object utazas{
+    utazasazon
+    utasazon
+    honnan
+    celpont
+    mettol
+    meddig
+    utazasmod
+    ellatas
+    ar
+    aktiv
+
+}
+
+object userdata {
+    utasid
+    email
+    jelszo
+}
+
+object csoport{
+    utasid
+    utazasid
+    csoportid
+}
+
+object helyszin {
+    nev
+    varos
+    cim
+    minoseg
+    csillag
+    kep
+    aktiv
+}
+
+object csomagok {
+    honnan
+    celpont
+    mettol
+    meddig
+    utazasmod
+    ellatas
+    ar
+    aktiv
+}
+
+object szolgaltatasok {
+    nev
+    sajat_furdo
+    terasz
+    franciaagy
+    gyerekbarat
+    ac
+    konyha
+    parkolas
+    tv
+    gym
+    medence
+    bar
+    internet
+    szef
+    akadalymentes
+}
+
+
+utasok::utasazon -right- utazas::utasazon
+utasok::utasazon -down- userdata::utasid
+csoport::utasid -right- utasok::utasazon
+csoport::utazasid --- utazas::utazasazon
+helyszin::nev --- utazas::celpont
+csomagok::celpont -left- helyszin::nev
+szolgaltatasok::nev -left- helyszin::nev
+
+
+@enduml
