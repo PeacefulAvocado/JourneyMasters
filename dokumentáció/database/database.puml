@@ -91,8 +91,8 @@ object szolgaltatasok {
 }
 
 
-utasok::utasazon -right- utazas::utasazon
-utasok::utasazon -down- userdata::utasid
+utasok::utasazon -up- utazas::utasazon
+utasok::utasazon -right- userdata::utasid
 csoport::utasid -right- utasok::utasazon
 csoport::utazasid --- utazas::utazasazon
 helyszin::nev --- utazas::celpont
