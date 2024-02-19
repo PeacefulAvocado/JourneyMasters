@@ -4,31 +4,31 @@ A tervezési fázisban az adatbázis szerkezetét gondoltuk újra.
 Külön táblákat hoztunk létre: 
 -	A szálláson megtalálható szolgáltatásoknak:
  
- ![](database/szolgaltatasok.png)
+ ![](database/kepek/szolgaltatasok.png)
  
 -	A felhasználói információknak:
 
-![](database/userdata.png)
+![](database/kepek/userdata.png)
  
 -	Az előre létrehozott utazáscsomagoknak:
  
- ![](database/csomagok.png)
+ ![](database/kepek/csomagok.png)
  
 -	A csoportoknak, hogy egy utazáshoz több embert is lehessen társítani:
 
-![](database/csoport.png)
+![](database/kepek/csoport.png)
  
 Ezek megvalósításához változtattunk az eddig meglévő táblákon is:
 -	utasok:
  
-   ![](database/utasok.png)
+   ![](database/kepek/utasok.png)
 
 -	utazas: 
 
- ![](database/utazas.png)
+ ![](database/kepek/utazas.png)
 -	helyszin: 
 
- ![](database/helyszin.png)
+ ![](database/kepek/helyszin.png)
 
 Továbbá, ahol szükséges, hozzáadtunk egy „aktiv” oszlopot, hogyha egy rekordra már nincs szükségünk ne kelljen törölni, csak inaktívvá tenni, így, ha később újra szükségünk van rá, nem kell újra létrehozni. 
  
