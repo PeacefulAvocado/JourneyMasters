@@ -10,9 +10,9 @@
     <title>JourneyMasters</title>
 </head>
 <body>
-    <?php include('../navbar/navbar.php')?>
-    <?php include('../main/main.php')?>
-    <?php include('../footer/footer.php')?>
+    <?php include('../templates/navbar.php')?>
+    <?php include('../templates/main.php')?>
+    <?php include('../templates/footer.php')?>
     
     
 </body>
