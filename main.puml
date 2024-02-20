@@ -22,6 +22,7 @@ class utasok{
     biztnev
     fizmod
     aktiv
+    getUgyfelCount() : int
 
 }
 
@@ -59,6 +60,7 @@ class helyszin {
     csillag
     kep
     aktiv
+    getHelyszinCount() : int
 }
 
 class csomagok {
@@ -91,7 +93,68 @@ class szolgaltatasok {
 }
 
 
+class fooldal {
+    indulasiHely : string
+    celpontHely : string
+    celpontKeres() : string
+    buildPage(p) : void
+    getHelyszin(nev) : helyszin
+    getCsomag(celpont) : csomag
+}
+
+class utazasok{
+    
+    loadMore() : void
+}
+class profil {
+register()
+    login()
+    logout()
+}
+
+class tervezes {
+    indulasiHely : string
+    celpontHely : string
+    indulasDate : string
+    visszautDate : string
+    searchHely(nev) : helyszin[]
+    searchCsomag(celpont) : csomag[]
+    dropdownCalendar() : void
+
+}
+
+class reszletek {
+    ellatasType : string
+    utazoCount : int
+    foglalas(ellatasType, utazoCount) : void
+    getSzolgaltatas(nev) : szolgaltatasok
+}
+
+class foglalas {
+    addUtas() : void
+    fizetes() : void
+}
 
 
+fooldal <-left- utasok
+fooldal <-left- userdata
+fooldal <-left- helyszin
+fooldal <-left- csomagok
 
+fooldal --> tervezes
+fooldal --> utazasok
+
+utazasok --> reszletek
+tervezes --> reszletek
+
+reszletek --> kosar
+reszletek --> foglalas
+
+
+reszletek <-left- szolgaltatasok
+foglalas <-left- csoport
+
+foglalas --> utazas
+foglalas --> csoport
+foglalas -up-> utasok
 @enduml
