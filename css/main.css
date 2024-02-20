@@ -1,0 +1,65 @@
+.main{
+    padding-top: 1px;
+}
+.valaszto{
+    height: 200px;
+    margin-top: 106px;
+    padding: 20px 30% 0 30%;
+
+    background-color: #1c4484;
+}
+.utazna{
+    text-align: left;
+    color:#ffd700;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 0px;
+}
+.tervezesform{
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+.helyinput{
+    border:none;
+    height: 55px;
+    border-radius: 10px;
+    width: 44%;
+    float:left;
+    margin-right: 10px;
+    font-size: 24px;
+
+}
+.indulaslabel{
+    position: absolute;
+    left: 1vw;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+
+}
+.celpontlabel{
+    position: absolute;
+    left: 18.6vw;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+
+}
+.ajanlatok{
+    margin-top: 0px;
+    height: 800px;
+    background-image: url('../img/background-design.png');
+}
+input.newbutton {
+    display: inline-block;
+    width:55px;
+    height:55px;
+
+    background:url(../img/nyil.svg) no-repeat 0 0;
+    color:#000;
+    border:none;
+    padding:0;
+
+    clear:both;/* ie6 fix*/
+}
