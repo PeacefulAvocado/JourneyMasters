@@ -69,6 +69,34 @@
         
 </div>
 <div class="promo">
-
+    <div class="szovegek">
+        <div class="kisszoveg">
+            <p class="kisszovegcim">Széles választék, végtelen kalandok</p>
+            <p class="kisszoveghosszan">Nyissd fel a végtelen lehetőségek világát utazási 
+                ügynökségünk hihetetlen utazásainak számtalan célállomásával! 🗺️ 
+                Legyen szó a Bali napsütötte strandjairól, Róma történelmi 
+                bájáról vagy Japán exotikus vonzásáról, mi gondoskodunk róla, 
+                hogy megtaláld az álomnyaralást. Széles választékunkkal a 
+                tökéletes nyaralás csak egy foglalást jelent tőled. Ne elégedj 
+                meg az átlagossal, válassz kiemelkedőt velünk!</p>
+        </div>
+        <div class="kisszoveg">
+            <p class="kisszovegcim">Minőség és egyediség megtestesülése</p>
+            <p class="kisszoveghosszan">Indulj elfelejthetetlen utazásokra premier utazási ügynökségünkkel! 
+                🌍 Tapasztald meg a minőség csúcsát, miközben szakértő csapatunk 
+                személyre szabott kalandokat készít számodra. Luxus utazásoktól 
+                kezdve izgalmas expedíciókig minden pillanatot úgy tervezünk, hogy 
+                az elvárásaidat felülmúlja. Fedezd fel a világot velünk!</p>
+        </div>
+        <div class="kisszoveg">
+            <p class="kisszovegcim">Kiemelkedő élmények megfizethető áron</p>
+            <p class="kisszoveghosszan">Engedd meg magadnak az ultimát utazási élményt anélkül, hogy 
+                mélyen a zsebedbe kellene nyúlnod! 💼 Utazási irodánk verhetetlen 
+                áron kínál minőséget anélkül, hogy kompromisszumot kellene kötnöd. 
+                Búcsúzz el a költségvetési korlátoktól, és köszönj üdvözletet az 
+                elérhetetlen kalandoknak. Kizárólagos ajánlatainkkal és kedvezményeinkkel 
+                álmaid vakációja most még megfizethetőbb, mint valaha. Utazz okosan, utazz velünk!</p>
+        </div>
+    </div>
 
 </div>

@@ -216,7 +216,14 @@ input.newbutton {
   }
 
   .promo{
-    height: 700px;
-    background: linear-gradient(0.25turn)
+    height: 1100px;
+    background: linear-gradient(hsl(48, 100%, 96%), #FFDD66);
+    padding: 50px;
+  }
+  .kisszoveg{
+    padding: 40px;
+    float: left;
+    width: 28.8%;
+    text-align: justify;
   }
   
