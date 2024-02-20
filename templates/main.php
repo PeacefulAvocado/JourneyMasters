@@ -66,4 +66,9 @@
             <span class="dot" onclick="currentSlide(3)"></span> 
         </div>
         </div>
+        
+</div>
+<div class="promo">
+
+
 </div>

@@ -25,7 +25,7 @@
 }
 .helyinput{
     border:none;
-    height: 55px;
+    height: 50px;
     border-radius: 10px;
     width: 44%;
     float:left;
@@ -49,8 +49,8 @@
 }
 input.newbutton {
     display: inline-block;
-    width:55px;
-    height:55px;
+    width:50px;
+    height:50px;
 
     background:url(../img/nyil.svg) no-repeat 0 0;
     color:#000;
@@ -61,8 +61,9 @@ input.newbutton {
 }
 .ajanlatok{
     margin-top: 0px;
-    height: 800px;
+    height: 700px;
     background-image: url('../img/background-design.png');
+    border-bottom: 1px solid black;
 }
 .ajanlatokkozep{
     padding:2% 20%;
@@ -74,13 +75,15 @@ input.newbutton {
     font-style: normal;
     letter-spacing: 2px;
     font-size: 2vw;
+
 }
 
-/* Slideshow container */
+
 .slideshow-container {
   max-width: 30vw;
   position: relative;
   margin: auto;
+
 
 }
 
@@ -210,5 +213,10 @@ input.newbutton {
   @keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
+  }
+
+  .promo{
+    height: 700px;
+    background: linear-gradient(0.25turn)
   }
   
