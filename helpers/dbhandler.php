@@ -1,93 +1,93 @@
 <?php
-    /*class Csomagok {
-        private (string)$honnan;
-        private (string)$celpont;
-        private (string)$mettol;
-        private (string)$meddig;
-        private (string)$utazasmod;
-        private (string)$ellatas;
-        private (double)$ar;
-        private (bool)$aktiv;
+    class Csomagok {
+        private $honnan;
+        private $celpont;
+        private $mettol;
+        private $meddig;
+        private $utazasmod;
+        private $ellatas;
+        private $ar;
+        private $aktiv;
     }
 
     class Csoport {
-        private (int)$utasid;
-        private (int)$utazasid;
-        private (int)$csoportid;
+        private $utasid;
+        private $utazasid;
+        private $csoportid;
     }
 
     class Helyszin {
-        private (string)$nev;
-        private (string)$varos;
-        private (string)$cim;
-        private (string)$minoseg;
-        private (int)$csillag;
-        private (string)$leiras;
-        private (bool)$aktiv;
+        private $nev;
+        private $varos;
+        private $cim;
+        private $minoseg;
+        private $csillag;
+        private $leiras;
+        private $aktiv;
     }
 
     class Szolgaltatasok {
-        private (string)$nev;
-        private (bool)$sajat_furdo;
-        private (bool)$terasz;
-        private (bool)$franciaagy;
-        private (bool)$gyerekbarat;
-        private (bool)$ac;
-        private (bool)$konyha;
-        private (bool)$parkolas;
-        private (bool)$tv;
-        private (bool)$gym;
-        private (bool)$medence;
-        private (bool)$bar;
-        private (bool)$internet;
-        private (bool)$szef;
-        private (bool)$akadalymentes;
+        private $nev;
+        private $sajat_furdo;
+        private $terasz;
+        private $franciaagy;
+        private $gyerekbarat;
+        private $ac;
+        private $konyha;
+        private $parkolas;
+        private $tv;
+        private $gym;
+        private $medence;
+        private $bar;
+        private $internet;
+        private $szef;
+        private $akadalymentes;
     }
 
     class Utasok {
-        private (int)$utasazon;
-        private (string)$nev;
-        private (int)$szulev;
-        private (int)$szulho;
-        private (int)$szulnap;
-        private (int)$kor;
-        private (string)$nem;
-        private (string)$igtipus;
-        private (string)$igszam;
-        private (string)$tel;
-        private (string)$email;
-        private (string)$orszag;
-        private (int)$irszam;
-        private (string)$varos;
-        private (string)$utca;
-        private (string)$erttel;
-        private (string)$ertemail;
-        private (string)$biztnev;
-        private (string)$fizmod;
-        private (bool)$aktiv;
+        private $utasazon;
+        private $nev;
+        private $szulev;
+        private $szulho;
+        private $szulnap;
+        private $kor;
+        private $nem;
+        private $igtipus;
+        private $igszam;
+        private $tel;
+        private $email;
+        private $orszag;
+        private $irszam;
+        private $varos;
+        private $utca;
+        private $erttel;
+        private $ertemail;
+        private $biztnev;
+        private $fizmod;
+        private $aktiv;
     }
 
     class Userdata {
-        private (int)$utasid;
-        private (string)$email;
-        private (string)$jelszo;
+        private $utasid;
+        private $email;
+        private $jelszo;
         
     }
 
     class Utazas {
-        private (int)$utazason;
-        private (string)$utasazon;
-        private (string)$honnan;
-        private (string)$celpont;
-        private (string)$mettol;
-        private (string)$meddig;
-        private (string)$utazasmod;
-        private (string)$ellatas;
-        private (int)$ar;
-        private (bool)$aktiv;
+        private $utazason;
+        private $utasazon;
+        private $honnan;
+        private $celpont;
+        private $mettol;
+        private $meddig;
+        private $utazasmod;
+        private $ellatas;
+        private $ar;
+        private $aktiv;
 
 
-    }*/
+    }
 
     class DbHandler {
 
@@ -97,9 +97,9 @@
 		}
 
         function getUtazoCount() {
-            $result = $this -> conn -> query("select count(*) from utasok where aktiv = 1");
-            return $this->result($result);
-            
+            $result = $this->conn->query("select count(*) as '0' from utasok where aktiv = 1");
+            $row = $result->fetch_assoc();
+            return $row;
         }
 
         function result($result)

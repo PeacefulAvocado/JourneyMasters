@@ -105,7 +105,7 @@
 <div class="stats">
     <div class="statbal">
         <p class="nagyp">Már</p>
-        <p class="ugyfelcount"><?php $result = $dbhandler->getUtazoCount(); print_r($result);?></p>
+        <p class="ugyfelcount"><?php echo $dbhandler->getUtazoCount()[0];?></p>
         <p class="nagyp">Ügyfél választott minket!</p>
         <p class="kisp">Legyen ön a következő</p>
     </div>
