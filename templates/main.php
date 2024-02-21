@@ -111,7 +111,7 @@
     </div>
     <div class="statjobb">
     <p class="nagyp">Összesen</p>
-        <p class="ugyfelcount">880</p>
+        <p class="ugyfelcount"><?php echo $dbhandler->getHelyszinCount()[0];?></p>
         <p class="nagyp">Úticél</p>
         <p class="kisp">És Ön hova utazik?</p>
 

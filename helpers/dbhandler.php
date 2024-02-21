@@ -102,6 +102,12 @@
             return $row;
         }
 
+        function getHelyszinCount() {
+            $result = $this->conn->query("select count(*) as '0' from helyszin where aktiv = 1");
+            $row = $result->fetch_assoc();
+            return $row;
+        }
+
         function result($result)
         {
             $arr = array();
