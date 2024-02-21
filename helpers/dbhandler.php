@@ -91,7 +91,7 @@
 
     class DbHandler {
 
-        private $conn;
+        private $conn; // nem kell ?
 		function __construct() {
 			$this->conn = new mysqli("localhost", "root", "", "journeymastersdatabase");
 		}
