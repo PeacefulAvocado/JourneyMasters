@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 15. 13:49
+-- Létrehozás ideje: 2024. Feb 21. 08:39
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -62,7 +62,7 @@ CREATE TABLE `helyszin` (
   `cim` varchar(50) NOT NULL,
   `minoseg` varchar(50) DEFAULT NULL,
   `csillag` int(11) DEFAULT NULL,
-  `kep` varchar(255) NOT NULL,
+  `leiras` varchar(500) NOT NULL,
   `aktiv` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -70,7 +70,7 @@ CREATE TABLE `helyszin` (
 -- A tábla adatainak kiíratása `helyszin`
 --
 
-INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `kep`, `aktiv`) VALUES
+INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `aktiv`) VALUES
 ('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, '', b'1'),
 ('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, '', b'1'),
 ('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, '', b'1'),
@@ -217,6 +217,20 @@ INSERT INTO `utazas` (`utazasazon`, `utasazon`, `honnan`, `celpont`, `mettol`, `
 --
 
 --
+-- A tábla indexei `csomagok`
+--
+ALTER TABLE `csomagok`
+  ADD PRIMARY KEY (`honnan`,`celpont`,`mettol`),
+  ADD KEY `celpont` (`celpont`);
+
+--
+-- A tábla indexei `csoport`
+--
+ALTER TABLE `csoport`
+  ADD PRIMARY KEY (`utasid`,`utazasid`),
+  ADD KEY `utazasid` (`utazasid`);
+
+--
 -- A tábla indexei `helyszin`
 --
 ALTER TABLE `helyszin`
@@ -245,7 +259,8 @@ ALTER TABLE `utasok`
 --
 ALTER TABLE `utazas`
   ADD PRIMARY KEY (`utasazon`,`mettol`),
-  ADD KEY `fk_helyszin` (`celpont`);
+  ADD KEY `fk_helyszin` (`celpont`),
+  ADD KEY `utazasazon` (`utazasazon`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -262,10 +277,29 @@ ALTER TABLE `utasok`
 --
 
 --
+-- Megkötések a táblához `csomagok`
+--
+ALTER TABLE `csomagok`
+  ADD CONSTRAINT `csomagok_ibfk_1` FOREIGN KEY (`celpont`) REFERENCES `helyszin` (`nev`);
+
+--
+-- Megkötések a táblához `csoport`
+--
+ALTER TABLE `csoport`
+  ADD CONSTRAINT `csoport_ibfk_1` FOREIGN KEY (`utasid`) REFERENCES `utasok` (`utasazon`),
+  ADD CONSTRAINT `csoport_ibfk_2` FOREIGN KEY (`utazasid`) REFERENCES `utazas` (`utazasazon`);
+
+--
 -- Megkötések a táblához `szolgaltatasok`
 --
 ALTER TABLE `szolgaltatasok`
   ADD CONSTRAINT `szolgaltatasok_ibfk_1` FOREIGN KEY (`nev`) REFERENCES `helyszin` (`nev`);
+
+--
+-- Megkötések a táblához `userdata`
+--
+ALTER TABLE `userdata`
+  ADD CONSTRAINT `userdata_ibfk_1` FOREIGN KEY (`utasid`) REFERENCES `utasok` (`utasazon`);
 
 --
 -- Megkötések a táblához `utazas`

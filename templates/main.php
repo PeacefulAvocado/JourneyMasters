@@ -1,4 +1,8 @@
-
+<?php
+    require_once(__DIR__."/../helpers/dbhandler.php");
+    $dbhandler = new DbHandler();
+   
+?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,8 +73,8 @@
         
 </div>
 <div class="promo">
-    <div class="szovegek">
-        <div class="kisszoveg">
+<div class="szovegek">
+        <div class="kisszoveg vonal">
             <p class="kisszovegcim">Széles választék, végtelen kalandok</p>
             <p class="kisszoveghosszan">Nyissd fel a végtelen lehetőségek világát utazási 
                 ügynökségünk hihetetlen utazásainak számtalan célállomásával! 🗺️ 
@@ -80,7 +84,7 @@
                 tökéletes nyaralás csak egy foglalást jelent tőled. Ne elégedj 
                 meg az átlagossal, válassz kiemelkedőt velünk!</p>
         </div>
-        <div class="kisszoveg">
+        <div class="kisszoveg vonal">
             <p class="kisszovegcim">Minőség és egyediség megtestesülése</p>
             <p class="kisszoveghosszan">Indulj elfelejthetetlen utazásokra premier utazási ügynökségünkkel! 
                 🌍 Tapasztald meg a minőség csúcsát, miközben szakértő csapatunk 
@@ -97,6 +101,20 @@
                 elérhetetlen kalandoknak. Kizárólagos ajánlatainkkal és kedvezményeinkkel 
                 álmaid vakációja most még megfizethetőbb, mint valaha. Utazz okosan, utazz velünk!</p>
         </div>
+</div>
+<div class="stats">
+    <div class="statbal">
+        <p class="nagyp">Már</p>
+        <p class="ugyfelcount"><?php $result = $dbhandler->getUtazoCount(); print_r($result);?></p>
+        <p class="nagyp">Ügyfél választott minket!</p>
+        <p class="kisp">Legyen ön a következő</p>
     </div>
+    <div class="statjobb">
+    <p class="nagyp">Összesen</p>
+        <p class="ugyfelcount">880</p>
+        <p class="nagyp">Úticél</p>
+        <p class="kisp">És Ön hova utazik?</p>
 
+    </div>
+    </div>
 </div>

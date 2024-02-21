@@ -3,7 +3,7 @@
 
 
 object utasok{
-    utasazon
+   <u>utasazon
     nev
     szulnev
     szulho
@@ -26,11 +26,11 @@ object utasok{
 }
 
 object utazas{
-    utazasazon
-    utasazon
+    utazasazon*
+    <u>utasazon
     honnan
-    celpont
-    mettol
+    celpont*
+    <u>mettol
     meddig
     utazasmod
     ellatas
@@ -40,31 +40,30 @@ object utazas{
 }
 
 object userdata {
-    utasid
+    <u>utasid
     email
     jelszo
 }
 
 object csoport{
-    utasid
-    utazasid
+    <u>utasid
+    <u>utazasid
     csoportid
 }
 
 object helyszin {
-    nev
+    <u>nev
     varos
-    cim
+    <u>cim
     minoseg
     csillag
-    kep
     aktiv
 }
 
 object csomagok {
-    honnan
-    celpont
-    mettol
+    <u>honnan
+    <u>celpont
+    <u>mettol
     meddig
     utazasmod
     ellatas
@@ -73,7 +72,7 @@ object csomagok {
 }
 
 object szolgaltatasok {
-    nev
+    <u>nev
     sajat_furdo
     terasz
     franciaagy
@@ -99,5 +98,10 @@ helyszin::nev --- utazas::celpont
 csomagok::celpont -left- helyszin::nev
 szolgaltatasok::nev -left- helyszin::nev
 
+map legend {
+    alahuzas => primary key
+    * => foreign key
+     
+}
 
 @enduml
