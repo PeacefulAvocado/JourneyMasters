@@ -11,6 +11,46 @@
 
 <div class="reszletekmain">
 <div class="reszletek">
-    
+    <div class="reszletektop">
+    <img src="../img/sydneyproba.jpg" alt="Városkép" class="reszleteknagykep">
+    <div class="reszletektoptext">
+        <p class="reszletekhotelnev">Sydney Harbour Hotel</p>
+        <p class="stars"><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></p>
+        <p class='reszletekdatum'>2024.05.08 - 2024.05.10</p>
+        
+    </div>
+    </div>
+
+    <div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+    <img src="../img/operahazproba.jpg" class="sliderimg">
+  
+    </div>
+
+    <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="../img/sydneyproba.jpg" class="sliderimg">
+
+    </div>
+
+    <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="../img/sydneyproba2.jpg" class="sliderimg">
+
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
 </div>
 </div>
