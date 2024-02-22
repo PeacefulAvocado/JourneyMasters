@@ -1,0 +1,160 @@
+@startuml main
+
+
+class utasok{
+    utasazon
+    nev
+    szulnev
+    szulho
+    szulnap
+    kor
+    nem
+    igtipus
+    igszam
+    tel
+    email
+    orszag
+    irszam
+    varos
+    utca
+    erttel
+    ertemail
+    biztnev
+    fizmod
+    aktiv
+    getUgyfelCount() : int
+
+}
+
+class utazas{
+    utazasazon
+    utasazon
+    honnan
+    celpont
+    mettol
+    meddig
+    utazasmod
+    ellatas
+    ar
+    aktiv
+
+}
+
+class userdata {
+    utasid
+    email
+    jelszo
+}
+
+class csoport{
+    utasid
+    utazasid
+    csoportid
+}
+
+class helyszin {
+    nev
+    varos
+    cim
+    minoseg
+    csillag
+    kep
+    aktiv
+    getHelyszinCount() : int
+}
+
+class csomagok {
+    honnan
+    celpont
+    mettol
+    meddig
+    utazasmod
+    ellatas
+    ar
+    aktiv
+}
+
+class szolgaltatasok {
+    nev
+    sajat_furdo
+    terasz
+    franciaagy
+    gyerekbarat
+    ac
+    konyha
+    parkolas
+    tv
+    gym
+    medence
+    bar
+    internet
+    szef
+    akadalymentes
+}
+
+
+class fooldal {
+    indulasiHely : string
+    celpontHely : string
+    celpontKeres() : string
+    buildPage(p) : void
+    getHelyszin(nev) : helyszin
+    getCsomag(celpont) : csomag
+}
+
+class utazasok{
+    
+    loadMore() : void
+}
+class profil {
+register()
+    login()
+    logout()
+}
+
+class tervezes {
+    indulasiHely : string
+    celpontHely : string
+    indulasDate : string
+    visszautDate : string
+    searchHely(nev) : helyszin[]
+    searchCsomag(celpont) : csomag[]
+    dropdownCalendar() : void
+
+}
+
+class reszletek {
+    ellatasType : string
+    utazoCount : int
+    foglalas(ellatasType, utazoCount) : void
+    getSzolgaltatas(nev) : szolgaltatasok
+}
+
+class foglalas {
+    addUtas() : void
+    fizetes() : void
+}
+
+
+fooldal <-left- utasok
+fooldal <-left- userdata
+fooldal <-left- helyszin
+fooldal <-left- csomagok
+
+fooldal --> tervezes
+fooldal --> utazasok
+
+utazasok --> reszletek
+tervezes --> reszletek
+
+reszletek --> kosar
+reszletek --> foglalas
+
+
+reszletek <-left- szolgaltatasok
+foglalas <-left- csoport
+
+foglalas --> utazas
+foglalas --> csoport
+foglalas -up-> utasok
+@enduml
