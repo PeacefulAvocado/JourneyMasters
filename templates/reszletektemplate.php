@@ -46,13 +46,31 @@
 
     </div>
     <hr id="reszletekvonal">
+    <div class="lenti">
     <div class="szolgaltatasok">
-        <p class="szolgaltatasokcim">Elérhető szolgáltatások</p>
+        <p class="szolgaltatasokcim">Elérhető szolgáltatások:</p>
         <hr class="szolgaltatasokvonal">
-
+        <p class="szolgaltatassor"><img src="../img/icons/akadalymentes.png" alt="Ikon" class="ikon">Akadálymentes</p>
+        <p class="szolgaltatassor"><img src="../img/icons/szef.png" alt="Ikon" class="ikon">Széf</p>
         <!--ikonok 
         img/icons/ugyanaz a nevük mint az adatbázisban-->
     </div>
-    
+
+    <div class="foglalas">
+        <form action="" method="get">
+            <label for="ellatas">Ellátás</label>
+        <select id="ellatas" name="ellatas" onchange="Dropdown()">
+            <option value="-1">--Válasszon--</option>
+            <option value="All inclusive">All inclusive</option>
+            <option value="Félpanzió">Félpanzió</option>
+            <option value="Teljes panzió">Teljes panzió</option>
+            <option value="Szállás és Reggeli">Szállás és Reggeli</option>
+            <option value="Csak Szállás">Csak Szállás</option>
+        </select>
+        <p class="etkezesek">Étkezések:</p>
+        <label id="ki"></label>
+        </form>
+    </div>
+    </div>
 </div>
 </div>

@@ -21,7 +21,7 @@
   .reszletek{
     margin-top: 106px;
     height: 2000px;
-    background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
+    background: linear-gradient(var(--light-yellow), #FFDD66);
 
   }
   .reszletektop{
@@ -136,4 +136,43 @@
     margin-top: 30px;
     width:71%;
     border-top: 1px solid var(--black);
+  }
+  .lenti{
+    position: relative;
+  }
+  .szolgaltatasok{
+    position: absolute;
+    left:10%;
+    width: 40%;
+
+    margin-top: 5%;
+
+  }
+  .szolgaltatasokcim{
+    color: var(--black);
+    margin-bottom: 0;
+    font-size: 2vw;
+    padding-left: 10px;
+  }
+  .szolgaltatasokvonal{
+    margin:1% 0;
+  }
+  .szolgaltatassor{
+    font-size: 1.8vw;
+    color: var(--black);
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin: 2% 0;
+
+  }
+  .ikon{
+    width: 5%;
+    margin-bottom: -3px;
+    margin-right: 10px;
+  }
+  .foglalas{
+    position: absolute;
+    right: 0;
+    width:20%;
+    margin-top: 5%;
   }
