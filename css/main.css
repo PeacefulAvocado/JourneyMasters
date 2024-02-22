@@ -1,3 +1,16 @@
+:root {
+  --blue: #1c4484;
+  --ocean: #08b4e4;
+  --green: #45ac0d;
+  --black: #000000;
+  --baseyellow: #ffd700;
+  --yellow: #FFDD66;
+  --light-yellow: #fff6d7;
+  --lightblue: #268FAC;
+  --white: #ffffff;
+  --orange: #FFB800;
+  --gray: #cfcfcf;
+}
 *{
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -10,11 +23,11 @@
     margin-top: 106px;
     padding: 20px 30% 0 30%;
 
-    background-color: #1c4484;
+    background-color: var(--blue);
 }
 .utazna{
     text-align: left;
-    color:#ffd700;
+    color:var(--baseyellow);
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-size: 35px;
@@ -22,7 +35,7 @@
     margin-bottom: 10px;
 }
 .tervezesform{
-    background-color: rgb(207, 207, 207);
+    background-color: var(--gray);
     border-radius: 10px;
     padding: 10px;
     position: relative;
@@ -57,7 +70,7 @@ input.newbutton {
     height:50px;
 
     background:url(../img/nyil.svg) no-repeat 0 0;
-    color:#000;
+    color:var(--black);
     border:none;
     padding:0;
 
@@ -67,7 +80,7 @@ input.newbutton {
     margin-top: 0px;
     height: 40vw;
     background-image: url('../img/background-design.png');
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--black);
 }
 .ajanlatokkozep{
     padding:2% 20%;
@@ -94,7 +107,6 @@ input.newbutton {
 /* Hide the images by default */
 .mySlides {
   display: none;
-
   border-radius: 5px;
 }
 .sliderimg{
@@ -112,7 +124,7 @@ input.newbutton {
     width: auto;
     padding: 10px 15px;
     margin-top: -22px;
-    color: black;
+    color: var(--black);
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
@@ -130,15 +142,13 @@ input.newbutton {
 
   }
   
-  /* On hover, add a black background color with a little bit see-through */
+
   .prev:hover, .next:hover {
     background-color: rgba(83, 83, 83, 0.8);
   }
   
-  /* Caption text */
   .text {
-    background-color: white;
-    color: #f2f2f2;
+    background-color: var(--white);
     padding: 8px 0 0 0;
     position: relative;
     bottom: 8px;
@@ -150,14 +160,14 @@ input.newbutton {
     margin: 0;
     padding: 0 10px;
     font-size: 1.4vw;
-    color: #1c4484;
+    color: var(--blue);
     font-weight: 500;
   }
   .sliderhotelnev{
     font-size: 1.2vw;
     padding: 0 10px;
     margin: 3px 0;
-    color: #08b4e4;
+    color: var(--ocean);
     display: inline;
     float: left;
   }
@@ -170,7 +180,7 @@ input.newbutton {
     margin: 0;
     font-size: 1vw;
     padding: 10% 0 0 20px;
-    color: black;
+    color: var(--black);
     font-weight: 700;
   }
   .sliderdatum{
@@ -184,13 +194,13 @@ input.newbutton {
     position: absolute;
     right: 10px;
     bottom:3%;
-    color: black;
+    color: var(--black);
     font-weight: 700;
     font-size: 0.95vw;
   }
   /* Number text (1/3 etc) */
   .numbertext {
-    color: #f2f2f2;
+    color: var(--white);
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
@@ -203,7 +213,7 @@ input.newbutton {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #bbb;
+    background-color: var(--gray);
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
@@ -229,7 +239,7 @@ input.newbutton {
 
   .promo{
     height: 900px;
-    background: linear-gradient(hsl(48, 100%, 96%), #FFDD66);
+    background: linear-gradient(hsl(48, 100%, 96%), var(--baseyellow));
     padding: 70px 150px;
   }
   .kisszoveg{
@@ -239,15 +249,15 @@ input.newbutton {
     text-align: justify;
   }
   .vonal{
-    border-right: 1px solid #08b4e4;
+    border-right: 1px solid var(--ocean);
     
   }
   .kisszovegcim{
-    color: #08b4e4;
+    color: var(--ocean);
     font-size: 1.25vw;
   }
   .kisszoveghosszan{
-    color: #1c4484;
+    color: var(--blue);
     text-align: left;
     font-size: 1vw;
   }
@@ -260,18 +270,18 @@ input.newbutton {
   }
   .nagyp{
     font-size: 3vw;
-    color:black;
+    color:var(--black);
     margin: 4px;
     font-weight: 800;
   }
   .ugyfelcount{
-    color: #08b4e4;
+    color: var(--ocean);
     font-size: 6vw;
     margin:4px;
     font-weight: 800;
   }
   .kisp{
-    color:black;
+    color:var(--black);
     font-size: 1.5vw;
   }
   .statjobb{
