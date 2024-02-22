@@ -107,14 +107,9 @@
 			$this->conn = new mysqli("localhost", "root", "", "journeymastersdatabase");
 		}
 
-        function getUtazoCount() {
-            $result = $this->conn->query("select count(*) as '0' from utasok where aktiv = 1");
-            $row = $result->fetch_assoc();
-            return $row;
-        }
 
-        function getHelyszinCount() {
-            $result = $this->conn->query("select count(*) as '0' from helyszin where aktiv = 1");
+        function getTableCount($table) {
+            $result = $this->conn->query("select count(*) as '0' from $table where aktiv = 1");
             $row = $result->fetch_assoc();
             return $row;
         }
@@ -127,10 +122,13 @@
 
         function getKeresett($tabla, $keresett_oszlop, $hasonlito_oszlop, $adat) 
         {
-            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = '$adat'");
+            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = '$adat' and aktiv = 1");
             $row = $result->fetch_assoc();
             return $row;
         }
+
+        //SELECT * FROM helyszin ORDER BY nev LIMIT 2 OFFSET 2;
+
 
         function result_as_array($result)
         {

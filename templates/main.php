@@ -32,7 +32,6 @@
                 
                 for($i = 0;$i < $len;$i++) {
                     $helyszin = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', $csomagok[$i]['celpont']);
-                    $j = 0;
                 
                     $j = 0;
                     $handle = "";
@@ -125,13 +124,13 @@
 <div class="stats">
     <div class="statbal">
         <p class="nagyp">Már</p>
-        <p class="ugyfelcount"><?php echo $dbhandler->getUtazoCount()[0];?></p>
+        <p class="ugyfelcount"><?php echo $dbhandler->getTableCount('utasok')[0];?></p>
         <p class="nagyp">Ügyfél választott minket!</p>
         <p class="kisp">Legyen ön a következő</p>
     </div>
     <div class="statjobb">
     <p class="nagyp">Összesen</p>
-        <p class="ugyfelcount"><?php echo $dbhandler->getHelyszinCount()[0];?></p>
+        <p class="ugyfelcount"><?php echo $dbhandler->getTableCount('helyszin')[0];?></p>
         <p class="nagyp">Úticél</p>
         <p class="kisp">És Ön hova utazik?</p>
 

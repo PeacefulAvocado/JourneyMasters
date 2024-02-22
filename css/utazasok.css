@@ -1,7 +1,7 @@
 :root {
   --blue: #1c4484;
   --ocean: #08b4e4;
-  --green: #45ac0d;
+  --green: #538D34; /* ????? */
   --black: #000000;
   --baseyellow: #ffd700;
   --yellow: #FFDD66;
@@ -10,6 +10,7 @@
   --white: #ffffff;
   --orange: #FFB800;
   --gray: #cfcfcf;
+  --red: #ac4e26;
 }
 *{
     font-family: "Roboto", sans-serif;
@@ -20,9 +21,9 @@
   }
   .utazasok{
     margin-top: 106px;
-    height: 2000px;
+    height: auto;
     background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
-    padding: 70px 0;
+    padding: 20px 0;
   }
   .utazasokfocim{
     text-align: center;
@@ -59,6 +60,15 @@
   #a1{
     background-color: var(--lightblue);
   }
+
+  #a2 {
+    background-color: var(--red);
+  }
+
+  #a3 {
+    background-color: var(--green);
+  }
+
   .utazasokajanlattext {
 
     color: var(--white);
