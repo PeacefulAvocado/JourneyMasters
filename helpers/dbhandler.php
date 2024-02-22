@@ -119,10 +119,17 @@
             return $row;
         }
 
-        function getTablaAktiv($nev) 
+        function getMindenAdat($tabla, $db) 
         {
-            $result = $this->conn->query("select * from $nev where aktiv = 1");
+            $result = $this->conn->query("select * from $tabla where aktiv = 1 limit $db");
             return $this->result_as_array($result);
+        }
+
+        function getKeresett($tabla, $keresett_oszlop, $hasonlito_oszlop, $adat) 
+        {
+            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = '$adat'");
+            $row = $result->fetch_assoc();
+            return $row;
         }
 
         function result_as_array($result)

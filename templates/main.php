@@ -26,34 +26,23 @@
         <h1 class="kiemelt">Kiemelt ajánlataink</h1>
         <div class="slideshow-container">
             <?php
-                $csomagok =  $dbhandler->getTablaAktiv('csomagok');
-                $helyszin = $dbhandler->getTablaAktiv('helyszin');
+                $csomagok =  $dbhandler->getMindenAdat('csomagok', 3);
                 $len = 3;
                 $helyszinindex = null;
                 
                 for($i = 0;$i < $len;$i++) {
+                    $helyszin = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', $csomagok[$i]['celpont']);
                     $j = 0;
-                    $van = false;
-                    while ($van == false)
-                    {
-                        if ($csomagok[$i]['celpont'] == $helyszin[$j]['nev'])
-                        {
-                            $helyszinindex = $j;
-                            $van = true;
-                        }
-                        else {
-                            $j++;
-                        }
-                    }
                 
                     $j = 0;
                     $handle = "";
-                    while (($helyszin[$helyszinindex]['leiras'][$j] != '!') && ($helyszin[$helyszinindex]['leiras'][$j] != '.') && ($helyszin[$helyszinindex]['leiras'][$j] != '?'))
+                    while (($helyszin[0][$j] != '!') && ($helyszin[0][$j] != '.') && ($helyszin[0][$j] != '?'))
                     {
-                        $handle .= $helyszin[$helyszinindex]['leiras'][$j];
+                        $handle .= $helyszin[0][$j];
                         $j++;
                     }
-                    $stars = $helyszin[$helyszinindex]['csillag'];
+                    
+                    $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', $csomagok[$i]['celpont'])[0];
 
                     if ($csomagok[$i]['utazasmod'] == 'Repülő') 
                     {
@@ -66,6 +55,8 @@
                     else {
                         $utazasmod = "bus";
                     }
+                    
+                    $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', $csomagok[$i]['celpont'])[0];
                     echo 
                     "<div class='mySlides fade'>
                         <div class='numbertext'>" . ($i + 1) . " / $len</div>
@@ -77,7 +68,7 @@
                                 echo "<i class='fa-solid fa-star'></i>";
                             }
                     echo "</p></p>
-                            <p class='sliderrepter'>".$csomagok[$i]['honnan']." <i class='fa-solid fa-$utazasmod'></i> ".$helyszin[$helyszinindex]['varos']."</p>
+                            <p class='sliderrepter'>".$csomagok[$i]['honnan']." <i class='fa-solid fa-$utazasmod'></i> ".$varos."</p>
                             <p class='sliderdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
                             <p class='sliderar'>".$csomagok[$i]['ar']." Ft / fő -től</p>
                         </div>
