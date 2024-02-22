@@ -1,13 +1,24 @@
 <?php
-    class Csomagok {
+    /*class Csomagok {
         private $honnan;
         private $celpont;
         private $mettol;
         private $meddig;
         private $utazasmod;
-        private $ellatas;
         private $ar;
         private $aktiv;
+
+        function __construct($honnan, $celpont, $mettol, $meddig, $utazasmod, $ar, $aktiv)
+        {
+            $this->honnan = $honnan;
+            $this->celpont = $celpont;
+            $this->mettol = $mettol;
+            $this->meddig = $meddig;
+            $this->utazasmod = $utazasmod;
+            $this->ar = $ar;
+            $this->aktiv = $aktiv;
+        }
+
     }
 
     class Csoport {
@@ -87,11 +98,11 @@
         private $aktiv;
 
 
-    }
+    }*/
 
     class DbHandler {
 
-        private $conn; // nem kell ?
+        private $conn;
 		function __construct() {
 			$this->conn = new mysqli("localhost", "root", "", "journeymastersdatabase");
 		}
@@ -108,7 +119,13 @@
             return $row;
         }
 
-        function result($result)
+        function getTablaAktiv($nev) 
+        {
+            $result = $this->conn->query("select * from $nev where aktiv = 1");
+            return $this->result_as_array($result);
+        }
+
+        function result_as_array($result)
         {
             $arr = array();
             while ($row = $result->fetch_assoc())

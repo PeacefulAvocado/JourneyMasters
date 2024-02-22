@@ -31,7 +31,7 @@
     border:none;
     height: 50px;
     border-radius: 10px;
-    width: 44%;
+    width: 42%;
     float:left;
     margin-right: 10px;
     font-size: 24px;
@@ -65,7 +65,7 @@ input.newbutton {
 }
 .ajanlatok{
     margin-top: 0px;
-    height: 700px;
+    height: 40vw;
     background-image: url('../img/background-design.png');
     border-bottom: 1px solid black;
 }
@@ -99,6 +99,8 @@ input.newbutton {
 }
 .sliderimg{
     width:100%;
+    height:12vw;
+    object-fit: cover;
     padding: 0px;
     border-radius: 5px;
 }
@@ -176,6 +178,7 @@ input.newbutton {
     color: rgb(63, 63, 63);
     font-style: italic;
     margin: 0px;
+    font-size: 0.95vw;
   }
   .sliderar{
     position: absolute;
@@ -183,6 +186,7 @@ input.newbutton {
     bottom:3%;
     color: black;
     font-weight: 700;
+    font-size: 0.95vw;
   }
   /* Number text (1/3 etc) */
   .numbertext {
@@ -204,7 +208,10 @@ input.newbutton {
     display: inline-block;
     transition: background-color 0.6s ease;
   }
-  
+  .dotcontainer{
+    text-align:center; 
+    margin-top: -1vw;
+  }
   .active, .dot:hover {
     background-color: #717171;
   }
@@ -221,7 +228,7 @@ input.newbutton {
   }
 
   .promo{
-    height: 1100px;
+    height: 900px;
     background: linear-gradient(hsl(48, 100%, 96%), #FFDD66);
     padding: 70px 150px;
   }
@@ -274,4 +281,7 @@ input.newbutton {
     text-align: center;
   }
 
-  
+  @media screen and (max-width: 1288px){
+    
+
+  }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 21. 08:39
+-- Létrehozás ideje: 2024. Feb 22. 12:08
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -33,10 +33,18 @@ CREATE TABLE `csomagok` (
   `mettol` date NOT NULL,
   `meddig` date NOT NULL,
   `utazasmod` varchar(50) NOT NULL,
-  `ellatas` varchar(50) NOT NULL,
   `ar` double NOT NULL,
   `aktiv` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `csomagok`
+--
+
+INSERT INTO `csomagok` (`honnan`, `celpont`, `mettol`, `meddig`, `utazasmod`, `ar`, `aktiv`) VALUES
+('Budapest', 'Bayview Retreat', '2024-05-06', '2024-05-10', 'Repülő', 93000, b'1'),
+('Budapest', 'Bondi Beach House', '2024-05-08', '2024-05-16', 'Repülő', 158000, b'1'),
+('Prága', 'Central Hotel', '2024-02-01', '2024-02-22', 'Vonat', 100000, b'1');
 
 -- --------------------------------------------------------
 
@@ -71,9 +79,9 @@ CREATE TABLE `helyszin` (
 --
 
 INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `aktiv`) VALUES
-('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, '', b'1'),
-('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, '', b'1'),
-('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, '', b'1'),
+('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
+('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', b'1'),
+('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Teszt.\r\nTeszlek. Megteszlek. Szétteszlek.', b'1'),
 ('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, '', b'1'),
 ('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, '', b'1'),
 ('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, '', b'1'),

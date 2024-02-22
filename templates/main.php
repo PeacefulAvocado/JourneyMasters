@@ -25,49 +25,78 @@
     <div class="ajanlatokkozep">
         <h1 class="kiemelt">Kiemelt ajánlataink</h1>
         <div class="slideshow-container">
-
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="../img/operahazproba.jpg" class="sliderimg">
-            <div class="text">
-                <p class="sliderfocim">Fedezd fel a világ legikonikusabb operaházát!</p>
-                <p class="sliderhotelnev">Sydney Harbour Hotel<p class="stars"><i class="fa-solid fa-star"></i></p></p>
+            <?php
+                $csomagok =  $dbhandler->getTablaAktiv('csomagok');
+                $helyszin = $dbhandler->getTablaAktiv('helyszin');
+                $len = 3;
+                $helyszinindex = null;
                 
-                <p class="sliderrepter">BUD <i class="fa-solid fa-plane"></i> SDY</p>
-                <p class="sliderdatum">02.020.02 - 020.020.02</p>
-                <p class="sliderar">93.100 Ft / fő -től</p>
-            </div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="../img/maroccoproba.png" class="sliderimg">
-            <div class="text">
-                <p class="sliderfocim">Élvezze az arab világ csendes luxusát!</p>
-                <p class="sliderhotelnev">Marocco Central<p class="stars"><i class="fa-solid fa-star"></i></p></p>
+                for($i = 0;$i < $len;$i++) {
+                    $j = 0;
+                    $van = false;
+                    while ($van == false)
+                    {
+                        if ($csomagok[$i]['celpont'] == $helyszin[$j]['nev'])
+                        {
+                            $helyszinindex = $j;
+                            $van = true;
+                        }
+                        else {
+                            $j++;
+                        }
+                    }
                 
-                <p class="sliderrepter">BUD <i class="fa-solid fa-plane"></i> CMN</p>
-                <p class="sliderdatum">02.020.02 - 020.020.02</p>
-                <p class="sliderar">158.000 Ft / fő -től</p>
-            </div>
-        </div>
+                    $j = 0;
+                    $handle = "";
+                    while (($helyszin[$helyszinindex]['leiras'][$j] != '!') && ($helyszin[$helyszinindex]['leiras'][$j] != '.') && ($helyszin[$helyszinindex]['leiras'][$j] != '?'))
+                    {
+                        $handle .= $helyszin[$helyszinindex]['leiras'][$j];
+                        $j++;
+                    }
+                    $stars = $helyszin[$helyszinindex]['csillag'];
 
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="../img/nyil.svg" class="sliderimg">
-            <div class="text">Caption Three</div>
-        </div>
+                    if ($csomagok[$i]['utazasmod'] == 'Repülő') 
+                    {
+                        $utazasmod = "plane";
+                    }
+                    else if ($csomagok[$i]['utazasmod'] == 'Vonat') 
+                    {
+                        $utazasmod = "train";
+                    }
+                    else {
+                        $utazasmod = "bus";
+                    }
+                    echo 
+                    "<div class='mySlides fade'>
+                        <div class='numbertext'>" . ($i + 1) . " / $len</div>
+                        <img src='../img/helyszinimg/" . $csomagok[$i]['celpont'] . "/1.jpg' class='sliderimg'>
+                        <div class='text'>
+                            <p class='sliderfocim'>" . $handle . "</p>
+                            <p class='sliderhotelnev'>" . $csomagok[$i]['celpont'] . "<p class='stars'>";
+                            for ($n = 0; $n < $stars; $n++) { 
+                                echo "<i class='fa-solid fa-star'></i>";
+                            }
+                    echo "</p></p>
+                            <p class='sliderrepter'>".$csomagok[$i]['honnan']." <i class='fa-solid fa-$utazasmod'></i> ".$helyszin[$helyszinindex]['varos']."</p>
+                            <p class='sliderdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
+                            <p class='sliderar'>".$csomagok[$i]['ar']." Ft / fő -től</p>
+                        </div>
+                    </div>";
 
+                }
+            ?>
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
 
         </div>
         <br>
 
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
+        <div class="dotcontainer" >
+            <?php
+            for($i = 0;$i < $len;$i++) {
+                echo '<span class="dot" onclick="currentSlide('.($i+1).')"></span>';
+            }
+            ?>
         </div>
         </div>
         
