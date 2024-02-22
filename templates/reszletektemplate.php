@@ -45,12 +45,14 @@
     <a class="next" onclick="plusSlides(1)">❯</a>
 
     </div>
-    <br>
+    <hr id="reszletekvonal">
+    <div class="szolgaltatasok">
+        <p class="szolgaltatasokcim">Elérhető szolgáltatások</p>
+        <hr class="szolgaltatasokvonal">
 
-    <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span> 
-    <span class="dot" onclick="currentSlide(2)"></span> 
-    <span class="dot" onclick="currentSlide(3)"></span> 
+        <!--ikonok 
+        img/icons/ugyanaz a nevük mint az adatbázisban-->
     </div>
+    
 </div>
 </div>
