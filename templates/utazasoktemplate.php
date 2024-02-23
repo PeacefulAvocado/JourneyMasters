@@ -18,7 +18,7 @@
     //$len = $dbhandler->getTableCount('csomagok')[0];
     $csomagok = $dbhandler->getCsomagok(0);
     $j = 1;
-    for ($i=0; $i < 2; $i++)
+    for ($i=0; $i < 3; $i++)
     {   
         $hotel_nev = $csomagok[$i]['celpont'];
         $kep = "../img/helyszinimg/$hotel_nev/1.jpg";
@@ -89,7 +89,6 @@
     
  
  ?>
-
 
 
 

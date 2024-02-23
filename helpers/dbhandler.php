@@ -121,7 +121,7 @@
         }
 
         function getCsomagok($offset) {
-            $result = $this->conn->query("select * from csomagok where aktiv = 1 LIMIT $offset, 2"); //"SELECT * FROM your_table LIMIT $offset, $limit";
+            $result = $this->conn->query("select * from csomagok where aktiv = 1 LIMIT $offset, 3"); //"SELECT * FROM your_table LIMIT $offset, $limit";
             return $this->result_as_array($result);
         }
 
