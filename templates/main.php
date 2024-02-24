@@ -31,7 +31,7 @@
                 $helyszinindex = null;
                 
                 for($i = 0;$i < $len;$i++) {
-                    $helyszin = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', $csomagok[$i]['celpont']);
+                    $helyszin = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', "'$csomagok[$i]['celpont']'");
                 
                     $j = 0;
                     $handle = "";
@@ -41,7 +41,7 @@
                         $j++;
                     }
                     
-                    $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', $csomagok[$i]['celpont'])[0];
+                    $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$csomagok[$i]['celpont']'")[0];
 
                     if ($csomagok[$i]['utazasmod'] == 'Repülő') 
                     {
@@ -55,7 +55,7 @@
                         $utazasmod = "bus";
                     }
                     
-                    $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', $csomagok[$i]['celpont'])[0];
+                    $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$csomagok[$i]['celpont']'")[0];
                     echo 
                     "<div class='mySlides fade'>
                         <div class='numbertext'>" . ($i + 1) . " / $len</div>

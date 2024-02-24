@@ -33,15 +33,15 @@ for ($i=0; $i < $len; $i++)
             $j++;
         }
 
-        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', $hotel_nev)[0];
+        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
         
-        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', $hotel_nev)[0];
+        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
         $stars_str = "";
         for ($n = 0; $n < $stars; $n++) { 
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
 
-        $leiras = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', $hotel_nev)[0];
+        $leiras = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', "'$hotel_nev'")[0];
         
         if ($csomagok[$i]['utazasmod'] == 'Repülő') 
         {
@@ -72,7 +72,9 @@ for ($i=0; $i < $len; $i++)
                     <p class='utazasokajalnatdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
                     <p class='utazasokajalnatar'>".$csomagok[$i]['ar']." Ft/fő -től</p>
                     <form action='reszletek.php' method='get'>
-                        <input type='hidden' name='valami' id='valami' value='valami'>
+                        <input type='hidden' name='csomag' id='csomag' value='true'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
                         <input type='submit' value='Megnézem' class='utazasokmegnezem'>
                     </form>
                 </div>

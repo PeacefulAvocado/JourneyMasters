@@ -11,50 +11,75 @@
 
 <div class="reszletekmain">
 <div class="reszletek">
-    <div class="reszletektop">
-    <img src="../img/sydneyproba.jpg" alt="Városkép" class="reszleteknagykep">
-    <div class="reszletektoptext">
-        <p class="reszletekhotelnev">Sydney Harbour Hotel</p>
-        <p class="stars"><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></p>
-        <p class='reszletekdatum'>2024.05.08 - 2024.05.10</p>
-        
-    </div>
+    <?php
+        $csomag = $_GET['csomag'];
+        $hotel_nev = $_GET['helyszin'];
+        $csomagid = $_GET['csomagid'];
+
+        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
+        $stars_str = "";
+        for ($n = 0; $n < $stars; $n++) { 
+            $stars_str .= "<i class='fa-solid fa-star'></i>";
+        }
+
+        $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
+        $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
+        echo "<div class='reszletektop'>
+            <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='Városkép' class='reszleteknagykep'>
+            <div class='reszletektoptext'>
+            <p class='reszletekhotelnev'>$hotel_nev</p>
+            <p class='stars'>$stars_str</p>
+            <p class='reszletekdatum'>$mettol - $meddig</p>
+            </div>";
+    ?>
+
+    
     </div>
 
     <div class="slideshow-container">
+ <?php
+    $directory = "../img/helyszinimg/" . $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
+    $len = count(scandir($directory)) - 2;
 
-    <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-    <img src="../img/operahazproba.jpg" class="sliderimg">
+    for($i = 1; $i <= $len; $i++) {
+        echo "<div class='mySlides fade'>
+        <div class='numbertext'>$i / $len</div>
+    <img src='$directory/$i.jpg' class='sliderimg'>
+    </div>";
+    }
+ ?>
+    
   
-    </div>
+    
 
-    <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="../img/sydneyproba.jpg" class="sliderimg">
-
-    </div>
-
-    <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="../img/sydneyproba2.jpg" class="sliderimg">
-
-    </div>
-
+    
     <a class="prev" onclick="plusSlides(-1)">❮</a>
     <a class="next" onclick="plusSlides(1)">❯</a>
 
     </div>
     <hr id="reszletekvonal">
     <div class="lenti">
-    <div class="szolgaltatasok">
-        <p class="szolgaltatasokcim">Elérhető szolgáltatások:</p>
-        <hr class="szolgaltatasokvonal">
-        <p class="szolgaltatassor"><img src="../img/icons/akadalymentes.png" alt="Ikon" class="ikon">Akadálymentes</p>
-        <p class="szolgaltatassor"><img src="../img/icons/szef.png" alt="Ikon" class="ikon">Széf</p>
-        <!--ikonok 
-        img/icons/ugyanaz a nevük mint az adatbázisban-->
-    </div>
+
+    <?php
+        $szolgaltatasok = $dbhandler->select("SELECT szolgaltatasok.* FROM szolgaltatasok INNER JOIN helyszin ON helyszin.nev = szolgaltatasok.nev WHERE szolgaltatasok.nev = '$hotel_nev'");
+        array_shift($szolgaltatasok[0]);
+        //ikonok img/icons/ugyanaz a nevük mint az adatbázisban
+        $szolgaltatasok_str = "";
+        $szoveg = array('sajat_furdo' => "Saját fürdő", 'terasz' => "Terasz", 'franciaagy' => "Franciaágy", 'gyerekbarat' => "Gyerekbarát", 'ac' => "Légkondícionált", 'konyha' => "Konyha", 'parkolas' => "Parkolás", 'tv' => "TV", 'gym' => "Gym", 'medence' => "Medence", 'bar' => "Bár", 'internet' => "Internet", 'szef' => "Széf", 'akadalymentes' => "Akadálymentes");
+        foreach ($szolgaltatasok[0] as $key => $szolg)
+        {
+            if ($szolgaltatasok[0]["$key"] == 1)
+            {
+                $szolgaltatasok_str .= "<p class='szolgaltatassor'><img src='../img/icons/$key.png' alt='Ikon' class='ikon'>".$szoveg["$key"]."</p>";
+            }
+        }
+        echo "  <div class='szolgaltatasok'>
+                <p class='szolgaltatasokcim'>Elérhető szolgáltatások:</p>
+                <hr class='szolgaltatasokvonal'>
+                $szolgaltatasok_str
+                </div>";
+    ?>
+    
 
     <div class="foglalas">
         <form action="" method="get">
