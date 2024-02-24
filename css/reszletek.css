@@ -21,7 +21,7 @@
   }
   .reszletek{
     margin-top: 106px;
-    height: 2000px;
+    height: auto;
     background: linear-gradient(var(--light-yellow), #FFDD66);
 
   }
@@ -140,13 +140,15 @@
   }
   .lenti{
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .szolgaltatasok{
-    position: absolute;
-    left:10%;
+    position: relative;
+    left:30%;
     width: 40%;
-
     margin-top: 5%;
+    margin-bottom: 10%;
 
   }
   .szolgaltatasokcim{
@@ -167,13 +169,13 @@
 
   }
   .ikon{
-    width: 5%;
+    width: 10%;
     margin-bottom: -3px;
     margin-right: 10px;
   }
   .foglalas{
-    position: absolute;
-    right: 0;
+    position: relative;
+    left: 30%;
     width:20%;
     margin-top: 5%;
   }

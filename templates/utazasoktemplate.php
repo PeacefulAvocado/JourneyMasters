@@ -38,15 +38,15 @@
             $j++;
         }
 
-        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', $hotel_nev)[0];
+        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
         
-        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', $hotel_nev)[0];
+        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
         $stars_str = "";
         for ($n = 0; $n < $stars; $n++) { 
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
 
-        $leiras = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', $hotel_nev)[0];
+        $leiras = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', "'$hotel_nev'")[0];
         
         if ($csomagok[$i]['utazasmod'] == 'Repülő') 
         {

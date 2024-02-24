@@ -1,104 +1,5 @@
 <?php
-    /*class Csomagok {
-        private $honnan;
-        private $celpont;
-        private $mettol;
-        private $meddig;
-        private $utazasmod;
-        private $ar;
-        private $aktiv;
-
-        function __construct($honnan, $celpont, $mettol, $meddig, $utazasmod, $ar, $aktiv)
-        {
-            $this->honnan = $honnan;
-            $this->celpont = $celpont;
-            $this->mettol = $mettol;
-            $this->meddig = $meddig;
-            $this->utazasmod = $utazasmod;
-            $this->ar = $ar;
-            $this->aktiv = $aktiv;
-        }
-
-    }
-
-    class Csoport {
-        private $utasid;
-        private $utazasid;
-        private $csoportid;
-    }
-
-    class Helyszin {
-        private $nev;
-        private $varos;
-        private $cim;
-        private $minoseg;
-        private $csillag;
-        private $leiras;
-        private $aktiv;
-    }
-
-    class Szolgaltatasok {
-        private $nev;
-        private $sajat_furdo;
-        private $terasz;
-        private $franciaagy;
-        private $gyerekbarat;
-        private $ac;
-        private $konyha;
-        private $parkolas;
-        private $tv;
-        private $gym;
-        private $medence;
-        private $bar;
-        private $internet;
-        private $szef;
-        private $akadalymentes;
-    }
-
-    class Utasok {
-        private $utasazon;
-        private $nev;
-        private $szulev;
-        private $szulho;
-        private $szulnap;
-        private $kor;
-        private $nem;
-        private $igtipus;
-        private $igszam;
-        private $tel;
-        private $email;
-        private $orszag;
-        private $irszam;
-        private $varos;
-        private $utca;
-        private $erttel;
-        private $ertemail;
-        private $biztnev;
-        private $fizmod;
-        private $aktiv;
-    }
-
-    class Userdata {
-        private $utasid;
-        private $email;
-        private $jelszo;
-        
-    }
-
-    class Utazas {
-        private $utazason;
-        private $utasazon;
-        private $honnan;
-        private $celpont;
-        private $mettol;
-        private $meddig;
-        private $utazasmod;
-        private $ellatas;
-        private $ar;
-        private $aktiv;
-
-
-    }*/
+    
 
     class DbHandler {
 
@@ -128,10 +29,16 @@
 
         function getKeresett($tabla, $keresett_oszlop, $hasonlito_oszlop, $adat) 
         {
-            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = '$adat' and aktiv = 1");
+            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = $adat and aktiv = 1");
             $row = $result->fetch_assoc();
             return $row;
         }
+
+        function select($sql)
+        {
+            $result = $this->conn->query($sql);
+            return $this->result_as_array($result);
+        } 
 
         //SELECT * FROM helyszin ORDER BY nev LIMIT 2 OFFSET 2;
 
