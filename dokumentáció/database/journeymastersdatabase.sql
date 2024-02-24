@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 22. 12:08
+-- Létrehozás ideje: 2024. Feb 24. 20:05
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `csomagok` (
+  `csomagid` int(11) NOT NULL,
   `honnan` varchar(50) NOT NULL,
   `celpont` varchar(50) NOT NULL,
   `mettol` date NOT NULL,
@@ -41,10 +42,11 @@ CREATE TABLE `csomagok` (
 -- A tábla adatainak kiíratása `csomagok`
 --
 
-INSERT INTO `csomagok` (`honnan`, `celpont`, `mettol`, `meddig`, `utazasmod`, `ar`, `aktiv`) VALUES
-('Budapest', 'Bayview Retreat', '2024-05-06', '2024-05-10', 'Repülő', 93000, b'1'),
-('Budapest', 'Bondi Beach House', '2024-05-08', '2024-05-16', 'Repülő', 158000, b'1'),
-('Prága', 'Central Hotel', '2024-02-01', '2024-02-22', 'Vonat', 100000, b'1');
+INSERT INTO `csomagok` (`csomagid`, `honnan`, `celpont`, `mettol`, `meddig`, `utazasmod`, `ar`, `aktiv`) VALUES
+(1, 'Anyámból', 'Cityscape Hotel', '2024-02-04', '2024-02-24', 'Busz', 10, b'1'),
+(2, 'Budapest', 'Bayview Retreat', '2024-05-06', '2024-05-10', 'Repülő', 93000, b'1'),
+(3, 'Budapest', 'Bondi Beach House', '2024-05-08', '2024-05-16', 'Repülő', 158000, b'1'),
+(4, 'Prága', 'Central Hotel', '2024-02-01', '2024-02-22', 'Vonat', 100000, b'1');
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,7 @@ INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `
 ('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
 ('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', b'1'),
 ('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Teszt.\r\nTeszlek. Megteszlek. Szétteszlek.', b'1'),
-('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, '', b'1'),
+('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 'Megbaszom.\r\nAnyád.', b'1'),
 ('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, '', b'1'),
 ('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, '', b'1'),
 ('Grand Central Hotel', 'New York City', '123 Broadway Ave', 'Hotel', 4, '', b'1'),
@@ -124,6 +126,16 @@ CREATE TABLE `szolgaltatasok` (
   `szef` bit(1) NOT NULL DEFAULT b'0',
   `akadalymentes` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `szolgaltatasok`
+--
+
+INSERT INTO `szolgaltatasok` (`nev`, `sajat_furdo`, `terasz`, `franciaagy`, `gyerekbarat`, `ac`, `konyha`, `parkolas`, `tv`, `gym`, `medence`, `bar`, `internet`, `szef`, `akadalymentes`) VALUES
+('Bayview Retreat', b'1', b'1', b'1', b'0', b'1', b'0', b'0', b'1', b'0', b'1', b'0', b'1', b'1', b'0'),
+('Bondi Beach House', b'1', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'1', b'0', b'0', b'1'),
+('Central Hotel', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1'),
+('Cityscape Hotel', b'1', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'0', b'1', b'0', b'1', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -228,7 +240,7 @@ INSERT INTO `utazas` (`utazasazon`, `utasazon`, `honnan`, `celpont`, `mettol`, `
 -- A tábla indexei `csomagok`
 --
 ALTER TABLE `csomagok`
-  ADD PRIMARY KEY (`honnan`,`celpont`,`mettol`),
+  ADD PRIMARY KEY (`csomagid`),
   ADD KEY `celpont` (`celpont`);
 
 --
@@ -273,6 +285,12 @@ ALTER TABLE `utazas`
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
+
+--
+-- AUTO_INCREMENT a táblához `csomagok`
+--
+ALTER TABLE `csomagok`
+  MODIFY `csomagid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `utasok`
