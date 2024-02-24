@@ -18,11 +18,12 @@
   }
   .utazasokmain{
       padding-top: 1px;
+      background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
+      padding-bottom: 30vh;
   }
   .utazasok{
     margin-top: 106px;
     height: auto;
-    background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
     padding: 20px 0;
   }
   .utazasokfocim{
@@ -144,7 +145,7 @@
     background-color: var(--orange);
     border:none;
     margin-top: 50px;
-    margin-bottom: 30vh;
+    
     margin-left: auto;
     margin-right: auto;
     display: block;

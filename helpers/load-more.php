@@ -9,7 +9,11 @@ $offset = $_POST['offset']; // Offset for fetching records
 
 $csomagok = $dbhandler->getCsomagok($offset);
  $j = 1;
-for ($i=0; $i < 3; $i++)
+
+ $len = count($csomagok);
+ 
+ 
+for ($i=0; $i < $len; $i++)
     {   
         $hotel_nev = $csomagok[$i]['celpont'];
         $kep = "../img/helyszinimg/$hotel_nev/1.jpg";

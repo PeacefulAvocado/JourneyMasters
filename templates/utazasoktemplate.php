@@ -77,7 +77,9 @@
                     <p class='utazasokajalnatdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
                     <p class='utazasokajalnatar'>".$csomagok[$i]['ar']." Ft/fő -től</p>
                     <form action='reszletek.php' method='get'>
-                        <input type='hidden' name='valami' id='valami' value='valami'>
+                        <input type='hidden' name='csomag' id='csomag' value='true'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
                         <input type='submit' value='Megnézem' class='utazasokmegnezem'>
                     </form>
                 </div>
@@ -97,5 +99,7 @@
 <button class='tobb' id="loadMoreBtn">Több<br>betöltése</button>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/PHP/JourneyMasters/js/load-more.js"></script>
+<script src="../js/load-more.js"></script>
+
+
 
