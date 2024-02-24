@@ -46,7 +46,6 @@
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
 
-        echo $hotel_nev;
         $leiras = $dbhandler->getKeresett('helyszin', 'leiras', 'nev', "'$hotel_nev'")[0];
         
         if ($csomagok[$i]['utazasmod'] == 'Repülő') 
