@@ -120,6 +120,12 @@
             return $this->result_as_array($result);
         }
 
+        function getCsomagok($offset) {
+            $result = $this->conn->query("select * from csomagok where aktiv = 1 LIMIT $offset, 3"); //"SELECT * FROM your_table LIMIT $offset, $limit";
+            return $this->result_as_array($result);
+        }
+
+
         function getKeresett($tabla, $keresett_oszlop, $hasonlito_oszlop, $adat) 
         {
             $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = '$adat' and aktiv = 1");

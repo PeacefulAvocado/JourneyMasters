@@ -1,24 +1,19 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
-   
-?>
-<script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
+// load_more.php
 
-<link rel='preconnect' href='https://fonts.googleapis.com'>
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' rel='stylesheet'>
+// Assuming $dbhandler is your database handler
 
-<div class='utazasokmain'>
-<div class='utazasok' id="utazasok">
- <h1 class='utazasokfocim'>Utazások</h1>
- <hr id='utazasokvonal'>
+$offset = $_POST['offset']; // Offset for fetching records
 
- <?php
-    //$len = $dbhandler->getTableCount('csomagok')[0];
-    $csomagok = $dbhandler->getCsomagok(0);
-    $j = 1;
-    for ($i=0; $i < 3; $i++)
+$csomagok = $dbhandler->getCsomagok($offset);
+ $j = 1;
+
+ $len = count($csomagok);
+ 
+ 
+for ($i=0; $i < $len; $i++)
     {   
         $hotel_nev = $csomagok[$i]['celpont'];
         $kep = "../img/helyszinimg/$hotel_nev/1.jpg";
@@ -77,9 +72,7 @@
                     <p class='utazasokajalnatdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
                     <p class='utazasokajalnatar'>".$csomagok[$i]['ar']." Ft/fő -től</p>
                     <form action='reszletek.php' method='get'>
-                        <input type='hidden' name='csomag' id='csomag' value='true'>
-                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
-                        <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
+                        <input type='hidden' name='valami' id='valami' value='valami'>
                         <input type='submit' value='Megnézem' class='utazasokmegnezem'>
                     </form>
                 </div>
@@ -87,19 +80,4 @@
     </div>
     ";
     }
-
-    
- 
- ?>
-
-
-
-
-</div>
-<button class='tobb' id="loadMoreBtn">Több<br>betöltése</button>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="../js/load-more.js"></script>
-
-
-
+?>

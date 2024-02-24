@@ -62,9 +62,10 @@ object helyszin {
 }
 
 object csomagok {
-    <u>honnan
-    <u>celpont
-    <u>mettol
+    <u>csomagid
+    honnan
+    celpont*
+    mettol
     meddig
     utazasmod
     ellatas

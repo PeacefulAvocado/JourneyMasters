@@ -18,11 +18,12 @@
   }
   .utazasokmain{
       padding-top: 1px;
+      background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
+      padding-bottom: 30vh;
   }
   .utazasok{
     margin-top: 106px;
     height: auto;
-    background: linear-gradient(hsl(48, 100%, 96%), var(--yellow));
     padding: 20px 0;
   }
   .utazasokfocim{
@@ -39,16 +40,21 @@
     width:100%;
     height: 40vw;
     margin-top: 50px;
+    margin-bottom: 30vh;
     position: relative;
   }
   
-  .utazaskontener img{
+  .utazaskontener img {
     position: absolute;
-    top:0;
-    left:0;
-    width:60%;
+    top: 0;
+    left: 0;
+    width: 60vw; 
+    height: auto; 
+    max-height: 650px; 
+    object-fit: cover; /*crop image*/
     z-index: 2;
-  }
+}
+
   .utazasokdetails{
     position: absolute;
     right:0;
@@ -66,7 +72,7 @@
   }
 
   #a3 {
-    background-color: var(--green);
+    background-color: var(--green-pastel);
   }
 
   .utazasokajanlattext {
@@ -123,7 +129,7 @@
     right: 30px;
     top:17vw;
     font-size: 1.5vw;
-    color: var(--yellow);
+    color: var(--baseyellow);
     font-weight: 400;
   }
   .utazasokmegnezem{
@@ -139,6 +145,7 @@
     background-color: var(--orange);
     border:none;
     margin-top: 50px;
+    
     margin-left: auto;
     margin-right: auto;
     display: block;
