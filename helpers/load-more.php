@@ -91,6 +91,7 @@ for ($i=0; $i < $len; $i++)
             #loadMoreBtn {
             display: none;
             }
+            
             #end_of_page {
             display: table !important;
             color: black;
