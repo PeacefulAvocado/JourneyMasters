@@ -97,6 +97,8 @@
 
 </div>
 <button class='tobb' id="loadMoreBtn">Több<br>betöltése</button>
+<p id="end_of_page" style="display: none;">A végére ért.</p>
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../js/load-more.js"></script>

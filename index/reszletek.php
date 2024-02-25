@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/reszletek.css">
     <link rel="stylesheet" href="../css/footer.css">
-
+    <link rel="icon" href="../img/kislogo_black.png" type="image/x-icon">
     
     <title>Részletek</title>
 </head>
