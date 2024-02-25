@@ -16,9 +16,9 @@
         <label for="indulas" class="indulaslabel">Indulás</label>
         <input type="text" name="indulas" id="indulas" class="helyinput">
         <label for="celpont" class="celpontlabel">Célpont</label>
-        <input type="text" name="celpont" id="celpont" class="helyinput">
+        <input type="text" id="searchInput" name="celpont" id="celpont" class="helyinput">
         <input type="submit" value="" class="newbutton button">
-
+        <div id="searchResults"></div>
     </form>
 </div>
 <div class="ajanlatok">
@@ -145,4 +145,6 @@
 
     </div>
     </div>
+
+    
 </div>

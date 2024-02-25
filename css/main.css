@@ -297,3 +297,8 @@ input.newbutton {
     
 
   }
+
+  .search {
+    background-color: white;
+    z-index: 100;
+  }
