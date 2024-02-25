@@ -83,17 +83,34 @@
 
     <div class="foglalas">
         <form action="" method="get">
-            <label for="ellatas">Ellátás</label>
-        <select id="ellatas" name="ellatas" onchange="Dropdown()">
-            <option value="-1">--Válasszon--</option>
-            <option value="All inclusive">All inclusive</option>
-            <option value="Félpanzió">Félpanzió</option>
-            <option value="Teljes panzió">Teljes panzió</option>
-            <option value="Szállás és Reggeli">Szállás és Reggeli</option>
-            <option value="Csak Szállás">Csak Szállás</option>
-        </select>
-        <p class="etkezesek">Étkezések:</p>
-        <label id="ki"></label>
+            <div class="ellatas">
+                <label for="ellatas">Ellátás: </label>
+            <select id="ellatas" name="ellatas" onchange="Dropdown()">
+                <option value="-1">--Válasszon--</option>
+                <option value="All inclusive">All inclusive</option>
+                <option value="Félpanzió">Félpanzió</option>
+                <option value="Teljes panzió">Teljes panzió</option>
+                <option value="Szállás és Reggeli">Szállás és Reggeli</option>
+                <option value="Csak Szállás">Csak Szállás</option>
+            </select>
+        </div>
+        <div class="etkezesek">
+            <div>
+            <span>Étkezések:</span>
+            </div>
+            <div>
+                <span>Reggeli</span><br>
+                <span>Ebéd</span><br>
+                <span>Vacsora</span>
+            </div>
+        </div>
+        <div class="utazok_szama">
+                <p class ="kicsi">Utazók száma: </p><br>
+                <p class ="nagy"><b>3 fő</b></p>
+        </div>
+        <div class="ar">
+            <p>93100 Ft/fő</p>
+        </div>
         </form>
     </div>
     </div>

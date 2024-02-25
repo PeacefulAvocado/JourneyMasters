@@ -146,7 +146,7 @@
   .szolgaltatasok{
     position: relative;
     left:30%;
-    width: 40%;
+    width: 50%;
     margin-top: 5%;
     margin-bottom: 10%;
 
@@ -176,6 +176,97 @@
   .foglalas{
     position: relative;
     left: 30%;
-    width:20%;
+    top: 8%;
+    width:35%;
+    height: 60%;
+    background-color: white;
     margin-top: 5%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px -6px black;
+    font-size: 1vw;
   }
+
+  .ellatas {
+    position: absolute;
+    top: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1.5vw;
+  }
+
+select {
+  -webkit-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  background-color: white;
+  background-image: url(../img/nyil.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  width: 9vw;
+  font-size: 1vw;
+}
+
+.etkezesek {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  top: 20%;
+  padding: 0 1.5vw;
+  margin-top: 1.5vw;
+  width: 100%;
+}
+
+.utazok_szama {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 0;
+}
+.utazok_szama span {
+  position: relative;
+  left: 80%;
+  display: block;
+}
+
+.utazok_szama p {
+  color: black;
+  margin: 0;
+  text-align: center;
+}
+  
+.utazok_szama .nagy {
+  font-size: 2vw;
+  border-top: 1px solid black;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.utazok_szama .kicsi {
+  position: relative;
+  left: 0.5vw;
+  top: 0.1vw;
+  height: 0.4vw;
+  text-align: left;
+}
+
+.ar {
+  position: absolute;
+  top: 72%;
+  width: 100%;
+  
+}
+
+.ar p {
+  color: black;
+  margin: 0;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.3vw;
+}
