@@ -80,24 +80,4 @@ for ($i=0; $i < $len; $i++)
     </div>
     ";
     }
-
-    $csomagok = $dbhandler->getCsomagok($offset+$len);
-
-
-    $len = count($csomagok);
-
-    if ($len == 0) {
-        echo "<style>
-            #loadMoreBtn {
-            display: none;
-            }
-            #end_of_page {
-            display: table !important;
-            color: black;
-            margin-left: auto;
-            margin-right: auto;
-            }
-    
-        </style>"; 
-     }
 ?>
