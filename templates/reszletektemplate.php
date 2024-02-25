@@ -82,16 +82,16 @@
     
 
     <div class="foglalas">
-        <form action="" method="get">
+        <form action="foglalas.php" method="get">
             <div class="ellatas">
                 <label for="ellatas">Ellátás: </label>
             <select id="ellatas" name="ellatas" onchange="Dropdown()">
-                <option value="-1">--Válasszon--</option>
+                <option value="Csak Szállás">Csak Szállás</option>
                 <option value="All inclusive">All inclusive</option>
                 <option value="Félpanzió">Félpanzió</option>
                 <option value="Teljes panzió">Teljes panzió</option>
                 <option value="Szállás és Reggeli">Szállás és Reggeli</option>
-                <option value="Csak Szállás">Csak Szállás</option>
+
             </select>
         </div>
         <div class="etkezesek">
@@ -99,18 +99,29 @@
             <span>Étkezések:</span>
             </div>
             <div>
-                <span>Reggeli</span><br>
-                <span>Ebéd</span><br>
-                <span>Vacsora</span>
+                <span id="ki">Nincs</span>
             </div>
         </div>
         <div class="utazok_szama">
                 <p class ="kicsi">Utazók száma: </p><br>
-                <p class ="nagy"><b>3 fő</b></p>
+                <b><input class="nagy" name="utasok_szama" type="number" value="1" min="1"></b>
+                
         </div>
         <div class="ar">
-            <p>93100 Ft/fő</p>
+        <?php $ar = $dbhandler->getKeresett('csomagok', 'ar', 'csomagid', $csomagid)[0];?>
+    <!-- Hidden input field to store the original price -->
+    <?php echo "<input type='hidden' id='originalPrice' value='$ar'>"?>
+    <!-- Displayed price -->
+    <p><span id="displayedPrice"><?php echo $ar?></span> Ft/fő</p>
         </div>
+        <?php
+        //?csomag=true&helyszin=Bondi+Beach+House&csomagid=3
+        echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
+                <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
+                <input class='submit tobb' type='submit' value='Foglalás'>";
+        ?>
+        
         </form>
     </div>
     </div>

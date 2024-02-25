@@ -57,22 +57,30 @@
                     }
                     
                     $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$celpont'")[0];
-                    echo 
-                    "<div class='mySlides fade'>
+                    echo "<label for='submit_$i' class='slide-label'>
+                    <div class='mySlides fade'>
                         <div class='numbertext'>" . ($i + 1) . " / $len</div>
                         <img src='../img/helyszinimg/" . $csomagok[$i]['celpont'] . "/1.jpg' class='sliderimg'>
                         <div class='text'>
                             <p class='sliderfocim'>" . $handle . "</p>
-                            <p class='sliderhotelnev'>" . $csomagok[$i]['celpont'] . "<p class='stars'>";
+                            <p class='sliderhotelnev'>" . $csomagok[$i]['celpont'] . "</p>
+                            <p class='stars'>";
                             for ($n = 0; $n < $stars; $n++) { 
                                 echo "<i class='fa-solid fa-star'></i>";
                             }
-                    echo "</p></p>
+            echo            "</p>
                             <p class='sliderrepter'>".$csomagok[$i]['honnan']." <i class='fa-solid fa-$utazasmod'></i> ".$varos."</p>
                             <p class='sliderdatum'>".$csomagok[$i]['mettol']."  — ".$csomagok[$i]['meddig']."</p>
                             <p class='sliderar'>".$csomagok[$i]['ar']." Ft / fő -től</p>
                         </div>
-                    </div>";
+                    </div>
+                </label>
+                <form action='reszletek.php' method='get'>
+                    <input type='hidden' name='csomag' id='csomag' value='true'>
+                    <input type='hidden' name='helyszin' id='helyszin' value='".$csomagok[$i]['celpont']."'>
+                    <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
+                    <input type='submit' value='' id='submit_$i' class='submit-button' style='display:none;'>
+                </form>";
 
                 }
             ?>
