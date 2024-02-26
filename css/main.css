@@ -299,6 +299,27 @@ input.newbutton {
   }
 
   .search {
-    background-color: white;
+    position: absolute;
+    left: 17.85vw;
+    top: 3vw;
     z-index: 100;
+    padding: 0;
+    width: 15vw;
+    border-radius: 3vw;
+  }
+
+  .search li {
+    border: 1px solid black;
+    width: 100%;  
+    padding-left: 1vw;
+    padding-right: 1vw;
+    background-color: white;
+    font-size: 2vw;
+    cursor: pointer;
+    border-radius: 0.3vw;
+    height: auto;
+  }
+
+  .search li:hover {
+    background-color: var(--light-yellow);
   }

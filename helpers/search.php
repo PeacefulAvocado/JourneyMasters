@@ -32,15 +32,15 @@ while ($row = $result->fetch_assoc()) {
 // Output the filtered places in a dropdown menu
 if (!isset($elozo))
 {
-    $elozo = "";
+    $elozo[] = array();
 }
 echo '<ul class="search">';
 foreach ($rows as $row) {
-    if ($elozo != $row['varos'])
+    if (!in_array($row['varos'], $elozo))
     {
         echo '<li onclick="selectPlace(\'' . $row['varos'] . '\')">' . $row['varos'] . '</li><br>';
     }
-    $elozo = $row['varos'];
+    $elozo[] = $row['varos'];
 }
 echo '</ul>';
 
