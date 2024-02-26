@@ -115,6 +115,7 @@
     <p><span id="displayedPrice"><?php echo $ar?></span> Ft/fő</p>
         </div>
         <?php
+        //?csomag=true&helyszin=Bondi+Beach+House&csomagid=3
         echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
                 <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
                 <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>

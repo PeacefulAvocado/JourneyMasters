@@ -20,24 +20,60 @@
     padding-top: 1px;
 }
 .tervezes{
-    margin-top: 106px;
+    margin-top: 5.5vw;
     height: 2000px;
     background: linear-gradient(var(--light-yellow), #FFDD66);
 }
 .tervezesform{
     background-color: var(--white);
     border-radius: 10px;
-
     position: relative;
+    max-width:35vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.valaszto{
+    padding-top: 30px;
+}
+.formtop{
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    background-color: var(--ocean);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.tervezescim{
+    margin: 0;
+    color: var(--white);
+    padding: 10px;
+    font-size: 1.5vw;
+}
+.ikon{
+    width: 2vw;
+
+    margin-right: 10px;
+    padding: 10px;
+  } 
+.orange{
+    background-color: var(--orange);
+    width: 80%;
+    height: 2.8vw;
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left:2%;
+    padding-top: 0.1vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .helyinput{
     border:none;
-    height: 50px;
+    height: 2.6vw;
     border-radius: 10px;
-    width: 42%;
-    float:left;
-    margin-right: 10px;
-    font-size: 24px;
+    width: 90%;
+
+    font-size: 1.5vw;
 
 }
 .indulaslabel{
@@ -45,74 +81,30 @@
     left: 1vw;
     font-family: "Roboto", sans-serif;
     font-style: normal;
+    font-size: 0.7vw;
 
 }
 .celpontlabel{
     position: absolute;
-    left: 18.6vw;
+    left: 15vw;
     font-family: "Roboto", sans-serif;
     font-style: normal;
+    font-size: 0.7vw;
 
 }
-.reportrange input {
-    padding: 10px;
-    border-radius: 0 !important;
-} 
-.inline{
-    max-width:400px;
+.datumdiv{
+    background-color: var(--orange);
+    height: 2.4vw;
+    width: 40%;
     margin:auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 0.1vw;
+    padding-left: 3%;
 }
-.input-icons i {
-    position: absolute;
-    
+.daterange{
+    width: 90%;
+    font-size: 1vw;
+    height: 2vw;
 }
-    
-.input-icons {
-    width: 100%;
-    margin-bottom: 10px;
-}
-    
-.icon {
-    padding: 10px;
-    min-width: 40px;
-}
-.formtop{
-    display: grid;
-    grid-template-columns: 6fr 1fr;
-    background-color: var(--ocean);
-}
-.tervezescim{
-    margin: 0;
-    color: var(--white);
-}
-.ikon{
-    width: 2vw;
-    margin-bottom: -3px;
-    margin-right: 10px;
 
-  } 
-.input-field {
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 3px;
-}
-.search-container{
-    display: flex;
-}
-.prev, .next{
-    margin-right: -8px;
-    margin-left: -18px;
-}
-.applyBtn{
-    background-color: var(--lightblue);
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-}
-.cancelBtn{
-    background-color: #d35e5e;
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-}
