@@ -16,9 +16,28 @@
 
 
 <div class="foglalas">
-    <div class="kepes">
-        <?php echo "<img class ='kep' src='../img/helyszinimg/$hotel_nev/1.jpg'>"; ?>
-        <div class="adatok">
+<h1>Foglalásom részletei</h1>
+    <div class="grid">
+
+        <div class="kepes">
+            <?php echo "<img class ='kep' src='../img/helyszinimg/$hotel_nev/1.jpg'>"; ?>
+            <div class="adatok">
+                <?php
+                $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
+                $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
+                $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
+                $stars_str = "";
+                for ($n = 0; $n < $stars; $n++) { 
+                    $stars_str .= "<i class='fa-solid fa-star'></i>";
+                }
+                    echo "
+                        <p class='hotelnev'>$hotel_nev <span class='stars'>$stars_str</span></p>
+                        <p class='cim'>$varos, $cim</p>
+                    ";
+                ?>
+            </div>
+        </div>
+        <div class="reszletek">
 
         </div>
     </div>
