@@ -21,15 +21,15 @@
 }
 
 .navbarimg{
-    width:80px;
-    padding: 10px 0 0 10px;
+    width:4vw;
+    padding: 0.6vw 0 0 0.6vw;
 }
 .pnav{
     display: inline-block;
-    font-size: 50px;
+    font-size: 3vw;
     margin: 0 10px;
     position: absolute;
-    top: 20px;
+    top: 1vw;
     color: var(--baseyellow);
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -38,22 +38,20 @@
 ul{
     list-style-type: none;
     position: absolute;
-    right: 20px;
-    top: 15px;
-
+    right: 1vw;
+    top: 0;
+    margin: 1.5vw 0 0 0;
 }
 li{
     display: inline-block;
-
-
 }
 li a{
     text-decoration: none;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
-    font-size: 30px;
-    padding: 0 10px;
+    font-size: 1.7vw;
+    padding: 0 1vw;
     color: var(--baseyellow);
 }
 #elso{

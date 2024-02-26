@@ -12,7 +12,7 @@
 <div class="main">
 <div class="valaszto">
     <p class="utazna">Utazna?</p>
-    <form action="../tervezes/tervezes.php" method="get" class="tervezesform">
+    <form action="../index/tervezes.php" method="get" class="tervezesform">
         <label for="indulas" class="indulaslabel">Indulás</label>
         <input type="text" name="indulas" id="indulas" class="helyinput">
         <label for="celpont" class="celpontlabel">Célpont</label>

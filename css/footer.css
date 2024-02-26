@@ -12,16 +12,16 @@
     --orange: #FFB800;
     --gray: #cfcfcf;
   }
+  body{
+    margin:0;
+}
 .foot{
     margin: 0;
     width: 100%;
-    height: 150px;
+    height: 9vw;
     background-color: var(--blue);
     text-align: center;
-    padding: 50px 0;
-}
-body{
-    margin:0;
+    padding: 3vw 0;
 }
 p{
     color:var(--baseyellow);
@@ -29,14 +29,17 @@ p{
     font-style: normal;
 }
 .fo{
-    font-size: 50px;
-    margin: 0 10px;
+    font-size: 2.5vw;
+    margin: 0 1vw;
     font-weight: 500;
 }
 .thin{
     font-weight: 100;
+    font-size: 1vw;
+    margin: 0.5vw;
 }
 .details{
-    margin:5px;
+    margin:0.3vw;
     font-weight: 400;
+    font-size: 0.8vw;
 }
