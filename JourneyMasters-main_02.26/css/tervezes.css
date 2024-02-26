@@ -1,0 +1,110 @@
+:root {
+    --blue: #1c4484;
+    --ocean: #08b4e4;
+    --green: #45ac0d;
+    --green-pastel: #538D34;
+    --black: #000000;
+    --baseyellow: #ffd700;
+    --yellow: #FFDD66;
+    --light-yellow: #fff6d7;
+    --lightblue: #268FAC;
+    --white: #ffffff;
+    --orange: #FFB800;
+    --gray: #cfcfcf;
+  }
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+.tervezesmain{
+    padding-top: 1px;
+}
+.tervezes{
+    margin-top: 5.5vw;
+    height: 2000px;
+    background: linear-gradient(var(--light-yellow), #FFDD66);
+}
+.tervezesform{
+    background-color: var(--white);
+    border-radius: 10px;
+    position: relative;
+    max-width:35vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.valaszto{
+    padding-top: 30px;
+}
+.formtop{
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    background-color: var(--ocean);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.tervezescim{
+    margin: 0;
+    color: var(--white);
+    padding: 10px;
+    font-size: 1.5vw;
+}
+.ikon{
+    width: 2vw;
+
+    margin-right: 10px;
+    padding: 10px;
+  } 
+.orange{
+    background-color: var(--orange);
+    width: 80%;
+    height: 2.8vw;
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left:2%;
+    padding-top: 0.1vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.helyinput{
+    border:none;
+    height: 2.6vw;
+    border-radius: 10px;
+    width: 90%;
+
+    font-size: 1.5vw;
+
+}
+.indulaslabel{
+    position: absolute;
+    left: 1vw;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 0.7vw;
+
+}
+.celpontlabel{
+    position: absolute;
+    left: 15vw;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 0.7vw;
+
+}
+.datumdiv{
+    background-color: var(--orange);
+    height: 2.4vw;
+    width: 40%;
+    margin:auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 0.1vw;
+    padding-left: 3%;
+}
+.daterange{
+    width: 90%;
+    font-size: 1vw;
+    height: 2vw;
+}
+
