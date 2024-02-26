@@ -1,0 +1,52 @@
+:root {
+    --blue: #1c4484;
+    --ocean: #08b4e4;
+    --green: #45ac0d;
+    --green-pastel: #538D34;
+    --black: #000000;
+    --baseyellow: #ffd700;
+    --yellow: #FFDD66;
+    --light-yellow: #fff6d7;
+    --lightblue: #268FAC;
+    --white: #ffffff;
+    --orange: #FFB800;
+    --gray: #cfcfcf;
+  }
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+
+  .kosar-container {
+    position: absolute;
+    top: 5.57vh;
+    height: 100vh;
+  }
+
+.utazas-card{
+    position: relative;
+    left: 20%;
+    top: 8%;
+    width:50%;
+    height: 10vh;
+    background-color: white;
+    margin-top: 5%;
+    border-radius: 1.5vw;
+    box-shadow: 0 0 20px -6px black;
+    font-size: 1vw;
+    margin-bottom: 10vw;
+  }
+
+  .utazas-card *{
+    float: left;
+  }
+
+.hotel-kep {
+    height: 10vh;
+    border-radius: 12px 0px 0px 12px;
+}
+
+.go-to {
+    height: 5vh;
+    cursor: pointer;
+}

@@ -1,0 +1,310 @@
+:root {
+    --blue: #1c4484;
+    --ocean: #08b4e4;
+    --green: #45ac0d;
+    --green-pastel: #538D34;
+    --black: #000000;
+    --baseyellow: #ffd700;
+    --yellow: #FFDD66;
+    --light-yellow: #fff6d7;
+    --lightblue: #268FAC;
+    --white: #ffffff;
+    --orange: #FFB800;
+    --gray: #cfcfcf;
+  }
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+  .reszletekmain{
+      padding-top: 1px;
+  }
+  .reszletek{
+    margin-top: 106px;
+    height: auto;
+    background: linear-gradient(var(--light-yellow), #FFDD66);
+
+  }
+  .reszletektop{
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+
+  }
+  .reszleteknagykep{
+    width: 100%;
+    height: 44vw;
+    filter: blur(5px);
+    object-fit: cover;
+  }
+  .reszletektoptext{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    padding-top: 5%;
+  }
+  .reszletekhotelnev{
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 5vw;
+    font-weight: 800;
+    margin-bottom: 0;
+  }
+  .stars{
+    margin-top: 0;
+    color: var(--baseyellow);
+    margin-bottom: 2%;
+    font-size: 5vw;
+  }
+  .reszletekdatum{
+    color: var(--white);
+    font-size: 3vw;
+    font-weight: 700;
+  }
+
+
+.mySlides {display: none}
+
+
+
+.slideshow-container {
+
+  max-width: 70vw;
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+}
+
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 10vw;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+    text-shadow: 7px 5px 7px rgba(0,0,0,0.6);
+}
+.sliderimg{
+    width:100%;
+    height:30vw;
+    object-fit: cover;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .8} 
+  to {opacity: 1}
+}
+#reszletekvonal{
+    margin-top: 30px;
+    width:71%;
+    border-top: 1px solid var(--black);
+  }
+  .lenti{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .szolgaltatasok{
+    position: relative;
+    left:30%;
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+
+  }
+  .szolgaltatasokcim{
+    color: var(--black);
+    margin-bottom: 0;
+    font-size: 2vw;
+    padding-left: 10px;
+  }
+  .szolgaltatasokvonal{
+    margin:1% 0;
+  }
+  .szolgaltatassor{
+    font-size: 1.8vw;
+    color: var(--black);
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin: 2% 0;
+
+  }
+  .ikon{
+    width: 10%;
+    margin-bottom: -3px;
+    margin-right: 10px;
+  }
+  .foglalas{
+    position: relative;
+    left: 30%;
+    top: 8%;
+    width:35%;
+    height: 22vw;
+    background-color: white;
+    margin-top: 5%;
+    border-radius: 1.5vw;
+    box-shadow: 0 0 20px -6px black;
+    font-size: 1vw;
+    margin-bottom: 10vw;
+  }
+
+  .ellatas {
+    position: absolute;
+    top: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1.5vw;
+  }
+
+select {
+  -webkit-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  background-color: white;
+  background-image: url(../img/nyil.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  width: 9vw;
+  font-size: 0.8vw;
+
+}
+
+.etkezesek {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  top: 20%;
+  padding: 0 1.5vw;
+  margin-top: 1.5vw;
+  width: 100%;
+}
+
+.utazok_szama {
+  position: absolute;
+  top: 53%;
+  left: 20%;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 0;
+}
+.utazok_szama span {
+  position: relative;
+  left: 80%;
+  display: block;
+}
+
+.utazok_szama p {
+  color: black;
+  margin: 0;
+  text-align: center;
+}
+  
+.utazok_szama .nagy {
+  font-size: 2vw;
+  width: 70%;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  outline: none;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.utazok_szama .kicsi {
+  position: relative;
+  left: 0.5vw;
+  top: 0.1vw;
+  height: 0.4vw;
+  text-align: left;
+}
+
+.ar {
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  height: auto;
+}
+
+.ar p {
+  color: black;
+  margin: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.3vw;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.submit {
+  position: absolute;
+  top: 85%;
+  width: 70%;
+  left: 16%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 1vw;
+
+}
+.tobb{
+  background-color: var(--orange);
+  border:none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 1.1vw;
+  font-weight: 600;
+  width: 67%;
+  color: var(--white);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
