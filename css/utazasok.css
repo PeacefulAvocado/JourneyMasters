@@ -157,3 +157,19 @@
     border-radius: 10px;
     cursor: pointer;
   }
+
+.vege {
+  background-color: lightgray;
+    border:none;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 1.1vw;
+    font-weight: 600;
+    width: 8%;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
