@@ -32,6 +32,7 @@
     max-width:35vw;
     margin-left: auto;
     margin-right: auto;
+   
 }
 .valaszto{
     padding-top: 30px;
@@ -160,6 +161,8 @@
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
+    box-shadow: 0 0 20px -6px black;
+
 }
 .tervezesegyeni img{
     height: 6vw;
@@ -168,7 +171,6 @@
     border-top-left-radius: 1.5vw;
     border-bottom-left-radius: 1.5vw;
     float:left;
-
 }
 .hotelnev{
     color: var(--ocean);
@@ -228,6 +230,7 @@ input.newbutton {
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
+    box-shadow: 0 0 20px -6px black;
 }
 .csomagform img{
     height: 6vw;

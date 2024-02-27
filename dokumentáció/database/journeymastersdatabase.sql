@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 24. 20:05
+-- Létrehozás ideje: 2024. Feb 27. 12:40
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -73,6 +73,7 @@ CREATE TABLE `helyszin` (
   `minoseg` varchar(50) DEFAULT NULL,
   `csillag` int(11) DEFAULT NULL,
   `leiras` varchar(500) NOT NULL,
+  `ar` int(11) NOT NULL,
   `aktiv` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -80,28 +81,28 @@ CREATE TABLE `helyszin` (
 -- A tábla adatainak kiíratása `helyszin`
 --
 
-INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `aktiv`) VALUES
-('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
-('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', b'1'),
-('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Teszt.\r\nTeszlek. Megteszlek. Szétteszlek.', b'1'),
-('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 'Megbaszom.\r\nAnyád.', b'1'),
-('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, '', b'1'),
-('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, '', b'1'),
-('Grand Central Hotel', 'New York City', '123 Broadway Ave', 'Hotel', 4, '', b'1'),
-('Harbor Lights Inn', 'San Francisco', 'Pier 39 1', 'Hotel', 4, '', b'1'),
-('Harborview Suites', 'Sydney', 'Circular Quay 2', 'Hotel', 4, '', b'1'),
-('Hotel Elegance', 'Vienna', 'Hauptstraße 12', 'Hotel', 4, '', b'1'),
-('Imperial Residence', 'Vienna', 'Schönbrunn Palace 1', 'Hotel', 5, '', b'1'),
-('Lakeview Lodge', 'Chicago', 'Lake Shore Drive 22', 'Apartman', 3, '', b'1'),
-('Le Château Belle', 'Paris', 'Rue de Rivoli 1', 'Hotel', 5, '', b'1'),
-('Luxus Palace Hotel', 'Budapest', 'Váci utca 22', 'Hotel', 5, '', b'1'),
-('Magnificent Mile Inn', 'Chicago', 'Wacker Drive 8', 'Hotel', 4, '', b'1'),
-('Manhattan Tower Suites', 'New York City', '5th Avenue 55', 'Hotel', 4, '', b'1'),
-('Montmartre Retreat', 'Paris', 'Rue des Abbesses 10', 'Hotel', 3, '', b'1'),
-('Riverside Suites', 'Budapest', 'Bem rakpart 15', 'Hotel', 4, '', b'1'),
-('Seine River B&B', 'Paris', 'Quai de la Tournelle 5', 'Hotel', 4, '', b'1'),
-('Sunshine Hotel', 'Sydney', 'Beach Road 45', 'Hotel', 4, '', b'1'),
-('Times Square View Hotel', 'New York City', '7th Avenue 20', 'Hotel', 4, '', b'1');
+INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `ar`, `aktiv`) VALUES
+('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', 0, b'1'),
+('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', 0, b'1'),
+('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Teszt.\r\nTeszlek. Megteszlek. Szétteszlek.', 0, b'1'),
+('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 'Megbaszom.\r\nAnyád.', 0, b'1'),
+('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, '', 0, b'1'),
+('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, '', 0, b'1'),
+('Grand Central Hotel', 'New York City', '123 Broadway Ave', 'Hotel', 4, '', 0, b'1'),
+('Harbor Lights Inn', 'San Francisco', 'Pier 39 1', 'Hotel', 4, '', 0, b'1'),
+('Harborview Suites', 'Sydney', 'Circular Quay 2', 'Hotel', 4, '', 0, b'1'),
+('Hotel Elegance', 'Vienna', 'Hauptstraße 12', 'Hotel', 4, '', 0, b'1'),
+('Imperial Residence', 'Vienna', 'Schönbrunn Palace 1', 'Hotel', 5, '', 0, b'1'),
+('Lakeview Lodge', 'Chicago', 'Lake Shore Drive 22', 'Apartman', 3, '', 0, b'1'),
+('Le Château Belle', 'Paris', 'Rue de Rivoli 1', 'Hotel', 5, '', 0, b'1'),
+('Luxus Palace Hotel', 'Budapest', 'Váci utca 22', 'Hotel', 5, '', 0, b'1'),
+('Magnificent Mile Inn', 'Chicago', 'Wacker Drive 8', 'Hotel', 4, '', 0, b'1'),
+('Manhattan Tower Suites', 'New York City', '5th Avenue 55', 'Hotel', 4, '', 0, b'1'),
+('Montmartre Retreat', 'Paris', 'Rue des Abbesses 10', 'Hotel', 3, '', 0, b'1'),
+('Riverside Suites', 'Budapest', 'Bem rakpart 15', 'Hotel', 4, '', 0, b'1'),
+('Seine River B&B', 'Paris', 'Quai de la Tournelle 5', 'Hotel', 4, '', 0, b'1'),
+('Sunshine Hotel', 'Sydney', 'Beach Road 45', 'Hotel', 4, '', 0, b'1'),
+('Times Square View Hotel', 'New York City', '7th Avenue 20', 'Hotel', 4, '', 0, b'1');
 
 -- --------------------------------------------------------
 
