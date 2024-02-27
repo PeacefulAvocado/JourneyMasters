@@ -29,7 +29,7 @@
             <div class='reszletektoptext'>
             <p class='reszletekhotelnev'>$hotel_nev</p>
             <p class='stars'>$stars_str</p>
-            <p class='reszletekdatum'>$mettol - $meddig</p>
+            <p class='reszletekdatum'>$mettol <code>&#8212;</code> $meddig</p>
             </div>";
     ?>
 
