@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="icon" href="../img/kislogo_black.png" type="image/x-icon">
-    <title>JourneyMasters</title>
+    <title>JourneyMasters | Index</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/search.js"></script>
 </head>

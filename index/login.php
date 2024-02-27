@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/utazasok.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/footer.css">  
     <link rel="icon" href="../img/kislogo_black.png" type="image/x-icon">
-    
-    <title>JourneyMasters | Utazások</title>
+    <title>JourneyMasters | Login</title>
 </head>
 <body>
     <?php include('../templates/navbar.php')?>
-    <?php include('../templates/utazasoktemplate.php')?>
+    <?php include('../templates/logintemplate.php')?>
     <?php include('../templates/footer.php')?>
     
     

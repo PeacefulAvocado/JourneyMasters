@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/foglalas.css">
     <link rel="icon" href="../img/kislogo_black.png" type="image/x-icon">
     <script src="../js/icon.js"></script>
-    <title>Foglalás</title>
+    <title>JourneyMasters | Foglalás</title>
 </head>
 <body>
     <?php include('../templates/navbar.php')?>
