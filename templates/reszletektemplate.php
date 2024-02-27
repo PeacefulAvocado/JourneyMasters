@@ -13,24 +13,46 @@
 <div class="reszletek">
     <?php
         $csomag = $_GET['csomag'];
-        $hotel_nev = $_GET['helyszin'];
-        $csomagid = $_GET['csomagid'];
+        if ($csomag == "true")
+        {
+            $csomagid = $_GET['csomagid'];
+            $hotel_nev = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
+            $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
+            $stars_str = "";
+            for ($n = 0; $n < $stars; $n++) { 
+                $stars_str .= "<i class='fa-solid fa-star'></i>";
+            }
 
-        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
-        $stars_str = "";
-        for ($n = 0; $n < $stars; $n++) { 
-            $stars_str .= "<i class='fa-solid fa-star'></i>";
+            $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
+            $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
+            echo "<div class='reszletektop'>
+                <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='Városkép' class='reszleteknagykep'>
+                <div class='reszletektoptext'>
+                <p class='reszletekhotelnev'>$hotel_nev</p>
+                <p class='stars'>$stars_str</p>
+                <p class='reszletekdatum'>$mettol <code>&#8212;</code> $meddig</p>
+                </div>";
         }
+        else {
+            $honnan = $_GET['honnan'];
+            $celpont = $_GET['hotelcim'];
+            $mettol =  $_GET['mettol'];
+            $meddig =  $_GET['meddig'];
 
-        $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
-        $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
-        echo "<div class='reszletektop'>
-            <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='Városkép' class='reszleteknagykep'>
-            <div class='reszletektoptext'>
-            <p class='reszletekhotelnev'>$hotel_nev</p>
-            <p class='stars'>$stars_str</p>
-            <p class='reszletekdatum'>$mettol <code>&#8212;</code> $meddig</p>
-            </div>";
+            $hotel_nev = $dbhandler->getKeresett('helyszin', 'nev', 'cim', "'$celpont'")[0];
+            $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
+            $stars_str = "";
+            for ($n = 0; $n < $stars; $n++) { 
+                $stars_str .= "<i class='fa-solid fa-star'></i>";
+            }
+            echo "<div class='reszletektop'>
+                <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='Városkép' class='reszleteknagykep'>
+                <div class='reszletektoptext'>
+                <p class='reszletekhotelnev'>$hotel_nev</p>
+                <p class='stars'>$stars_str</p>
+                <p class='reszletekdatum'>$mettol <code>&#8212;</code> $meddig</p>
+                </div>";
+        }
     ?>
 
     
@@ -38,14 +60,28 @@
 
     <div class="slideshow-container">
  <?php
-    $directory = "../img/helyszinimg/" . $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
-    $len = count(scandir($directory)) - 2;
+    if ($csomag == "true")
+    {
+        $directory = "../img/helyszinimg/" . $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
+        $len = count(scandir($directory)) - 2;
 
-    for($i = 1; $i <= $len; $i++) {
-        echo "<div class='mySlides fade'>
-        <div class='numbertext'>$i / $len</div>
-    <img src='$directory/$i.jpg' class='sliderimg'>
-    </div>";
+        for($i = 1; $i <= $len; $i++) {
+            echo "<div class='mySlides fade'>
+            <div class='numbertext'>$i / $len</div>
+        <img src='$directory/$i.jpg' class='sliderimg'>
+        </div>";
+        }
+    }
+    else {
+        $directory = "../img/helyszinimg/$hotel_nev";
+        $len = count(scandir($directory)) - 2;
+
+        for($i = 1; $i <= $len; $i++) {
+            echo "<div class='mySlides fade'>
+            <div class='numbertext'>$i / $len</div>
+        <img src='$directory/$i.jpg' class='sliderimg'>
+        </div>";
+        }
     }
  ?>
     
@@ -108,18 +144,36 @@
                 
         </div>
         <div class="ar">
-        <?php $ar = $dbhandler->getKeresett('csomagok', 'ar', 'csomagid', $csomagid)[0];?>
+        <?php 
+            if ($csomag == "true")
+            {
+                $ar = $dbhandler->getKeresett('csomagok', 'ar', 'csomagid', $csomagid)[0];
+            }
+            else {
+                $ar = $dbhandler->getKeresett('helyszin', 'ar', 'nev', "'$hotel_nev'")[0];
+            }
+        ?>
     <!-- Hidden input field to store the original price -->
     <?php echo "<input type='hidden' id='originalPrice' value='$ar'>"?>
     <!-- Displayed price -->
     <p><span id="displayedPrice"><?php echo $ar?></span> Ft/fő</p>
         </div>
         <?php
-        //?csomag=true&helyszin=Bondi+Beach+House&csomagid=3
-        echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
-                <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
-                <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
-                <input class='submit tobb' type='submit' value='Foglalás'>";
+            if ($csomag == "true")
+            {
+                echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
+                        <input class='submit tobb' type='submit' value='Foglalás'>";
+            }
+            else {
+                echo "  <input type='hidden' name='csomag' id='csomag' value='false'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='honnan' id='honnan' value='$honnan'>
+                        <input type='hidden' name='mettol' id='mettol' value='$mettol'>
+                        <input type='hidden' name='meddig' id='meddig' value='$meddig'>
+                        <input class='submit tobb' type='submit' value='Foglalás'>";
+            }
         ?>
         
         </form>

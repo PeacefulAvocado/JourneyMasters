@@ -9,6 +9,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+<script src="../js/bekuld.js"></script>
+
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
@@ -18,14 +20,14 @@
 <div class="tervezes">
 <div class="valaszto">
 
-<form class="tervezesform" action="" method="get">
+<form class="tervezesform" action="" method="get" id="kereso">
     <div class="formtop">
         <p class="tervezescim">Tervezés:</p>
         <img src="../img/globepin.png" alt="Földgömb" class="ikon">
     </div>
     <div class="orange">
         <label for="indulas" class="indulaslabel">Indulás</label>
-        <input type="text" name="indulas" id="indulas" class="helyinput">
+        <input type="text" name="honnan" id="honnan" class="helyinput">
         <label for="celpont" class="celpontlabel">Célpont</label>
         <input type="text" name="celpont" id="celpont" class="helyinput">
     </div>
@@ -52,7 +54,7 @@
         $stars.="<i class='fa-solid fa-star'></i>";
       }
 
-      echo "<form action='../index/foglalas.php' method='get' class='tervezesegyeni'>
+      echo "<form action='../index/reszletek.php' method='get' class='tervezesegyeni' id='hely'>
       <img src='../img/sydneyproba.jpg' alt='$varos'>
       <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars</p>
@@ -60,9 +62,8 @@
       <p class='hotelcim'>$varos, $cim</p>
       <p class='ar'>93.100 Ft / fő -től</p>
       <input type='hidden' name='csomag' value='false'>
-      <input type='hidden' name='datum' id='datum' value=''>
       <input type='hidden' name='hotelcim' value='$cim'>
-      <input type='submit' value='' class='newbutton button'>
+      <input type='button' value='' class='newbutton button' onclick='bekuld()'>
     </form>";
     }
     ?>

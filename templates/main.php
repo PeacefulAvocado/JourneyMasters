@@ -79,7 +79,6 @@
                     </label>
                 <form action='reszletek.php' method='get'>
                     <input type='hidden' name='csomag' id='csomag' value='true'>
-                    <input type='hidden' name='helyszin' id='helyszin' value='".$csomagok[$i]['celpont']."'>
                     <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
                     <input type='submit' value='' id='submit_$i' class='submit-button' style='display:none;'>
                 </form>";
