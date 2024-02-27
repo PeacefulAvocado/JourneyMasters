@@ -8,7 +8,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-
+<?php
+    require_once(__DIR__."/../helpers/dbhandler.php");
+    $dbhandler = new DbHandler();
+?>
 
 <div class="tervezesmain">
 <div class="tervezes">
@@ -36,18 +39,33 @@
   <p class="kiscim">Szálláshelyek</p>
   <hr class="vonal">
   <div class="szallashelycontainer">
-    <form action="../index/foglalas.php" method="get" class="tervezesegyeni">
-      <img src="../img/sydneyproba.jpg" alt="Sydney">
-      <p class="hotelnev">Morocco Central</p>
-      <p class="stars"><i class='fa-solid fa-star'></i></p>
+    <?php 
+    $helyszin = $dbhandler->getHelyszinek();
+    for($i = 0; $i < count($helyszin);$i++) {
+      $hotel_nev = $helyszin[$i]['nev'];
+      $varos = $helyszin[$i]['varos'];
+      $cim = $helyszin[$i]['cim'];
+      $csillag = $helyszin[$i]['csillag'];
+      $stars = "";
+      for($j = 0; $j < $csillag;$j++) {
+        $stars.="<i class='fa-solid fa-star'></i>";
+      }
+
+      echo "<form action='../index/foglalas.php' method='get' class='tervezesegyeni'>
+      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      <p class='hotelnev'>$hotel_nev</p>
+      <p class='stars'>$stars</p>
       <br>
-      <p class="hotelcim">Sydney, Australia 30 Grosvenor St.</p>
-      <p class="ar">93.100 Ft / fő -től</p>
-      <input type="hidden" name="csomag" value="false">
-      <input type="hidden" name="datum" id="datum" value="">
-      <input type="hidden" name="hotelcim" value="">
-      <input type="submit" value="" class="newbutton button">
-    </form>
+      <p class='hotelcim'>$varos, $cim</p>
+      <p class='ar'>93.100 Ft / fő -től</p>
+      <input type='hidden' name='csomag' value='false'>
+      <input type='hidden' name='datum' id='datum' value=''>
+      <input type='hidden' name='hotelcim' value='$cim'>
+      <input type='submit' value='' class='newbutton button'>
+    </form>";
+    }
+    ?>
+    
   </div>
 </div>
 
@@ -56,19 +74,48 @@
   <p class="kiscim">Csomagok</p>
   <hr class="vonal">
   <div class="csomagcontainer">
-    <form action="../index/foglalas.php" method="get" class="csomagform" id='a1'>
-      <img src="../img/sydneyproba.jpg" alt="Sydney">
-      <p class="varosnev">Sydney</p>
+  <?php 
+    $csomagok = $dbhandler->getCsomagokXHelyszinek();
+    for($i = 0; $i < count($csomagok);$i++) {
+      
+      $varos = $csomagok[$i]['varos'];
+      $celpont = $csomagok[$i]['celpont'];
+      $honnan = $csomagok[$i]['honnan'];
+      $mettol = $csomagok[$i]['mettol'];
+      $meddig = $csomagok[$i]['meddig'];
+      $ar = $csomagok[$i]['ar'];
+      $utazasmod = $csomagok[$i]['utazasmod'];
+      $csomagid = $csomagok[$i]['csomagid'];
+      
+      if ($utazasmod == 'Repülő') 
+        {
+            $utazasmod = "plane";
+        }
+        else if ($csomagok[$i]['utazasmod'] == 'Vonat') 
+        {
+            $utazasmod = "train";
+        }
+        else {
+            $utazasmod = "bus";
+        }
+
+
+      echo "<form action='../index/foglalas.php' method='get' class='csomagform' id='a1'>
+      <img src='../img/helyszinimg/$celpont/1.jpg' alt='$varos'>
+      <p class='varosnev'>$varos</p>
       <br>
-      <p class='repter'>BUD<i class='fa-solid fa-plane' style="color:#000000"></i>SDY</p>
+      <p class='repter'>$honnan<i class='fa-solid fa-$utazasmod' style='color:#000000'></i>$varos</p>
       <br>
-      <p class='datum'>2024.01.01  — 2224.01.01</p>
-      <p class="ar">93.100 Ft / fő -től</p>
-      <input type="hidden" name="csomag" value="true">
-      <input type="hidden" name="helyszin" id="helyszin" value="">
-      <input type="hidden" name="csomagid" value="">
-      <input type="submit" value="" class="newbutton button">
-    </form>
+      <p class='datum'>$mettol  — $meddig</p>
+      <p class='ar'>$ar Ft / fő -től</p>
+      <input type='hidden' name='csomag' value='true'>
+      <input type='hidden' name='helyszin' id='helyszin' value='$celpont'>
+      <input type='hidden' name='csomagid' value='$csomagid'>
+      <input type='submit' value='' class='newbutton button'>
+    </form>";
+    }
+    ?>
+    
   </div>
 </div>
 

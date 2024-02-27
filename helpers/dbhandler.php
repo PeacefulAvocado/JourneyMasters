@@ -42,7 +42,17 @@
 
         //SELECT * FROM helyszin ORDER BY nev LIMIT 2 OFFSET 2;
 
+        function getHelyszinek() {
+            $result = $this->conn->query("select * from helyszin where aktiv = 1");
+            return $this->result_as_array($result);
+        }
 
+        function getCsomagokXHelyszinek() {
+            $result = $this->conn->query("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 ");
+            return $this->result_as_array($result);
+        }
+
+    
         function result_as_array($result)
         {
             $arr = array();
@@ -52,5 +62,8 @@
             }
             return $arr;
         }
+
+
+        
     }
 ?>
