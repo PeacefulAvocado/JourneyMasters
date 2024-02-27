@@ -201,6 +201,7 @@ color: var(--black);
 }
 .profiladatok{
     position: relative;
+    height: 17vw;
 }
 .adatok{
     
@@ -222,6 +223,15 @@ color: var(--black);
     border: 1px solid var(--black);
     width: 15vw;
     height: 2vw;
+    font-size: 1.2vw;
+}
+.adatok select{
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: 1px solid var(--black);
+    width: 15vw;
+    height: 2vw;
+    font-size: 1.2vw;
 }
 .adatmodositas{
     position: absolute;

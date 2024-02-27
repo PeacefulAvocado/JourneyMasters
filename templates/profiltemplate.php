@@ -73,6 +73,11 @@
         <input type="date" name="szulid">
         <label for="lakcim">Lakcím:</label>
         <input type="text" name="lakcim">
+        <label for="igtipus">Igazolványtípus:</label>
+        <select name="igtipus" id="igtipus">
+          <option value="Személyi igazolvány">Személyi igazolvány</option>
+          <option value="Útlevél">Útlevél</option>
+        </select>
         <label for="igszam">Igazolványszám:</label>
         <input type="text" name="igszam">
     </div>

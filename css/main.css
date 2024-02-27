@@ -76,7 +76,7 @@ input.newbutton {
     color:var(--black);
     border:none;
     padding:0;
-
+    cursor: pointer;
     clear:both;
 }
 .ajanlatok{

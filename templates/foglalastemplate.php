@@ -104,12 +104,30 @@
     </div>
     <div class="utasadatok">
         <h3>Utasok adatai: </h3>
-        <?php
-            for ($i = 0; $i < $utasok_szama; $i++)
-            {
-                    echo "";
-            }
-        ?>
+             <div class="utas">
+                <p class="utasszam">1. utas</p>
+                <hr class="vonal">
+                <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+                    <div class="utasdata">
+                        <label>Név:</label>
+                        <input type="text" name="nev">
+                        <label>Telefonszám:</label>
+                        <input type="tel" name="tel">
+                        <label>Szuletési idő:</label>
+                        <input type="date" name="szulid">
+                        <label>Lakcím:</label>
+                        <input type="text" name="lakcim">
+                        <label >Igazolványtípus:</label>
+                        <select name="igtipus" id="igtipus">
+                        <option value="Személyi igazolvány">Személyi igazolvány</option>
+                        <option value="Útlevél">Útlevél</option>
+                        </select>
+                        <label>Igazolványszám:</label>
+                        <input type="text" name="igszam">
+                    </div>
+                    <input type="submit" value="Tovább a <?php echo "\n";?>fizetéshez" class="fizetes">
+                </form>
+             </div>   
            
     </div>
 </div>

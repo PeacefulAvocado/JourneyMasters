@@ -144,6 +144,7 @@
     border: 1px solid var(--orange);
     padding: 4% 20px;
     border-radius: 15px;
+    cursor: pointer;
   }
   .tobb{
     background-color: var(--orange);

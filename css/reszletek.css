@@ -20,7 +20,7 @@
       padding-top: 1px;
   }
   .reszletek{
-    margin-top: 106px;
+    margin-top: 5.5vw;
     height: auto;
     background: linear-gradient(var(--light-yellow), #FFDD66);
 
@@ -196,16 +196,18 @@
   }
 
 select {
-  -webkit-appearance: none;
+  appearance: none;
   text-indent: 1px;
   text-overflow: '';
   background-color: var(--white);
-  background-image: url(../img/nyil.svg);
+  background-image: url(../img/nyille.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 100%;
   width: 9vw;
   font-size: 0.8vw;
+  cursor: pointer;
+  border-radius: 0.4vw;
 
 }
 
@@ -214,9 +216,9 @@ select {
   grid-template-columns: 1fr 1fr;
   position: absolute;
   top: 20%;
-  padding: 0 1.5vw;
-  margin-top: 1.5vw;
-  width: 100%;
+  padding: 0 2.5vw;
+  margin-top: 1vw;
+  width: 80%;
 }
 
 .utazok_szama {

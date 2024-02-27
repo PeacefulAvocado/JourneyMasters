@@ -209,7 +209,7 @@ input.newbutton {
     top: 22%;
     width:3vw;
     height:3vw;
-
+    cursor: pointer;
     background:url(../img/nyil.svg) no-repeat 0 0;
     color:var(--black);
     border:none;

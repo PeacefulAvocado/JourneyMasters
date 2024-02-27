@@ -241,8 +241,70 @@ select {
 }
 
 /* Utasok adatai */
-
+.utasadatok{
+    padding: 2vw 10vw;
+}
 h3 {
     margin: 0;
+    font-size: 2vw;
 }
+.vonal{
+    width: 100%;
+    margin: 0;
+    color: var(--black);
 
+}
+.utas{
+    padding: 0 10vw;
+}
+.utasszam{
+    color: var(--black);
+    font-size: 1.5vw;
+    margin-bottom: 0.3vw;
+}
+.utasdata{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: right;
+    width: 55vw;
+    margin:3vw auto 0 auto;
+
+}
+.utasdata label{
+    padding-right: 1vw;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+}
+.utasdata input{
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: 1px solid var(--black);
+    width: 100%;
+    height: 2vw;
+    font-size: 1.2vw;
+}
+.utasdata select{
+    margin-bottom: 1vw;
+    margin-top: 0;
+    border-radius: 0.5vw;
+    border: 1px solid var(--black);
+    width: 100%;
+    height: 2vw;
+    font-size: 1.2vw;
+}
+.fizetes{
+    background-color: var(--orange);
+    border:none;
+    margin-top: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 1.2vw;
+    font-weight: 600;
+    width: 12vw;
+    color: var(--white);
+    padding: 0.4vw 0;
+    border-radius: 1vw;
+    cursor: pointer;
+}
