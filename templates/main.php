@@ -57,7 +57,7 @@
                     }
                     
                     $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$celpont'")[0];
-                    echo "<label for='submit_$i' class='slide-label'>
+                    echo "<label for='submit_$i' class='slide-label'>                
                     <div class='mySlides fade'>
                         <div class='numbertext'>" . ($i + 1) . " / $len</div>
                         <img src='../img/helyszinimg/" . $csomagok[$i]['celpont'] . "/1.jpg' class='sliderimg'>
@@ -74,7 +74,7 @@
                             <p class='sliderar'>".$csomagok[$i]['ar']." Ft / fő -től</p>
                         </div>
                     </div>
-                </label>
+                    </label>
                 <form action='reszletek.php' method='get'>
                     <input type='hidden' name='csomag' id='csomag' value='true'>
                     <input type='hidden' name='helyszin' id='helyszin' value='".$csomagok[$i]['celpont']."'>
