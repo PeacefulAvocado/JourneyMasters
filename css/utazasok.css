@@ -55,7 +55,7 @@
     width: 60vw; 
     height: auto; 
     max-height: 650px; 
-    object-fit: cover; /*crop image*/
+    object-fit: cover;
     z-index: 2;
 }
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/footer.css">  
     <link rel="icon" href="../img/kislogo_black.png" type="image/x-icon">
-    <title>JourneyMasters | Login</title>
+    <title>JourneyMasters | Bejelentkezés</title>
 </head>
 <body>
     <?php include('../templates/navbar.php')?>

@@ -1,3 +1,11 @@
+<?php
+  
+  session_start();
+  if(!isset($_SESSION['utasid'])){
+      header("Location: ../index/login.php");
+      exit();
+  }
+?>
 <div class="profilmain">
 <div class="profil">
 <p class="emailcim">dzsonasz@gmail.com</p>

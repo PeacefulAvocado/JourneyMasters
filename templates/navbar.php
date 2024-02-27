@@ -5,6 +5,6 @@
     <li><a href="../index/tervezes.php" id="elso">Tervezés</a></li>
     <li><a href="../index/utazasok.php">Utazások</a></li>
     <li><a href="../index/kosar.php"><i class="fa-solid fa-basket-shopping"></i></a></li>
-    <li><a href="<?php echo (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) ? '../index/login.php' : '../index/profil.php'?>"><i class="fa-solid fa-person-walking-luggage" id="fordit"></i></a></li>
+    <li><a href="<?php echo (isset($_SESSION['utasid'])) ? '../index/login.php' : '../index/profil.php'?>"><i class="fa-solid fa-person-walking-luggage" id="fordit"></i></a></li>
 </ul>
 </div>

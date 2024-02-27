@@ -1,6 +1,11 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
+    session_start();
+    if(!isset($_SESSION['utasid'])){
+        header("Location: ../index/login.php");
+        exit();
+    }
    
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>

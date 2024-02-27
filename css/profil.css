@@ -22,7 +22,7 @@
 .profil{
     margin-top: 5.5vw;
     height: auto;
-    background: linear-gradient(var(--light-yellow), #FFDD66);
+    background: linear-gradient(var(--light-yellow), var(--yellow));
     padding: 5vw 5vw;
 }
 .emailcim{
@@ -219,7 +219,7 @@ color: var(--black);
 .adatok input{
     margin-bottom: 1vw;
     border-radius: 0.5vw;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     width: 15vw;
     height: 2vw;
 }

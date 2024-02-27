@@ -19,7 +19,7 @@
 
 .foglalas {
     height: auto;
-    background: linear-gradient(var(--light-yellow), #FFDD66);
+    background: linear-gradient(var(--light-yellow), var(--yellow));
 }
 
 h1 {
@@ -38,14 +38,14 @@ h1 {
 /* Bal oldali képes */
 
 .kepes {
-    background-color: white;
+    background-color: var(--white);
     height: 20vw;
     width: 25vw;
     position: relative;
     top: 5.5vw;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 1.5vw;
-    box-shadow: 0 0 20px -6px black;
+    box-shadow: 0 0 20px -6px var(--black);
     margin-left: auto;
     margin-right: auto;
     margin-top: 7vw;
@@ -56,12 +56,12 @@ h1 {
     height: 60%;
     object-fit: cover;
     border-radius: 1.5vw 1.5vw 0 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--black);
 }
 
 .cim {
     margin-top: 0;
-    color: black;
+    color: var(--black);
 }
 
 
@@ -97,12 +97,12 @@ a {
     margin-top: 7vw;
     width: 20vw;
     height: 30vw;
-    background-color: white;
+    background-color: var(--white);
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 1.5vw;
-    box-shadow: 0 0 20px -6px black;
+    box-shadow: 0 0 20px -6px var(--black);
     font-size: 1vw;
 }
 
@@ -114,14 +114,14 @@ a {
 
 .e1 {
     font-weight: bold;
-    color: black;
+    color: var(--black);
     padding: 0.2vw;
     padding-left: 4vw;
 }
 
 .e2 {
-    color: black;
-    border: 1px solid black;
+    color: var(--black);
+    border: 1px solid var(--black);
     border-radius: 0.2vw;
     margin-left: auto;
     margin-right: auto;
@@ -136,14 +136,14 @@ a {
 
 }
 .et1 {
-    color: black;
+    color: var(--black);
     text-align: right;
     padding-right: 1vw;
     font-weight: bold;
 }
 
 .et2 {
-    color: black;
+    color: var(--black);
     text-align: left;
     padding-left: 1vw;
 }
@@ -153,13 +153,13 @@ a {
     margin-right: auto;
     margin-top: 1.5vh;
     width: 60%;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 12px;
     padding: 0;
 }
 
 .utazok_szama p {
-    color: black;
+    color: var(--black);
     margin: 0;
     text-align: center;
 }
@@ -172,7 +172,7 @@ a {
     margin-right: auto;
     border: none;
     outline: none;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--black);
     text-align: center;
 }
 
@@ -198,14 +198,14 @@ select {
 }
 
 .ut {
-    color: black;
+    color: var(--black);
     text-transform: uppercase;
     text-align: center;
 }
 
 .idopont {
     text-align: center;
-    color: black;
+    color: var(--black);
     font-size: 1vw;
     font-style: italic;
 }
@@ -217,23 +217,23 @@ select {
     margin: 0;
     font-size: 1.2vw;
     padding-bottom: 1vw;
-    border-bottom: 1px dashed black;
+    border-bottom: 1px dashed var(--black);
 }
 
 .sz1 {
-    color: black;   
+    color: var(--black);   
     margin: 0;
     padding-left: 3vw;
 }
 
 .sz2 {
-    color: black;
+    color: var(--black);
     text-align: left;
     margin: 0;
 }
 
 .osszeg {
-    color: black;
+    color: var(--black);
     text-align: right;
     font-size: 1.2vw;
     padding-right: 2vw;

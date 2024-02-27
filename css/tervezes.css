@@ -113,7 +113,7 @@
     height: 2.15vw;
     text-align: center;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     padding-top: 0.3vw;
 }
 .kezdetlabel{
@@ -161,7 +161,7 @@
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
-    box-shadow: 0 0 20px -6px black;
+    box-shadow: 0 0 20px -6px var(--black);
 
 }
 .tervezesegyeni img{
@@ -230,7 +230,7 @@ input.newbutton {
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
-    box-shadow: 0 0 20px -6px black;
+    box-shadow: 0 0 20px -6px var(--black);
 }
 .csomagform img{
     height: 6vw;
