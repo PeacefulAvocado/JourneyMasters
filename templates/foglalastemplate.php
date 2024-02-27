@@ -110,25 +110,6 @@
                     echo "";
             }
         ?>
-            <form action="veglegesites.php">
-                <label for="nev">Név: </label>
-                <input type="text" name="nev">
-                <label for="szul">Születési dátum: </label>
-                <input type="date" name="szul">
-                <label for="nem">Nem: </label>
-                <select name="nem" id="nem">
-                    <option value="Férfi">Férfi</option>
-                    <option value="Nő">Férfi</option>
-                    <option value="Egyéb">Férfi</option>
-                </select>
-                <label for="szul">Igazolvány típusa: </label>
-                <select name="igtipus" id="igtipus">
-                    <option value="Személyi igazolvány">Személyi igazolvány</option>
-                    <option value="Útlevél">Útlevél</option>
-                </select>
-                <input type="text" name="nev">
-                <input type="text" name="nev">
-
-            </form>
+           
     </div>
 </div>
