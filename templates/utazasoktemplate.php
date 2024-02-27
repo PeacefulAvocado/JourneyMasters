@@ -78,7 +78,6 @@
                     <p class='utazasokajalnatar'>".$csomagok[$i]['ar']." Ft/fő -től</p>
                     <form action='reszletek.php' method='get'>
                         <input type='hidden' name='csomag' id='csomag' value='true'>
-                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
                         <input type='hidden' name='csomagid' id='csomagid' value='".$csomagok[$i]['csomagid']."'>
                         <input type='submit' value='Megnézem' class='utazasokmegnezem'>
                     </form>

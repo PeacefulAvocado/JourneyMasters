@@ -96,7 +96,7 @@ a {
     top: 5.5vw;
     margin-top: 7vw;
     width: 20vw;
-    height: 30vw;
+    height: auto;
     background-color: var(--white);
     margin-left: auto;
     margin-right: auto;
@@ -195,6 +195,7 @@ select {
     margin-right: auto;
     display:block;
     width: 5vw;
+    border: 2px solid red;
 }
 
 .ut {
@@ -211,7 +212,7 @@ select {
 }
 
 .reszek {
-    padding-top: 3vw;
+    padding-top: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0;
