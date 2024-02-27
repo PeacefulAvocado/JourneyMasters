@@ -12,21 +12,18 @@
 <div class="kosar-container">
     <div class="kosar-head">
         <h1>Kosaram</h1>
-        <div class="kosar-vonal"></div>
     </div>
     <div class="kosar-content">
         <div class="utazas">
-
             <div class="utazas-card">
-            <img src="../img/helyszinimg/Bayview Retreat/1.jpg" alt="hotel-kep" class="hotel-kep"> 
-            <p class="cim">Sydney<p class="stars"></p></p><br>  
-            <p class="utirany">Budapest - Sydney</p>  <br>
-            <p class="date">2014-01-01 - 2014-01-02</p>  
-            <img src="../img/nyil.svg" alt="" class="go-to">
-
+                <img src="../img/helyszinimg/Bayview Retreat/1.jpg" alt="hotel-kep" class="hotel-kep"> 
+                <p class="cim">Sydney<p class="stars"></p></p><br>  
+                <p class="utirany">Budapest - Sydney</p>  <br>
+                <p class="date">2014-01-01 - 2014-01-02</p>  
+                <img src="../img/nyil.svg" alt="" class="go-to">
+            </div>
+            <img src="../img/trash.svg" alt="törlés" class = "delete">
         </div>
-        <img src="../img/delete.png" alt="törlés">
-    </div>
         
     </div>
 </div>
