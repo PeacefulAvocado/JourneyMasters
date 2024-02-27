@@ -90,7 +90,7 @@
             <a class="next" onclick="plusSlides(1)">❯</a>
 
         </div>
-        <br>
+
 
         <div class="dotcontainer" >
             <?php

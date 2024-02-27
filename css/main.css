@@ -20,8 +20,8 @@
 }
 .valaszto{
     height: 10vw;
-    margin-top: 5.2vw;
-    padding: 20px 30% 0 30%;
+    margin-top: 5.1vw;
+    padding: 1vw 25vw 0 25vw;
 
     background-color: var(--blue);
 }
@@ -40,13 +40,15 @@
     padding: 0.5vw;
     padding-right: 0;
     position: relative;
+    display: grid;
+    grid-template-columns: 5fr 5fr 1fr;
+    width: 38vw;
 }
 .helyinput{
     border:none;
     height:2.8vw;
     border-radius: 10px;
     width: 16.5vw;
-    float:left;
     margin-right: 0.5vw;
     font-size: 1.3vw;
 
@@ -54,6 +56,7 @@
 .indulaslabel{
     position: absolute;
     left: 1.2vw;
+    top: 0.5vw;  
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-size: 0.7vw;
@@ -61,7 +64,8 @@
 }
 .celpontlabel{
     position: absolute;
-    left: 18.4vw;
+    left: 18.7vw;
+    top: 0.5vw;
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-size: 0.7vw;
@@ -81,7 +85,7 @@ input.newbutton {
 }
 .ajanlatok{
     margin-top: 0px;
-    height: 40vw;
+    height: auto;
     background-image: url('../img/background-design.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -89,6 +93,7 @@ input.newbutton {
 }
 .ajanlatokkozep{
     padding:2% 20%;
+
 }
 
 .kiemelt{
@@ -105,7 +110,7 @@ input.newbutton {
   max-width: 30vw;
   position: relative;
   margin: auto;
-
+  height: auto;
 
 }
 
@@ -164,14 +169,14 @@ input.newbutton {
   }
   .sliderfocim{
     margin: 0;
-    padding: 0 10px;
+    padding: 0 1vw;
     font-size: 1.4vw;
     color: var(--blue);
     font-weight: 500;
   }
   .sliderhotelnev{
     font-size: 1.2vw;
-    padding: 0 10px;
+    padding: 0 1vw;
     margin: 3px 0;
     color: var(--ocean);
     display: inline;
@@ -185,12 +190,12 @@ input.newbutton {
   .sliderrepter{
     margin: 0;
     font-size: 1vw;
-    padding: 10% 0 0 20px;
+    padding: 7% 0 0 1vw;
     color: var(--black);
     font-weight: 700;
   }
   .sliderdatum{
-    padding: 3% 20px;
+    padding: 3% 1.5vw;
     color: rgb(63, 63, 63);
     font-style: italic;
     margin: 0px;
@@ -226,6 +231,7 @@ input.newbutton {
   .dotcontainer{
     text-align:center; 
     margin-top: 0.5vw;
+
   }
   .active, .dot:hover {
     background-color: #717171;
@@ -328,7 +334,200 @@ input.newbutton {
   .search li:hover {
     background-color: var(--light-yellow);
   }
-  @media screen and (max-width: 1288px){
-    
+  @media screen and (max-width: 1000px){
+    .utazna{
+      font-size: 3vw;
+      padding-left: 9vw;
+    }
+      .tervezesform{
+        grid-template-columns: 1fr;
+        width: 30vw;
+        height: 20vw;
+        margin:auto;
+        
+      }
+      .indulaslabel{
+        top: 1.7vw;
+        font-size: 1vw;
+      }
+      .celpontlabel{
+        top: 9.6vw;
+        font-size: 1vw;
+        left: 1.2vw;
+      }
+      .helyinput{
+        width:95%;
+        height: 5vw;
+        margin: 1vw 0;
+        font-size: 2.2vw;
+      }
+      .valaszto{
+        height: auto;
+        padding-bottom: 1vw;
+      }
+      input.newbutton{
+        margin:auto;
+        height: 5vw;
+        width: 5vw;
+      }
+      
+      .slideshow-container{
+        max-width: 40vw;
+        height: auto;
+      }
+      .sliderimg{
+        height: 18vw;
+      }
+      .ajanlatokkozep{
+        height: auto;
+      }
+      .text{
+        height: auto;
+      }
+      .sliderfocim{
+        font-size: 2vw;
+      }
+      .sliderhotelnev{
+        font-size: 1.8vw;
 
+      }
+      .stars{
+        font-size: 1.6vw;
+      }
+      .sliderrepter{
+        font-size: 1.6vw;
+        
+      }
+      .sliderdatum{
+        
+        font-size: 1.5vw;
+      }
+      .sliderar{
+        
+        font-size: 1.6vw;
+      }
+      .szovegek{
+        grid-template-columns: 1fr;
+      }
+      .kisszovegcim{
+        font-size: 2vw;
+      }
+      .kisszoveghosszan{
+        font-size: 1.7vw;
+      }
+      .vonal{
+        border: none;
+      }
+      .stats{
+        grid-template-columns: 1fr;
+      }
+      .nagyp{
+        font-size: 4vw;
+      }
+      .ugyfelcount{
+        font-size: 8vw;
+      }
+      .kisp{
+        font-size: 3vw;
+      }
   }
+  @media screen and (max-width: 700px){
+    .utazna{
+      font-size: 5vw;
+      padding-left: 0;
+    }
+    .tervezesform{
+      grid-template-columns: 1fr;
+      width: 80vw;
+      height: 42vw;
+      
+    }
+    .indulaslabel{
+      top: 2.5vw;
+      font-size: 2.5vw;
+    }
+    .celpontlabel{
+      top: 17vw;
+      font-size: 2.5vw;
+      left: 1.2vw;
+    }
+    .helyinput{
+      width:98%;
+      height: 12vw;
+      margin: 1vw 0;
+      font-size: 4vw;
+    }
+    .valaszto{
+      height: auto;
+      padding: 20px 10vw 3vw 10vw;
+
+    }
+    input.newbutton{
+      margin:auto;
+      height: 12vw;
+      width: 12vw;
+    }
+    
+    .slideshow-container{
+      max-width: 40vw;
+      height: auto;
+    }
+    .sliderimg{
+      height: 18vw;
+    }
+    .ajanlatokkozep{
+      height: auto;
+    }
+    .text{
+      height: auto;
+    }
+    .sliderfocim{
+      font-size: 2vw;
+    }
+    .sliderhotelnev{
+      font-size: 1.8vw;
+
+    }
+    .stars{
+      font-size: 1.6vw;
+    }
+    .sliderrepter{
+      font-size: 1.6vw;
+      
+    }
+    .sliderdatum{
+      
+      font-size: 1.5vw;
+    }
+    .sliderar{
+      
+      font-size: 1.6vw;
+    }
+    .szovegek{
+      grid-template-columns: 1fr;
+    }
+    .promo{
+      padding: 5vw 5vw;
+    }
+    .kisszovegcim{
+      font-size: 4vw;
+    }
+    .kisszoveghosszan{
+      font-size: 3vw;
+    }
+    .vonal{
+      border: none;
+    }
+    .stats{
+      grid-template-columns: 1fr;
+    }
+    .nagyp{
+      font-size: 7vw;
+    }
+    .ugyfelcount{
+      font-size: 13vw;
+    }
+    .kisp{
+      font-size: 7vw;
+    }
+}

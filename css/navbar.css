@@ -54,6 +54,27 @@ li a{
     padding: 0 1vw;
     color: var(--baseyellow);
 }
+@media screen and (max-width: 700px) {
+    ul li {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive li {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
 #elso{
     border-right: 2px solid var(--baseyellow);
 }
