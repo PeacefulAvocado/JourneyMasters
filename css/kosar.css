@@ -18,26 +18,45 @@
   }
 
   .kosar-container {
-    position: absolute;
-    top: 5.57vh;
-    height: 100vh;
-  }
-
-.utazas-card{
+    height: auto;
+    background: linear-gradient(var(--light-yellow), #FFDD66);
+}
+ 
+h1 {
+    position: relative;
+    top: 9vw;
+    margin-top: 0;
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1vw;
+    border-bottom: 1px solid lightgray;
+    font-size: 3.5vw;
+}
+.kosar-content {
+  height: 100vh;
+}
+.utazas{
     position: relative;
     left: 20%;
     top: 8%;
-    width:50%;
+    margin-top: 5%;
+    margin-bottom: 10vw;
+    height: auto;
+  }
+  
+  .utazas-card {
+    margin-right: 1%;
+    width:50vw;
     height: 10vh;
     background-color: white;
-    margin-top: 5%;
     border-radius: 1.5vw;
     box-shadow: 0 0 20px -6px black;
     font-size: 1vw;
-    margin-bottom: 10vw;
   }
 
-  .utazas-card *{
+  .utazas * {
     float: left;
   }
 
@@ -46,7 +65,12 @@
     border-radius: 12px 0px 0px 12px;
 }
 
-.go-to {
+.go-to,.delete {
     height: 5vh;
     cursor: pointer;
+}
+
+.kosar-vonal{
+  width:70%;
+  border-top: 1px solid var(--black);
 }

@@ -31,10 +31,14 @@
     font-size: 3.5vw;
     font-weight: 700;
     margin-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   #utazasokvonal{
-    width:70%;
-    border-top: 1px solid var(--black);
+    width:80%;
+    border-top: 1px solid var(--lightgray);
   }
   .utazaskontener{
     width:100%;
