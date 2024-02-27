@@ -16,123 +16,20 @@
     font-family: "Roboto", sans-serif;
     font-style: normal;
   }
-.tervezesmain{
+.profilmain{
     padding-top: 1px;
 }
-.tervezes{
+.profil{
     margin-top: 5.5vw;
     height: auto;
     background: linear-gradient(var(--light-yellow), #FFDD66);
-    padding-bottom: 5vw;
+    padding: 5vw 5vw;
 }
-.tervezesform{
-    background-color: var(--white);
-    border-radius: 10px;
-    height: 14vw;
-    max-width:35vw;
-    margin-left: auto;
-    margin-right: auto;
-   
-}
-.valaszto{
-    padding-top: 30px;
-}
-.formtop{
-    display: grid;
-    grid-template-columns: 6fr 1fr;
-    height: 3.4vw;
-    background-color: var(--ocean);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.tervezescim{
-    margin: 0;
-    color: var(--white);
-    padding: 0.7vw;
-    font-size: 1.3vw;
-}
-.ikon{
-    width: 2vw;
-    margin-right: 10px;
-    padding: 0.6vw;
-  } 
-.orange{
-    background-color: var(--orange);
-    width: 80%;
-    height: 3vw;
-    position: relative;
-    margin: auto;
-    margin-top: 0.5vw;
-    margin-bottom: 1vw;
-    border-radius: 10px;
-    padding-left:2%;
-    padding-top: 0.1vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.helyinput{
-    border:none;
-    height: 2.6vw;
-    border-radius: 10px;
-    width: 90%;
-    border: 1px solid black;
-    font-size: 1.5vw;
-
-}
-.indulaslabel{
-    position: absolute;
-    left: 1.1vw;
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-size: 0.7vw;
-    top: 0.1vw;
-
-}
-.celpontlabel{
-    position: absolute;
-    left: 15.1vw;
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-size: 0.7vw;
-    top: 0.1vw;
-
-}
-.datumdiv{
-    background-color: var(--orange);
-    height: 2.7vw;
-    width: 40%;
-    margin:auto;
-    border-radius: 10px;
-    padding-top: 0.1vw;
-    padding-left: 3%;
-    position: relative;
-}
-.daterange{
-    width: 90%;
-    font-size: 1vw;
-    height: 2.15vw;
-    text-align: center;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding-top: 0.3vw;
-}
-.kezdetlabel{
-    position: absolute;
-    left: 1.7vw;
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-size: 0.5vw;
-    top: 0.2vw;
-
-}
-.veglabel{
-    position: absolute;
-    left: 7.8vw;
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-    font-size: 0.5vw;
-    top: 0.2vw;
-
+.emailcim{
+    color: var(--black);
+    font-size: 2vw;
+    font-weight: 600;
+    padding-left: 10vw;
 }
 .szallashelyek{
     height: auto;
@@ -153,6 +50,9 @@
     color: var(--black);
 
 }
+.jelszovaltoztato{
+    width: 100%;
+}
 .tervezesegyeni{
     margin: auto;
     width: 70%;
@@ -161,8 +61,6 @@
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
-    box-shadow: 0 0 20px -6px black;
-
 }
 .tervezesegyeni img{
     height: 6vw;
@@ -171,6 +69,7 @@
     border-top-left-radius: 1.5vw;
     border-bottom-left-radius: 1.5vw;
     float:left;
+
 }
 .hotelnev{
     color: var(--ocean);
@@ -230,7 +129,6 @@ input.newbutton {
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
-    box-shadow: 0 0 20px -6px black;
 }
 .csomagform img{
     height: 6vw;

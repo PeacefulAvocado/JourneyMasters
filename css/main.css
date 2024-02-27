@@ -19,7 +19,7 @@
     padding-top: 1px;
 }
 .valaszto{
-    height: 200px;
+    height: 10vw;
     margin-top: 5.2vw;
     padding: 20px 30% 0 30%;
 
@@ -83,6 +83,8 @@ input.newbutton {
     margin-top: 0px;
     height: 40vw;
     background-image: url('../img/background-design.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     border-bottom: 1px solid var(--black);
 }
 .ajanlatokkozep{
@@ -126,11 +128,11 @@ input.newbutton {
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 10px 15px;
+    padding: 0.5vw 1vw;
     margin-top: -22px;
     color: var(--black);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 2vw;
     transition: 0.6s ease;
     border-radius: 100px;
     user-select: none;
@@ -138,11 +140,11 @@ input.newbutton {
   
 
   .next {
-    right: -45px;
+    right: -3.5vw;
 
   }
   .prev{
-    left: -45px;
+    left: -3.5vw;
 
   }
   
@@ -213,8 +215,8 @@ input.newbutton {
 
   .dot {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
+    height: 0.7vw;
+    width: 0.7vw;
     margin: 0 2px;
     background-color: var(--gray);
     border-radius: 50%;
@@ -223,7 +225,7 @@ input.newbutton {
   }
   .dotcontainer{
     text-align:center; 
-    margin-top: -1vw;
+    margin-top: 0.5vw;
   }
   .active, .dot:hover {
     background-color: #717171;
@@ -241,7 +243,7 @@ input.newbutton {
   }
 
   .promo{
-    height: 900px;
+    height: auto;
     background: linear-gradient(hsl(48, 100%, 96%), var(--baseyellow));
     padding: 70px 150px;
   }
