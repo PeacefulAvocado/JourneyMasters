@@ -31,12 +31,6 @@
     font-weight: 600;
     padding-left: 10vw;
 }
-.szallashelyek{
-    height: auto;
-    width: 90%;
-    padding: 0 5%;
-    margin: 3vw 0 0 0;
-}
 .kiscim{
     color: var(--black);
     font-size: 1.5vw;
@@ -51,11 +45,46 @@
 
 }
 .jelszovaltoztato{
-    width: 100%;
+    width: 80%;
+    padding: 2vw 10%;
+    position: relative;
+    height: 6vw;
+
+}
+.textinput{
+    font-size: 2vw;
+    height: 2vw;
+    border-radius: 0.7vw;
+    margin-bottom: 1vw;
+}
+.jelszavak{
+    position:absolute;
+    left: 20%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.jelszavak label{
+    font-size: 2vw;
+}
+.jelszobtn{
+    position:absolute;
+    right: 10%;
+    background-color: var(--orange);
+    border: none;
+    font-size: 1.5vw;
+    width: 11vw;
+    border-radius: 1vw;
+    color: var(--white);
+    padding: 0.8vw 1.6vw;
+    cursor: pointer;
+}
+.utazasok{
+    margin-bottom: 3vw;
 }
 .tervezesegyeni{
-    margin: auto;
-    width: 70%;
+    margin-left: 10vw;
+    width: 60%;
     position: relative;
     height: 6vw;
     background-color: var(--white);
@@ -96,81 +125,113 @@ top: 35%;
 font-size: 1.2vw;
 color: var(--black);
 }
-.ar{
+.fok{
     position:absolute;
     top: 7%;
-    right: 10%;
-    font-size: 1.5vw;
+    right: 20%;
+    font-size: 1.6vw;
 }
-input.newbutton {
+.newbutton {
     position: absolute;
     right: 2%;
     top: 22%;
     width:3vw;
     height:3vw;
 
-    background:url(../img/nyil.svg) no-repeat 0 0;
+    background:url(../img/nyille.svg) no-repeat 0 0;
+    background-size: cover;
     color:var(--black);
     border:none;
     padding:0;
+    cursor:pointer;
 
 }
-.csomagok{
-    height: auto;
-    width: 90%;
-    padding: 0 5%;
-    margin: 3vw 0 0 0;
+.modositasbutton {
+    position: absolute;
+    right: -10%;
+    top: 22%;
+    width:3vw;
+    height:3vw;
+
+    background:url(../img/modositas.svg) no-repeat 0 0;
+    background-size: cover;
+    color:var(--black);
+    border:none;
+    padding:0;
+    cursor:pointer;
+
 }
-.csomagform{
-    margin: auto;
-    width: 70%;
+.torlesbutton{
+    position: absolute;
+    right: -20%;
+    top: 22%;
+    width:3vw;
+    height:3vw;
+
+    background:url(../img/trash.svg) no-repeat 0 0;
+    background-size: cover;
+    color:var(--black);
+    border:none;
+    padding:0; 
+    cursor:pointer;
+}
+.inaktiv{
+    filter: grayscale(1);    
+    background-color: var(--gray);
+    opacity: 0.5;
+}
+.inaktiv .newbutton{
+    cursor:default;
+}
+.inaktiv .modositasbutton{
+    display:none;
+}
+.inaktiv .torlesbutton{
+    display:none;
+}
+.inaktiv::after{
+    content: "Nem aktív";
+    text-transform: uppercase;
+    font-weight: 700;
+    position: absolute;
+    left: 30%;
+    top: 7%;
+    font-size: 4vw;
+    opacity: initial;
+}
+.profiladatok{
     position: relative;
-    height: 6vw;
-    background-color: var(--white);
-    border-radius: 1.5vw;
-    margin-top: 1vw;
 }
-.csomagform img{
-    height: 6vw;
-    width: 30%;
-    object-fit: cover;
-    border-top-left-radius: 1.5vw;
-    border-bottom-left-radius: 1.5vw;
-    float:left;
+.adatok{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: right;
+    width: 70vw;
+    margin:3vw auto 0 auto;
 
 }
-#a1{
-    background-color: var(--lightblue);
-  }
-
-  #a2 {
-    background-color: var(--red);
-  }
-
-  #a3 {
-    background-color: var(--green-pastel);
-  }
-  .varosnev{
-    color: var(--white);
-    display: inline;
-    float: left;
-    font-size: 1.2vw;
-    font-weight: 500;
-    padding-left: 1vw;
-    margin-top: 0.9vw;
-  }
-  .repter{
+.adatok label{
+    padding-right: 2vw;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+}
+.adatok input{
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: 1px solid black;
+    width: 15vw;
+    height: 2vw;
+}
+.adatmodositas{
     position: absolute;
-    left: 31.6%;
-    top: 31%;
-    font-size: 0.8vw;
-    color: var(--baseyellow);
-    }
-    .datum{
-    position: absolute;
-    left: 31.6%;
-    top: 50%;
-    font-size: 1vw;
+    right: 11.5vw;
+    bottom: 0vw;
+    background-color: var(--orange);
+    border: none;
+    padding: 0.5vw 1vw;
+    font-size: 1.3vw;
+    border-radius: 0.6vw;
+    cursor: pointer;
     color: var(--white);
-    font-style: italic;
-    }
+}

@@ -3,72 +3,81 @@
 <p class="emailcim">dzsonasz@gmail.com</p>
 <hr class="vonal">
 <div class="jelszovaltoztato">
-    <form action="post" class="jelszo">
-        <label for="ujjelszo">Új jelszó</label>
-        <input type="password" name="ujjelszo" id="ujjelszo">
-        <br>
-        <label for="ismetles">Új jelszó ismétlése</label>
-        <input type="password" name="ismetles" id="ismetles">
-        <input type="submit" value="Jelszó módosítása">
+    <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="jelszo">
+        <div class="jelszavak">
+        <label for="ujjelszo">Új jelszó:</label>
+        <input type="password" name="ujjelszo" id="ujjelszo" class="textinput">
+        <label for="ismetles">Új jelszó ismétlése:</label>
+        <input type="password" name="ismetles" id="ismetles" class="textinput">
+        </div>
+        <input type="submit" value="Jelszó<?php echo "\n"?>módosítása" class="jelszobtn">
     </form>
 </div>
 
-<div class="szallashelyek">
-  <p class="kiscim">Szálláshelyek</p>
-  <hr class="vonal">
-  <div class="szallashelycontainer">
-    <form action="../index/foglalas.php" method="get" class="tervezesegyeni">
+
+<hr class="vonal">
+
+<div class="utazasok">
+  <p class="kiscim">Profilhoz tartozó utazások</p>
+
+  
+    <form action="../index/foglalas.php" method="post" class="tervezesegyeni">
       <img src="../img/sydneyproba.jpg" alt="Sydney">
       <p class="hotelnev">Morocco Central</p>
       <p class="stars"><i class='fa-solid fa-star'></i></p>
-      <br>
       <p class="hotelcim">Sydney, Australia 30 Grosvenor St.</p>
-      <p class="ar">93.100 Ft / fő -től</p>
+      <p class="fok">3 fő</p>
       <input type="hidden" name="csomag" value="false">
-      <input type="hidden" name="datum" id="datum" value="">
+      <input type="hidden" name="datum"  value="">
       <input type="hidden" name="hotelcim" value="">
-      <input type="submit" value="" class="newbutton button">
+      <button class="newbutton" onclick="alert('asda')" type="button"></button>
+      <button class="modositasbutton" onclick="alert('asda')" type="button"></button>
+      <input type="submit" class="torlesbutton" value="">
     </form>
-  </div>
-</div>
 
 
-<div class="csomagok">
-  <p class="kiscim">Csomagok</p>
-  <hr class="vonal">
-  <div class="csomagcontainer">
-    <form action="../index/foglalas.php" method="get" class="csomagform" id='a1'>
+    <form action="../index/foglalas.php" method="post" class="tervezesegyeni inaktiv">
       <img src="../img/sydneyproba.jpg" alt="Sydney">
-      <p class="varosnev">Sydney</p>
-      <br>
-      <p class='repter'>BUD<i class='fa-solid fa-plane' style="color:#000000"></i>SDY</p>
-      <br>
-      <p class='datum'>2024.01.01  — 2224.01.01</p>
-      <p class="ar">93.100 Ft / fő -től</p>
-      <input type="hidden" name="csomag" value="true">
-      <input type="hidden" name="helyszin" id="helyszin" value="">
-      <input type="hidden" name="csomagid" value="">
-      <input type="submit" value="" class="newbutton button">
+      <p class="hotelnev">Morocco Central</p>
+      <p class="stars"><i class='fa-solid fa-star'></i></p>
+      <p class="hotelcim">Sydney, Australia 30 Grosvenor St.</p>
+      <p class="fok">3 fő</p>
+      <input type="hidden" name="csomag" value="false">
+      <input type="hidden" name="datum"  value="">
+      <input type="hidden" name="hotelcim" value="">
+      <button class="newbutton" onclick="alert('asda')" type="button" disabled></button>
+      <button class="modositasbutton" onclick="alert('asda')" type="button"></button>
+      <input type="submit" class="torlesbutton" value="">
     </form>
-  </div>
+ 
 </div>
+<hr class="vonal">
 
+<div class="profiladatok">
+    <p class="kiscim">Utazási adatok</p>
+    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+    <div class="adatok">
+        <label for="nev">Név:</label>
+        <input type="text" name="nev">
+        <label for="tel">Telefonszám:</label>
+        <input type="tel" name="tel">
+        <label for="szulid">Szuletési idő:</label>
+        <input type="date" name="szulid">
+        <label for="lakcim">Lakcím:</label>
+        <input type="text" name="lakcim">
+        <label for="igszam">Igazolványszám:</label>
+        <input type="text" name="igszam">
+    </div>
+    <input type="submit" value="Módosítás" class="adatmodositas">
 
-
-
-
-</div>
-</div>
-
-
-
-
-<script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-    opens: 'right'
-  }, function(start, end, label) {
+</form>
     
-  });
-});
-</script>
+</div>
+
+
+
+
+
+
+</div>
+</div>
