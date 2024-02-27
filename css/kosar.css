@@ -17,60 +17,133 @@
     font-style: normal;
   }
 
-  .kosar-container {
+  :root {
+    --blue: #1c4484;
+    --ocean: #08b4e4;
+    --green: #45ac0d;
+    --green-pastel: #538D34;
+    --black: #000000;
+    --baseyellow: #ffd700;
+    --yellow: #FFDD66;
+    --light-yellow: #fff6d7;
+    --lightblue: #268FAC;
+    --white: #ffffff;
+    --orange: #FFB800;
+    --gray: #cfcfcf;
+  }
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+.kosarmain{
+    padding-top: 1px;
+}
+.kosar{
+    margin-top: 5.5vw;
     height: auto;
     background: linear-gradient(var(--light-yellow), #FFDD66);
+    padding: 5vw 5vw;
+  height: auto;
 }
- 
-h1 {
+.kosarcim{
+  text-align: center;
+  font-size: 3vw;
+  color: var(--black);
+  margin-top: 0;
+  font-weight: 600;
+}
+.vonal{
+    width: 100%;
+    margin: 0;
+    color: var(--black);
+
+}
+
+.utazasok{
+    margin-bottom: 3vw;
+}
+.kiscim{
+  color: var(--black);
+    font-size: 1.5vw;
+    margin-bottom: 0.5vw;
+    padding-left: 2vw;
+    font-weight: 500;
+}
+.tervezesegyeni{
+    margin-left: 10vw;
+    width: 70%;
     position: relative;
-    top: 9vw;
-    margin-top: 0;
-    text-align: center;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 1vw;
-    border-bottom: 1px solid lightgray;
-    font-size: 3.5vw;
-}
-.kosar-content {
-  height: 100vh;
-}
-.utazas{
-    position: relative;
-    left: 20%;
-    top: 8%;
-    margin-top: 5%;
-    margin-bottom: 10vw;
-    height: auto;
-  }
-  
-  .utazas-card {
-    margin-right: 1%;
-    width:50vw;
-    height: 10vh;
-    background-color: white;
+    height: 6vw;
+    background-color: var(--white);
     border-radius: 1.5vw;
-    box-shadow: 0 0 20px -6px black;
-    font-size: 1vw;
-  }
+    margin-top: 1vw;
+}
+.tervezesegyeni img{
+    height: 6vw;
+    width: 30%;
+    object-fit: cover;
+    border-top-left-radius: 1.5vw;
+    border-bottom-left-radius: 1.5vw;
+    float:left;
 
-  .utazas * {
+}
+.hotelnev{
+    color: var(--ocean);
+    display: inline;
     float: left;
-  }
-
-.hotel-kep {
-    height: 10vh;
-    border-radius: 12px 0px 0px 12px;
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding-left: 3vw;
 }
-
-.go-to,.delete {
-    height: 5vh;
-    cursor: pointer;
+.stars{
+    color: var(--baseyellow);
+    display:inline;
+    left: 40%;
+    top: 10%;
+    float:left;
+    padding-left: 2vw;
+    padding-top: 0.3vw;
+    font-size: 0.9vw;
 }
+.hotelcim{
+position: absolute;
+left: 32%;
+top: 35%;
+font-size: 1.2vw;
+color: var(--black);
+}
+.fok{
+    position:absolute;
+    top: 7%;
+    right: 20%;
+    font-size: 1.6vw;
+}
+.newbutton {
+    position: absolute;
+    right: 2%;
+    top: 22%;
+    width:3vw;
+    height:3vw;
 
-.kosar-vonal{
-  width:70%;
-  border-top: 1px solid var(--black);
+    background:url(../img/nyil.svg) no-repeat 0 0;
+    background-size: cover;
+    color:var(--black);
+    border:none;
+    padding:0;
+    cursor:pointer;
+
+}
+.torlesbutton{
+    position: absolute;
+    right: -8%;
+    top: 22%;
+    width:3vw;
+    height:3vw;
+
+    background:url(../img/trash.svg) no-repeat 0 0;
+    background-size: cover;
+    color:var(--black);
+    border:none;
+    padding:0; 
+    cursor:pointer;
 }
