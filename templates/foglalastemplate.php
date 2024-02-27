@@ -10,18 +10,23 @@
     {
         case "Csak Szállás":
             $etkezesek = "Nincs";
+            $szorzo = 0;
             break;
         case "All inclusive":
             $etkezesek = "Reggeli<br>Ebéd<br>Vacsora<br>Szobaszervíz";
+            $szorzo = 1;
             break;
         case "Félpanzió":
             $etkezesek = "Reggeli<br>Vacsora";
+            $szorzo = 0.5;
             break;
         case "Teljes panzió":
             $etkezesek = "Reggeli<br>Ebéd<br>Vacsora";
+            $szorzo = 0.8;
             break;
         case "Szállás és Reggeli":
             $etkezesek = "Reggeli";
+            $szorzo = 0.2;
             break;
 
     }
@@ -42,6 +47,9 @@
             <?php echo "<img class ='kep' src='../img/helyszinimg/$hotel_nev/1.jpg'>"; ?>
             <div class="adatok">
                 <?php
+                $ar = $dbhandler->getKeresett('csomagok', 'ar', 'csomagid', $csomagid)[0];
+                $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
+                $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
                 $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
                 $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
                 $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
@@ -72,14 +80,55 @@
                     <b><?php echo "<p class='nagy'>$utasok_szama fő</p>"; ?></b>
                 </div>
                 <div class="utazas">
-                <select name="utazas" id="utazas" onchange="Icon()">
+                <!--<select name="utazas" id="utazas" onchange="Icon()">
                         <option value="Repülő">Repülő</option>
                         <option value="Vonat">Vonat</option>
                         <option value="Busz">Busz</option>
                         <option value="Egyéni">Egyéni</option>
-                </select>
-                    <?php echo "<p class='ut'>$honnan <span id='icon'><i class='fa-solid fa-plane'></i></span> $varos</p>";?>
+                </select>-->
+                    <?php echo "<p class='ut'><b>$honnan <span id='icon'><i class='fa-solid fa-plane'></i></span> $varos</b></p>";?>
                 </div>
+                <?php echo "<p class='idopont'>$mettol — $meddig</p>"; ?>
+                <div class="ar">
+                    <div class="reszek">
+                        <p class="sz1">Szállás</p>
+                        <?php echo "<p class='sz2'>$utasok_szama x $ar HUF</p>"; ?>
+                        <p class="sz1">Ellátás</p>
+                        <?php echo "<p class='sz2'>$utasok_szama x ".($ar * $szorzo)." HUF</p>"; ?>
+                    </div>
+                        <?php echo "<p class='osszeg'>".($utasok_szama * $ar + $utasok_szama * ($ar * $szorzo))." HUF</p>"; ?>
+                </div>
+
+                
         </div>
+    </div>
+    <div class="utasadatok">
+        <h3>Utasok adatai: </h3>
+        <?php
+            for ($i = 0; $i < $utasok_szama; $i++)
+            {
+                    echo "";
+            }
+        ?>
+            <form action="veglegesites.php">
+                <label for="nev">Név: </label>
+                <input type="text" name="nev">
+                <label for="szul">Születési dátum: </label>
+                <input type="date" name="szul">
+                <label for="nem">Nem: </label>
+                <select name="nem" id="nem">
+                    <option value="Férfi">Férfi</option>
+                    <option value="Nő">Férfi</option>
+                    <option value="Egyéb">Férfi</option>
+                </select>
+                <label for="szul">Igazolvány típusa: </label>
+                <select name="igtipus" id="igtipus">
+                    <option value="Személyi igazolvány">Személyi igazolvány</option>
+                    <option value="Útlevél">Útlevél</option>
+                </select>
+                <input type="text" name="nev">
+                <input type="text" name="nev">
+
+            </form>
     </div>
 </div>
