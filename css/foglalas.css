@@ -195,6 +195,7 @@ select {
     margin-right: auto;
     display:block;
     width: 5vw;
+    border: 2px solid red;
 }
 
 .ut {
