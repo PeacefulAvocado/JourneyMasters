@@ -21,7 +21,7 @@
 .valaszto{
     height: 10vw;
     margin-top: 5.1vw;
-    padding: 1vw 25vw 0 25vw;
+    padding: 1vw 30vw 0 30vw;
 
     background-color: var(--blue);
 }
@@ -312,13 +312,16 @@ input.newbutton {
   .search {
     position: absolute;
     left: 17.6vw;
-    top: 2vw;
+    top: 2.6vw;
     z-index: 100;
     padding: 0;
     width: 14.8vw;
     border-radius: 3vw;
+    list-style-type: none;
   }
-
+  .search br{
+    display: none;
+  }
   .search li {
     border: 1px solid var(--black);
     width: 100%;  
@@ -337,7 +340,7 @@ input.newbutton {
   @media screen and (max-width: 1000px){
     .utazna{
       font-size: 3vw;
-      padding-left: 9vw;
+      padding-left: 5vw;
     }
       .tervezesform{
         grid-template-columns: 1fr;
@@ -430,6 +433,34 @@ input.newbutton {
       .kisp{
         font-size: 3vw;
       }
+      .search {
+        position: absolute;
+        left: 0.5vw;
+        top: 12.5vw;
+        z-index: 100;
+        padding: 0;
+        width: 26.8vw;
+        border-radius: 3vw;
+        list-style-type: none;
+      }
+      .search br{
+        display: none;
+      }
+      .search li {
+        border: 1px solid var(--black);
+        width: 100%;  
+        padding-left: 1vw;
+        padding-right: 1vw;
+        background-color: white;
+        font-size: 3vw;
+        cursor: pointer;
+        border-radius: 0.3vw;
+        height: auto;
+      }
+    
+      .search li:hover {
+        background-color: var(--light-yellow);
+      }
   }
   @media screen and (max-width: 700px){
     .utazna{
@@ -467,13 +498,15 @@ input.newbutton {
       height: 12vw;
       width: 12vw;
     }
-    
+    .kiemelt{
+      font-size: 4vw;
+    }
     .slideshow-container{
-      max-width: 40vw;
+      max-width: 60vw;
       height: auto;
     }
     .sliderimg{
-      height: 18vw;
+      height: 24vw;
     }
     .ajanlatokkozep{
       height: auto;
@@ -482,26 +515,26 @@ input.newbutton {
       height: auto;
     }
     .sliderfocim{
-      font-size: 2vw;
+      font-size: 3vw;
     }
     .sliderhotelnev{
-      font-size: 1.8vw;
+      font-size: 2.3vw;
 
     }
     .stars{
-      font-size: 1.6vw;
+      font-size: 2.2vw;
     }
     .sliderrepter{
-      font-size: 1.6vw;
+      font-size: 2.2vw;
       
     }
     .sliderdatum{
       
-      font-size: 1.5vw;
+      font-size: 2vw;
     }
     .sliderar{
       
-      font-size: 1.6vw;
+      font-size: 2.4vw;
     }
     .szovegek{
       grid-template-columns: 1fr;
@@ -529,5 +562,33 @@ input.newbutton {
     }
     .kisp{
       font-size: 7vw;
+    }
+    .search {
+      position: absolute;
+      left: 1vw;
+      top: 26vw;
+      z-index: 100;
+      padding: 0;
+      width: 76vw;
+      border-radius: 3vw;
+      list-style-type: none;
+    }
+    .search br{
+      display: none;
+    }
+    .search li {
+      border: 1px solid var(--black);
+      width: 100%;  
+      padding-left: 1vw;
+      padding-right: 1vw;
+      background-color: white;
+      font-size: 4vw;
+      cursor: pointer;
+      border-radius: 0.3vw;
+      height: auto;
+    }
+  
+    .search li:hover {
+      background-color: var(--light-yellow);
     }
 }

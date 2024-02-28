@@ -20,7 +20,7 @@
 
 
 <div class="utazasok">
-    <p class="kiscim">Félben hagyott foglalásaim</p>
+    <p class="kiscim">Félbehagyott foglalásaim</p>
 
   
     <form action="../index/foglalas.php" method="post" class="tervezesegyeni">

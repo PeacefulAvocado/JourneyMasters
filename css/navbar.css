@@ -11,14 +11,6 @@
     --orange: #FFB800;
     --gray: #cfcfcf;
   }
-.navbar{
-    margin: 0;
-        width: 100%;
-        height: 5.5vw;
-        background-color: var(--blue);
-        position:fixed;
-        z-index: 10000;
-}
 
 .navbarimg{
     width:4vw;
@@ -35,17 +27,29 @@
     font-weight: 500;
     font-style: normal;
 }
-ul{
-    list-style-type: none;
-    position: absolute;
-    right: 1vw;
-    top: 0;
-    margin: 1.5vw 0 0 0;
+.topnav{
+  margin: 0;
+  width: 100%;
+  height: 5.5vw;
+  background-color: var(--blue);
+  position:fixed;
+  z-index: 10000;
+  list-style-type: none;
+  top: 0;
+
 }
-li{
+.topnav a{
+  margin-top: 1.5vw;
+}
+.jobb{
+  float:right;
+  margin-left: 10vw;
+}
+.left{
+  margin-top: 0 !important;
+}
+.topnav a{
     display: inline-block;
-}
-li a{
     text-decoration: none;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -54,27 +58,10 @@ li a{
     padding: 0 1vw;
     color: var(--baseyellow);
 }
-@media screen and (max-width: 700px) {
-    ul li {display: none;}
-    .topnav a.icon {
-      float: right;
-      display: block;
-    }
-  }
-  
-  @media screen and (max-width: 700px) {
-    .topnav.responsive {position: relative;}
-    .topnav.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .topnav.responsive li {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  }
+.topnav .icon {
+  display: none;
+  font-size: 2.5vw;
+}
 #elso{
     border-right: 2px solid var(--baseyellow);
 }
@@ -83,4 +70,54 @@ li a{
 }
 i{
     font-size: 120%;
+}
+@media screen and (max-width: 700px) {
+  .topnav .jobb a{
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav .navbarimg{
+    padding:1vw 0 0 0!important;
+}
+  
+}
+
+@media screen and (max-width: 700px) {
+  .topnav.responsive {
+    position: fixed;
+  
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: -5.2vw;
+    padding: 0 1vw;
+    font-size: 2.5vw;
+  }
+  .topnav.responsive .navbarimg{
+    padding:0!important;
+}
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    font-size: 3vw;
+    margin:0;
+    padding: 1vw 1vw;
+    background-color: var(--blue);
+
+  }
+  #elso{
+    border: none;
+  }
+  .topnav.responsive .jobb{
+    float:left;
+    text-align: center;
+    width: 100%;
+    margin:0;
+    position: fixed;
+  }
+  
 }
