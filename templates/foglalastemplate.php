@@ -116,7 +116,7 @@
                         <?php echo "<p class='sz2'>$utasok_szama x $ar HUF</p>"; ?>
                         <p class="sz1">Ellátás</p>
                         <?php echo "<p class='sz2'>$utasok_szama x ".($ar * $szorzo)." HUF</p>"; ?>
-                        <p class="sz1">Ellátás</p>
+                        <p class="sz1">Utazás</p>
                         <?php echo "<p class='sz2'>$utasok_szama x "."valami"." HUF</p>"; ?>
                     </div>
                         <?php echo "<p class='osszeg'>".($utasok_szama * $ar + $utasok_szama * ($ar * $szorzo))." HUF</p>"; ?>
@@ -127,30 +127,36 @@
     </div>
     <div class="utasadatok">
         <h3>Utasok adatai: </h3>
-             <div class="utas">
-                <p class="utasszam">1. utas</p>
-                <hr class="vonal">
-                <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-                    <div class="utasdata">
-                        <label>Név:</label>
-                        <input type="text" name="nev">
-                        <label>Telefonszám:</label>
-                        <input type="tel" name="tel">
-                        <label>Szuletési idő:</label>
-                        <input type="date" name="szulid">
-                        <label>Lakcím:</label>
-                        <input type="text" name="lakcim">
-                        <label >Igazolványtípus:</label>
-                        <select name="igtipus" id="igtipus">
-                        <option value="Személyi igazolvány">Személyi igazolvány</option>
-                        <option value="Útlevél">Útlevél</option>
-                        </select>
-                        <label>Igazolványszám:</label>
-                        <input type="text" name="igszam">
-                    </div>
-                    <input type="submit" value="Tovább a <?php echo "\n";?>fizetéshez" class="fizetes">
+            <?php
+                for ($i = 0; $i < $utasok_szama; $i++)
+                {
+                    echo "<div class='utas'>
+                    <p class='utasszam'>".($i + 1).". utas</p>
+                    <hr class='vonal'>
+                    <form action='".$_SERVER['PHP_SELF']."' method='post'>
+                        <div class='utasdata'>
+                            <label>Név:</label>
+                            <input type='text' name='nev$i'>
+                            <label>Telefonszám:</label>
+                            <input type='tel' name='tel$i'>
+                            <label>Szuletési idő:</label>
+                            <input type='date' name='szulid$i'>
+                            <label>Lakcím:</label>
+                            <input type='text' name='lakcim$i'>
+                            <label >Igazolványtípus:</label>
+                            <select name='igtipus$i'>
+                            <option value='Személyi igazolvány'>Személyi igazolvány</option>
+                            <option value='Útlevél'>Útlevél</option>
+                            </select>
+                            <label>Igazolványszám:</label>
+                            <input type='text' name='igszam$i'>
+                        </div>
+                        </div>";
+                }
+            ?>
+                <input type='submit' value='Tovább a <?php echo "\n"; ?>fizetéshez' class='fizetes'>
                 </form>
-             </div>   
+                </div>
            
     </div>
 </div>

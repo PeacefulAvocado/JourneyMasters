@@ -2,9 +2,36 @@
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
     session_start();
-    $_SESSION["utasid"] = 1;
+    $_SESSION["utasid"] = $dbhandler->select("select max(utasazon) from utasok;");
 
-   
+    if(isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefon']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']))
+    {
+        // Generate key pair (public and private keys)
+        $config = array(
+            "private_key_bits" => 2048,
+            "private_key_type" => OPENSSL_KEYTYPE_RSA,
+        );
+        $keypair = openssl_pkey_new($config);
+
+        // Get the private key
+        openssl_pkey_export($keypair, $private_key);
+
+        // Get the public key
+        $public_key = openssl_pkey_get_details($keypair);
+        $public_key = $public_key["key"];
+
+        // Message to be encrypted
+        $message = "Hello, World!";
+
+        // Encrypt the message using the public key
+        openssl_public_encrypt($regjelszo, $encrypted, $public_key);
+
+        $dbhandler->select("insert into userdata values (1, ".$_POST['regemail'].", ".openssl_public_encrypt($_POST['regjelszo'], $encrypted, $public_key));
+
+        //openssl_private_decrypt($encrypted, $decrypted, $private_key);
+
+        //echo "Decrypted Message: " . $decrypted . "\n";
+    }
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
