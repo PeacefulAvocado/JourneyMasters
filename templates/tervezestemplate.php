@@ -41,14 +41,15 @@
 <div class="szallashelyek">
   <p class="kiscim">Szálláshelyek</p>
   <hr class="vonal">
-  <div class="szallashelycontainer">
+  <div class="szallashelycontainer" id="helyszinek">
     <?php 
     $helyszin = $dbhandler->getHelyszinek();
-    for($i = 0; $i < count($helyszin);$i++) {
+    for($i = 0; $i < 3;$i++) {
       $hotel_nev = $helyszin[$i]['nev'];
       $varos = $helyszin[$i]['varos'];
       $cim = $helyszin[$i]['cim'];
       $csillag = $helyszin[$i]['csillag'];
+      $ar = $helyszin[$i]['ar'];
       $stars = "";
       for($j = 0; $j < $csillag;$j++) {
         $stars.="<i class='fa-solid fa-star'></i>";
@@ -60,15 +61,17 @@
       <p class='stars'>$stars</p>
       <br>
       <p class='hotelcim'>$varos, $cim</p>
-      <p class='ar'>93.100 Ft / fő -től</p>
+      <p class='ar'>$ar Ft / fő -től</p>
       <input type='hidden' name='csomag' value='false'>
       <input type='hidden' name='hotelcim' value='$cim'>
       <input type='button' value='' class='newbutton button' onclick='bekuld()'>
     </form>";
     }
     ?>
-    
-  </div>
+
+</div>
+<button class='tobb' id="loadMoreHelyszinBtn">Több<br>betöltése</button>
+<p id="end_of_page" class='vege' style="display: none;">A végére ért</p>
 </div>
 
 
@@ -120,11 +123,6 @@
     
   </div>
 </div>
-
-
-
-
-
 </div>
 </div>
 
@@ -140,3 +138,5 @@ $(function() {
   });
 });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/load-more-tervez-helyszin.js"></script>
