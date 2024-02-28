@@ -6,8 +6,14 @@
 // Assuming $dbhandler is your database handler
 
 $offset = $_POST['offset']; // Offset for fetching records
+if (isset($_POST['query'])) {
 
-$helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 LIMIT $offset, 3");
+    $query = $_POST['query'];
+} else {
+    $query = "select * from helyszin where aktiv = 1 LIMIT $offset, 3";
+}
+
+$helyszin = $dbhandler->select($query);
  $j = 1;
 
  $len = count($helyszin);
@@ -39,14 +45,14 @@ $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 LIMIT $of
 
     $helyszin = $dbhandler->getCsomagok($offset+$len);
 
-
+/*
     $len = count($helyszin);
 
     if ($len == 0) {
         echo "<style>
-            #loadMoreBtn {
+            #loadMoreHelyszinBtn {
             display: none;
             }   
         </style>"; 
-     }
+     }*/
 ?>

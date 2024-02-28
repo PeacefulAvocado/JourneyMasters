@@ -3,6 +3,22 @@ $(document).ready(function() {
     var limit = 3;  // Number of records to load per request
     
     //var currentScriptUrl = document.currentScript.src;
+    $('#searchInput').keyup(function(){
+        var query = $(this).val();
+        if(query != ''){
+            $.ajax({
+                url: '../helpers/search.php',
+                method: 'POST',
+                data: {query:query},
+                success: function(data){
+                    $('#searchResults').html(data);
+                }
+            });
+        } else {
+            $('#searchResults').html('');
+        }
+    });
+
 
     $('#loadMoreHelyszinBtn').click(function() {
         $.ajax({
