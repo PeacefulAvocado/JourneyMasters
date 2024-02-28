@@ -3,7 +3,7 @@ $(document).ready(function() {
     var limit = 3;  // Number of records to load per request
     
     //var currentScriptUrl = document.currentScript.src;
-    $('#searchInput').keyup(function(){
+    $('#celpont').keyup(function(){
         var query = $(this).val();
         if(query != ''){
             $.ajax({
