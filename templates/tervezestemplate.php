@@ -27,9 +27,20 @@
     </div>
     <div class="orange">
         <label for="indulas" class="indulaslabel">Indulás</label>
-        <input type="text" name="honnan" id="honnan" class="helyinput">
+        <?php
+        $indulas = ""; 
+        if(isset($_GET['indulas'])){
+          $indulas = $_GET['indulas'];
+        }
+        $celpont = ""; 
+        if(isset($_GET['celpont'])){
+          $celpont = $_GET['celpont'];
+        }
+
+        ?>
+        <input type="text" name="honnan" id="honnan" class="helyinput" value="<?php echo $indulas?>">
         <label for="celpont" class="celpontlabel">Célpont</label>
-        <input type="text" name="celpont" id="celpont" class="helyinput" oninput="emptyContainers()">
+        <input type="text" name="celpont" id="celpont" class="helyinput" oninput="emptyContainers()"  value="<?php echo $celpont?>">
     </div>
         <div class="datumdiv">
         <label for="daterange" class="kezdetlabel">Indulás dátuma:</label>
