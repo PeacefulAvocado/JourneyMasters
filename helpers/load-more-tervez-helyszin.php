@@ -5,13 +5,17 @@
 
 // Assuming $dbhandler is your database handler
 
-$offset = $_POST['offset']; // Offset for fetching records
-if (isset($_POST['query'])) {
+$offset = $_POST['hoffset']; // Offset for fetching records
+if (isset($_POST['nev'])) {
 
-    $query = $_POST['query'];
+    $nev = $_POST['nev'];
 } else {
-    $query = "select * from helyszin where aktiv = 1 LIMIT $offset, 3";
+    $nev = "";
 }
+
+
+$query = "select * from helyszin where aktiv = 1 and varos like '%$nev%' limit $offset, 3";
+
 
 $helyszin = $dbhandler->select($query);
  $j = 1;
