@@ -44,26 +44,37 @@
                 <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
                     <div class="utasdata">
                         <label>Név:</label>
-                        <input type="text" name="nev">
+                        <input type="text" name="nev" readonly value="Jóski Pista">
                         <label>Telefonszám:</label>
-                        <input type="tel" name="tel">
+                        <input type="tel" name="tel"  readonly value="06301234567">
                         <label>Szuletési idő:</label>
-                        <input type="date" name="szulid">
+                        <input type="date" name="szulid" readonly value="2009-10-09">
+                        <label>Irányítószám:</label>
+                        <input type="text" name="iranyioszam" readonly value="2600">
+                        <label>Település:</label>
+                        <input type="text" name="telepules"  readonly value="Vác">
                         <label>Lakcím:</label>
-                        <input type="text" name="lakcim">
-                        <label >Igazolványtípus:</label>
-                        <select name="igtipus" id="igtipus">
-                        <option value="Személyi igazolvány">Személyi igazolvány</option>
-                        <option value="Útlevél">Útlevél</option>
-                        </select>
+                        <input type="text" name="lakcim"  readonly value="Majom utca 68">
+                        <label >Igazolvány típusa:</label>
+                        <input type="text" name="igtipus" value="Személyi igazolvány">
                         <label>Igazolványszám:</label>
-                        <input type="text" name="igszam">
+                        <input type="text" name="igszam" value="561783FE">
                     </div>
-                    <input type="submit" value="Tovább a <?php echo "\n";?>fizetéshez" class="fizetes">
                 </form>
              </div>   
            
     </div>
+
+    <div class="vegosszeg">
+        <p class="vegebal">Szállás és utazás</p>
+        <p class="vegejobb">2 x 93.100 HUF</p>
+        <p class="vegebal vonallent">Ellátás</p>
+        <p class="vegejobb vonallent">2 x 29.900 HUF</p>
+        <p class="vegebal kover">Összesen:</p>
+        <p class="vegejobb kover">369.00 HUF</p>
+    </div>
+
+    <button class="fizetes">Fizetés</button>
 
     </div>
 
