@@ -16,7 +16,7 @@
         if ($csomag == "true")
         {
             $csomagid = $_GET['csomagid'];
-            $hotel_nev = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
+            $hotel_nev = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0]; 
             $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
             $stars_str = "";
             for ($n = 0; $n < $stars; $n++) { 
