@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Feb 27. 12:40
+-- Létrehozás ideje: 2024. Feb 29. 13:47
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -43,10 +43,15 @@ CREATE TABLE `csomagok` (
 --
 
 INSERT INTO `csomagok` (`csomagid`, `honnan`, `celpont`, `mettol`, `meddig`, `utazasmod`, `ar`, `aktiv`) VALUES
-(1, 'Anyámból', 'Cityscape Hotel', '2024-02-04', '2024-02-24', 'Busz', 10, b'1'),
-(2, 'Budapest', 'Bayview Retreat', '2024-05-06', '2024-05-10', 'Repülő', 93000, b'1'),
+(1, 'New York', 'Cityscape Hotel', '2024-02-04', '2024-02-14', 'Busz', 200000, b'1'),
+(2, 'Budapest', 'Bayview Retreat', '2024-05-06', '2024-05-10', 'Repülő', 330000, b'1'),
 (3, 'Budapest', 'Bondi Beach House', '2024-05-08', '2024-05-16', 'Repülő', 158000, b'1'),
-(4, 'Prága', 'Central Hotel', '2024-02-01', '2024-02-22', 'Vonat', 100000, b'1');
+(4, 'Prága', 'Central Hotel', '2024-02-01', '2024-02-08', 'Vonat', 143000, b'1'),
+(5, 'Budapest', 'Magnificent Mile Inn', '2024-04-10', '2024-04-15', 'Repülő', 400000, b'1'),
+(6, 'Sydney', 'Golden Gate Hotel', '2024-03-01', '2024-03-10', 'Repülő', 280000, b'1'),
+(7, 'Vienna', 'Danube View Hotel', '2024-04-15', '2024-04-20', 'Repülő', 400000, b'1'),
+(8, 'Sydney', 'Harbor Lights Inn', '2024-06-01', '2024-06-10', 'Repülő', 280000, b'1'),
+(9, 'Paris', 'Montmartre Retreat', '2024-08-10', '2024-08-20', 'Vonat', 350000, b'1');
 
 -- --------------------------------------------------------
 
@@ -73,7 +78,6 @@ CREATE TABLE `helyszin` (
   `minoseg` varchar(50) DEFAULT NULL,
   `csillag` int(11) DEFAULT NULL,
   `leiras` varchar(500) NOT NULL,
-  `ar` int(11) NOT NULL,
   `aktiv` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -81,28 +85,28 @@ CREATE TABLE `helyszin` (
 -- A tábla adatainak kiíratása `helyszin`
 --
 
-INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `ar`, `aktiv`) VALUES
-('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', 0, b'1'),
-('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', 0, b'1'),
-('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Teszt.\r\nTeszlek. Megteszlek. Szétteszlek.', 0, b'1'),
-('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 'Megbaszom.\r\nAnyád.', 0, b'1'),
-('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, '', 0, b'1'),
-('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, '', 0, b'1'),
-('Grand Central Hotel', 'New York City', '123 Broadway Ave', 'Hotel', 4, '', 0, b'1'),
-('Harbor Lights Inn', 'San Francisco', 'Pier 39 1', 'Hotel', 4, '', 0, b'1'),
-('Harborview Suites', 'Sydney', 'Circular Quay 2', 'Hotel', 4, '', 0, b'1'),
-('Hotel Elegance', 'Vienna', 'Hauptstraße 12', 'Hotel', 4, '', 0, b'1'),
-('Imperial Residence', 'Vienna', 'Schönbrunn Palace 1', 'Hotel', 5, '', 0, b'1'),
-('Lakeview Lodge', 'Chicago', 'Lake Shore Drive 22', 'Apartman', 3, '', 0, b'1'),
-('Le Château Belle', 'Paris', 'Rue de Rivoli 1', 'Hotel', 5, '', 0, b'1'),
-('Luxus Palace Hotel', 'Budapest', 'Váci utca 22', 'Hotel', 5, '', 0, b'1'),
-('Magnificent Mile Inn', 'Chicago', 'Wacker Drive 8', 'Hotel', 4, '', 0, b'1'),
-('Manhattan Tower Suites', 'New York City', '5th Avenue 55', 'Hotel', 4, '', 0, b'1'),
-('Montmartre Retreat', 'Paris', 'Rue des Abbesses 10', 'Hotel', 3, '', 0, b'1'),
-('Riverside Suites', 'Budapest', 'Bem rakpart 15', 'Hotel', 4, '', 0, b'1'),
-('Seine River B&B', 'Paris', 'Quai de la Tournelle 5', 'Hotel', 4, '', 0, b'1'),
-('Sunshine Hotel', 'Sydney', 'Beach Road 45', 'Hotel', 4, '', 0, b'1'),
-('Times Square View Hotel', 'New York City', '7th Avenue 20', 'Hotel', 4, '', 0, b'1');
+INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `leiras`, `aktiv`) VALUES
+('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
+('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', b'1'),
+('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 'Discover the charm of the Central Hotel in the heart of Budapest. Situated on Károly körút, this historic hotel offers elegant accommodations and easy access to the city\'s iconic landmarks.', b'1'),
+('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 'Explore the vibrant city life of Chicago with a stay at the Cityscape Hotel. Conveniently located on Michigan Avenue, enjoy easy access to the city\'s top attractions and stunning views of the skyline.', b'1'),
+('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, 'Experience the breathtaking views of the Danube River from the Danube View Hotel in Vienna. Located on Donaukanal Promenade, this hotel offers luxurious accommodations and easy access to Vienna\'s top attractions.', b'1'),
+('Golden Gate Hotel', 'San Francisco', 'Lombard Street 100', 'Hotel', 4, 'Discover the charm of San Francisco at the Golden Gate Hotel. Situated on Lombard Street, this historic hotel offers elegant accommodations and easy access to San Francisco\'s top attractions.', b'1'),
+('Grand Central Hotel', 'New York City', '123 Broadway Ave', 'Hotel', 4, 'Experience the excitement of New York City at the Grand Central Hotel. Located on Broadway Ave, this iconic hotel offers luxurious accommodations and unparalleled hospitality.', b'1'),
+('Harbor Lights Inn', 'San Francisco', 'Pier 39 1', 'Hotel', 4, 'Indulge in the tranquility of San Francisco Bay with a stay at the Harbor Lights Inn. Nestled on Pier 39, this charming inn offers cozy rooms and stunning views of the bay.', b'1'),
+('Harborview Suites', 'Sydney', 'Circular Quay 2', 'Hotel', 4, 'Escape to the serene beauty of Sydney at the Harborview Suites. Located on Circular Quay, this hotel offers modern amenities and stunning views of Sydney Harbour.', b'1'),
+('Hotel Elegance', 'Vienna', 'Hauptstraße 12', 'Hotel', 4, 'Experience the sophistication of Vienna at Hotel Elegance. Situated on Hauptstraße, this boutique hotel offers stylish accommodations and modern amenities.', b'1'),
+('Imperial Residence', 'Vienna', 'Schönbrunn Palace 1', 'Hotel', 5, 'Indulge in luxury at the Imperial Residence in Vienna. Located near Schönbrunn Palace, this hotel offers opulent accommodations and impeccable service.', b'1'),
+('Lakeview Lodge', 'Chicago', 'Lake Shore Drive 22', 'Apartman', 3, 'Experience the hustle and bustle of Chicago at the Lakeview Lodge. Situated on Lake Shore Drive, this lodge offers cozy accommodations and stunning views of Lake Michigan.', b'1'),
+('Le Château Belle', 'Paris', 'Rue de Rivoli 1', 'Hotel', 5, 'Immerse yourself in the elegance of Paris at Le Château Belle. Located on Rue de Rivoli, this historic hotel offers lavish accommodations and breathtaking views of the city.', b'1'),
+('Luxus Palace Hotel', 'Budapest', 'Váci utca 22', 'Hotel', 5, 'Explore the beauty of Budapest at the Luxus Palace Hotel. Situated on Váci utca, this luxurious hotel offers upscale accommodations and exceptional service.', b'1'),
+('Magnificent Mile Inn', 'Chicago', 'Wacker Drive 8', 'Hotel', 4, 'Experience the vibrant atmosphere of Chicago at the Magnificent Mile Inn. Situated on Wacker Drive, this boutique hotel offers stylish accommodations and easy access to the Magnificent Mile\'s shops and restaurants.', b'1'),
+('Manhattan Tower Suites', 'New York City', '5th Avenue 55', 'Hotel', 4, 'Enjoy the ultimate New York experience at Manhattan Tower Suites. Located on 5th Avenue, this luxury hotel offers spacious accommodations and stunning views of Manhattan\'s iconic skyline.', b'1'),
+('Montmartre Retreat', 'Paris', 'Rue des Abbesses 10', 'Hotel', 3, 'Enjoy a peaceful retreat at the Montmartre Retreat in Paris. Located on Rue des Abbesses, this charming hotel offers cozy accommodations and a serene atmosphere.', b'1'),
+('Riverside Suites', 'Budapest', 'Bem rakpart 15', 'Hotel', 4, 'Discover the beauty of Budapest at the Riverside Suites. Situated on Bem rakpart, this boutique hotel offers modern accommodations and stunning views of the Danube River.', b'1'),
+('Seine River B&B', 'Paris', 'Quai de la Tournelle 5', 'Hotel', 4, 'Indulge in luxury at the Seine River B&B in Paris. Located on Quai de la Tournelle, this elegant bed and breakfast offers cozy accommodations and picturesque views of the Seine River.', b'1'),
+('Sunshine Hotel', 'Sydney', 'Beach Road 45', 'Hotel', 4, 'Experience the warmth and hospitality of Sydney at the Sunshine Hotel. Situated on Beach Road, this boutique hotel offers comfortable accommodations and easy access to Sydney\'s top attractions.', b'1'),
+('Times Square View Hotel', 'New York City', '7th Avenue 20', 'Hotel', 4, 'Discover the charm of New York City at the Times Square View Hotel. Located on 7th Avenue, this modern hotel offers stylish accommodations and breathtaking views of Times Square.', b'1');
 
 -- --------------------------------------------------------
 
@@ -133,10 +137,27 @@ CREATE TABLE `szolgaltatasok` (
 --
 
 INSERT INTO `szolgaltatasok` (`nev`, `sajat_furdo`, `terasz`, `franciaagy`, `gyerekbarat`, `ac`, `konyha`, `parkolas`, `tv`, `gym`, `medence`, `bar`, `internet`, `szef`, `akadalymentes`) VALUES
-('Bayview Retreat', b'1', b'1', b'1', b'0', b'1', b'0', b'0', b'1', b'0', b'1', b'0', b'1', b'1', b'0'),
-('Bondi Beach House', b'1', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'1', b'0', b'0', b'1'),
-('Central Hotel', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'1'),
-('Cityscape Hotel', b'1', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'0', b'1', b'0', b'1', b'0', b'0');
+('Bayview Retreat', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'1', b'1', b'1', b'0'),
+('Bondi Beach House', b'0', b'0', b'1', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'1'),
+('Central Hotel', b'1', b'1', b'1', b'1', b'1', b'0', b'1', b'1', b'0', b'1', b'1', b'0', b'0', b'0'),
+('Cityscape Hotel', b'0', b'0', b'1', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0', b'1'),
+('Danube View Hotel', b'1', b'0', b'1', b'1', b'0', b'1', b'1', b'0', b'1', b'0', b'0', b'0', b'0', b'1'),
+('Golden Gate Hotel', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'1', b'0', b'0', b'1', b'1', b'1'),
+('Grand Central Hotel', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'0', b'0'),
+('Harbor Lights Inn', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'0', b'1', b'0', b'0'),
+('Harborview Suites', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'0', b'1'),
+('Hotel Elegance', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'1', b'1', b'1', b'0', b'1', b'1', b'0'),
+('Imperial Residence', b'0', b'0', b'0', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'1', b'0', b'1', b'1'),
+('Lakeview Lodge', b'0', b'1', b'1', b'1', b'0', b'1', b'1', b'1', b'1', b'1', b'0', b'0', b'0', b'0'),
+('Le Château Belle', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'1', b'0', b'0'),
+('Luxus Palace Hotel', b'0', b'1', b'1', b'1', b'0', b'0', b'0', b'1', b'1', b'0', b'1', b'0', b'1', b'1'),
+('Magnificent Mile Inn', b'0', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'1', b'1', b'0', b'1', b'0', b'1'),
+('Manhattan Tower Suites', b'1', b'1', b'1', b'0', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'0', b'1', b'1'),
+('Montmartre Retreat', b'0', b'0', b'0', b'0', b'0', b'1', b'0', b'0', b'1', b'0', b'0', b'0', b'1', b'1'),
+('Riverside Suites', b'0', b'1', b'0', b'1', b'1', b'1', b'1', b'0', b'1', b'0', b'1', b'1', b'1', b'1'),
+('Seine River B&B', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'0', b'0', b'0', b'1', b'0', b'0', b'0'),
+('Sunshine Hotel', b'1', b'0', b'0', b'0', b'0', b'0', b'1', b'1', b'1', b'0', b'1', b'0', b'1', b'0'),
+('Times Square View Hotel', b'1', b'1', b'1', b'0', b'1', b'1', b'1', b'0', b'1', b'1', b'0', b'0', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -291,7 +312,7 @@ ALTER TABLE `utazas`
 -- AUTO_INCREMENT a táblához `csomagok`
 --
 ALTER TABLE `csomagok`
-  MODIFY `csomagid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `csomagid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `utasok`
