@@ -276,3 +276,36 @@ input.newbutton {
     color: var(--white);
     font-style: italic;
     }
+
+    .tobb{
+        background-color: var(--orange);
+        border:none;
+        margin-top: 50px;
+        
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        font-size: 1.1vw;
+        font-weight: 600;
+        width: 8%;
+        color: var(--white);
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    
+    .vege {
+      background-color: lightgray;
+        border:none;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        font-size: 1.1vw;
+        font-weight: 600;
+        width: 8%;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+    }

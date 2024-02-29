@@ -29,7 +29,7 @@
         <label for="indulas" class="indulaslabel">Indulás</label>
         <input type="text" name="honnan" id="honnan" class="helyinput">
         <label for="celpont" class="celpontlabel">Célpont</label>
-        <input type="text" name="celpont" id="celpont" class="helyinput">
+        <input type="text" name="celpont" id="celpont" class="helyinput" oninput="emptyContainers()">
     </div>
         <div class="datumdiv">
         <label for="daterange" class="kezdetlabel">Indulás dátuma:</label>
@@ -41,14 +41,15 @@
 <div class="szallashelyek">
   <p class="kiscim">Szálláshelyek</p>
   <hr class="vonal">
-  <div class="szallashelycontainer">
+  <div class="szallashelycontainer" id="helyszinek">
     <?php 
-    $helyszin = $dbhandler->getHelyszinek();
-    for($i = 0; $i < count($helyszin);$i++) {
+    $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 and varos like '%%' limit 0, 3");
+    for($i = 0; $i < 3;$i++) {
       $hotel_nev = $helyszin[$i]['nev'];
       $varos = $helyszin[$i]['varos'];
       $cim = $helyszin[$i]['cim'];
       $csillag = $helyszin[$i]['csillag'];
+      $ar = $helyszin[$i]['ar'];
       $stars = "";
       for($j = 0; $j < $csillag;$j++) {
         $stars.="<i class='fa-solid fa-star'></i>";
@@ -60,24 +61,27 @@
       <p class='stars'>$stars</p>
       <br>
       <p class='hotelcim'>$varos, $cim</p>
-      <p class='ar'>93.100 Ft / fő -től</p>
+      <p class='ar'>$ar Ft / fő -től</p>
       <input type='hidden' name='csomag' value='false'>
       <input type='hidden' name='hotelcim' value='$cim'>
       <input type='button' value='' class='newbutton button' onclick='bekuld()'>
     </form>";
     }
     ?>
-    
-  </div>
+
+</div>
+<button class='tobb' id="loadMoreHelyszinBtn">Több<br>betöltése</button>
+<!--<p id="end_of_page" class='vege' style="display: none;">A végére ért</p>-->
 </div>
 
 
 <div class="csomagok">
   <p class="kiscim">Csomagok</p>
   <hr class="vonal">
-  <div class="csomagcontainer">
+  <div class="csomagcontainer" id="csomagcontainer">
   <?php 
-    $csomagok = $dbhandler->getCsomagokXHelyszinek();
+    $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%%' limit 0, 3");
+
     for($i = 0; $i < count($csomagok);$i++) {
       
       $varos = $csomagok[$i]['varos'];
@@ -119,12 +123,8 @@
     ?>
     
   </div>
+  <button class='tobb' id="loadMoreCsomagBtn">Több<br>betöltése</button>
 </div>
-
-
-
-
-
 </div>
 </div>
 
@@ -140,3 +140,6 @@ $(function() {
   });
 });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/load-more-tervez-helyszin.js"></script>
+<script src="../js/emptyDiv.js"></script>
