@@ -18,6 +18,6 @@
     
     
 </body>
-<!--Javascript a végén kell, hogy legyen, csak így működik xd-->
+
 <?php include_once('../templates/jquery.php')?>
 </html>
