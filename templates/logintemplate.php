@@ -4,33 +4,55 @@
     session_start();
     $_SESSION["utasid"] = $dbhandler->select("select max(utasazon) from utasok;");
 
-    if(isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefon']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']))
+    if(isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefonszam']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']) && isset($_POST['irszam']) && isset($_POST['varos']) && isset($_POST['orszag']))
     {
-        // Generate key pair (public and private keys)
-        $config = array(
-            "private_key_bits" => 2048,
-            "private_key_type" => OPENSSL_KEYTYPE_RSA,
-        );
-        $keypair = openssl_pkey_new($config);
+        $regemail = $_POST['regemail'];
+        $regjelszo = $_POST['regjelszo'];
+        $nev = $_POST['nev'];
+        $telefonszam = $_POST['telefonszam'];
+        $szulid = $_POST['szulid'];
+        $lakcim = $_POST['lakcim'];
+        $igtip = $_POST['igtip'];
+        $igszam = $_POST['igszam'];
+        $irszam = $_POST['irszam'];
+        $varos = $_POST['varos'];
+        $orszag = $_POST['orszag'];
 
-        // Get the private key
-        openssl_pkey_export($keypair, $private_key);
+        $szulido = explode('-', $szulid);
 
-        // Get the public key
-        $public_key = openssl_pkey_get_details($keypair);
-        $public_key = $public_key["key"];
+        $szulev = $szulido[0];
+        $szulho = $szulido[1];
+        $szulnap = $szulido[2];
+        $today = new DateTime();
+        $birthdate = new DateTime("$szulnap-$szulho-$szulev");
+        $age = $today->diff($birthdate)->y;
 
-        // Message to be encrypted
-        $message = "Hello, World!";
+        // Function to encrypt data
+        function encrypt($data, $key) {
+            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+            $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+            return base64_encode($encrypted . '::' . $iv);
+        }
 
-        // Encrypt the message using the public key
-        openssl_public_encrypt($regjelszo, $encrypted, $public_key);
+        // Function to decrypt data
+        function decrypt($data, $key) {
+            list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+            return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
+        }
 
-        $dbhandler->select("insert into userdata values (1, ".$_POST['regemail'].", ".openssl_public_encrypt($_POST['regjelszo'], $encrypted, $public_key));
+        // Example usage
+        $data = $regjelszo;
+        $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
 
-        //openssl_private_decrypt($encrypted, $decrypted, $private_key);
+        $encrypted = encrypt($data, $key);
 
-        //echo "Decrypted Message: " . $decrypted . "\n";
+        //$decrypted = decrypt($encrypted, $key);
+
+        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag',$irszam,'$varos','$lakcim')");
+
+        $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'")[0];
+        $dbhandler->noreturnselect("insert ignore into userdata values ($utasazon, '$regemail', '$encrypted')");
+
     }
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
@@ -66,7 +88,7 @@
         <div class="userdata">
             <label for="regemail">Email cím:</label>
             <br>
-            <input type="email" name="regemail" class="textinput" id="regemail">
+            <input type="   " name="regemail" class="textinput" id="regemail">
             <br>
             <label for="regjelszo">Jelszó:</label>
             <br>
@@ -81,6 +103,12 @@
                 <input type="tel" name="telefonszam"  class="textinput" id="telefonszam">
             <label for="szulid">Születési idő:</label>
                 <input type="date" name="szulid"  class="textinput" id="szulid">
+            <label for="irszam">Ország:</label>
+                <input type="text" name="orszag"  class="textinput" id="orszag">
+            <label for="irszam">Irányítószám:</label>
+                <input type="text" name="irszam"  class="textinput" id="irszam">
+            <label for="varos">Település:</label>
+                <input type="text" name="varos"  class="textinput" id="varos">
             <label for="lakcim">Lakcím:</label>
                 <input type="text" name="lakcim"  class="textinput" id="lakcim">
             <label for="igtip">Igazolvány típusa:</label>
