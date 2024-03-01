@@ -5,6 +5,12 @@
     $hotel_nev = $_GET['helyszin'];
     $ellatas = $_GET['ellatas'];
     $utasok_szama = $_GET['utasok_szama'];
+
+    session_start();
+    if(!isset($_SESSION['kosar_items'])){
+        $_SESSION['kosar_items'] = array();
+    }
+
     switch ($ellatas)
     {
         case "Csak Szállás":
@@ -31,13 +37,16 @@
     if ($csomag == "true")
     {
         $csomagid = $_GET['csomagid'];
+        $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+
     }
     else {
-        echo "fasz";
         $honnan = $_GET['honnan'];
         $mettol = $_GET['mettol'];
         $meddig = $_GET['meddig'];
+        $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
     }
+
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

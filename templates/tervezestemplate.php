@@ -18,9 +18,9 @@
 
 <div class="tervezesmain">
 <div class="tervezes">
-<div class="valaszto">
+<div class="valaszto" >
 
-<form class="tervezesform" action="" method="get" id="kereso">
+<form class="tervezesform" action="" method="get" id="kereso" onload="emptyContainers()">
     <div class="formtop">
         <p class="tervezescim">Tervezés:</p>
         <img src="../img/globepin.png" alt="Földgömb" class="ikon">
