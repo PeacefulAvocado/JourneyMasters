@@ -309,3 +309,282 @@ input.newbutton {
         border-radius: 10px;
         text-align: center;
     }
+    @media screen and (max-width: 1000px){
+        
+        .tervezesform{
+            height: 20vw;
+            max-width:50vw;
+        }
+        .formtop{
+            height: 5.4vw;
+        }
+        .tervezescim{
+            padding: 1vw;
+            font-size: 2.5vw;
+        }
+        .ikon{
+            width: 4vw;
+
+          } 
+        .orange{
+            height: 5.5vw;
+            margin-top: 1vw;
+            border-radius: 1vw;
+
+        }
+        .helyinput{
+            height: 5vw;
+            border-radius: 1vw;
+            font-size: 3vw;
+        
+        }
+        .indulaslabel{
+            left: 1.7vw;
+            font-size: 1.2vw;
+            top: 0.2vw;
+        
+        }
+        .celpontlabel{
+            left: 21.8vw;
+            font-size: 1.2vw;
+            top: 0.2vw;
+        
+        }
+        .datumdiv{
+            height: 5.5vw;
+            width: 60%;
+            margin:auto;
+            border-radius: 1vw;
+        }
+        .daterange{
+            width: 90%;
+            font-size: 2.3vw;
+            height: 4.8vw;
+            border-radius: 1vw;
+        }
+        .kezdetlabel{
+            left: 2.1vw;
+            font-size: 1.2vw;
+            top: 0.2vw;
+        
+        }
+        .veglabel{
+            left: 16vw;
+            font-size: 1.2vw;
+            top: 0.2vw;
+        
+        }
+        .kiscim{
+            font-size: 3vw;
+        }
+        .tervezesegyeni{
+            width: 90%;
+            height: 10vw;
+            margin-top: 1.5vw;
+        
+        }
+        .tervezesegyeni img{
+            height: 10vw;
+        }
+        .hotelnev{
+            font-size: 2vw;
+            margin-top: 1.3vw;
+        }
+        .stars{
+            padding-left: 1.5vw;
+            padding-top: 0;
+            font-size: 1.5vw;
+        }
+        .hotelcim{
+            top: 30%;
+            font-size: 1.8vw;
+
+        }
+        .ar{
+            top: 12%;
+            right: 12%;
+            font-size: 2.2vw;
+        }
+        input.newbutton {
+            top: 19%;
+            width:6vw;
+            height:6vw;
+        }
+        .csomagform{
+            width: 90%;
+            height: 10vw;
+            background-color: var(--white);
+            border-radius: 1.5vw;
+            margin-top: 1vw;
+            box-shadow: 0 0 20px -6px var(--black);
+        }
+        .csomagform img{
+            height: 10vw;
+        }
+          .varosnev{
+
+            font-size: 2vw;
+            font-weight: 500;
+            padding-left: 1vw;
+            margin-top: 0.9vw;
+          }
+          .repter{
+            top: 21%;
+            font-size: 1.7vw;
+            left: 31.2%;
+            }
+            .datum{
+            left: 31.2%;
+            top: 50%;
+            font-size: 1.5vw;
+            }
+        
+            .tobb{
+                font-size: 2vw;
+                width: 15%;
+              }
+            
+            .vege {
+                font-size: 1.2vw;
+                width: 15%;
+            }
+    }
+
+    @media screen and (max-width: 700px){
+        .tervezesform{
+            height: 30vw;
+            max-width:80vw;
+        }
+        .formtop{
+            height: 6.5vw;
+        }
+        .tervezescim{
+            padding: 1vw;
+            font-size: 3.5vw;
+        }
+        .ikon{
+            width: 5vw;
+
+          } 
+        .orange{
+            height: 10vw;
+            margin-top: 1vw;
+            border-radius: 1vw;
+
+        }
+        .helyinput{
+            height: 8.7vw;
+            border-radius: 1vw;
+            font-size: 5vw;
+        
+        }
+        .indulaslabel{
+            left: 2.2vw;
+            font-size: 1.8vw;
+            top: 0.2vw;
+        
+        }
+        .celpontlabel{
+            left: 34.5vw;
+            font-size: 1.8vw;
+            top: 0.2vw;
+        
+        }
+        .datumdiv{
+            height: 10vw;
+            width: 60%;
+            margin:auto;
+            border-radius: 1vw;
+        }
+        .daterange{
+            width: 90%;
+            font-size: 3.7vw;
+            height: 8.7vw;
+            border-radius: 1vw;
+        }
+        .kezdetlabel{
+            left: 4vw;
+            font-size: 1.9vw;
+            top: 0.4vw;
+        
+        }
+        .veglabel{
+            left: 25.7vw;
+            font-size: 1.9vw;
+            top: 0.4vw;
+        
+        }
+        .kiscim{
+            font-size: 5vw;
+        }
+        .tervezesegyeni{
+            width: 98%;
+            height: 20vw;
+            margin-top: 1.5vw;
+        
+        }
+        .tervezesegyeni img{
+            height: 20vw;
+            width: 20%
+        }
+        .hotelnev{
+            font-size: 4.5vw;
+            margin-top: 4vw;
+        }
+        .stars{
+            padding-left: 1.5vw;
+            padding-top: 2vw;
+            font-size: 2.5vw;
+        }
+        .hotelcim{
+            top: 40%;
+            font-size: 2.5vw;
+            left: 23.1%;
+
+        }
+        .ar{
+            top: 40%;
+            right: 14%;
+            font-size: 3vw;
+        }
+        input.newbutton {
+            top: 30%;
+            width:8vw;
+            height:8vw;
+        }
+        .csomagform{
+            width: 98%;
+            height: 20vw;
+            margin-top: 1.5vw;
+        }
+        .csomagform img{
+            height: 20vw;
+            width: 20%
+        }
+          .varosnev{
+
+            font-size: 4.5vw;
+            margin-top: 1vw;
+          }
+          .repter{
+            top: 21%;
+            font-size: 2.7vw;
+            left: 21%;
+            }
+            .datum{
+            left: 21%;
+            top: 50%;
+            font-size: 2.7vw;
+            }
+        
+            .tobb{
+                font-size: 4vw;
+                width: 30%;
+              }
+            
+            .vege {
+                font-size: 4vw;
+                width: 30%;
+            }
+
+    }
