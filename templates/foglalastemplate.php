@@ -10,6 +10,7 @@
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
+    
 
     switch ($ellatas)
     {
@@ -34,7 +35,7 @@
             $szorzo = 0.2;
             break;
     }
-    if ($csomag == "true")
+   if ($csomag == "true")
     {
         $csomagid = $_GET['csomagid'];
         $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);

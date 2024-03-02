@@ -46,7 +46,7 @@
         <label for="daterange" class="kezdetlabel">Indulás dátuma:</label>
         <label for="daterange" class="veglabel">Visszaút dátuma:</label>
 
-        <input type="text" name="dates" class="daterange" value="01/01/2018 - 01/15/2018"  id="daterange"/>
+        <input type="text" name="dates" class="daterange" value="01/01/2024 - 01/15/2024"  id="daterange"/>
 
         </div>
 </form>
@@ -109,6 +109,7 @@
     </form>";
     }
   }
+  
     ?>
 
 </div>

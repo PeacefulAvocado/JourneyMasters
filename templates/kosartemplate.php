@@ -24,10 +24,10 @@
     <p class="kiscim">Félbehagyott foglalásaim</p>
 
   <?php 
-
+  if(isset($_SESSION['kosar_items'])){
      $kosar_items = $_SESSION['kosar_items'];
      //Végigmegy a $_SESSION['kosar_items'] tömbön, eldönti, hogy az adott elem csomag-e vagy nem, és ennek megfelelően lekérdezi, majd betölti az adatokat egy formba
-     print_r($_SESSION);
+  $i=0;
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
@@ -36,12 +36,31 @@
         $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
         $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
         $celpont = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
-
+        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$celpont'")[0];
+        $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
+        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
+        $stars_str = "";
+        for ($n = 0; $n < $stars; $n++) { 
+            $stars_str .= "<i class='fa-solid fa-star'></i>";
+        }
+        echo " <form action='../index/foglalas.php' method='post' class='csomagform' id='a1'>
+      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      <p class='csomaghotelnev'>".$celpont."</p>
+      <p class='stars'>$stars_str</p>
+      <p class='csomaghonnanhova'>$honnan — $varos</p>
+      <p class='csomagdatum'>".$mettol."—".$meddig."</p>
+      <p class='fok'>".$item['utasok_szama']." fő</p>
+      <input type='hidden' name='csomag' value='true'>
+      <input type='hidden' name='datum'  value=''>
+      <input type='hidden' name='hotelcim' value=''>
+      <button class='newbutton' onclick='alert("."asda".")' type='button'></button>
+      <input type='submit' class='torlesbutton' value=''>
+    </form>";
         
     } else {
       $hotel_nev = $item['hotel_nev'];
       $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
-
+      $honnan = $item['honnan'];
       $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
       $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
       $mettol = $item['mettol'];
@@ -56,8 +75,8 @@
       <img src='../img/sydneyproba.jpg' alt='$varos'>
       <p class='hotelnev'>".$item['hotel_nev']."</p>
       <p class='stars'>$stars_str</p>
-      <p class='hotelcim'>$cim</p>
-      <p class='datum'>".$mettol."—".$meddig."</p>
+      <p class='egyenihonnanhova'>$honnan — $varos</p>
+      <p class='egyenidatum'>".$mettol."—".$meddig."</p>
       <p class='fok'>".$item['utasok_szama']." fő</p>
       <input type='hidden' name='csomag' value='false'>
       <input type='hidden' name='datum'  value=''>
@@ -66,8 +85,9 @@
       <input type='submit' class='torlesbutton' value=''>
     </form>";
     }
-    
+    $i++;
   }
+}
 
   ?>
    
