@@ -3,8 +3,23 @@ require_once(__DIR__.'/../helpers/dbhandler.php');
 $dbhandler = new DbHandler();
 session_start();
 
+function encrypt($data, $key)
+{
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+}
+
+// Function to decrypt data
+function decrypt($data, $key)
+{
+    list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
+}
+
+$key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefonszam']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']) && isset($_POST['irszam']) && isset($_POST['varos']) && isset($_POST['orszag'])) {
+    if (isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefonszam']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']) && isset($_POST['irszam']) && isset($_POST['varos']) && isset($_POST['orszag']) && isset($_POST['reg'])) {
         $regemail = $_POST['regemail'];
         $regjelszo = $_POST['regjelszo'];
         $nev = $_POST['nev'];
@@ -20,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'");
 
-        $email = $dbhandler->select("select email from userdata");
+        $emailkeres = $dbhandler->select("select email from userdata");
         $db = $dbhandler->select("select count(*) as '0' from userdata")[0];
         $van = false;
         $i = 0;
         while (!$van && $i < $db[0]) {
-            if ($email[$i]['email'] == $regemail) {
+            if ($emailkeres[$i]['email'] == $regemail) {
                 $van = true;
             }
             $i++;
@@ -45,34 +60,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag','$irszam','$varos','$lakcim')");
 
                         // Function to encrypt data
-                        function encrypt($data, $key)
-                        {
-                            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
-                            $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
-                            return base64_encode($encrypted . '::' . $iv);
-                        }
-
-                        // Function to decrypt data
-                        function decrypt($data, $key)
-                        {
-                            list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
-                            return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
-                        }
 
                         // Example usage
                         $data = $regjelszo;
-                        $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
 
                         $encrypted = encrypt($data, $key);
 
                         //$decrypted = decrypt($encrypted, $key);
                         $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'")[0];
                         $dbhandler->noreturnselect("insert ignore into userdata values ($utasazon, '$regemail', '$encrypted')");
+                        $_SESSION['utasid'] = $utasazon;
                         echo "<script>
                         alert('Sikeres regisztráció!');
+                        window.location.href = '../index/profil.php';
                         </script>";
-                        $_SESSION['utasid'] = $utasazon;
-                        header("Location: ../index/profil.php");
                     } catch (Exception $e) {
                         echo "<script>
                         alert('Hibás bemenet!')
@@ -103,6 +104,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+if (isset($_POST['bej']) && isset($_POST['jelszo']) && isset($_POST['email']))
+{
+    $email = $_POST['email'];
+    $jelszo = $_POST['jelszo'];
+    $emailkeres = $dbhandler->select("select email from userdata");
+    $van = false;
+    $db = $dbhandler->select("select count(*) as '0' from userdata")[0];
+    $i = 0;
+    while (!$van && $i < $db[0]) {
+        if ($emailkeres[$i]['email'] == $email) {
+            $van = true;
+        }
+        $i++;
+    }
+    if ($van)
+    {
+        $keresettemail = $emailkeres[$i]['email'];
+        $jelszodb = $dbhandler->getKeresettNoAktiv('userdata', 'jelszo', 'email', "'$keresettemail'")[0];
+        $jelszodb = decrypt($jelszodb, $key);
+        if ($jelszo == $jelszodb)
+        {
+            $utasazon = $dbhandler->getKeresettNoAktiv('userdata', 'utasid', 'email', "'$email'")[0];
+            $_SESSION['utasid'] = $utasazon;
+            echo "<script>
+                alert('Sikeres bejelentkezés!');
+                window.location.href = '../index/profil.php';
+                </script>";
+        }
+        else
+        {
+            echo "<script>
+        alert('Hibás jelszó!')
+        </script>";
+        }
+    }
+    else {
+        echo "<script>
+        alert('Ehhez az email címhez nem tartozik profil!')
+        </script>";
+    }
+}
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
@@ -117,14 +159,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="loginform">
                 <label for="email">Email cím:</label>
                 <br>
-                <input type="email" name="email" class="textinput" id="email">
+                <input type="email" name="email" class="textinput" id="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
                 <br>
                 <label for="jelszo">Jelszó:</label>
                 <br>
-                <input type="password" name="jelszo" class="textinput" id="jelszo">
+                <input type="password" name="jelszo" class="textinput" id="jelszo" >
                 <br>
                 <button type="button" onclick="Change('login','signup')" class="regisztracioatlep"><- Regisztráció</button>
-                <input type="submit" value="Bejelentkezés" class="loginbtn">
+                <input type="submit" value="Bejelentkezés" name="bej" class="loginbtn">
             </form>
         </div>
     </div>
@@ -143,8 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <label for="regjelszo">Jelszó:</label>
                     <br>
-                    <input type="password" name="regjelszo" class="textinput" id="regjelszo"
-                        value="<?php echo isset($_POST['regjelszo']) ? $_POST['regjelszo'] : '' ?>">
+                    <input type="password" name="regjelszo" class="textinput" id="regjelszo">
                     <br>
                 </div>
 
@@ -189,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button type="button" onclick="Change('signup','login')" class="bejelentkezesatlep"><-
                     Bejelentkezés</button>
-                <input type="submit" value="Regisztáció" class="signupbtn">
+                <input type="submit" value="Regisztáció" name="reg" class="signupbtn">
             </form>
 
         </div>

@@ -5,10 +5,21 @@
       header("Location: ../index/login.php");
       exit();
   }
+
+  if (isset($_POST['kijel']))
+  {
+    $_SESSION['utasid'] = null;
+    echo "<script>alert('Sikeresen kijelentkezett!')</script>";
+    header("Location: ../index/login.php");
+    exit();
+  }
 ?>
 <div class="profilmain">
 <div class="profil">
 <p class="emailcim">dzsonasz@gmail.com</p>
+<form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+    <input type="submit" name="kijel" value="Kijelentkezés" class="kijel">
+</form>
 <hr class="vonal">
 <div class="jelszovaltoztato">
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="jelszo">
