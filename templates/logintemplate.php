@@ -123,6 +123,75 @@
             <input type="submit" value="Regisztáció" class="signupbtn">
         </form>
     </div>
+<<<<<<< Updated upstream
+=======
+<?php
+
+    if(isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefonszam']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']) && isset($_POST['irszam']) && isset($_POST['varos']) && isset($_POST['orszag'])){
+        $regemail = $_POST['regemail'];
+        $regjelszo = $_POST['regjelszo'];
+        $nev = $_POST['nev'];
+        $telefonszam = $_POST['telefonszam'];
+        $szulid = $_POST['szulid'];
+        $lakcim = $_POST['lakcim'];
+        $igtip = $_POST['igtip'];
+        $igszam = $_POST['igszam'];
+        $irszam = $_POST['irszam'];
+        $varos = $_POST['varos'];
+        $orszag = $_POST['orszag'];
+
+        $email = $dbhandler->select("select email from userdata");
+        $db = $dbhandler->select("select count(*) as '0' from userdata")[0];
+        $van = false;
+        $i = 0;
+        while (!$van && $i < $db[0])
+        {
+            if ($email[$i]['email'] == $regemail)
+            {
+                $van = true;
+            }
+            $i++;
+        }
+        $szulido = explode('-', $szulid);
+        if (isset($szulido[1]))
+        {
+        $szulev = $szulido[0];
+        $szulho = $szulido[1];
+        $szulnap = $szulido[2];
+        $today = new DateTime();
+        $birthdate = new DateTime("$szulnap-$szulho-$szulev");
+        $age = $today->diff($birthdate)->y;
+        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag',$irszam,'$varos','$lakcim')");
+        }
+
+        // Function to encrypt data
+        function encrypt($data, $key) {
+            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+            $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+            return base64_encode($encrypted . '::' . $iv);
+        }
+
+        // Function to decrypt data
+        function decrypt($data, $key) {
+            list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+            return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
+        }
+
+        // Example usage
+        $data = $regjelszo;
+        $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
+
+        $encrypted = encrypt($data, $key);
+
+        //$decrypted = decrypt($encrypted, $key);
+            $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'")[0];
+            $dbhandler->noreturnselect("insert ignore into userdata values ($utasazon, '$regemail', '$encrypted')");
+    }
+
+
+    
+?>
+>>>>>>> Stashed changes
 </div>
 </div>
 <script src="../js/loginpage.js"></script>
