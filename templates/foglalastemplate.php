@@ -33,7 +33,6 @@
         $csomagid = $_GET['csomagid'];
     }
     else {
-        echo "fasz";
         $honnan = $_GET['honnan'];
         $mettol = $_GET['mettol'];
         $meddig = $_GET['meddig'];
@@ -127,30 +126,38 @@
     </div>
     <div class="utasadatok">
         <h3>Utasok adatai: </h3>
-             <div class="utas">
-                <p class="utasszam">1. utas</p>
-                <hr class="vonal">
-                <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-                    <div class="utasdata">
+        <form action='../index/veglegesites.php' method='post' id="tovabb_form">
+        <?php 
+            for($i = 0; $i<$utasok_szama; $i++) {
+                $index = $i+1;
+                echo "<div class='utas'>
+                <p class='utasszam'>$index. utas</p>
+                <hr class='vonal'>
+                    <div class='utasdata'>
                         <label>Név:</label>
-                        <input type="text" name="nev">
+                        <input type='text' name='nev.$i'>
                         <label>Telefonszám:</label>
-                        <input type="tel" name="tel">
+                        <input type='tel' name='tel.$i'>
                         <label>Szuletési idő:</label>
-                        <input type="date" name="szulid">
+                        <input type='date' name='szulid.$i'>
                         <label>Lakcím:</label>
-                        <input type="text" name="lakcim">
+                        <input type='text' name='lakcim.$i'>
                         <label >Igazolványtípus:</label>
-                        <select name="igtipus" id="igtipus">
-                        <option value="Személyi igazolvány">Személyi igazolvány</option>
-                        <option value="Útlevél">Útlevél</option>
+                        <select name='igtipus.$i' id='igtipus'>
+                        <option value='Személyi igazolvány'>Személyi igazolvány</option>
+                        <option value='Útlevél'>Útlevél</option>
                         </select>
                         <label>Igazolványszám:</label>
-                        <input type="text" name="igszam">
+                        <input type='text' name='igszam.$i'>
                     </div>
-                    <input type="submit" value="Tovább a <?php echo "\n";?>fizetéshez" class="fizetes">
-                </form>
-             </div>   
+                    </div>";
+                }
+                
+                ?>
+                <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?php echo $utasok_szama;?>)'>
+            </form>
+                
            
     </div>
 </div>
+<script src="../js/bekuld.js"></script>
