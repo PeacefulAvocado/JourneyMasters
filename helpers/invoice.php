@@ -5,6 +5,13 @@
     $ar = $_GET['ar'];
     $orszag = $_GET['orszag'];
     $cim = $_GET['lakcim'];
+
+    $szallas = $_GET['szallas'];
+    $days = $_GET['days'];
+    $utazas = $_GET['utazas'];
+    $ellatas_ar = $_GET['ellatas_ar'];
+
+
     //customer and invoice details
 
   $info=[
@@ -19,21 +26,21 @@
   $products_info=[
     [
       "name"=>"Utazas",
-      "price"=>"$ar",
+      "price"=>"$utazas HUF",
       "qty"=>"$utas_szam",
-      "total"=>strval(intval($ar)*intval($utas_szam))
+      "total"=>strval(intval($utazas)*intval($utas_szam))." HUF"
     ],
     [
       "name"=>"Szallas",
-      "price"=>"",
-      "qty"=>"$utas_szam",
-      "total"=>""
+      "price"=>"$szallas HUF",
+      "qty"=>"$utas_szam x $days",
+      "total"=>strval(intval($szallas)*intval($utas_szam)*intval($days))." HUF"
     ],
     [
       "name"=>"Ellatas",
-      "price"=>"",
+      "price"=>"$ellatas_ar HUF",
       "qty"=>"$utas_szam",
-      "total"=>""
+      "total"=>strval(intval($ellatas_ar)*intval($utas_szam))." HUF"
     ],
   ];
   function Convert($string){
@@ -107,7 +114,7 @@
       //Display table total row
       $this->SetFont('Arial','B',12);
       $this->Cell(150,9,"OSSZESEN",1,0,"R");
-      $this->Cell(40,9,$info["total_amt"],1,1,"R");
+      $this->Cell(40,9,$info["total_amt"]." HUF",1,1,"R");
 
       
     }

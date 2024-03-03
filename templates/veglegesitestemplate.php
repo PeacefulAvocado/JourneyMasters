@@ -19,6 +19,13 @@
     $biztnev = $_POST["biztnev"];
     $fizmod = $_POST["fizmod"];
 
+
+    $szallas = $_POST['szallas'];
+    $days = $_POST['days'];
+    $utazas = $_POST['utazas'];
+    $ellatas_ar = $_POST['ellatas_ar'];
+
+
     
 
 ?>
@@ -74,7 +81,7 @@
             $index = $i+1;
             $nev = $_POST["nev_$i"];
             $tel = $_POST["tel_$i"];
-            $tel = $_POST["tel_$i"];
+            $email = $_POST["email_$i"];
             $szulid = $_POST["szulid_$i"];
             $nem = $_POST["nem_$i"];
             $orszag = $_POST["orszag_$i"];
@@ -120,12 +127,14 @@
             </div>
   
     <div class="vegosszeg">
-        <p class="vegebal">Szállás és utazás</p>
-        <p class="vegejobb">2 x 93.100 HUF</p>
+        <p class="vegebal">Szállás</p>
+        <p class="vegejobb"><?= $utasok_szama?> x <?= $days?> x <?= $szallas?> HUF</p>
+        <p class="vegebal">Utazás</p>
+        <p class="vegejobb"><?= $utasok_szama?> x <?= $utazas?> HUF</p>
         <p class="vegebal vonallent">Ellátás</p>
-        <p class="vegejobb vonallent">2 x 29.900 HUF</p>
+        <p class="vegejobb vonallent"><?= $utasok_szama?> x <?= $ellatas_ar?> HUF</p>
         <p class="vegebal kover">Összesen:</p>
-        <p class="vegejobb kover"><?php echo $ar;?> HUF</p>
+        <p class="vegejobb kover"><?= $ar?> HUF</p>
     </div>
         <input type="hidden" name="helyszin" value="<?php echo $hotel_nev?>">
         <input type="hidden" name="utasok_szama" value="<?php echo $utasok_szama?>">
@@ -136,11 +145,15 @@
         <input type="hidden" name="mettol" value="<?php echo $mettol?>">
         <input type="hidden" name="meddig" value="<?php echo $meddig?>">
         <input type="hidden" name="ar" value="<?php echo $ar?>">
+        <input type="hidden" name="days" value="<?php echo $days?>">
+        <input type="hidden" name="szallas" value="<?php echo $szallas?>">
+        <input type="hidden" name="utazas" value="<?php echo $utazas?>">
+        <input type="hidden" name="ellatas_ar" value="<?php echo $ellatas_ar?>">
         <input type="hidden" name="erttel" value="<?php echo $erttel?>">
         <input type="hidden" name="ertemail" value="<?php echo $ertemail?>">
         <input type="hidden" name="biztnev" value="<?php echo $biztnev?>">
         <input type="hidden" name="fizmod" value="<?php echo $fizmod?>">
-    <input type="submit" class="fizetes" value="Fizetes">
+        <input type="submit" class="fizetes" value="Fizetes">
 </form>
 
     </div>

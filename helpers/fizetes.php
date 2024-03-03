@@ -20,6 +20,13 @@
     $biztnev = $_POST["biztnev"];
     $fizmod = $_POST["fizmod"];
 
+    $szallas = $_POST['szallas'];
+    $days = $_POST['days'];
+    $utazas = $_POST['utazas'];
+    $ellatas_ar = $_POST['ellatas_ar'];
+
+
+
 
     $csomagid = $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count']+1;
     $utazasazon = $dbhandler->select("select COUNT(*) as utazasazon from utazas ")[0]['utazasazon']+1;
@@ -28,7 +35,7 @@
 
         $nev = $_POST["nev_$i"];
         $tel = $_POST["tel_$i"];
-        $email = $_POST["email_$i"]
+        $email = $_POST["email_$i"];
         $szulid = $_POST["szulid_$i"];
 
         $szulido = explode('-', $szulid);
@@ -82,6 +89,6 @@
     $orszag = $_POST['orszag_0']; 
     $lakhely = $_POST["iranyitoszam_0"].' '.$_POST["telepules_0"].','.$_POST["lakcim_0"];
     $nev = $_POST['nev_0'];
-    header("Location: invoice.php?nev=$nev&utasszam=$utasok_szama&ar=$ar&orszag=$orszag&lakcim=$lakhely");
+    header("Location: invoice.php?nev=$nev&utasszam=$utasok_szama&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar");
     
 ?>
