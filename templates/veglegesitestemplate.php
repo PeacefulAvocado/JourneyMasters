@@ -63,32 +63,47 @@
     </div>
     <div class="utasadatok">
         <h3>Utasok adatai: </h3>
-             <div class="utas">
-                <p class="utasszam">1. utas</p>
-                <hr class="utasvonal">
-                <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-                    <div class="utasdata">
-                        <label>Név:</label>
-                        <input type="text" name="nev" readonly value="Jóski Pista">
-                        <label>Telefonszám:</label>
-                        <input type="tel" name="tel"  readonly value="06301234567">
-                        <label>Szuletési idő:</label>
-                        <input type="date" name="szulid" readonly value="2009-10-09">
-                        <label>Irányítószám:</label>
-                        <input type="text" name="iranyioszam" readonly value="2600">
-                        <label>Település:</label>
-                        <input type="text" name="telepules"  readonly value="Vác">
-                        <label>Lakcím:</label>
-                        <input type="text" name="lakcim"  readonly value="Majom utca 68">
-                        <label >Igazolvány típusa:</label>
-                        <input type="text" name="igtipus" value="Személyi igazolvány">
-                        <label>Igazolványszám:</label>
-                        <input type="text" name="igszam" value="561783FE">
-                    </div>
-                </form>
-             </div>   
-           
-    </div>
+        <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+        <?php 
+        for($i = 0; $i<$utasok_szama; $i++) {
+            $index = $i+1;
+
+            $nev = $_POST["nev.$i"];
+            $tel = $_POST["tel.$i"];
+            $szulid = $_POST["szulid.$i"];
+            $lakcim = $_POST["lakcim.$i"];
+            $igtipus = $_POST["igtipus.$i"];
+            $igszam = $_POST["igszam.$i"];
+
+            echo "<div class='utas'>
+            <p class='utasszam'>$index. utas</p>
+            <hr class='utasvonal'>
+                <div class='utasdata'>
+                    <label>Név:</label>
+                    <input type='text' name='nev' readonly value='$nev'>
+                    <label>Telefonszám:</label>
+                    <input type='tel' name='tel'  readonly value='$tel'>
+                    <label>Szuletési idő:</label>
+                    <input type='date' name='szulid' readonly value='$szulid'>
+                    <label>Irányítószám:</label>
+                    <input type='text' name='iranyioszam' readonly value='$lakcim'>
+                    <label>Település:</label>
+                    <input type='text' name='telepules'  readonly value='$lakcim'>
+                    <label>Lakcím:</label>
+                    <input type='text' name='lakcim'  readonly value='$lakcim'>
+                    <label >Igazolvány típusa:</label>
+                    <input type='text' name='igtipus' value='$igtipus'>
+                    <label>Igazolványszám:</label>
+                    <input type='text' name='igszam' value='$igszam'>
+                </div>
+            </div>   
+            ";
+        }
+        ?>
+             
+                
+            </div>
+        </form>
 
     <div class="vegosszeg">
         <p class="vegebal">Szállás és utazás</p>
