@@ -19,5 +19,6 @@
     
 </body>
 
-<?php include_once('../templates/jquery.php')?>
+<script src="../js/dropdown.js"></script>
+<script src="../js/reszletekslider.js"></script>
 </html>

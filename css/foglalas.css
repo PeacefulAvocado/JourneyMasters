@@ -477,6 +477,9 @@ h3 {
     }
 }
 @media screen and (max-width: 700px){
+    .foglalas{
+        padding-top: 6vw;
+    }
     h1 {
         font-size: 6vw;
     }

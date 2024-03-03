@@ -114,9 +114,11 @@
                     <label>Lakcím:</label>
                     <input type='text' name='lakcim_$i'  readonly value='$lakcim'>
                     <label >Igazolvány típusa:</label>
+
                     <input type='text' name='igtipus_$i' readonly value='$igtipus'>
                     <label>Igazolványszám:</label>
                     <input type='text' name='igszam_$i' readonly value='$igszam'>
+
                 </div>
             </div>   
             ";
