@@ -67,13 +67,12 @@
         <?php 
         for($i = 0; $i<$utasok_szama; $i++) {
             $index = $i+1;
-
-            $nev = $_POST["nev.$i"];
-            $tel = $_POST["tel.$i"];
-            $szulid = $_POST["szulid.$i"];
-            $lakcim = $_POST["lakcim.$i"];
-            $igtipus = $_POST["igtipus.$i"];
-            $igszam = $_POST["igszam.$i"];
+            $nev = $_POST["nev_$i"];
+            $tel = $_POST["tel_$i"];
+            $szulid = $_POST["szulid_$i"];
+            $lakcim = $_POST["lakcim_$i"];
+            $igtipus = $_POST["igtipus_$i"];
+            $igszam = $_POST["igszam_$i"];
 
             echo "<div class='utas'>
             <p class='utasszam'>$index. utas</p>
