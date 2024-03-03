@@ -36,6 +36,7 @@
         $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
         $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
         $celpont = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
+        $hotel_nev = $celpont;
         $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$celpont'")[0];
         $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
         $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];

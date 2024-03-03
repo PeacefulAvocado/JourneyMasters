@@ -3,6 +3,7 @@
     $dbhandler = new DbHandler();
     session_start();
     $_SESSION["username"] = "Ben";
+    $_SESSION["kosar_items"] = array();
 
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
