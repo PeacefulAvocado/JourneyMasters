@@ -295,6 +295,12 @@ h3 {
     height: 2vw;
     font-size: 1.2vw;
 }
+.allando{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    width: 60vw;
+}
 .fizetes{
     background-color: var(--orange);
     border:none;

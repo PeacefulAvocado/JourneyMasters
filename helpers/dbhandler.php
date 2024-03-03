@@ -34,6 +34,43 @@
             return $row;
         }
 
+        function setUtas($nev, $szulev, $szulho, $szulnap, $kor,$nem,$igtipus,$igszam,$tel,$email,$orszag,$irszam,$varos,$utca,$erttel,$ertemail,$biztnev,$fizmod) {
+            $this->conn->query("INSERT IGNORE INTO utasok (nev, szulev, szulho, szulnap, kor, nem, igtipus, igszam, tel, email, orszag, irszam, varos, utca, erttel, ertemail, biztnev, fizmod, aktiv)  VALUES ('$nev', '$szulev', '$szulho', '$szulnap', '$kor', '$nem', '$igtipus', '$igszam', '$tel', '$email', '$orszag', '$irszam', '$varos', '$utca', '$erttel', '$ertemail', '$biztnev', '$fizmod', 1);");
+
+        }
+
+        function updateUtas($utasazon, $igtipus, $igszam, $tel, $orszag, $irszam, $varos, $utca, $erttel, $ertemail, $biztnev, $fizmod) {
+            $query = "UPDATE utasok
+                      SET igtipus = '$igtipus',
+                          igszam = '$igszam',
+                          tel = '$tel',
+                          orszag = '$orszag',
+                          irszam = '$irszam',
+                          varos = '$varos',
+                          utca = '$utca',
+                          erttel = '$erttel',
+                          ertemail = '$ertemail',
+                          biztnev = '$biztnev',
+                          fizmod = '$fizmod'
+                      WHERE utasazon = $utasazon";
+            
+            $this->conn->query($query);
+        }
+        
+
+        function setUtazas($utazasazon,$utasazon, $honnan, $celpont, $mettol, $meddig, $utazasmod, $ellatas, $ar) {
+            $query = "INSERT IGNORE INTO utazas (utazasazon,utasazon, honnan, celpont, mettol, meddig, utazasmod, ellatas, ar, aktiv)  
+                      VALUES ($utazasazon, $utasazon, '$honnan', '$celpont', '$mettol', '$meddig', '$utazasmod', '$ellatas', $ar, 1);";
+            $this->conn->query($query);
+        }
+
+        function setCsoport($utasid, $utazasid, $csoportid) {
+            $query = "INSERT IGNORE INTO csoport (utasid, utazasid, csoportid)  
+                      VALUES ('$utasid', '$utazasid', '$csoportid');";
+            $this->conn->query($query);
+        }
+        
+        
         function select($sql)
         {
             $result = $this->conn->query($sql);

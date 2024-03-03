@@ -129,6 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+
     <div class="signup" id="signup">
         <p class="logincim">Regisztráció</p>
         <hr class="vonal">
@@ -190,6 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Bejelentkezés</button>
                 <input type="submit" value="Regisztáció" class="signupbtn">
             </form>
+
         </div>
     </div>
 </div>

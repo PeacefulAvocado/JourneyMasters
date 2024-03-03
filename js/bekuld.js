@@ -36,12 +36,16 @@ function bekuld(szam)
   function send_foglalas(utasok_szama) {
     let count = 0;
     for (let i = 0; i < utasok_szama; i++) {
-        var nev = document.getElementsByName("nev." + String(i))[0].value;
-        var szulid = document.getElementsByName("szulid." + String(i))[0].value;
-        var igtipus = document.getElementsByName("igtipus." + String(i))[0].value;
-        var lakcim = document.getElementsByName("lakcim." + String(i))[0].value;
-        var tel = document.getElementsByName("tel." + String(i))[0].value;
-        var igszam = document.getElementsByName("igszam." + String(i))[0].value;
+        var nev = document.getElementsByName("nev_" + String(i))[0].value;
+        var szulid = document.getElementsByName("szulid_" + String(i))[0].value;
+        var nem = document.getElementsByName("nem_" + String(i))[0].value;
+        var igtipus = document.getElementsByName("igtipus_" + String(i))[0].value;
+        var orszag = document.getElementsByName("orszag_" + String(i))[0].value;
+        var irszam = document.getElementsByName("irszam_" + String(i))[0].value;
+        var varos = document.getElementsByName("varos_" + String(i))[0].value;
+        var lakcim = document.getElementsByName("lakcim_" + String(i))[0].value;
+        var tel = document.getElementsByName("tel_" + String(i))[0].value;
+        var igszam = document.getElementsByName("igszam_" + String(i))[0].value;
         /*console.log("Checking values for passenger " + (i + 1));
         console.log("Name input:", nev);
         console.log("Birth ID input:", szulid);
@@ -49,7 +53,7 @@ function bekuld(szam)
         console.log("Address input:", lakcim);
         console.log("Telephone input:", tel);
         console.log("ID number input:", igszam);*/
-        if (nev != "" && szulid != "" && igtipus != "" && lakcim != "" && tel != "" && igszam != "") {
+        if (nev != "" && szulid != "" && nem != "" && igtipus != "" && lakcim != "" && orszag != "" && varos != "" && irszam != "" && tel != "" && igszam != "") {
             count++;
         }
     }
