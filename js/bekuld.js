@@ -1,4 +1,4 @@
-function bekuld()
+function bekuld(szam)
   {
     if (document.getElementById('honnan').value == "" || document.getElementById('celpont').value == "" || document.getElementById('daterange').value == "")
     {
@@ -7,9 +7,8 @@ function bekuld()
     else {
       var datum = ((document.getElementById('daterange').value).replaceAll(' ', '')).split('-');
 
-      console.log(datum[0])
 
-      var f = document.getElementById("hely");
+      var f = document.getElementById("hely"+String(szam));
       var hidden = document.createElement("input");
       hidden.type = "hidden";
       hidden.name = "honnan";
