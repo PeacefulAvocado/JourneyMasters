@@ -21,11 +21,13 @@ SET time_zone = "+00:00";
 -- Adatbázis: `journeymastersdatabase`
 --
 
+CREATE DATABASE IF NOT EXISTS journeymastersdatabase DEFAULT CHARSET = utf8 COLLATE utf8_hungarian_ci;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `csomagok`
+-- Tábla szerkezet ehhez a táblához `helyszin`
 --
+USE journeymastersdatabase;
 
 CREATE TABLE `csomagok` (
   `csomagid` int(11) NOT NULL,
