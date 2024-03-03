@@ -2,7 +2,6 @@
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
     session_start();
-
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
@@ -88,68 +87,81 @@ if(isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev'
     $orszag = $_POST['orszag'];
 
     $email = $dbhandler->select("select email from userdata");
+    $db = $dbhandler->select("select count(*) as '0' from userdata")[0];
     $van = false;
-    foreach ($email as $elem)
+    $i = 0;
+    while (!$van && $i < $db[0])
     {
-        if ($regemail == $elem['email'])
+        if ($email[$i]['email'] == $regemail)
         {
             $van = true;
         }
+        $i++;
     }
 
-    if(($regemail != null && $regjelszo != null && $nev != null && $telefonszam != null && $szulid != null && $lakcim != null && $igszam != null && $irszam != null && $varos != null && $orszag != null) && !$van)
+    if(($regemail != null && $regjelszo != null && $nev != null && $telefonszam != null && $szulid != null && $lakcim != null && $igszam != null && $irszam != null && $varos != null && $orszag != null))
     {
-    try {
-        $szulido = explode('-', $szulid);
-        if (isset($szulido[1]))
+        if (!$van)
         {
-        $szulev = $szulido[0];
-        $szulho = $szulido[1];
-        $szulnap = $szulido[2];
-        $today = new DateTime();
-        $birthdate = new DateTime("$szulnap-$szulho-$szulev");
-        $age = $today->diff($birthdate)->y;
-        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag',$irszam,'$varos','$lakcim')");
+        try {
+            $szulido = explode('-', $szulid);
+            if (isset($szulido[1]))
+            {
+            $szulev = $szulido[0];
+            $szulho = $szulido[1];
+            $szulnap = $szulido[2];
+            $today = new DateTime();
+            $birthdate = new DateTime("$szulnap-$szulho-$szulev");
+            $age = $today->diff($birthdate)->y;
+            $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag',$irszam,'$varos','$lakcim')");
+            }
+
+            // Function to encrypt data
+            function encrypt($data, $key) {
+                $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+                $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+                return base64_encode($encrypted . '::' . $iv);
+            }
+
+            // Function to decrypt data
+            function decrypt($data, $key) {
+                list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+                return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
+            }
+
+            // Example usage
+            $data = $regjelszo;
+            $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
+
+            $encrypted = encrypt($data, $key);
+
+            //$decrypted = decrypt($encrypted, $key);
+
+            if ($igszam != null)
+            {
+                $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'")[0];
+                $dbhandler->noreturnselect("insert ignore into userdata values ($utasazon, '$regemail', '$encrypted')");
+            }
+            echo "<script>
+            alert('Sikeres regisztráció!')
+            </script>";
         }
-
-        // Function to encrypt data
-        function encrypt($data, $key) {
-            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
-            $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
-            return base64_encode($encrypted . '::' . $iv);
-        }
-
-        // Function to decrypt data
-        function decrypt($data, $key) {
-            list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
-            return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
-        }
-
-        // Example usage
-        $data = $regjelszo;
-        $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
-
-        $encrypted = encrypt($data, $key);
-
-        //$decrypted = decrypt($encrypted, $key);
-
-        if ($igszam != null)
+        catch (Exception $e)
         {
-            $utasazon = $dbhandler->getKeresett('utasok', 'utasazon', 'igszam', "'$igszam'")[0];
-            $dbhandler->noreturnselect("insert ignore into userdata values ($utasazon, '$regemail', '$encrypted')");
+            echo "<script>
+            alert('Hibás bemenet!')
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+            </script>";
         }
-        echo "<script>
-        alert('Sikeres regisztráció!')
-        </script>";
     }
-    catch (Exception $e)
-    {
-        echo "<script>
-        alert('Hibás bemenet!')
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('signup').style.display = 'block';
-        </script>";
-    }
+        else {
+            echo "<script>
+            alert('A megadott email cím már foglalt!');
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+            </script>";
+        }
 }
 else {
     echo "<script>
