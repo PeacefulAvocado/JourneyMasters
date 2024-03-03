@@ -154,6 +154,15 @@
                 }
                 
                 ?>
+                <input type="hidden" name="helyszin" value="<?php echo $hotel_nev?>">
+                <input type="hidden" name="utasok_szama" value="<?php echo $utasok_szama?>">
+                <input type="hidden" name="ellatas" value="<?php echo $ellatas?>">
+                <input type="hidden" name="utazasmod" value="" id="send_utazasmod">
+                <input type="hidden" name="honnan" value="<?php echo $honnan?>">
+                <input type="hidden" name="hova" value="<?php echo $varos?>">
+                <input type="hidden" name="mettol" value="<?php echo $mettol?>">
+                <input type="hidden" name="meddig" value="<?php echo $meddig?>">
+                <input type="hidden" name="ar" value="<?php echo $ar?>">
                 <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?php echo $utasok_szama;?>)'>
             </form>
                 
