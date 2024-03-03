@@ -22,6 +22,7 @@
 .login{
     margin-top: 5.5vw;
     height: auto;
+    min-height: 65vh;
     background: linear-gradient(var(--light-yellow), var(--yellow));
     padding: 5vw 5vw;
     height: auto;
@@ -86,6 +87,7 @@ label{
 .signup{
     margin-top: 5.5vw;
     height: auto;
+    min-height: 70vh;
     background: linear-gradient(var(--light-yellow), var(--yellow));
     padding: 5vw 5vw;
     position: relative;
@@ -98,7 +100,6 @@ label{
     width: 32vw;
     margin: 1vw auto auto auto;
     padding: 1vw;
-    height: 33vw;
     height: auto;
 }
 .userdata{
@@ -150,4 +151,154 @@ label{
     font-size: 0.8vw;
     margin-top: 0.5vw;
     margin-left: 1.2vw;
+}
+@media screen and (max-width: 1000px){
+    .login{
+        min-height: 71vh;
+    }
+    .logincim{
+        font-size: 5vw;
+        margin-bottom: 2vw;
+      }
+      .logincontainer{
+          width: 40vw;
+          height: 20vw;
+      }
+      label{
+          font-size: 2.5vw;
+      
+      }
+      .textinput{
+          font-size: 2.5vw;
+      }
+      .loginbtn{
+          position: absolute;
+          right: 1.3vw;
+          width: 40%;
+          font-size: 2.5vw;
+          margin-top: 1vw;
+      }
+      .regisztracioatlep{
+          margin-top: 1vw;
+          font-size: 2.2vw;
+      }
+      
+      .signupcontainer{
+          background-color: var(--white);
+          width: 45vw;
+          
+          height: 70vw;
+      }
+      .userdata{
+          width: 40vw;
+          margin: 1.5vw auto auto auto;
+      }
+      .adatok{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          width: 43vw;
+          margin:1vw auto auto auto;
+          text-align: left;
+      }
+      .adatok input{
+          text-align: left;
+          margin: 0.5vw 0;
+          font-size: 2.5vw;
+          padding-left: 0.1vw;
+      }
+      .adatok label{
+          margin: 0.5vw 0;
+      }
+      .adatok select{
+          height: 3vw;
+          font-size: 2vw;
+          padding-left: 0;
+      }
+      .signupbtn{
+          right: 2.5vw;
+          width: 45%;
+          font-size: 2.5vw;
+          margin-top: 1vw;
+      }
+      .bejelentkezesatlep{
+          font-size: 2.2vw;
+          margin-top: 1vw;
+          margin-left: 1.2vw;
+      }
+}
+@media screen and (max-width: 700px){
+    .login{
+        margin-top: 9vw;
+    }
+    .logincim{
+        font-size: 6vw;
+        margin-bottom: 2vw;
+      }
+      .logincontainer{
+          width: 60vw;
+          height: 34vw;
+      }
+      label{
+          font-size: 4vw;
+      
+      }
+      .textinput{
+          font-size: 4vw;
+      }
+      .loginbtn{
+          position: absolute;
+          right: 1.3vw;
+          width: 50%;
+          font-size: 4vw;
+          margin-top: 2vw;
+      }
+      .regisztracioatlep{
+          margin-top: 2vw;
+          font-size: 3.5vw;
+      }
+      .signup{
+        margin-top: 9vw;
+    }
+      .signupcontainer{
+          background-color: var(--white);
+          width: 70vw;
+          
+          height: 140vw;
+      }
+      .userdata{
+          width: 60vw;
+          margin: 1.5vw auto auto auto;
+      }
+      .adatok{
+          display: grid;
+          grid-template-columns: 1fr;
+          width: 50vw;
+          margin:1vw auto auto auto;
+          text-align: left;
+      }
+      .adatok input{
+          text-align: left;
+          margin: 0.1vw 0;
+          font-size: 4vw;
+          padding-left: 0.1vw;
+      }
+      .adatok label{
+          margin: 0.5vw 0;
+      }
+      .adatok select{
+          height: 5.3vw;
+          font-size: 3.5vw;
+          padding-left: 0;
+      }
+      .signupbtn{
+          right: 5vw;
+          width: 45%;
+          font-size: 4vw;
+          margin-top: 2vw;
+      }
+      .bejelentkezesatlep{
+          font-size: 3.5vw;
+          margin-top: 2vw;
+          margin-left: 1.2vw;
+      }
 }
