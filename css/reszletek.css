@@ -74,7 +74,9 @@
   margin-top: 50px;
 }
 
-
+.dotcontainer{
+  display: none;
+}
 .prev, .next {
   cursor: pointer;
   position: absolute;
