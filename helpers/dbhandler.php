@@ -34,6 +34,13 @@
             return $row;
         }
 
+        function getKeresettNoAktiv($tabla, $keresett_oszlop, $hasonlito_oszlop, $adat) 
+        {
+            $result = $this->conn->query("select $keresett_oszlop as '0' from $tabla where $hasonlito_oszlop = $adat");
+            $row = $result->fetch_assoc();
+            return $row;
+        }
+
         function setUtas($nev, $szulev, $szulho, $szulnap, $kor,$nem,$igtipus,$igszam,$tel,$email,$orszag,$irszam,$varos,$utca,$erttel,$ertemail,$biztnev,$fizmod) {
             $this->conn->query("INSERT IGNORE INTO utasok (nev, szulev, szulho, szulnap, kor, nem, igtipus, igszam, tel, email, orszag, irszam, varos, utca, erttel, ertemail, biztnev, fizmod, aktiv)  VALUES ('$nev', '$szulev', '$szulho', '$szulnap', '$kor', '$nem', '$igtipus', '$igszam', '$tel', '$email', '$orszag', '$irszam', '$varos', '$utca', '$erttel', '$ertemail', '$biztnev', '$fizmod', 1);");
 
