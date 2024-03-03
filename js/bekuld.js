@@ -1,6 +1,6 @@
 function bekuld(szam)
   {
-    if (document.getElementById('honnan').value == "" && document.getElementById('daterange').value == "")
+    if (document.getElementById('honnan').value == "" || document.getElementById('daterange').value == "")
     {
       alert("Adjon meg minden adatot!");
     }

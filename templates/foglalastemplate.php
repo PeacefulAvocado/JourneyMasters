@@ -115,7 +115,7 @@
                         <?php echo "<p class='sz2'>$utasok_szama x $ar HUF</p>"; ?>
                         <p class="sz1">Ellátás</p>
                         <?php echo "<p class='sz2'>$utasok_szama x ".($ar * $szorzo)." HUF</p>"; ?>
-                        <p class="sz1">Ellátás</p>
+                        <p class="sz1">Utazás</p>
                         <?php echo "<p class='sz2'>$utasok_szama x "."valami"." HUF</p>"; ?>
                     </div>
                         <?php echo "<p class='osszeg'>".($utasok_szama * $ar + $utasok_szama * ($ar * $szorzo))." HUF</p>"; ?>
@@ -126,6 +126,7 @@
     </div>
     <div class="utasadatok">
         <h3>Utasok adatai: </h3>
+
         <form action='../index/veglegesites.php' method='post' id="tovabb_form">
         <?php 
             for($i = 0; $i<$utasok_szama; $i++) {
@@ -165,7 +166,6 @@
                 <input type="hidden" name="ar" value="<?php echo $ar?>">
                 <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?php echo $utasok_szama;?>)'>
             </form>
-                
            
     </div>
 </div>
