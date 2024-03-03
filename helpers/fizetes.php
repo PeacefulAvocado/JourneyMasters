@@ -22,12 +22,13 @@
 
 
     $csomagid = $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count']+1;
+    $utazasazon = $dbhandler->select("select COUNT(*) as utazasazon from utazas ")[0]['utazasazon']+1;
     for($i = 0; $i<$utasok_szama; $i++) {
         $index = $i+1;
 
         $nev = $_POST["nev_$i"];
         $tel = $_POST["tel_$i"];
-
+        $email = $_POST["email_$i"]
         $szulid = $_POST["szulid_$i"];
 
         $szulido = explode('-', $szulid);
@@ -63,7 +64,7 @@
         }
         $utasazon = $dbhandler->getKeresett("utasok","utasazon","nev","'$nev'")[0];
 
-        $dbhandler->setUtazas($utasazon,$honnan,$hotel_nev,$mettol,$meddig,$utazasmod,$ellatas,$ar);
+        $dbhandler->setUtazas($utazasazon,$utasazon,$honnan,$hotel_nev,$mettol,$meddig,$utazasmod,$ellatas,$ar);
 
         $utazasazon = $dbhandler->select("select utazasazon from utazas where utasazon = $utasazon AND mettol = '$mettol'")[0]['utazasazon'];
 

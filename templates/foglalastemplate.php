@@ -140,6 +140,8 @@
                         <input type='text' name='nev_$i'>
                         <label>Telefonszám:</label>
                         <input type='tel' name='tel_$i'>
+                        <label>Email-cím:</label>
+                        <input type='email' name='e$i'>
                         <label>Szuletési idő:</label>
                         <input type='date' name='szulid_$i'>
                         <label>Neme:</label>

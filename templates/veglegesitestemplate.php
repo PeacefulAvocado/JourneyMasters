@@ -74,6 +74,7 @@
             $index = $i+1;
             $nev = $_POST["nev_$i"];
             $tel = $_POST["tel_$i"];
+            $tel = $_POST["tel_$i"];
             $szulid = $_POST["szulid_$i"];
             $nem = $_POST["nem_$i"];
             $orszag = $_POST["orszag_$i"];
@@ -91,6 +92,8 @@
                     <input type='text' name='nev_$i' readonly value='$nev'>
                     <label>Telefonszám:</label>
                     <input type='tel' name='tel_$i'  readonly value='$tel'>
+                    <label>Email-cím:</label>
+                    <input type='email' name='email_$i'  readonly value='$email'>
                     <label>Szuletési idő:</label>
                     <input type='date' name='szulid_$i' readonly value='$szulid'>
                     <label>Nem:</label>
