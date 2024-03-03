@@ -1,42 +1,43 @@
 <?php
     require('../fpdf186/fpdf.php');
     
+    $utas_szam = $_GET['utasszam'];
+    $ar = $_GET['ar'];
+    $orszag = $_GET['orszag'];
+    $cim = $_GET['lakcim'];
     //customer and invoice details
 
   $info=[
-    "customer"=>"Kiss Ernő",
-    "address"=>"Kossuth utca 68.",
-    "city"=>"Salem 636204.",
-    "invoice_no"=>"1000001",
-    "invoice_date"=>"30-11-2021",
-    "total_amt"=>"5200.00",
-    "words"=>"Rupees Five Thousand Two Hundred Only",
+    "customer"=>$_GET['nev'],
+    "address"=>$cim,
+    "city"=>$orszag,
+    "total_amt"=>$ar,
   ];
   
   
   //invoice Products
   $products_info=[
     [
-      "name"=>"Keyboard",
-      "price"=>"500.00",
-      "qty"=>2,
-      "total"=>"1000.00"
+      "name"=>"Utazas",
+      "price"=>"$ar",
+      "qty"=>"$utas_szam",
+      "total"=>strval(intval($ar)*intval($utas_szam))
     ],
     [
-      "name"=>"Mouse",
-      "price"=>"400.00",
-      "qty"=>3,
-      "total"=>"1200.00"
+      "name"=>"Szallas",
+      "price"=>"",
+      "qty"=>"$utas_szam",
+      "total"=>""
     ],
     [
-      "name"=>"UPS",
-      "price"=>"3000.00",
-      "qty"=>1,
-      "total"=>"3000.00"
+      "name"=>"Ellatas",
+      "price"=>"",
+      "qty"=>"$utas_szam",
+      "total"=>""
     ],
   ];
   function Convert($string){
-    return iconv('UTF-8', 'windows-1252', "$string");
+    return iconv('UTF-8', 'ISO-8859-2', "$string");
 }
   class PDF extends FPDF
   {
@@ -44,12 +45,13 @@
     function Header(){
       
       //Display Company Info
+      $this->Image('../img/kislogo2.png', 10, 10, -300);
       $this->SetFont('Arial','B',14);
       $this->Cell(50,10,Convert("JourneyMasters"),0,1);
       $this->SetFont('Arial','',14);
-      $this->Cell(50,7,"West Street,",0,1);
-      $this->Cell(50,7,"Salem 636002.",0,1);
-      $this->Cell(50,7,"PH : 8778731770",0,1);
+      $this->Cell(50,7,"VAC,",0,1);
+      $this->Cell(50,7,"HUNGARY",0,1);
+
       
       //Display INVOICE text
       $this->SetY(15);
@@ -67,35 +69,29 @@
       $this->SetY(55);
       $this->SetX(10);
       $this->SetFont('Arial','B',12);
-      $this->Cell(50,10,"Bill To: ",0,1);
+      $this->Cell(50,10,"SZAMLAZASI CIM: ",0,1);
       $this->SetFont('Arial','',12);
-      $this->Cell(50,7,$info["customer"],0,1);
-      $this->Cell(50,7,$info["address"],0,1);
-      $this->Cell(50,7,$info["city"],0,1);
+      $this->Cell(50,7,Convert($info["customer"]),0,1);
+      $this->Cell(50,7,Convert($info["address"]),0,1);
+      $this->Cell(50,7,Convert($info["city"]),0,1);
       
-      //Display Invoice no
-      $this->SetY(55);
-      $this->SetX(-60);
-      $this->Cell(50,7,"Invoice No : ".$info["invoice_no"]);
-      
-      //Display Invoice date
       $this->SetY(63);
       $this->SetX(-60);
-      $this->Cell(50,7,"Invoice Date : ".$info["invoice_date"]);
+      $this->Cell(50,7,"KELTEZES. : ".date("Y-m-d"));
       
       //Display Table headings
       $this->SetY(95);
       $this->SetX(10);
       $this->SetFont('Arial','B',12);
-      $this->Cell(80,9,"DESCRIPTION",1,0);
-      $this->Cell(40,9,"PRICE",1,0,"C");
-      $this->Cell(30,9,"QTY",1,0,"C");
-      $this->Cell(40,9,"TOTAL",1,1,"C");
+      $this->Cell(80,9,"LEIRAS",1,0);
+      $this->Cell(40,9,"AR",1,0,"C");
+      $this->Cell(30,9,"DARAB",1,0,"C");
+      $this->Cell(40,9,"OSSZESEN",1,1,"C");
       $this->SetFont('Arial','',12);
       
       //Display table product rows
       foreach($products_info as $row){
-        $this->Cell(80,9,$row["name"],"LR",0);
+        $this->Cell(80,9,Convert($row["name"]),"LR",0);
         $this->Cell(40,9,$row["price"],"R",0,"R");
         $this->Cell(30,9,$row["qty"],"R",0,"C");
         $this->Cell(40,9,$row["total"],"R",1,"R");
@@ -110,16 +106,9 @@
       }
       //Display table total row
       $this->SetFont('Arial','B',12);
-      $this->Cell(150,9,"TOTAL",1,0,"R");
+      $this->Cell(150,9,"OSSZESEN",1,0,"R");
       $this->Cell(40,9,$info["total_amt"],1,1,"R");
-      
-      //Display amount in words
-      $this->SetY(225);
-      $this->SetX(10);
-      $this->SetFont('Arial','B',12);
-      $this->Cell(0,9,"Amount in Words ",0,1);
-      $this->SetFont('Arial','',12);
-      $this->Cell(0,9,$info["words"],0,1);
+
       
     }
     function Footer(){
@@ -127,15 +116,12 @@
       //set footer position
       $this->SetY(-50);
       $this->SetFont('Arial','B',12);
-      $this->Cell(0,10,"for ABC COMPUTERS",0,1,"R");
       $this->Ln(15);
       $this->SetFont('Arial','',12);
       $this->Cell(0,10,"Authorized Signature",0,1,"R");
       $this->SetFont('Arial','',10);
       
-      //Display Footer Text
-      $this->Cell(0,10,"This is a computer generated invoice",0,1,"C");
-      
+  
     }
     
   }
