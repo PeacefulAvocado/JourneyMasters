@@ -245,3 +245,130 @@ color: var(--black);
     cursor: pointer;
     color: var(--white);
 }
+@media screen and (max-width: 1000px){
+    .profil{
+        padding: 1vw 5vw 5vw 5vw;
+    }
+    .emailcim{
+        font-size: 3.5vw;
+        padding-left: 5vw;
+    }
+    .vonal{
+        width: 100%;
+        margin: 0;
+        color: var(--black);
+    
+    }
+    .jelszovaltoztato{
+        width: 90%;
+        padding: 2vw 3%;
+        height: 10vw;
+    
+    }
+    .jelszavak{
+        left: 5%;
+        grid-template-columns: 1fr 1fr;
+    }
+    .jelszavak label{
+        font-size: 3vw;
+        margin: 0.5vw 0;
+    }
+    .textinput{
+        font-size: 3vw;
+        height: 3vw;
+    }
+    .jelszobtn{
+        top: 20%;
+        right: -5%;
+        font-size: 2.1vw;
+        width: 14vw;
+    }
+    .kiscim{
+        font-size: 3vw;
+        margin-top: 2vw;
+    }
+    
+    .utazasok{
+        margin-bottom: 3vw;
+    }
+    .tervezesegyeni{
+        margin-left: 2vw;
+        width: 80%;
+        height: 10vw;
+    }
+    .tervezesegyeni img{
+        height: 10vw;
+        width: 25%;
+    }
+    .hotelnev{
+        font-size: 3vw;
+        margin-top: 1vw;
+        padding-left: 1.5vw;
+    }
+    .stars{
+       margin-top: 1vw;
+       padding-left: 1vw;
+        font-size: 2.3vw;
+    }
+    .hotelcim{
+        left: 27%;
+        top: 35%;
+        font-size: 2.2vw;
+    }
+    .fok{
+        top: 7%;
+        right: 13%;
+        font-size: 2.6vw;
+    }
+    .newbutton {
+        right: 1%;
+        top: 19%;
+        width:6vw;
+        height:6vw;
+    }
+    .modositasbutton {
+        right: -12%;
+        top: 19%;
+        width:6vw;
+        height:6vw;
+    }
+    .torlesbutton{
+        right: -24%;
+        top: 19%;
+        width:6vw;
+        height:6vw;
+    }
+    .inaktiv::after{
+        left: 30%;
+        top: 20%;
+        font-size: 5vw;
+    }
+    .profiladatok{
+        position: relative;
+        height: auto;
+        padding-bottom: 12vw;
+    }
+    .adatok{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 90vw;
+    }
+    .adatok label{
+        font-size: 2.5vw;
+    }
+    .adatok input{
+        width: 20vw;
+        height: 2.8vw;
+        font-size: 2.5vw;
+    }
+    .adatok select{
+        width: 20.3vw;
+        height: 3vw;
+        font-size: 2vw;
+    }
+    .adatmodositas{
+        right: 2vw;
+        bottom: 5vw;
+        font-size: 3vw;
+    }
+}
