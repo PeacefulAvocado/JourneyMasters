@@ -6,7 +6,15 @@
         header("Location: ../index/login.php");
         exit();
     }
+    if(isset($_POST['delete'])){
+      $delete = explode('_',$_POST['delete']);
+      $melyik = intval(trim($delete[1]));
+      $tomb = $_SESSION['kosar_items'];
 
+      unset($tomb[$melyik]);
+      
+      $_SESSION['kosar_items'] = array_values($tomb);
+    }
    
 ?>
 <script src='https://kit.fontawesome.com/7ad21db75c.js' crossorigin='anonymous'></script>
@@ -28,6 +36,7 @@
      $kosar_items = $_SESSION['kosar_items'];
      //Végigmegy a $_SESSION['kosar_items'] tömbön, eldönti, hogy az adott elem csomag-e vagy nem, és ennek megfelelően lekérdezi, majd betölti az adatokat egy formba
   $i=0;
+  print_r($_SESSION['kosar_items']);
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
@@ -44,17 +53,19 @@
         for ($n = 0; $n < $stars; $n++) { 
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
-        echo " <form action='../index/foglalas.php' method='post' class='csomagform' id='a1'>
+        $ellatas= $item['ellatas'];
+        $utasok_szama = $item['utasok_szama'];
+        $csomag = 'true';
+
+        echo " <form action='../index/kosar.php' method='post' class='csomagform' id='form_$i'>
       <img src='../img/sydneyproba.jpg' alt='$varos'>
       <p class='csomaghotelnev'>".$celpont."</p>
       <p class='stars'>$stars_str</p>
       <p class='csomaghonnanhova'>$honnan — $varos</p>
       <p class='csomagdatum'>".$mettol."—".$meddig."</p>
-      <p class='fok'>".$item['utasok_szama']." fő</p>
-      <input type='hidden' name='csomag' value='true'>
-      <input type='hidden' name='datum'  value=''>
-      <input type='hidden' name='hotelcim' value=''>
-      <button class='newbutton' onclick='alert("."asda".")' type='button'></button>
+      <input type='number' class='fok' value='$utasok_szama' id='fok_$i'>
+      <input type='hidden' name='delete' value='form_$i'>
+      <button class='newbutton' onclick=\"Loadpagecsomag('$ellatas','$csomag','$hotel_nev','$csomagid','$i')\" type='button'></button>
       <input type='submit' class='torlesbutton' value=''>
     </form>";
         
@@ -70,19 +81,19 @@
       for ($n = 0; $n < $stars; $n++) { 
           $stars_str .= "<i class='fa-solid fa-star'></i>";
       }
-      
+      $ellatas= $item['ellatas'];
+      $utasok_szama = $item['utasok_szama'];
+      $csomag = 'false';
 
-      echo " <form action='../index/foglalas.php' method='post' class='tervezesegyeni'>
+      echo " <form action='../index/kosar.php' method='post' class='tervezesegyeni' id='form_$i'>
       <img src='../img/sydneyproba.jpg' alt='$varos'>
-      <p class='hotelnev'>".$item['hotel_nev']."</p>
+      <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars_str</p>
       <p class='egyenihonnanhova'>$honnan — $varos</p>
       <p class='egyenidatum'>".$mettol."—".$meddig."</p>
-      <p class='fok'>".$item['utasok_szama']." fő</p>
-      <input type='hidden' name='csomag' value='false'>
-      <input type='hidden' name='datum'  value=''>
-      <input type='hidden' name='hotelcim' value=''>
-      <button class='newbutton' onclick='alert("."asda".")' type='button'></button>
+      <input type='number' class='fok' value='$utasok_szama' id='fok_$i'>
+      <input type='hidden' name='delete' value='form_$i'>
+      <button class='newbutton' onclick=\"Loadpageegyeni('$ellatas','$csomag','$hotel_nev','$honnan','$mettol','$meddig','$i')\" type='button'></button>
       <input type='submit' class='torlesbutton' value=''>
     </form>";
     }
@@ -94,18 +105,7 @@
    
 
 
-    <form action="../index/foglalas.php" method="post" class="tervezesegyeni">
-      <img src="../img/sydneyproba.jpg" alt="Sydney">
-      <p class="hotelnev">Morocco Central</p>
-      <p class="stars"><i class='fa-solid fa-star'></i></p>
-      <p class="hotelcim">Sydney, Australia 30 Grosvenor St.</p>
-      <p class="fok">3 fő</p>
-      <input type="hidden" name="csomag" value="false">
-      <input type="hidden" name="datum"  value="">
-      <input type="hidden" name="hotelcim" value="">
-      <button class="newbutton" onclick="alert('asda')" type="button"></button>
-      <input type="submit" class="torlesbutton" value="">
-    </form>
+    
  
 </div>
 </div>

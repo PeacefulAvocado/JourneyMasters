@@ -17,5 +17,5 @@
     
     
 </body>
-
+<script src="../js/loadfoglalas.js"></script>
 </html>

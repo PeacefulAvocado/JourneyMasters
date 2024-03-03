@@ -76,6 +76,7 @@
     background-color: var(--white);
     border-radius: 1.5vw;
     margin-top: 1vw;
+    background-color: var(--lightblue);
 }
 .csomagform img{
     height: 6vw;
