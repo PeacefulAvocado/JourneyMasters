@@ -491,7 +491,7 @@ input.newbutton {
     .valaszto{
       height: auto;
       padding: 20px 10vw 3vw 10vw;
-
+      margin-top: 9vw;
     }
     input.newbutton{
       margin:auto;

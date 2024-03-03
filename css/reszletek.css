@@ -191,6 +191,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 1.5vw;
+    
   }
 
 select {
@@ -202,6 +203,7 @@ select {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 100%;
+  border: 1px solid red;
   width: 9vw;
   font-size: 0.8vw;
   cursor: pointer;
@@ -224,7 +226,7 @@ select {
   top: 53%;
   left: 20%;
   width: 60%;
-  border: 1px solid var(--black);
+  border: 1px solid red;
   border-radius: 12px;
   padding: 0;
 }
@@ -434,7 +436,9 @@ select {
 }
 }
 @media screen and (max-width: 700px){
-
+  .reszletek{
+    margin-top: 9vw;
+  }
   .lenti{
     grid-template-columns: 1fr;
   }

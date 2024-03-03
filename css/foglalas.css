@@ -465,7 +465,7 @@ h3 {
     .fizetes{
         margin-top: 3vw;
         font-size: 3vw;
-        width: 25vw;
+        width: 30vw;
 
     }
 }
@@ -551,6 +551,7 @@ h3 {
     .utazok_szama .kicsi {
         height: 0.5vw;
         font-size: 3.5vw;
+        left: 2vw;
     }
     
     .utazas {
@@ -621,7 +622,7 @@ h3 {
     .fizetes{
         margin-top: 3vw;
         font-size: 4.5vw;
-        width: 35vw;
+        width: 45vw;
 
     }
 }
