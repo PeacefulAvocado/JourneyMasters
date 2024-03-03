@@ -22,9 +22,10 @@
 .kosar{
     margin-top: 5.5vw;
     height: auto;
+    min-height: 80vh;
     background: linear-gradient(var(--light-yellow), var(--yellow));
     padding: 5vw 5vw;
-  height: auto;
+    height: auto;
 }
 .kosarcim{
   text-align: center;
@@ -127,4 +128,113 @@ color: var(--black);
     border:none;
     padding:0; 
     cursor:pointer;
+}
+@media screen and (max-width: 1000px){
+    .kosarcim{  
+        font-size: 5vw;
+        margin-bottom: 1vw;
+      }
+      .kiscim{
+          font-size: 3vw;
+      }
+      .tervezesegyeni{
+          margin-left: 5vw;
+          width: 80%;
+          height: 10vw;
+      }
+      .tervezesegyeni img{
+          height: 10vw;
+          width: 30%;
+      
+      }
+      .hotelnev{
+          font-size: 3vw;
+          padding-left: 2vw;
+          margin-top: 1vw;
+      }
+      .stars{
+            margin-top: 1.2vw;
+          padding-left: 2vw;
+          padding-top: 0;
+          font-size: 2.3vw;
+      }
+      .hotelcim{
+        left: 32.7%;
+        top: 35%;
+        font-size: 2vw;
+      }
+      .fok{
+          top: 7%;
+          right: 12%;
+          font-size: 2.5vw;
+      }
+      .newbutton {
+            right: 1%;
+          top: 21%;
+          width:6vw;
+          height:6vw;
+      
+      }
+      .torlesbutton{
+          right: -12%;
+          top: 22%;
+          width:6vw;
+          height:6vw;
+      }
+}
+@media screen and (max-width: 700px){
+    .kosar{
+        margin-top: 9vw;
+    }
+    .kosarcim{  
+        font-size: 7vw;
+        margin-bottom: 1vw;
+      }
+      .kiscim{
+          font-size: 4.5vw;
+      }
+      .tervezesegyeni{
+          margin-left: 2vw;
+          width: 88%;
+          height: 20vw;
+      }
+      .tervezesegyeni img{
+          height: 20vw;
+          width: 15%;
+      
+      }
+      .hotelnev{
+          font-size: 4.5vw;
+          padding-left: 1vw;
+          margin-top: 2vw;
+      }
+      .stars{
+            margin-top: 2vw;
+          padding-left: 2vw;
+          padding-top: 0;
+          font-size: 3.5vw;
+      }
+      .hotelcim{
+        left: 17%;
+        top: 35%;
+        font-size: 2.6vw;
+      }
+      .fok{
+          top: 15%;
+          right: 16%;
+          font-size: 4.5vw;
+      }
+      .newbutton {
+            right: 1%;
+          top: 28%;
+          width:9vw;
+          height:9vw;
+      
+      }
+      .torlesbutton{
+          right: -14%;
+          top: 28%;
+          width:9vw;
+          height:9vw;
+      }
 }

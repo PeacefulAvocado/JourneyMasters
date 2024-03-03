@@ -65,20 +65,20 @@
     <p class="kiscim">Utazási adatok</p>
     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
     <div class="adatok">
-        <label for="nev">Név:</label>
+        <label>Név:</label>
         <input type="text" name="nev">
-        <label for="tel">Telefonszám:</label>
+        <label>Telefonszám:</label>
         <input type="tel" name="tel">
-        <label for="szulid">Szuletési idő:</label>
+        <label>Szuletési idő:</label>
         <input type="date" name="szulid">
-        <label for="lakcim">Lakcím:</label>
+        <label>Lakcím:</label>
         <input type="text" name="lakcim">
-        <label for="igtipus">Igazolványtípus:</label>
+        <label>Igazolványtípus:</label>
         <select name="igtipus" id="igtipus">
           <option value="Személyi igazolvány">Személyi igazolvány</option>
           <option value="Útlevél">Útlevél</option>
         </select>
-        <label for="igszam">Igazolványszám:</label>
+        <label>Igazolványszám:</label>
         <input type="text" name="igszam">
     </div>
     <input type="submit" value="Módosítás" class="adatmodositas">

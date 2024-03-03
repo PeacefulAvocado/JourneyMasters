@@ -1,0 +1,231 @@
+:root {
+    --blue: #1c4484;
+    --ocean: #08b4e4;
+    --green: #45ac0d;
+    --green-pastel: #538D34;
+    --black: #000000;
+    --baseyellow: #ffd700;
+    --yellow: #FFDD66;
+    --light-yellow: #fff6d7;
+    --lightblue: #268FAC;
+    --white: #ffffff;
+    --orange: #FFB800;
+    --gray: #cfcfcf;
+  }
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+  }
+  .veglegesitesmain{
+      padding-top: 1px;
+  }
+  .veglegesites{
+    margin-top: 5.5vw;
+    height: auto;
+    background: linear-gradient(var(--light-yellow), #FFDD66);
+    padding: 1vw 0;
+  }
+  .veglegesitesfocim{
+    text-align: center;
+    font-size: 3.5vw;
+    font-weight: 700;
+    margin-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  .vonal{
+    margin-top: 30px;
+    width:71%;
+    border-top: 1px solid var(--black);
+
+  }
+  .container {
+    max-width: 30vw;
+    position: relative;
+    margin: auto;
+    height: auto;
+
+
+  }
+  .vegadatok{
+    width: 60vw;
+    margin: auto;
+    background-color: var(--white);
+    padding: 2vw 0;
+    border-radius: 0.7vw;
+  }
+  .sliderimg{
+      width:100%;
+      height:12vw;
+      object-fit: cover;
+      padding: 0px;
+      border-top-left-radius: 1vw;
+      border-top-right-radius: 1vw;
+      box-shadow: 6px 10px 22px 0px rgba(0,0,0,0.75);
+  }
+    .text {
+      background-color: rgb(235, 235, 235);
+      padding: 8px 0 0 0;
+      position: relative;
+      bottom: 8px;
+      width: 100%;
+      border-bottom-left-radius: 1vw;
+      border-bottom-right-radius: 1vw;
+      box-shadow: 6px 10px 22px 0px rgba(0,0,0,0.75);
+    }
+    .sliderhotelnev{
+      font-size: 1.4vw;
+      padding: 0 0 0 7vw;
+      margin: 3px 0;
+      color: var(--ocean);
+      display: inline;
+      float: left;
+      font-weight: 500;
+    }
+    .stars{
+      margin: 0.5vh 0;
+    padding: 0;
+      font-size: 1vw;
+    }
+    .slidercim{
+        color: var(--black);
+        font-size: 1.4vw;
+        padding: 0 0 2vw 3vw;
+        font-weight: 500;
+    }
+    .osszesadat{
+        display: grid;
+        grid-template-columns: 3fr 4fr;
+        padding: 0 5vw;
+    }
+    .balszoveg{
+        color: var(--black);
+        font-size: 2vw;
+        margin: 1vw 0;
+        font-weight: 700;
+        text-align: right;
+    }
+    .jobbszoveg{
+        color: var(--black);
+        font-size: 2vw;
+        margin: 1vw 0;
+        padding-left: 1vw;
+    }
+    .dolt{
+        font-style: italic;
+        font-weight: 400;
+    }
+    .kover{
+        font-weight: 700;
+    }
+
+
+    .utasadatok{
+        padding: 2vw 2vw;
+    }
+    h3 {
+        margin: 0;
+        font-size: 2vw;
+    }
+    .utasvonal{
+        width: 100%;
+        margin: 0;
+        color: var(--black);
+    
+    }
+    .utas{
+        padding: 0 2vw;
+    }
+    .utasszam{
+        color: var(--black);
+        font-size: 1.5vw;
+        margin-bottom: 0.3vw;
+    }
+    .utasdata{
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: left;
+        width: 25vw;
+        margin:0.5vw auto 0 1vw;
+    
+    }
+    .utasdata label{
+        padding-right: 1vw;
+        font-size: 1.5vw;
+        margin-bottom: 0.3vw;
+    }
+    .utasdata input{
+        margin-bottom: 0.5vw;
+        border-radius: 0.5vw;
+        border: 1px solid var(--black);
+        width: 100%;
+        height: 2vw;
+        font-size: 1.2vw;
+    }
+    .utasdata select{
+        margin-bottom: 1vw;
+        margin-top: 0;
+        border-radius: 0.5vw;
+        border: 1px solid var(--black);
+        width: 100%;
+        height: 2vw;
+        font-size: 1.2vw;
+    }
+    .fizetes{
+        background-color: var(--orange);
+        border:none;
+        margin-top: 2vw;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        font-size: 1.2vw;
+        font-weight: 600;
+        width: 12vw;
+        color: var(--white);
+        padding: 0.4vw 0;
+        border-radius: 1vw;
+        cursor: pointer;
+    }
+    .vegosszeg{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 50vw;
+      margin:auto;
+    }
+    .vonallent{
+      border-bottom: 1px solid var(--black);
+    }
+    .vegebal{
+      text-align: left;
+      margin: 0;
+      font-size: 2vw;
+      color: var(--black);
+      padding: 0.2vw 0;
+    }
+    .vegejobb{
+      text-align: right;
+      margin: 0;
+      font-size: 2vw;
+      color: var(--black);
+      padding: 0.2vw 0;
+    }
+    .fizetes{
+      background-color: var(--orange);
+      border:none;
+      margin-top: 2vw;
+      margin-left: auto;
+      margin-right: 4vw;
+      display: block;
+      font-size: 1.5vw;
+      font-weight: 600;
+      width: 12vw;
+      color: var(--white);
+      padding: 0.6vw 0;
+      border-radius: 1vw;
+      cursor: pointer;
+  }
+    
