@@ -257,6 +257,7 @@ h3 {
 }
 .utas{
     padding: 0 10vw;
+    position: relative;
 }
 .utasszam{
     color: var(--black);

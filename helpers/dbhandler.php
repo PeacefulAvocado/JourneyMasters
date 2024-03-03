@@ -40,6 +40,11 @@
             return $this->result_as_array($result);
         } 
 
+        function noreturnselect($sql)
+        {
+            $result = $this->conn->query($sql);
+        } 
+
         //SELECT * FROM helyszin ORDER BY nev LIMIT 2 OFFSET 2;
 
         function getHelyszinek() {
