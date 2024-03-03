@@ -129,6 +129,7 @@
 
         <form action='../index/veglegesites.php' method='post' id="tovabb_form">
         <?php 
+        
             for($i = 0; $i<$utasok_szama; $i++) {
                 $index = $i+1;
                 echo "<div class='utas'>
@@ -136,20 +137,32 @@
                 <hr class='vonal'>
                     <div class='utasdata'>
                         <label>Név:</label>
-                        <input type='text' name='nev.$i'>
+                        <input type='text' name='nev_$i'>
                         <label>Telefonszám:</label>
-                        <input type='tel' name='tel.$i'>
+                        <input type='tel' name='tel_$i'>
                         <label>Szuletési idő:</label>
-                        <input type='date' name='szulid.$i'>
+                        <input type='date' name='szulid_$i'>
+                        <label>Neme:</label>
+                        <select name='nem_$i'>
+                            <option value='Férfi'>Férfi</option> 
+                            <option value='Nő'>Nő</option>
+                            <option value='Egyéb'>Egyéb</option>
+                        </select>
+                        <label>Ország:</label>
+                        <input type='text' name='orszag_$i'>
+                        <label>Irányítószám:</label>
+                        <input type='text' name='irszam_$i'>
+                        <label>Település:</label>
+                        <input type='text' name='varos_$i'>
                         <label>Lakcím:</label>
-                        <input type='text' name='lakcim.$i'>
-                        <label >Igazolványtípus:</label>
-                        <select name='igtipus.$i' id='igtipus'>
+                        <input type='text' name='lakcim_$i'>
+                        <label>Igazolványtípus:</label>
+                        <select name='igtipus_$i' id='igtipus'>
                         <option value='Személyi igazolvány'>Személyi igazolvány</option>
                         <option value='Útlevél'>Útlevél</option>
                         </select>
                         <label>Igazolványszám:</label>
-                        <input type='text' name='igszam.$i'>
+                        <input type='text' name='igszam_$i'>
                     </div>
                     </div>";
                 }
@@ -164,6 +177,20 @@
                 <input type="hidden" name="mettol" value="<?php echo $mettol?>">
                 <input type="hidden" name="meddig" value="<?php echo $meddig?>">
                 <input type="hidden" name="ar" value="<?php echo $ar?>">
+                <div class="allando">
+                <label>Értesítési telefonszám:</label>
+                <input type="tel" name="erttel" id="erttel">
+                <label>Értesítési email-cím:</label>
+                <input type="email" name="ertemail" id="ertemail">
+                <label>Biztosító neve:</label>
+                <input type="text" name="biztnev" id="biztnev" value="JourneyMasters">
+                <label>Fizetési mód:</label>
+                <select name="fizmod" id="fizmod">
+                    <option value="payPal">PayPal</option>
+                    <option value="Banki átutalás">Banki átutalás</option>
+                    <option value="Hitelkártya">Hitelkártya</option>
+                </select>
+                </div>
                 <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?php echo $utasok_szama;?>)'>
             </form>
            

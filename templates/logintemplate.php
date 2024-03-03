@@ -88,7 +88,7 @@
         <div class="userdata">
             <label for="regemail">Email cím:</label>
             <br>
-            <input type="   " name="regemail" class="textinput" id="regemail">
+            <input type="email" name="regemail" class="textinput" id="regemail">
             <br>
             <label for="regjelszo">Jelszó:</label>
             <br>
@@ -103,6 +103,12 @@
                 <input type="tel" name="telefonszam"  class="textinput" id="telefonszam">
             <label for="szulid">Születési idő:</label>
                 <input type="date" name="szulid"  class="textinput" id="szulid">
+            <label for="nem">Neme:</label>
+                <select name="nem" id="nem" class="textinput">
+                    <option value="Férfi">Férfi</option> 
+                    <option value="Nő">Nő</option>
+                    <option value="Egyéb">Egyéb</option>
+                </select>
             <label for="irszam">Ország:</label>
                 <input type="text" name="orszag"  class="textinput" id="orszag">
             <label for="irszam">Irányítószám:</label>
