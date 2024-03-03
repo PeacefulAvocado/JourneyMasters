@@ -56,6 +56,7 @@ function bekuld(szam)
 
     if (count == utasok_szama) {
         console.log("sendable");
+        document.getElementById("send_utazasmod").value = document.getElementById("utazas").value;
         document.getElementById("tovabb_form").submit();
     } else {
         alert("Minden utas minden adatát adja meg!");
