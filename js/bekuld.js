@@ -7,7 +7,6 @@ function bekuld(szam)
     else {
       var datum = ((document.getElementById('daterange').value).replaceAll(' ', '')).split('-');
 
-
       var f = document.getElementById("hely"+String(szam));
       var hidden = document.createElement("input");
       hidden.type = "hidden";
