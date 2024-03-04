@@ -41,6 +41,16 @@
 .topnav a{
   margin-top: 1.5vw;
 }
+.kosardb{
+  position:absolute;
+  top: 0;
+  padding: 0 0.3vw;
+  margin-left: 1.5vw;
+  margin-top: 0.3vw;
+  background-color: red;
+  border-radius: 1vw;
+  color: var(--white);
+}
 .jobb{
   float:right;
   margin-left: 10vw;

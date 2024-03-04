@@ -1,8 +1,9 @@
 <?php
 require_once(__DIR__.'/../helpers/dbhandler.php');
 $dbhandler = new DbHandler();
+if(!isset($_SESSION)){
 session_start();
-
+}
 function encrypt($data, $key)
 {
     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));

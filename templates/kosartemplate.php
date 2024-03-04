@@ -1,7 +1,9 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
+    if(!isset($_SESSION)){
     session_start();
+    }
     if(!isset($_SESSION['utasid'])){
         header("Location: ../index/login.php");
         exit();

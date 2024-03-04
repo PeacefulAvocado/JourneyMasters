@@ -5,8 +5,9 @@
     $hotel_nev = $_GET['helyszin'];
     $ellatas = $_GET['ellatas'];
     $utasok_szama = $_GET['utasok_szama'];
-
+    if(!isset($_SESSION)){
     session_start();
+    }
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
