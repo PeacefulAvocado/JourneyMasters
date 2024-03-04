@@ -144,5 +144,16 @@ i{
     margin:0;
     position: fixed;
   }
+  .topnav.topnav.responsive .kosardb{
+    position:absolute;
+    top: 14.5vw;
+    padding: 0 0.3vw;
+    margin-left: 50vw;
+    margin-top: 0.3vw;
+    background-color: red;
+    border-radius: 1vw;
+    color: var(--white);
+    font-size: 3.5vw;
+  }
   
 }
