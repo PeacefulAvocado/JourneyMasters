@@ -72,12 +72,27 @@ i{
     font-size: 120%;
 }
 @media screen and (max-width: 700px) {
+  .topnav{
+    height: 10vw;
+  }
+  .navbarimg{
+    width:8vw;
+    
+  }
+.pnav{
+    font-size: 5vw;
+    position: absolute;
+    top: 2vw;
+}
   .topnav .jobb a{
     display: none;
   }
   .topnav a.icon {
     float: right;
     display: block;
+    font-size: 5vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
   }
   .topnav .navbarimg{
     padding:1vw 0 0 0!important;
@@ -92,10 +107,10 @@ i{
   }
   .topnav.responsive .icon {
     position: absolute;
-    right: 0;
-    top: -5.2vw;
+    right: 2vw;
+    top: -9.3vw;
     padding: 0 1vw;
-    font-size: 2.5vw;
+    font-size: 5vw;
   }
   .topnav.responsive .navbarimg{
     padding:0!important;
@@ -103,7 +118,7 @@ i{
   .topnav.responsive a {
     float: none;
     display: block;
-    font-size: 3vw;
+    font-size: 5vw;
     margin:0;
     padding: 1vw 1vw;
     background-color: var(--blue);

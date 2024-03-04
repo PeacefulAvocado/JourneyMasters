@@ -257,6 +257,7 @@ h3 {
 }
 .utas{
     padding: 0 10vw;
+    position: relative;
 }
 .utasszam{
     color: var(--black);
@@ -294,6 +295,12 @@ h3 {
     height: 2vw;
     font-size: 1.2vw;
 }
+.allando{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    width: 60vw;
+}
 .fizetes{
     background-color: var(--orange);
     border:none;
@@ -308,4 +315,324 @@ h3 {
     padding: 0.4vw 0;
     border-radius: 1vw;
     cursor: pointer;
+}
+@media screen and (max-width: 1000px){
+    h1 {
+        font-size: 5vw;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 10vw;
+    }
+/* Bal oldali adatok */
+    .kepes {
+        height: 30vw;
+        width: 40vw;
+    }
+    .kep {
+        width: 100%;
+        height: 50%;
+    }
+    
+    .hotelnev {
+        font-size: 3vw;
+        margin-top: 1vw;
+        margin-bottom: 2vw;
+    }
+    .cim {
+
+        color: var(--black);
+        font-size: 2.4vw;
+    }
+
+    /* Jobb oldali adatok */
+    .reszletek {
+        width: 40vw;
+        height: auto;
+    }
+    
+    .ellatas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 1vw;
+    }
+    
+    .e1 {
+        font-size: 2.5vw;
+        text-align: right;
+        padding-right: 1vw;
+    }
+    
+    .e2 {
+        font-size: 2.2vw;
+        width: 88%;
+        margin-left: 1vw;
+        text-align: left;
+        
+    }
+    
+    .etkezesek {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 0.5vw;
+    
+    }
+    .et1 {
+        font-size: 2.5vw;
+    }
+    
+    .et2 {
+        font-size: 2.5vw;
+    }
+    
+    .utazok_szama {
+        width: 80%;
+    }
+    
+    .utazok_szama .nagy {
+        font-size: 3vw;
+        width: 90%;
+        margin-top: 2vw;
+    }
+    
+    .utazok_szama .kicsi {
+        height: 0.5vw;
+        font-size: 2.4vw;
+    }
+    
+    .utazas {
+        font-size: 2vw;
+    }
+    
+    select {
+        font-size: 2.8vw;
+        width: 13vw;
+    }
+
+    .idopont {
+
+        font-size: 2vw;
+
+    }
+    
+    .reszek {
+        font-size: 2.3vw;
+    }
+
+    
+    .osszeg {
+        font-size: 2.3vw;
+        padding-right: 5vw;
+    }
+    
+    /* Utasok adatai */
+    .utasadatok{
+        padding: 2vw 4vw;
+    }
+    h3 {
+        margin: 0;
+        font-size: 4vw;
+    }
+    .vonal{
+        width: 100%;
+        margin: 0;
+        color: var(--black);
+    
+    }
+    .utas{
+        padding: 0 2vw;
+    }
+    .utasszam{
+
+        font-size: 3vw;
+
+    }
+    .utasdata{
+        display: grid;
+        grid-template-columns: 2fr 3fr 2fr 3fr;
+        width: 86vw;
+        margin:1vw auto 0 auto;
+    
+    }
+    .utasdata label{
+        padding-right: 1vw;
+        font-size: 2.1vw;
+    }
+    .utasdata input{
+
+        height: 2.5vw;
+        font-size: 2.5vw;
+    }
+    .utasdata select{
+
+        height: 3.3vw;
+        font-size: 2.5vw;
+    }
+    .fizetes{
+        margin-top: 3vw;
+        font-size: 3vw;
+        width: 30vw;
+
+    }
+}
+@media screen and (max-width: 700px){
+    .foglalas{
+        padding-top: 6vw;
+    }
+    h1 {
+        font-size: 6vw;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 10vw;
+    }
+/* Bal oldali adatok */
+    .kepes {
+        height: 50vw;
+        width: 70vw;
+    }
+    .kep {
+        width: 100%;
+        height: 60%;
+    }
+    
+    .hotelnev {
+        font-size: 4.5vw;
+        margin-top: 1vw;
+        margin-bottom: 2vw;
+    }
+    .cim {
+        color: var(--black);
+        font-size: 3.5vw;
+    }
+
+    /* Jobb oldali adatok */
+    .reszletek {
+        width: 70vw;
+        height: auto;
+    }
+    
+    .ellatas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 1vw;
+    }
+    
+    .e1 {
+        font-size: 4vw;
+        text-align: right;
+        padding-right: 1vw;
+    }
+    
+    .e2 {
+        font-size: 3.7vw;
+        width: 88%;
+        margin-left: 1vw;
+        text-align: left;
+        
+    }
+    
+    .etkezesek {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-top: 0.5vw;
+    
+    }
+    .et1 {
+        font-size: 4vw;
+    }
+    
+    .et2 {
+        font-size: 4vw;
+    }
+    
+    .utazok_szama {
+        width: 80%;
+    }
+    
+    .utazok_szama .nagy {
+        font-size: 4vw;
+        width: 90%;
+        margin-top: 3vw;
+    }
+    
+    .utazok_szama .kicsi {
+        height: 0.5vw;
+        font-size: 3.5vw;
+        left: 2vw;
+    }
+    
+    .utazas {
+        font-size: 4vw;
+    }
+    
+    select {
+        font-size: 4vw;
+        width: 21vw;
+    }
+
+    .idopont {
+        font-size: 4vw;
+    }
+    
+    .reszek {
+        font-size: 3.7vw;
+    }
+
+    
+    .osszeg {
+        font-size: 3.7vw;
+        padding-right: 10vw;
+    }
+    
+    /* Utasok adatai */
+    .utasadatok{
+        padding: 2vw 4vw;
+    }
+    h3 {
+        margin: 0;
+        font-size: 5vw;
+    }
+    .vonal{
+        width: 100%;
+        margin: 0;
+        color: var(--black);
+    
+    }
+    .utas{
+        padding: 0;
+    }
+    .utasszam{
+
+        font-size: 4vw;
+
+    }
+    .utasdata{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        width: 90vw;
+        margin:1vw auto 0 auto;
+    
+    }
+    .utasdata label{
+        padding-right: 1vw;
+        font-size: 3vw;
+    }
+    .utasdata input{
+
+        height: 4vw;
+        font-size: 3vw;
+    }
+    .utasdata select{
+        height: 5vw;
+        font-size: 2.5vw;
+    }
+    .fizetes{
+        margin-top: 3vw;
+        font-size: 4.5vw;
+        width: 45vw;
+
+    }
 }

@@ -491,7 +491,7 @@ input.newbutton {
     .valaszto{
       height: auto;
       padding: 20px 10vw 3vw 10vw;
-
+      margin-top: 9vw;
     }
     input.newbutton{
       margin:auto;
@@ -507,6 +507,17 @@ input.newbutton {
     }
     .sliderimg{
       height: 24vw;
+    }
+    .prev, .next {
+      font-size: 6vw;
+    }
+    .next {
+      right: -6vw;
+  
+    }
+    .prev{
+      left: -6vw;
+  
     }
     .ajanlatokkozep{
       height: auto;
@@ -535,6 +546,10 @@ input.newbutton {
     .sliderar{
       
       font-size: 2.4vw;
+    }
+    .dot{
+      height: 1.5vw;
+      width: 1.5vw;
     }
     .szovegek{
       grid-template-columns: 1fr;

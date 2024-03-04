@@ -96,8 +96,8 @@
         $stars.="<i class='fa-solid fa-star'></i>";
       }
 
-      echo "<form action='../index/reszletek.php' method='get' class='tervezesegyeni' id='hely'>
-      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      echo "<form action='../index/reszletek.php' method='get' class='tervezesegyeni' id='hely".$i."'>
+      <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='$varos'>
       <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars</p>
       <br>
@@ -105,7 +105,7 @@
       <p class='ar'>$ar Ft / fő -től</p>
       <input type='hidden' name='csomag' value='false'>
       <input type='hidden' name='hotelcim' value='$cim'>
-      <input type='button' value='' class='newbutton button' onclick='bekuld()'>
+      <input type='button' value='' class='newbutton button' onclick='bekuld(".$i.")'>
     </form>";
     }
   }
@@ -150,7 +150,7 @@
         }
 
 
-      echo "<form action='../index/foglalas.php' method='get' class='csomagform' id='a1'>
+      echo "<form action='../index/reszletek.php' method='get' class='csomagform' id='a1'>
       <img src='../img/helyszinimg/$celpont/1.jpg' alt='$varos'>
       <p class='varosnev'>$varos</p>
       <br>

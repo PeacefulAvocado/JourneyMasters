@@ -66,8 +66,6 @@
 
 .mySlides {display: none}
 
-
-
 .slideshow-container {
 
   max-width: 70vw;
@@ -76,7 +74,9 @@
   margin-top: 50px;
 }
 
-
+.dotcontainer{
+  display: none;
+}
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -193,6 +193,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 1.5vw;
+    
   }
 
 select {
@@ -204,6 +205,7 @@ select {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 100%;
+  border: 1px solid red;
   width: 9vw;
   font-size: 0.8vw;
   cursor: pointer;
@@ -226,7 +228,7 @@ select {
   top: 53%;
   left: 20%;
   width: 60%;
-  border: 1px solid var(--black);
+  border: 1px solid red;
   border-radius: 12px;
   padding: 0;
 }
@@ -309,4 +311,235 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 10px;
   cursor: pointer;
 }
+@media screen and (max-width: 1000px){
+  .reszletekhotelnev{
+    font-size: 7vw;
+  }
 
+  .reszletekdatum{
+    font-size: 4vw;
+  }
+
+.slideshow-container {
+  max-width: 90vw;
+}
+
+.sliderimg{
+    width:100%;
+    height:40vw;
+}
+
+.numbertext {
+  font-size: 3vw;
+}
+
+#reszletekvonal{
+    width:85%;
+  }
+  .lenti{
+    grid-template-columns: 1fr 1fr;
+  }
+  .szolgaltatasok{
+    left:20%;
+    width: 70%;
+  }
+  .szolgaltatasokcim{
+    font-size: 3vw;
+    padding-left: 0;
+  }
+  .szolgaltatasokvonal{
+    margin:1% 0;
+  }
+  .szolgaltatassor{
+    font-size: 2.5vw;
+  }
+  .ikon{
+    width: 10%;
+  }
+  .foglalas{
+    left: 10%;
+    top: 8%;
+    width:70%;
+    height: 40vw;
+  }
+
+  .ellatas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+  }
+  .ellatas label{
+    font-size: 2vw;
+  }
+
+select {
+  text-overflow: hidden;
+  width: 18vw;
+  font-size: 2vw;
+  border-radius: 0.4vw;
+  height: 3.5vw;
+
+}
+
+.etkezesek {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  padding: 0 1.5vw;
+}
+.etkezesek div span{
+  font-size: 2vw;;
+}
+
+.utazok_szama {
+  left: 10%;
+  width: 80%;
+  height: 7vw;
+}
+.utazok_szama p {
+  color: var(--black);
+  margin: 0;
+  text-align: center;
+}
+  
+.utazok_szama .nagy {
+  font-size: 2.5vw;
+  width: 90%;
+  margin-top: 2vw;
+  background-color: transparent;
+}
+
+.utazok_szama .kicsi {
+  position: relative;
+  height: 0.4vw;
+  font-size: 2.5vw;
+  padding-left: 1vw;
+}
+
+.ar {
+  position: absolute;
+  top: 75%;
+}
+
+.ar p {
+  text-align: center;
+  font-size: 2.5vw;
+}
+.submit {
+  position: absolute;
+  top: 85%;
+  width: 70%;
+  left: 16%;
+}
+.tobb{
+  font-size: 2.5vw;
+  width: 67%;
+
+}
+}
+@media screen and (max-width: 700px){
+  .reszletek{
+    margin-top: 9vw;
+  }
+  .lenti{
+    grid-template-columns: 1fr;
+  }
+  .szolgaltatasok{
+    left:5%;
+    width: 90%;
+    margin-top:0;
+    margin-bottom: 0;
+  }
+  .szolgaltatasokcim{
+    font-size: 5vw;
+    padding-left: 0;
+    margin-top: 1vw;
+  }
+  .szolgaltatasokvonal{
+    margin:1% 0;
+  }
+  .szolgaltatassor{
+    font-size: 5vw;
+  }
+  .ikon{
+    width: 7%;
+  }
+  .foglalas{
+    left: 10%;
+    top: 0;
+    width:80%;
+    height: 90vw;
+  }
+
+  .ellatas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+  }
+  .ellatas label{
+    font-size: 5vw;
+  }
+
+select {
+  width: 35vw;
+  font-size: 4.2vw;
+  height: 6vw;
+
+}
+
+.etkezesek {
+  width: 95%;
+  top:25%;
+}
+.etkezesek div span{
+  font-size: 4vw;;
+}
+
+.utazok_szama {
+  left: 10%;
+  width: 80%;
+  height: 13vw;
+  top: 60%;
+}
+.utazok_szama p {
+  color: var(--black);
+  margin: 0;
+  text-align: center;
+}
+  
+.utazok_szama .nagy {
+  font-size: 5.5vw;
+  width: 90%;
+  margin-top: 4vw;
+  background-color: transparent;
+}
+
+.utazok_szama .kicsi {
+  position: relative;
+  height: 0.4vw;
+  font-size: 4.5vw;
+  padding-left: 1vw;
+}
+
+.ar {
+  position: absolute;
+  top: 77%;
+}
+
+.ar p {
+  text-align: center;
+  font-size: 5.5vw;
+}
+.submit {
+  position: absolute;
+  top: 86%;
+  width: 70%;
+  left: 16%;
+}
+.tobb{
+  font-size: 5.5vw;
+  width: 67%;
+}
+
+
+}

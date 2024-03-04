@@ -38,7 +38,7 @@
   }
   #utazasokvonal{
     width:80%;
-    border-top: 1px solid var(--lightgray);
+    border-top: 1px solid var(--black);
   }
   .utazaskontener{
     width:100%;
@@ -177,4 +177,178 @@
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+}
+@media screen and (max-width: 1000px){
+  .utazasokfocim{
+    font-size: 4.5vw;
+  }
+  .utazaskontener{
+    height: 45vw;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    position: relative;
+  }
+  
+  .utazaskontener img {
+    width: 60vw; 
+    height: 35vw; 
+    object-fit: cover;
+    z-index: 2;
+}
+
+  .utazasokdetails{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    width: 60%;
+    height: 35vw;
+    z-index: 1;
+  }
+  #a1{
+    background-color: var(--lightblue);
+  }
+
+  #a2 {
+    background-color: var(--red);
+  }
+
+  #a3 {
+    background-color: var(--green-pastel);
+  }
+  .utazasokajanlattext {
+    width:55%;
+  }
+  .utazasokajanlatfocim{
+    font-size: 4vw;
+    margin-top: 1.5vw;
+
+  }
+  .utazasokajalnatszoveg{
+    font-size: 1.5vw;
+    color: var(--white);
+    font-weight: 500;
+    text-align: justify;
+  }
+  .utazasokajalnathotelnev{
+    font-size: 1.8vw;
+    margin:0;
+  }
+  .stars{
+    margin: 1vh 0;
+    font-size: 1.8vw;
+  }
+  .utazasokajalnatrepter{
+    font-size: 2vw;
+  }
+  .utazasokajalnatdatum{
+    font-size: 1.5vw;
+  }
+  .utazasokajalnatar{
+    right: 30px;
+    top:27vw;
+    font-size: 2vw;
+  }
+  .utazasokmegnezem{
+    position: absolute;
+    top: 28vw;
+    font-size: 2vw;
+    padding: 2% 20px;
+    border-radius: 2vw;
+  }
+  .tobb{
+    font-size: 2.5vw;
+    width: 16%;
+  }
+
+.vege {
+    font-size: 2.5vw;
+    width: 16%;
+}
+}
+@media screen and (max-width: 700px){
+  .utazasok{
+    margin-top: 9vw;
+  }
+  .utazasokfocim{
+    font-size: 6vw;
+  }
+  .utazaskontener{
+    height: 120vw;
+    margin-top: 5vh;
+    margin-bottom: 0;
+    position: relative;
+  }
+  
+  .utazaskontener img {
+    width: 100vw; 
+    height: 50vw; 
+    object-fit: cover;
+    z-index: 2;
+}
+
+  .utazasokdetails{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    width: 100vw;
+    height: 70vw;
+    z-index: 1;
+  }
+  #a1{
+    background-color: var(--lightblue);
+  }
+
+  #a2 {
+    background-color: var(--red);
+  }
+
+  #a3 {
+    background-color: var(--green-pastel);
+  }
+  .utazasokajanlattext {
+    width:90%;
+    padding: 0 0 0 5%;
+  }
+  .utazasokajanlatfocim{
+    font-size: 6vw;
+    margin-top: 1.5vw;
+
+  }
+  .utazasokajalnatszoveg{
+    font-size: 3vw;
+  }
+  .utazasokajalnathotelnev{
+    font-size: 5vw;
+    margin:0;
+  }
+  .stars{
+    margin: 1vh 0;
+    font-size: 4.5vw;
+  }
+  .utazasokajalnatrepter{
+    font-size: 4vw;
+  }
+  .utazasokajalnatdatum{
+    font-size: 3.8vw;
+  }
+  .utazasokajalnatar{
+    right: 30px;
+    top:50vw;
+    font-size: 4vw;
+  }
+  .utazasokmegnezem{
+    top: 52vw;
+    font-size: 4vw;
+    padding: 2% 20px;
+    border-radius: 2vw;
+  }
+  .tobb{
+    font-size: 5vw;
+    width: 25%;
+  }
+
+.vege {
+    font-size: 6vw;
+    width: 40%;
+}
 }

@@ -43,7 +43,7 @@ $len = count($csomagok);
         }
 
 
-      echo "<form action='../index/foglalas.php' method='get' class='csomagform' id='a1'>
+      echo "<form action='../index/reszletek.php' method='get' class='csomagform' id='a1'>
       <img src='../img/helyszinimg/$celpont/1.jpg' alt='$varos'>
       <p class='varosnev'>$varos</p>
       <br>
