@@ -157,7 +157,7 @@
         <input type="hidden" name="ertemail" value="<?php echo $ertemail?>">
         <input type="hidden" name="biztnev" value="<?php echo $biztnev?>">
         <input type="hidden" name="fizmod" value="<?php echo $fizmod?>">
-        <input type="submit" class="fizetes" value="Fizetes">
+        <input type="submit" class="fizetes" value="Fizetés">
 </form>
 
     </div>
