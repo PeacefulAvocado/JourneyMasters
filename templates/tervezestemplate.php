@@ -18,9 +18,9 @@
 
 <div class="tervezesmain">
 <div class="tervezes">
-<div class="valaszto">
+<div class="valaszto" >
 
-<form class="tervezesform" action="" method="get" id="kereso">
+<form class="tervezesform" action="" method="get" id="kereso" onload="emptyContainers()">
     <div class="formtop">
         <p class="tervezescim">Tervezés:</p>
         <img src="../img/globepin.png" alt="Földgömb" class="ikon">
@@ -45,7 +45,9 @@
         <div class="datumdiv">
         <label for="daterange" class="kezdetlabel">Indulás dátuma:</label>
         <label for="daterange" class="veglabel">Visszaút dátuma:</label>
-        <input type="text" name="daterange" class="daterange" value="01/01/2024 - 01/15/2024" id="daterange">
+
+        <input type="text" name="dates" class="daterange" value="01/01/2024 - 01/15/2024"  id="daterange"/>
+
         </div>
 </form>
 </div>
@@ -54,6 +56,34 @@
   <hr class="vonal">
   <div class="szallashelycontainer" id="helyszinek">
     <?php 
+    if($celpont != ""){
+      $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 and varos like '%$celpont%' limit 0, 3");
+      $vege = count($helyszin);
+      for($i = 0; $i < $vege;$i++) {
+        $hotel_nev = $helyszin[$i]['nev'];
+        $varos = $helyszin[$i]['varos'];
+        $cim = $helyszin[$i]['cim'];
+        $csillag = $helyszin[$i]['csillag'];
+        $ar = $helyszin[$i]['ar'];
+        $stars = "";
+        for($j = 0; $j < $csillag;$j++) {
+          $stars.="<i class='fa-solid fa-star'></i>";
+        }
+  
+        echo "<form action='../index/reszletek.php' method='get' class='tervezesegyeni' id='hely'>
+        <img src='../img/sydneyproba.jpg' alt='$varos'>
+        <p class='hotelnev'>$hotel_nev</p>
+        <p class='stars'>$stars</p>
+        <br>
+        <p class='hotelcim'>$varos, $cim</p>
+        <p class='ar'>$ar Ft / fő -től</p>
+        <input type='hidden' name='csomag' value='false'>
+        <input type='hidden' name='hotelcim' value='$cim'>
+        <input type='button' value='' class='newbutton button' onclick='bekuld()'>
+      </form>";
+    }
+  }
+    else{
     $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 and varos like '%%' limit 0, 3");
     for($i = 0; $i < 3;$i++) {
       $hotel_nev = $helyszin[$i]['nev'];
@@ -78,6 +108,8 @@
       <input type='button' value='' class='newbutton button' onclick='bekuld(".$i.")'>
     </form>";
     }
+  }
+  
     ?>
 
 </div>
@@ -91,8 +123,9 @@
   <hr class="vonal">
   <div class="csomagcontainer" id="csomagcontainer">
   <?php 
-    $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%%' limit 0, 3");
-
+  if($celpont != ""){
+    $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%$celpont%' limit 0, 3");
+    $vege = count($csomagok);
     for($i = 0; $i < count($csomagok);$i++) {
       
       $varos = $csomagok[$i]['varos'];
@@ -131,6 +164,49 @@
       <input type='submit' value='' class='newbutton button'>
     </form>";
     }
+}
+else{
+    $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%%' limit 0, 3");
+
+    for($i = 0; $i < 3;$i++) {
+      
+      $varos = $csomagok[$i]['varos'];
+      $celpont = $csomagok[$i]['celpont'];
+      $honnan = $csomagok[$i]['honnan'];
+      $mettol = $csomagok[$i]['mettol'];
+      $meddig = $csomagok[$i]['meddig'];
+      $ar = $csomagok[$i]['ar'];
+      $utazasmod = $csomagok[$i]['utazasmod'];
+      $csomagid = $csomagok[$i]['csomagid'];
+      
+      if ($utazasmod == 'Repülő') 
+        {
+            $utazasmod = "plane";
+        }
+        else if ($csomagok[$i]['utazasmod'] == 'Vonat') 
+        {
+            $utazasmod = "train";
+        }
+        else {
+            $utazasmod = "bus";
+        }
+
+
+      echo "<form action='../index/foglalas.php' method='get' class='csomagform' id='a1'>
+      <img src='../img/helyszinimg/$celpont/1.jpg' alt='$varos'>
+      <p class='varosnev'>$varos</p>
+      <br>
+      <p class='repter'>$honnan<i class='fa-solid fa-$utazasmod' style='color:#000000'></i>$varos</p>
+      <br>
+      <p class='datum'>$mettol  — $meddig</p>
+      <p class='ar'>$ar Ft / fő -től</p>
+      <input type='hidden' name='csomag' value='true'>
+      <input type='hidden' name='helyszin' id='helyszin' value='$celpont'>
+      <input type='hidden' name='csomagid' value='$csomagid'>
+      <input type='submit' value='' class='newbutton button'>
+    </form>";
+    }
+  }
     ?>
     
   </div>
@@ -142,14 +218,11 @@
 
 
 
+
+
+
 <script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-    opens: 'right'
-  }, function(start, end, label) {
-    
-  });
-});
+$('input[name="dates"]').daterangepicker();
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../js/load-more-tervez-helyszin.js"></script>

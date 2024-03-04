@@ -1,40 +1,60 @@
 <?php
-require_once(__DIR__."/../helpers/dbhandler.php");
-$dbhandler = new DbHandler();
-$csomag = $_GET['csomag'];
-$hotel_nev = $_GET['helyszin'];
-$ellatas = $_GET['ellatas'];
-$utasok_szama = $_GET['utasok_szama'];
+    require_once(__DIR__."/../helpers/dbhandler.php");
+    $dbhandler = new DbHandler();
+    $csomag = $_GET['csomag'];
+    $hotel_nev = $_GET['helyszin'];
+    $ellatas = $_GET['ellatas'];
+    $utasok_szama = $_GET['utasok_szama'];
 
-switch ($ellatas) {
-    case "Csak Szállás":
-        $etkezesek = "Nincs";
-        $szorzo = 0;
-        break;
-    case "All inclusive":
-        $etkezesek = "Reggeli<br>Ebéd<br>Vacsora<br>Szobaszervíz";
-        $szorzo = 1;
-        break;
-    case "Félpanzió":
-        $etkezesek = "Reggeli<br>Vacsora";
-        $szorzo = 0.5;
-        break;
-    case "Teljes panzió":
-        $etkezesek = "Reggeli<br>Ebéd<br>Vacsora";
-        $szorzo = 0.8;
-        break;
-    case "Szállás és Reggeli":
-        $etkezesek = "Reggeli";
-        $szorzo = 0.2;
-        break;
-}
-if ($csomag == "true") {
-    $csomagid = $_GET['csomagid'];
-} else {
-    $honnan = $_GET['honnan'];
-    $mettol = $_GET['mettol'];
-    $meddig = $_GET['meddig'];
-}
+    session_start();
+    if(!isset($_SESSION['kosar_items'])){
+        $_SESSION['kosar_items'] = array();
+    }
+    if(isset($_GET['toremove'])){
+        $delete = explode('_',$_GET['toremove']);
+        $melyik = intval(trim($delete[1]));
+        $tomb = $_SESSION['kosar_items'];
+        unset($tomb[$melyik]);
+        $_SESSION['kosar_items'] = array_values($tomb);
+    }
+    
+
+    switch ($ellatas)
+    {
+        case "Csak Szállás":
+            $etkezesek = "Nincs";
+            $szorzo = 0;
+            break;
+        case "All inclusive":
+            $etkezesek = "Reggeli<br>Ebéd<br>Vacsora<br>Szobaszervíz";
+            $szorzo = 1;
+            break;
+        case "Félpanzió":
+            $etkezesek = "Reggeli<br>Vacsora";
+            $szorzo = 0.5;
+            break;
+        case "Teljes panzió":
+            $etkezesek = "Reggeli<br>Ebéd<br>Vacsora";
+            $szorzo = 0.8;
+            break;
+        case "Szállás és Reggeli":
+            $etkezesek = "Reggeli";
+            $szorzo = 0.2;
+            break;
+    }
+   if ($csomag == "true")
+    {
+        $csomagid = $_GET['csomagid'];
+        $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+
+    }
+    else {
+        $honnan = $_GET['honnan'];
+        $mettol = $_GET['mettol'];
+        $meddig = $_GET['meddig'];
+        $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+    }
+
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

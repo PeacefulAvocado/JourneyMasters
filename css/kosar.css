@@ -69,23 +69,102 @@
     float:left;
 
 }
+.csomagform{
+    margin-left: 10vw;
+    width: 70%;
+    position: relative;
+    height: 6vw;
+    background-color: var(--white);
+    border-radius: 1.5vw;
+    margin-top: 1vw;
+    background-color: var(--lightblue);
+}
+.csomagform img{
+    height: 6vw;
+    width: 30%;
+    object-fit: cover;
+    border-top-left-radius: 1.5vw;
+    border-bottom-left-radius: 1.5vw;
+    float:left;
+
+}
+.csomaghotelnev{
+    color: var(--white);
+    display: inline;
+    float: left;
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding-left: 1.3vw;
+    margin-top: 0.7vw;
+}
+.csomaghonnanhova{
+    position: absolute;
+    left: 32%;
+    top: 17%;
+    font-size: 1.2vw;
+    color: var(--yellow);
+}
+.csomagdatum{
+    position: absolute;
+    left: 32%;
+    top: 50%;
+    font-size: 1vw;
+    color: var(--white); 
+    font-style: italic;
+
+}
+.kiscsomag{
+    position: relative;
+}
+.kuldesform{
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 20vw;
+    top: 0.6vw;
+    z-index: 10;
+    padding-bottom: 4vw;
+
+}
+#a1{
+    background-color: var(--lightblue);
+}
 .hotelnev{
     color: var(--ocean);
     display: inline;
     float: left;
     font-size: 1.2vw;
     font-weight: 500;
-    padding-left: 3vw;
+    padding-left: 1.3vw;
+    margin-top: 0.7vw;
 }
 .stars{
     color: var(--baseyellow);
     display:inline;
-    left: 40%;
-    top: 10%;
+    left: 35%;
+    top: 5%;
     float:left;
-    padding-left: 2vw;
+    padding-left: 1vw;
     padding-top: 0.3vw;
     font-size: 0.9vw;
+    margin-top: 0.5vw
+}
+.egyenihonnanhova{
+    position: absolute;
+    left: 32%;
+    top: 17%;
+    font-size: 1.2vw;
+    color: var(--black);
+    font-weight: 500;
+}
+.egyenidatum{
+    position: absolute;
+    left: 32%;
+    top: 50%;
+    font-size: 1vw;
+    color: var(--black); 
+    font-style: italic;
+
 }
 .hotelcim{
 position: absolute;

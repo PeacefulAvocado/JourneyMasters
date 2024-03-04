@@ -153,6 +153,9 @@
     color: var(--black);
 
 }
+.szallashelycontainer{
+    min-height: 20vw;
+}
 .tervezesegyeni{
     margin: auto;
     width: 70%;
