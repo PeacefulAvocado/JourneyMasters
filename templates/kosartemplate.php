@@ -70,6 +70,8 @@
       <input type='hidden' name='csomag' value='true'>
       <input type='hidden' name='helyszin' value='$hotel_nev'>
       <input type='hidden' name='csomagid' value='$csomagid'>
+      <input type='hidden' name='ellatas' value='$ellatas'>
+      <input type='hidden' name='utasok_szama' value='$utasok_szama'>
       <input type='hidden' name='todelete' value='form_$i'>
       <input class='newbutton' type='submit' value=''>
     </form></div>"
@@ -107,6 +109,8 @@
       <input type='hidden' name='honnan' value='$honnan'>
       <input type='hidden' name='mettol' value='$mettol'>
       <input type='hidden' name='meddig' value='$meddig'>
+      <input type='hidden' name='ellatas' value='$ellatas'>
+      <input type='hidden' name='utasok_szama' value='$utasok_szama'>
       <input type='hidden' name='todelete' value='form_$i'>
       <input class='newbutton' type='submit' value=''>
     </form></div>"

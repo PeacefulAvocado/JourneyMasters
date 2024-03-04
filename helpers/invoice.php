@@ -54,10 +54,10 @@
       //Display Company Info
       $this->Image('../img/kislogo2.png', 10, 10, -300);
       $this->SetFont('Arial','B',14);
-      $this->Cell(50,10,Convert("JourneyMasters"),0,1);
+      $this->Cell(100,10,Convert("JourneyMasters"),0,1,'C');
       $this->SetFont('Arial','',14);
-      $this->Cell(50,7,"VAC,",0,1);
-      $this->Cell(50,7,"HUNGARY",0,1);
+      $this->Cell(100,7,"VAC,",0,1,'C');
+      $this->Cell(100,7,"HUNGARY",0,1,'C');
 
       
       //Display INVOICE text

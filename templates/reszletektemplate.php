@@ -4,6 +4,24 @@
     if(isset($_GET['todelete'])){
         $delete = $_GET['todelete'];
     }
+    //A kosárból jövet automtaikusan beírja az ellátást és az utasok számát. Különben alapértelmezett értéke van
+    $ellatas = "Csak szállás";
+    $utasok_szama = 1;
+    if(isset($_GET['utasok_szama'])&&isset($_GET['ellatas'])){
+        $ellatas = $_GET['ellatas'];
+        $utasok_szama = $_GET['utasok_szama'];
+    }
+    //Megnézi, hogy a dropdown melyik eleme volt kiválasztva eddig, és ezt selected-re állítja
+    $ellatasarray = array("Csak Szállás","All inclusive","Félpanzió","Teljes panzió","Szállás és Reggeli");
+    $ellatasselected = array();
+    foreach($ellatasarray as $item){
+        if($item == $ellatas){
+            $ellatasselected[] = "selected";
+        }
+        else{
+            $ellatasselected[] = "";
+        }
+    }
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 
@@ -122,11 +140,11 @@
             <div class="ellatas">
                 <label for="ellatas">Ellátás: </label>
             <select id="ellatas" name="ellatas" onchange="Dropdown()">
-                <option value="Csak Szállás">Csak Szállás</option>
-                <option value="All inclusive">All inclusive</option>
-                <option value="Félpanzió">Félpanzió</option>
-                <option value="Teljes panzió">Teljes panzió</option>
-                <option value="Szállás és Reggeli">Szállás és Reggeli</option>
+                <option <?=$ellatasselected[0]?> value="Csak Szállás">Csak Szállás</option>
+                <option <?=$ellatasselected[1]?> value="All inclusive">All inclusive</option>
+                <option <?=$ellatasselected[2]?> value="Félpanzió">Félpanzió</option>
+                <option <?=$ellatasselected[3]?> value="Teljes panzió">Teljes panzió</option>
+                <option <?=$ellatasselected[4]?> value="Szállás és Reggeli">Szállás és Reggeli</option>
 
             </select>
         </div>
@@ -140,7 +158,7 @@
         </div>
         <div class="utazok_szama">
                 <p class ="kicsi">Utazók száma: </p><br>
-                <b><input class="nagy" name="utasok_szama" type="number" value="1" min="1"></b>
+                <b><input class="nagy" name="utasok_szama" type="number" value="<?=$utasok_szama?>" min="1"></b>
                 
         </div>
         <div class="ar">
