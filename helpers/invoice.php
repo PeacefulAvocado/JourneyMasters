@@ -2,6 +2,13 @@
     require('../fpdf186/fpdf.php');
     
     $utas_szam = $_GET['utasszam'];
+    $csomag_e = $_GET['csomag_e'];
+    $honnan = $_GET['honnan'];
+    $hotel_nev = $_GET['hotel_nev'];
+    $ellatas = $_GET['ellatas'];
+    $mettol = $_GET['mettol'];
+    $meddig = $_GET['meddig'];
+
     $ar = $_GET['ar'];
     $orszag = $_GET['orszag'];
     $cim = $_GET['lakcim'];
@@ -10,7 +17,14 @@
     $days = $_GET['days'];
     $utazas = $_GET['utazas'];
     $ellatas_ar = $_GET['ellatas_ar'];
-
+    session_start();
+    $tomb = array();
+    foreach($_SESSION['kosar_items'] as $item){
+        if(!($item['csomage'] == $csomag_e && $item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam && $item['mettol'] == $mettol && $item['meddig'] == $meddig )){
+          $tomb[] = array('csomage' => $csomag_e,'honnan' => $honnan , 'hotel_nev' => $hotel_nev , 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam , 'mettol' => $mettol , 'meddig' => $meddig);
+        }
+    }
+    $_SESSION['kosar_items'] = array_values($tomb);
 
     //customer and invoice details
 

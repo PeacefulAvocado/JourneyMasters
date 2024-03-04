@@ -3,6 +3,7 @@
     $dbhandler = new DbHandler();
    
     $utasok_szama = $_POST['utasok_szama'];
+    $csomag = $_POST['csomag'];
 
 
     $hotel_nev = $_POST['helyszin'];
@@ -140,6 +141,7 @@
     </div>
         <input type="hidden" name="helyszin" value="<?php echo $hotel_nev?>">
         <input type="hidden" name="utasok_szama" value="<?php echo $utasok_szama?>">
+        <input type="hidden" name="csomag_e" value="<?php echo $csomag?>">
         <input type="hidden" name="ellatas" value="<?php echo $ellatas?>">
         <input type="hidden" name="utazasmod" value="<?php echo $utazasmod;?>" >
         <input type="hidden" name="honnan" value="<?php echo $honnan?>">

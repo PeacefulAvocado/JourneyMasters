@@ -208,6 +208,7 @@
             <input type="hidden" name="szallas" value="<?= $ar ?>">
             <input type="hidden" name="utazas" value="<?= $utazas ?>">
             <input type="hidden" name="ellatas_ar" value="<?= $ellatasar ?>">
+            <input type="hidden" name="csomag" value="<?= $csomag ?>">
             <input type="hidden" name="days" value="<?= $days ?>">
             
             <div class="allando">
