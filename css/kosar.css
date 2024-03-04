@@ -226,6 +226,30 @@ color: var(--black);
           width: 30%;
       
       }
+      .csomagform{
+        margin-left: 5vw;
+        width: 80%;
+        height: 10vw;
+    }
+    .csomagform img{
+        height: 10vw;
+        width: 30%;
+    }
+    .csomaghotelnev{
+        font-size: 3vw;
+          padding-left: 2vw;
+          margin-top: 1vw;
+    }
+    .csomaghonnanhova{
+        left: 33%;
+        top: 30%;
+        font-size: 1.8vw;
+    }
+    .csomagdatum{
+        left: 33%;
+        top: 55%;
+        font-size: 1.6vw;
+    }
       .hotelnev{
           font-size: 3vw;
           padding-left: 2vw;
@@ -242,14 +266,25 @@ color: var(--black);
         top: 35%;
         font-size: 2vw;
       }
+      .egyenihonnanhova{
+        left: 33%;
+        top: 25%;
+        font-size: 2vw;
+    }
+    .egyenidatum{
+        left: 33%;
+        top: 55%;
+        font-size: 1.6vw;
+    
+    }
       .fok{
-          top: 7%;
+          top: 20%;
           right: 12%;
           font-size: 2.5vw;
       }
       .newbutton {
-            right: 1%;
-          top: 21%;
+        left: 0;
+          top: 35%;
           width:6vw;
           height:6vw;
       
@@ -282,6 +317,30 @@ color: var(--black);
           width: 15%;
       
       }
+      .csomagform{
+        margin-left: 2vw;
+        width: 88%;
+        height: 20vw;
+    }
+    .csomagform img{
+        height: 20vw;
+          width: 15%;
+    }
+    .csomaghotelnev{
+        font-size: 4.5vw;
+          padding-left: 1vw;
+          margin-top: 2vw;
+    }
+    .csomaghonnanhova{
+        left: 17%;
+        top: 30%;
+        font-size: 2.5vw;
+    }
+    .csomagdatum{
+        left: 17%;
+        top: 55%;
+        font-size: 2.3vw;
+    }
       .hotelnev{
           font-size: 4.5vw;
           padding-left: 1vw;
@@ -293,19 +352,30 @@ color: var(--black);
           padding-top: 0;
           font-size: 3.5vw;
       }
+      .egyenihonnanhova{
+        left: 17%;
+        top: 29%;
+        font-size: 2.6vw;
+    }
+    .egyenidatum{
+        left: 17%;
+        top: 55%;
+        font-size: 2.5vw;
+    
+    }
       .hotelcim{
         left: 17%;
         top: 35%;
         font-size: 2.6vw;
       }
       .fok{
-          top: 15%;
-          right: 16%;
+          top: 25%;
+          right: 18%;
           font-size: 4.5vw;
       }
       .newbutton {
             right: 1%;
-          top: 28%;
+          top: 130%;
           width:9vw;
           height:9vw;
       
