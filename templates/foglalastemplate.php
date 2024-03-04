@@ -77,12 +77,13 @@
                 $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
                 $ar = $dbhandler->getKeresett('helyszin', 'ar', 'nev', "'$hotel_nev'")[0];
 
-
-                $from = DateTime::createFromFormat('m-d-Y', $mettol);
-                $to = DateTime::createFromFormat('m-d-Y', $meddig);
-
-                $days = $to->diff($from)->d;
-                $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo);
+                if($csomag=="false"){
+                    
+                    $from = DateTime::createFromFormat('m-d-Y', $mettol);
+                    $to = DateTime::createFromFormat('m-d-Y', $meddig);
+                    $days = $to->diff($from)->d;
+                    $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo);
+                }
                 $stars_str = "";
                 for ($n = 0; $n < $stars; $n++) {
                     $stars_str .= "<i class='fa-solid fa-star'></i>";
@@ -95,14 +96,12 @@
                     $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
                     $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
                     $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
+                    
 
-
-                    $from = DateTime::createFromFormat('m-d-Y', $mettol);
-                    $to = DateTime::createFromFormat('m-d-Y', $meddig);
+                    $from = DateTime::createFromFormat('Y-m-d', $mettol);
+                    $to = DateTime::createFromFormat('Y-m-d', $meddig);
 
                     $days = $to->diff($from)->d;
-
-                    echo $days;
 
                     
                 } ?>
