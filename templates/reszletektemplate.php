@@ -1,7 +1,9 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
-   
+    if(isset($_GET['todelete'])){
+        $delete = $_GET['todelete'];
+    }
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 
@@ -38,7 +40,6 @@
             $celpont = $_GET['hotelcim'];
             $mettol =  $_GET['mettol'];
             $meddig =  $_GET['meddig'];
-
             $hotel_nev = $dbhandler->getKeresett('helyszin', 'nev', 'cim', "'$celpont'")[0];
             $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
             $stars_str = "";
@@ -159,19 +160,36 @@
     <p><span id="displayedPrice"><?php echo $ar?></span> Ft/fő</p>
         </div>
         <?php
-            if ($csomag == "true")
+            if ($csomag == "true" && !isset($_GET['todelete']))
             {
                 echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
                         <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
                         <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
                         <input class='submit tobb' type='submit' value='Foglalás'>";
             }
-            else {
+            else if($csomag=="false" && !isset($_GET['todelete'])) {
                 echo "  <input type='hidden' name='csomag' id='csomag' value='false'>
                         <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
                         <input type='hidden' name='honnan' id='honnan' value='$honnan'>
                         <input type='hidden' name='mettol' id='mettol' value='$mettol'>
                         <input type='hidden' name='meddig' id='meddig' value='$meddig'>
+                        <input class='submit tobb' type='submit' value='Foglalás'>";
+            }
+            else if ($csomag == "true" && isset($_GET['todelete']))
+            {
+                echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
+                        <input type='hidden' name='toremove' id='csomagid' value='$delete'>
+                        <input class='submit tobb' type='submit' value='Foglalás'>";
+            }
+            else if($csomag = "false" && isset($_GET['todelete'])) {
+                echo "  <input type='hidden' name='csomag' id='csomag' value='false'>
+                        <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
+                        <input type='hidden' name='honnan' id='honnan' value='$honnan'>
+                        <input type='hidden' name='mettol' id='mettol' value='$mettol'>
+                        <input type='hidden' name='meddig' id='meddig' value='$meddig'>
+                        <input type='hidden' name='toremove' id='csomagid' value='$delete'>
                         <input class='submit tobb' type='submit' value='Foglalás'>";
             }
         ?>

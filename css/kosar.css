@@ -112,6 +112,19 @@
     font-style: italic;
 
 }
+.kiscsomag{
+    position: relative;
+}
+.kuldesform{
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 20vw;
+    top: 0.6vw;
+    z-index: 10;
+    padding-bottom: 4vw;
+
+}
 #a1{
     background-color: var(--lightblue);
 }

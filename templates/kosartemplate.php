@@ -36,7 +36,6 @@
      $kosar_items = $_SESSION['kosar_items'];
      //Végigmegy a $_SESSION['kosar_items'] tömbön, eldönti, hogy az adott elem csomag-e vagy nem, és ennek megfelelően lekérdezi, majd betölti az adatokat egy formba
   $i=0;
-  print_r($_SESSION['kosar_items']);
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
@@ -57,17 +56,24 @@
         $utasok_szama = $item['utasok_szama'];
         $csomag = 'true';
 
-        echo " <form action='../index/kosar.php' method='post' class='csomagform' id='form_$i'>
+        echo "<div class='kiscsomag'> <form action='../index/kosar.php' method='post' class='csomagform' id='form_$i'>
       <img src='../img/sydneyproba.jpg' alt='$varos'>
       <p class='csomaghotelnev'>".$celpont."</p>
       <p class='stars'>$stars_str</p>
       <p class='csomaghonnanhova'>$honnan — $varos</p>
       <p class='csomagdatum'>".$mettol."—".$meddig."</p>
-      <input type='number' class='fok' value='$utasok_szama' id='fok_$i'>
+      <p class='fok'>$utasok_szama fő</p>
       <input type='hidden' name='delete' value='form_$i'>
-      <button class='newbutton' onclick=\"Loadpagecsomag('$ellatas','$csomag','$hotel_nev','$csomagid','$i')\" type='button'></button>
       <input type='submit' class='torlesbutton' value=''>
-    </form>";
+    </form>
+    <form action='reszletek.php' method='get' class='kuldesform'>
+      <input type='hidden' name='csomag' value='true'>
+      <input type='hidden' name='helyszin' value='$hotel_nev'>
+      <input type='hidden' name='csomagid' value='$csomagid'>
+      <input type='hidden' name='todelete' value='form_$i'>
+      <input class='newbutton' type='submit' value=''>
+    </form></div>"
+    ;
         
     } else {
       $hotel_nev = $item['hotel_nev'];
@@ -85,17 +91,26 @@
       $utasok_szama = $item['utasok_szama'];
       $csomag = 'false';
 
-      echo " <form action='../index/kosar.php' method='post' class='tervezesegyeni' id='form_$i'>
+      echo "<div class='kiscsomag'> <form action='../index/kosar.php' method='post' class='tervezesegyeni' id='form_$i'>
       <img src='../img/sydneyproba.jpg' alt='$varos'>
       <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars_str</p>
       <p class='egyenihonnanhova'>$honnan — $varos</p>
       <p class='egyenidatum'>".$mettol."—".$meddig."</p>
-      <input type='number' class='fok' value='$utasok_szama' id='fok_$i'>
+      <p class='fok'>$utasok_szama fő</p>
       <input type='hidden' name='delete' value='form_$i'>
-      <button class='newbutton' onclick=\"Loadpageegyeni('$ellatas','$csomag','$hotel_nev','$honnan','$mettol','$meddig','$i')\" type='button'></button>
       <input type='submit' class='torlesbutton' value=''>
-    </form>";
+    </form>
+    <form action='reszletek.php' method='get' class='kuldesform'>
+      <input type='hidden' name='csomag' value='false'>
+      <input type='hidden' name='hotelcim' value='$cim'>
+      <input type='hidden' name='honnan' value='$honnan'>
+      <input type='hidden' name='mettol' value='$mettol'>
+      <input type='hidden' name='meddig' value='$meddig'>
+      <input type='hidden' name='todelete' value='form_$i'>
+      <input class='newbutton' type='submit' value=''>
+    </form></div>"
+  ;
     }
     $i++;
   }

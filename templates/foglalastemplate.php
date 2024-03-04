@@ -10,6 +10,13 @@
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
+    if(isset($_GET['toremove'])){
+        $delete = explode('_',$_GET['toremove']);
+        $melyik = intval(trim($delete[1]));
+        $tomb = $_SESSION['kosar_items'];
+        unset($tomb[$melyik]);
+        $_SESSION['kosar_items'] = array_values($tomb);
+    }
     
 
     switch ($ellatas)
