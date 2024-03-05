@@ -66,7 +66,7 @@
         
 
         function setUtazas($utazasazon,$utasazon, $honnan, $celpont, $mettol, $meddig, $utazasmod, $ellatas, $ar) {
-            $query = "INSERT IGNORE INTO utazas (utazasazon,utasazon, honnan, celpont, mettol, meddig, utazasmod, ellatas, ar, aktiv)  
+            $query = "INSERT ignore INTO utazas (utazasazon,utasazon, honnan, celpont, mettol, meddig, utazasmod, ellatas, ar, aktiv)  
                       VALUES ($utazasazon, $utasazon, '$honnan', '$celpont', '$mettol', '$meddig', '$utazasmod', '$ellatas', $ar, 1);";
             $this->conn->query($query);
         }

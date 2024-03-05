@@ -72,10 +72,7 @@
 
         $dbhandler->setUtazas($utazasazon,$utasazon,$honnan,$hotel_nev,$mettol,$meddig,$utazasmod,$ellatas,$ar);
 
-        $utazasazon = $dbhandler->select("select utazasazon from utazas where utasazon = $utasazon AND mettol = '$mettol'")[0]['utazasazon'];
-
-     
-
+    
         //echo $utasazon;
         //echo $utazasazon;
 
