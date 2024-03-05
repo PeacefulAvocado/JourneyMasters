@@ -14,7 +14,7 @@ if(!isset($_SESSION)){
 <a href="../index/tervezes.php" id="elso">Tervezés</a>
 <a href="../index/utazasok.php">Utazások</a>
 <a href="../index/kosar.php"><i class="fa-solid fa-basket-shopping"></i><p class="kosardb"><?=$kosardb?></p></a>
-<a href="<?php echo (isset($_SESSION['utasid'])) ? '../index/login.php' : '../index/profil.php'?>"><i class="fa-solid fa-person-walking-luggage" id="fordit"></i></a>
+<a href="<?php echo (isset($_SESSION['utasid'])) ? '../index/profil.php' : '../index/login.php'?>"><i class="fa-solid fa-person-walking-luggage" id="fordit"></i></a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
 </div>
 </div>

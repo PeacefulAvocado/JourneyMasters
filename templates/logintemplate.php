@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $today = new DateTime();
                         $birthdate = new DateTime("$szulnap-$szulho-$szulev");
                         $age = $today->diff($birthdate)->y;
-                        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag','$irszam','$varos','$lakcim')");
+                        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca, nem) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag','$irszam','$varos','$lakcim', '$neme')");
 
                         // Function to encrypt data
 
@@ -117,7 +117,9 @@ if (isset($_POST['bej']) && isset($_POST['jelszo']) && isset($_POST['email']))
         if ($emailkeres[$i]['email'] == $email) {
             $van = true;
         }
+        else {
         $i++;
+        }
     }
     if ($van)
     {
