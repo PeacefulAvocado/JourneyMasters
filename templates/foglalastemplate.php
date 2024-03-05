@@ -281,6 +281,10 @@
             }
             $utazas = 0;
             $ellatasar =  ($ar * $szorzo);
+            if ($csomag == "true")
+            {
+                echo "<input type='hidden' name='csomagid' value='$csomagid'>";
+            }
             ?>
             <input type="hidden" name="helyszin" value="<?= $hotel_nev ?>">
             <input type="hidden" name="utasok_szama" value="<?= $utasok_szama ?>">
