@@ -1,7 +1,3 @@
-// TavolsagCalc.js
-
-const CharacterConverter = require('./characterConverter.js');
-
 class TavolsagCalc {
     constructor() {
         this.characterConverter = new CharacterConverter();
@@ -38,26 +34,30 @@ class TavolsagCalc {
     }
 
     async getJson(varos) {
-        let json = "";
-        const apiKey = "25cee48f41794aeaa4872df870cf9221";
+        return new Promise((resolve, reject) => {
+            let json = "";
+            const apiKey = "25cee48f41794aeaa4872df870cf9221";
 
-        varos = this.characterConverter.convertToEnglish(varos);
+            varos = this.characterConverter.convertToEnglish(varos);
 
-        const apiUrl = `https://api.geoapify.com/v1/geocode/search?text=${varos}&apiKey=${apiKey}`;
+            const apiUrl = `https://api.geoapify.com/v1/geocode/search?text=${varos}&apiKey=${apiKey}`;
 
-        try {
-            let response = await fetch(apiUrl);
-            if (response.ok) {
-                json = await response.text();
-            } else {
-                json = "Hiba!";
-            }
-        } catch (error) {
-            console.error("Fetch error:", error);
-            json = "Hiba!";
-        }
-
-        return json;
+            fetch(apiUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error("Network response was not ok.");
+                    }
+                })
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    reject("Hiba!");
+                });
+        });
     }
 
     async getContinent(varos) {
@@ -117,6 +117,56 @@ class TavolsagCalc {
     toRadians(degrees) {
         return degrees * Math.PI / 180.0;
     }
+
+    // Additional methods can be added here as needed
+
+}
+class CharacterConverter {
+    constructor() {
+        this.latinToEnglishMap = new Map([
+            ['á', 'a'],
+            ['é', 'e'],
+            ['í', 'i'],
+            ['ó', 'o'],
+            ['ú', 'u'],
+            ['ü', 'u'],
+            ['ñ', 'n'],
+            ['ç', 'c'],
+            ['ã', 'a'],
+            ['à', 'a'],
+            ['â', 'a'],
+            ['è', 'e'],
+            ['ê', 'e'],
+            ['î', 'i'],
+            ['ô', 'o'],
+            ['û', 'u'],
+            ['ő', 'o'],
+            ['ű', 'u'],
+            ['ş', 's'],
+            ['ğ', 'g'],
+            ['ı', 'i'],
+            ['ć', 'c'],
+            ['č', 'c'],
+            ['š', 's'],
+            ['ž', 'z'],
+            ['ä', 'a'],
+            ['ö', 'o'],
+            ['å', 'a']
+        ]);
+    }
+
+    convertToEnglish(input) {
+        let result = '';
+
+        for (let char of input) {
+            if (this.latinToEnglishMap.has(char)) {
+                result += this.latinToEnglishMap.get(char);
+            } else {
+                result += char;
+            }
+        }
+
+        return result;
+    }
 }
 
-module.exports = TavolsagCalc;

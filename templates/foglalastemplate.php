@@ -83,13 +83,16 @@
             $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
         }
         
-
     }
     else {
         $honnan = $_GET['honnan'];
         $mettol = $_GET['mettol'];
         $meddig = $_GET['meddig'];
-        if(!isset($_GET['toremove'])){
+        $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+    }
+    $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
+    
+            if(!isset($_GET['toremove'])){
             $egyenicounter = 0;
             $egyenivoltecounter = 0;
             //Megnézi, hogy az adott elem benne van-e a kosárban
@@ -118,8 +121,19 @@
             $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
         }
     }   
+    ?>
+    <script src="../js/tavolsagCalc.js"></script>
+    <script>
+    const tavolsagCalc = new TavolsagCalc();
+    window.onload = function() {
+        let dist = tavolsagCalc.calcDistance('<?php echo $honnan; ?>', '<?php echo $varos; ?>');
+        dist.then((result) => {
+        document.getElementById('utazas_ar').innerHTML = Math.ceil(result);
+        Icon();
+        })
+    };
 
-?>
+</script> 
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,12 +216,9 @@
                     <p class="sz1">Ellátás</p>
                     <p class='sz2'><?= $utasok_szama ?> x <?= $ar * $szorzo ?> HUF</p>
                     <p class="sz1">Utazás</p>
-                    <p class='sz2'><?= $utasok_szama ?> x valami HUF</p>
+                    <p class='sz2'><?= $utasok_szama ?> x <span id="utazas_ar"></span> HUF</p>
                 </div>
-                <p class='osszeg'><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) ?> HUF</p>
-                <?php
-                $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo);
-                ?>
+                <p class='osszeg' ><span id="osszeg"><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) ?></span> HUF</p>
             </div>
         </div>
     </div>
@@ -342,7 +353,7 @@
                 </div>
             <?php
             }
-            $utazas = 0;
+
             $ellatasar =  ($ar * $szorzo);
             if ($csomag == "true")
             {
@@ -357,9 +368,9 @@
             <input type="hidden" name="hova" value="<?= $varos ?>">
             <input type="hidden" name="mettol" value="<?= $mettol ?>">
             <input type="hidden" name="meddig" value="<?= $meddig ?>">
-            <input type="hidden" name="ar" value="<?= $total ?>">
+            <input type="hidden" name="ar" value="" id="total">
             <input type="hidden" name="szallas" value="<?= $ar ?>">
-            <input type="hidden" name="utazas" value="<?= $utazas ?>">
+            <input type="hidden" name="utazas" value="" id="ar">
             <input type="hidden" name="ellatas_ar" value="<?= $ellatasar ?>">
             <input type="hidden" name="csomag" value="<?= $csomag ?>">
             <input type="hidden" name="days" value="<?= $days ?>">
@@ -384,3 +395,5 @@
     </div>
 </div>
 <script src="../js/bekuld.js"></script>
+
+

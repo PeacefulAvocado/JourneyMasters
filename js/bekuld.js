@@ -58,8 +58,11 @@ function bekuld(szam)
     }
 
     if (count == utasok_szama) {
-        console.log("sendable");
         document.getElementById("send_utazasmod").value = document.getElementById("utazas").value;
+
+
+        document.getElementById("total").value = document.getElementById("osszeg").innerText;
+        document.getElementById("ar").value = document.getElementById("utazas_ar").innerText;
         document.getElementById("tovabb_form").submit();
     } else {
         alert("Minden utas minden adatát adja meg!");
