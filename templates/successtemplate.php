@@ -13,8 +13,8 @@ $pdfnev = $_SESSION['pdfnev'];
 <div class="success">
 <p class="successcim">Sikeres fizetés</p>
 <hr class="vonal">
-<button onclick="location.href='../index/index.php'">Visszalépés a főoldalra</button>
-<button onclick="window.open('../userpdf/<?php echo $pdfnev?>.pdf')">Számla letöltése</button>
+<button onclick="location.href='../index/index.php'" class="balgomb">Visszalépés a főoldalra</button>
+<button onclick="window.open('../userpdf/<?php echo $pdfnev?>.pdf')" class="jobbgomb">Számla letöltése</button>
 
 </div>
 </div>
