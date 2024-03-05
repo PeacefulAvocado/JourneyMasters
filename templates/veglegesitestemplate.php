@@ -9,7 +9,10 @@
     $utasok_szama = $_POST['utasok_szama'];
     $csomag = $_POST['csomag'];
 
-
+    if ($csomag == "true")
+    {
+    $csomagid = $_POST['csomagid'];
+    }
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
     $utazasmod = $_POST['utazasmod'];
@@ -143,6 +146,12 @@
         <p class="vegebal kover">Összesen:</p>
         <p class="vegejobb kover"><?= $ar?> HUF</p>
     </div>
+        <?php
+            if ($csomag == "true")
+            {
+                echo "<input type='hidden' name='csomagid' value='$csomagid'>";
+            }
+        ?>
         <input type="hidden" name="helyszin" value="<?php echo $hotel_nev?>">
         <input type="hidden" name="utasok_szama" value="<?php echo $utasok_szama?>">
         <input type="hidden" name="csomag_e" value="<?php echo $csomag?>">

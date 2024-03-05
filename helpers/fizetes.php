@@ -5,6 +5,7 @@
     
     $utasok_szama = $_POST['utasok_szama'];
     $csomag_e = $_POST['csomag_e'];
+    $csomagid = $_POST['csomagid']; 
 
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
@@ -89,6 +90,6 @@
     $orszag = $_POST['orszag_0']; 
     $lakhely = $_POST["iranyitoszam_0"].' '.$_POST["telepules_0"].','.$_POST["lakcim_0"];
     $nev = $_POST['nev_0'];
-    header("Location: invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar");
+    header("Location: invoice.php?csomagid=$csomagid&nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar");
     
 ?>

@@ -67,6 +67,10 @@
   {
       $utas['szulnap'] = "0".$utas['szulnap'];
   }
+  if (!isset($utas['szulev'][3]))
+  {
+      $utas['szulev'] = "0".$utas['szulev'];
+  }
   $date = $utas['szulev']."-".$utas['szulho']."-".$utas['szulnap'];
   $_POST['szulid'] = $date;
   $_POST['nem'] = $utas['nem'];
@@ -132,7 +136,7 @@
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
         $cim = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$celpont'")[0].", ".$dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$celpont'")[0];
-        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid'].");")[0][0];
+        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid']." and utazasid = ".$utazasok[$i]['utazasazon'].")")[0][0];
         echo "
         <form action='".$_SERVER['PHP_SELF']."' method='post' class='tervezesegyeni'>
         <img src='../img/helyszinimg/".$celpont."/1.jpg' alt='Helyszín'>
@@ -183,7 +187,7 @@
 <label for="tel">Telefonszám:</label>
 <input type='tel' name='tel' id='tel' value="<?php echo isset($_POST['tel']) ? $_POST['tel'] : '' ?>">
 <label for="szulid">Születési idő:</label>
-<input type='date' name='szulid' id='szulid' value="<?php echo isset($_POST['szulid']) ? $_POST['szulid'] : '' ?>">
+<input type='date' name='szulid' id='szulid' value="<?php echo isset($_POST['szulid']) ? $_POST['szulid'] : '' ?>" min='1800-01-01'>
 <label for="nem">Neme:</label>
 <select name='nem' id='nem' value="<?php echo isset($_POST['nem']) ? $_POST['nem'] : '' ?>">
     <option value='Férfi' id='nem_ferfi'>Férfi</option>

@@ -55,10 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $szulev = $szulido[0];
                         $szulho = $szulido[1];
                         $szulnap = $szulido[2];
+
                         $today = new DateTime();
                         $birthdate = new DateTime("$szulnap-$szulho-$szulev");
                         $age = $today->diff($birthdate)->y;
-                        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca, nem) values ('$nev', ".$szulid[0].", ".$szulid[1].", ".$szulid[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag','$irszam','$varos','$lakcim', '$neme')");
+                        $dbhandler->noreturnselect("insert ignore into utasok (nev, szulev, szulho, szulnap, kor, igtipus, igszam, tel, email, orszag, irszam, varos, utca, nem) values ('$nev', ".$szulido[0].", ".$szulido[1].", ".$szulido[2].", $age,'$igtip','$igszam','$telefonszam','$regemail','$orszag','$irszam','$varos','$lakcim', '$neme')");
 
                         // Function to encrypt data
 
@@ -201,7 +202,7 @@ if (isset($_POST['bej']) && isset($_POST['jelszo']) && isset($_POST['email']))
                         value="<?php echo isset($_POST['telefonszam']) ? $_POST['telefonszam'] : '' ?>">
                     <label for="szulid">Születési idő:</label>
                     <input type="date" name="szulid" class="textinput" id="szulid" value="2000-01-01"
-                        value="<?php echo isset($_POST['szulido']) ? $_POST['szulido'] : '' ?>">
+                        value="<?php echo isset($_POST['szulido']) ? $_POST['szulido'] : '' ?>" min ="1800-01-01">
                     <label for="nem">Neme:</label>
                     <select name="nem" id="nem" class="textinput"
                         value="<?php echo isset($_POST['nem']) ? $_POST['nem'] : '' ?>">
