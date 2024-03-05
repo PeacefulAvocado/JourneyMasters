@@ -35,16 +35,16 @@ function bekuld(szam)
   function send_foglalas(utasok_szama) {
     let count = 0;
     for (let i = 0; i < utasok_szama; i++) {
-      var nev = document.getElementsByName("nev_" + i)[0].value;
-      var szulid = document.getElementsByName("szulid_" + i)[0].value;
-      var nem = document.getElementsByName("nem_" + i)[0].value;
-      var igtipus = document.getElementsByName("igtipus_" + i)[0].value;
-      var orszag = document.getElementsByName("orszag_" + i)[0].value;
-      var irszam = document.getElementsByName("irszam_" + i)[0].value;
-      var varos = document.getElementsByName("varos_" + i)[0].value;
-      var lakcim = document.getElementsByName("lakcim_" + i)[0].value;
-      var tel = document.getElementsByName("tel_" + i)[0].value;
-      var igszam = document.getElementsByName("igszam_" + i)[0].value;
+        var nev = document.getElementsByName("nev_" + String(i))[0].value;
+        var szulid = document.getElementsByName("szulid_" + String(i))[0].value;
+        var nem = document.getElementsByName("nem_" + String(i))[0].value;
+        var igtipus = document.getElementsByName("igtipus_" + String(i))[0].value;
+        var orszag = document.getElementsByName("orszag_" + String(i))[0].value;
+        var irszam = document.getElementsByName("irszam_" + String(i))[0].value;
+        var varos = document.getElementsByName("varos_" + String(i))[0].value;
+        var lakcim = document.getElementsByName("lakcim_" + String(i))[0].value;
+        var tel = document.getElementsByName("tel_" + String(i))[0].value;
+        var igszam = document.getElementsByName("igszam_" + String(i))[0].value;
         /*console.log("Checking values for passenger " + (i + 1));
         console.log("Name input:", nev);
         console.log("Birth ID input:", szulid);
@@ -67,16 +67,4 @@ function bekuld(szam)
     } else {
         alert("Minden utas minden adatát adja meg!");
     }
-}
-
-function send_profil()
-{
-  if (document.getElementById('nev').value == "" || document.getElementById('tel').value == "" || document.getElementById('szulid').value == "" || document.getElementById('orszag').value == "" || document.getElementById('irszam').value == "" || document.getElementById('varos').value == ""  || document.getElementById('lakcim').value == ""  || document.getElementById('igszam').value == "")
-  {
-    alert("Adjon meg minden adatot!");
-  }
-  else {
-    var form = document.getElementById('edit');
-    form.submit();
-  }
 }

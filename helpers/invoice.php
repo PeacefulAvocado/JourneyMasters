@@ -1,9 +1,6 @@
 <?php
     require('../fpdf186/fpdf.php');
-    function error_found(){
-      header("Location: ../index/404.php");
-    }
-    set_error_handler('error_found');
+    
     $utas_szam = $_GET['utasszam'];
     $csomag_e = $_GET['csomag_e'];
     $honnan = $_GET['honnan'];
@@ -12,10 +9,6 @@
     $mettol = $_GET['mettol'];
     $meddig = $_GET['meddig'];
 
-    if ($csomag_e == "true")
-    {
-    $csomagid = $_GET['csomagid'];
-    }
     $ar = $_GET['ar'];
     $orszag = $_GET['orszag'];
     $cim = $_GET['lakcim'];
@@ -26,20 +19,10 @@
     $ellatas_ar = $_GET['ellatas_ar'];
     session_start();
     $tomb = array();
-    if ($csomag_e == "false")
-    {
-      foreach($_SESSION['kosar_items'] as $item){
-          if(!($item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam && $item['mettol'] == $mettol && $item['meddig'] == $meddig )){
-            $tomb[] = array('csomage' => $csomag_e,'honnan' => $honnan , 'hotel_nev' => $hotel_nev , 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam , 'mettol' => $mettol , 'meddig' => $meddig);
-          }
-      }
-    }
-    else {
-      foreach($_SESSION['kosar_items'] as $item){
-        if(!($item['csomagid'] == $csomagid && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam)){
-          $tomb[] = array('csomage'=> $csomag_e, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utas_szam);
+    foreach($_SESSION['kosar_items'] as $item){
+        if(!($item['csomage'] == $csomag_e && $item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam && $item['mettol'] == $mettol && $item['meddig'] == $meddig )){
+          $tomb[] = array('csomage' => $csomag_e,'honnan' => $honnan , 'hotel_nev' => $hotel_nev , 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam , 'mettol' => $mettol , 'meddig' => $meddig);
         }
-    }
     }
     $_SESSION['kosar_items'] = array_values($tomb);
 

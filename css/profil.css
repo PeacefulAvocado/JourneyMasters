@@ -25,12 +25,6 @@
     background: linear-gradient(var(--light-yellow), var(--yellow));
     padding: 5vw 5vw;
 }
-
-.nincs {
-    color: red;
-    font-size: 1vw;
-    margin-left: 4vw;
-}
 .emailcim{
     color: var(--black);
     font-size: 2vw;
