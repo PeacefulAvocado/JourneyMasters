@@ -26,7 +26,7 @@
 
 
 
-    $csomagid = $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count']+1;
+    $csoportID = $dbhandler->select("SELECT COUNT(*) AS count FROM csoport")[0]['count']+1;
     $utazasazon = $dbhandler->select("select COUNT(*) as utazasazon from utazas ")[0]['utazasazon']+1;
     //Beleírja az utasok és az utazás adatait az adatbázisba
     for($i = 0; $i<$utasok_szama; $i++) {
@@ -81,16 +81,14 @@
 
        // echo $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count'];
 
-        $dbhandler->setCsoport($utasazon, $utazasazon, $csomagid);
+        $dbhandler->setCsoport($utasazon, $utazasazon, $csoportID);
 
         
     }
     $orszag = $_POST['orszag_0']; 
     $lakhely = $_POST["iranyitoszam_0"].' '.$_POST["telepules_0"].','.$_POST["lakcim_0"];
     $nev = $_POST['nev_0'];
-
- //Megnyitja a számlát új ablakban illetve visszadob a főoldalra
+    //Megnyitja a számlát új ablakban illetve visszadob a főoldalra
     echo "<script type='text/javascript'>window.location = 'invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar';</script>";
-    
 
 ?>
