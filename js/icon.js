@@ -21,15 +21,15 @@ function Icon() {
     switch (icon) {
         case "Repülő":
             span.innerHTML = "<i class='fa-solid fa-plane'></i>";
-            szorz = 12;
+            szorz = 37;
             break;
         case "Vonat":
             span.innerHTML = "<i class='fa-solid fa-train'></i>";
-            szorz = 8;
+            szorz = 17;
             break;
         case "Busz":
             span.innerHTML = "<i class='fa-solid fa-bus'></i>";
-            szorz = 5;
+            szorz = 11;
             break;
         case "Egyéni":
             span.innerHTML = "<i class='fa-solid fa-map-location-dot'></i>";
