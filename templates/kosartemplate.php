@@ -5,11 +5,6 @@
     if(!isset($_SESSION)){
     session_start();
     }
-    //Ha nincs bejelentkezve utas, a bejelentkezésre dob
-    if(!isset($_SESSION['utasid'])){
-        header("Location: ../index/login.php");
-        exit();
-    }
     //Ha korábban rányomtunk, hogy törölje ki az egyik elemet, most azt kitörli
     if(isset($_POST['delete'])){
       $delete = explode('_',$_POST['delete']);
