@@ -175,11 +175,4 @@
   $pdf->AddPage();
   $pdf->body($info,$products_info);
   $pdf->Output();
-
-  $pdf2=new PDF("P","mm","A4");
-  $pdf2->AddPage();
-  $pdf2->body($info,$products_info);
-  $pdfnev = rand(10000, 1000000);
-  $_SESSION['pdfnev'] = $pdfnev;
-  $pdf2->Output('F',"../userpdf/$pdfnev.pdf");
 ?>
