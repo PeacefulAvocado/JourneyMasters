@@ -6,7 +6,6 @@
     }
     $_SESSION["username"] = "Ben";
 
-
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 

@@ -16,4 +16,5 @@
     <?php include('../templates/foglalastemplate.php')?>
     <?php include('../templates/footer.php')?>
 </body>
+
 </html>
