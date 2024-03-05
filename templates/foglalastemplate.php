@@ -236,7 +236,7 @@
                         <label>Email-cím:</label>
                         <input type='email' name='email_0' value='<?= $utas['email'] ?>' readonly>
                         <label>Születési idő:</label>
-                        <input type='date' name='szulid_0' value='<?= $date ?>' readonly>
+                        <input type='date' name='szulid_0' value='<?= $date ?>' readonly min='1800-01-01'>
                         <label>Neme:</label>
                         <select name='nem_0' readonly>
                             <option value='<?= $utas['nem'] ?>'><?= $utas['nem'] ?></option>
@@ -272,7 +272,7 @@
                         <label>Email-cím:</label>
                         <input type='email' name='email_0'>
                         <label>Születési idő:</label>
-                        <input type='date' name='szulid_0'>
+                        <input type='date' name='szulid_0' min='1800-01-01'>
                         <label>Neme:</label>
                         <select name='nem_0' >
                             <option value='Férfi'>Férfi</option>
@@ -312,7 +312,7 @@
                         <label>Email-cím:</label>
                         <input type='email' name='email_<?= $i ?>'>
                         <label>Születési idő:</label>
-                        <input type='date' name='szulid_<?= $i ?>'>
+                        <input type='date' name='szulid_<?= $i ?>' min='1800-01-01'>
                         <label>Neme:</label>
                         <select name='nem_<?= $i ?>'>
                             <option value='Férfi'>Férfi</option>
