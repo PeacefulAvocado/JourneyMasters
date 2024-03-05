@@ -1,6 +1,10 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    function error_found(){
+        header("Location: ../index/404.php");
+      }
+    set_error_handler('error_found');
     $csomag = $_GET['csomag'];
     $hotel_nev = $_GET['helyszin'];
     $ellatas = $_GET['ellatas'];
@@ -11,6 +15,7 @@
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
+    //Ha a kosárból térünk vissza, nem adja újra hozzá az elemet a kosárhoz
     if(isset($_GET['toremove'])){
         $delete = explode('_',$_GET['toremove']);
         $melyik = intval(trim($delete[1]));
@@ -18,8 +23,7 @@
         unset($tomb[$melyik]);
         $_SESSION['kosar_items'] = array_values($tomb);
     }
-    
-   
+
     switch ($ellatas)
     {
         case "Csak Szállás":
@@ -43,12 +47,42 @@
             $szorzo = 0.2;
             break;
     }
+    //Belerakja a kosárba az utazást az alapján, hogy benne van-e már
    if ($csomag == "true")
-   {
-       $csomagid = $_GET['csomagid'];
-       $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
-       $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
-       
+    {
+        $csomagid = $_GET['csomagid'];
+        if(!isset($_GET['toremove'])){
+            $igaze = true;
+            $i = 0;
+            $csomagcounter = 0;
+            $csomagvoltecounter = 0;
+            //Megnézi, hogy az adott elem benne van-e a kosárban
+            foreach($_SESSION['kosar_items'] as $item){
+                if($item['csomage'] == "true"){
+                    $csomagcounter++;
+                    if(!($item['csomagid'] == $csomagid && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utasok_szama)){
+                        $csomagvoltecounter++;
+                    }
+                }
+
+            }
+            //Ha nincs benne, belerakja
+            if(count($_SESSION['kosar_items']) == 0){
+                if(($csomagcounter == $csomagvoltecounter)){
+                    $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+                }
+            }
+            else if(count($_SESSION['kosar_items']) != 0){
+                if(($csomagcounter == $csomagvoltecounter)){
+                    $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+                }
+            }
+            
+        }
+        else if(isset($_GET['toremove'])){
+            $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+        }
+        
     }
     else {
         $honnan = $_GET['honnan'];
@@ -58,7 +92,35 @@
     }
     $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
     
-    
+            if(!isset($_GET['toremove'])){
+            $egyenicounter = 0;
+            $egyenivoltecounter = 0;
+            //Megnézi, hogy az adott elem benne van-e a kosárban
+            foreach($_SESSION['kosar_items'] as $item){
+                if($item['csomage'] == "false"){
+                    $egyenicounter++;
+                    if(!($item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utasok_szama && $item['mettol'] == $mettol && $item['meddig'] == $meddig)){
+                        $egyenivoltecounter++;
+                    }
+                }
+
+            }
+            //Ha nincs benne, belerakja
+            if(count($_SESSION['kosar_items']) == 0){
+                if(($egyenicounter == $egyenivoltecounter)){
+                    $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+                }
+            }
+            else if(count($_SESSION['kosar_items']) != 0){
+                if(($egyenicounter == $egyenivoltecounter)){
+                    $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+                }
+            }
+        }
+        else if(isset($_GET['toremove'])){
+            $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+        }
+    }   
     ?>
     <script src="../js/tavolsagCalc.js"></script>
     <script>
@@ -164,8 +226,94 @@
         <h3>Utasok adatai: </h3>
 
         <form action='../index/veglegesites.php' method='post' id="tovabb_form">
+        <?php
+            if (isset($_SESSION['utasid']))
+            {
+                $utas = $dbhandler->select("select * from utasok where utasazon = ".$_SESSION['utasid'])[0];
+                if (!isset($utas['szulho'][1]))
+                {
+                    $utas['szulho'] = "0".$utas['szulho'];
+                }
+                if (!isset($utas['szulnap'][1]))
+                {
+                    $utas['szulnap'] = "0".$utas['szulnap'];
+                }
+                $date = $utas['szulev']."-".$utas['szulho']."-".$utas['szulnap'];
+        ?>
+        <div class='utas'>
+                    <p class='utasszam'>1. utas</p>
+                    <hr class='vonal'>
+                    <div class='utasdata'>
+                        <label>Név:</label>
+                        <input type='text' name='nev_0' value='<?= $utas['nev'] ?>' readonly>
+                        <label>Telefonszám:</label>
+                        <input type='tel' name='tel_0' value='<?= $utas['tel'] ?>' readonly>
+                        <label>Email-cím:</label>
+                        <input type='email' name='email_0' value='<?= $utas['email'] ?>' readonly>
+                        <label>Születési idő:</label>
+                        <input type='date' name='szulid_0' value='<?= $date ?>' readonly min='1800-01-01'>
+                        <label>Neme:</label>
+                        <select name='nem_0' readonly>
+                            <option value='<?= $utas['nem'] ?>'><?= $utas['nem'] ?></option>
+                        </select>
+                        <label>Ország:</label>
+                        <input type='text' name='orszag_0' value='<?= $utas['orszag'] ?>' readonly>
+                        <label>Irányítószám:</label>
+                        <input type='text' name='irszam_0' value='<?= $utas['irszam'] ?>' readonly>
+                        <label>Település:</label>
+                        <input type='text' name='varos_0' value='<?= $utas['varos'] ?>' readonly>
+                        <label>Lakcím:</label>
+                        <input type='text' name='lakcim_0' value='<?= $utas['utca'] ?>' readonly>
+                        <label>Igazolványtípus:</label>
+                        <select name='igtipus_0' id='igtipus' readonly>
+                            <option value='<?= $utas['igtipus'] ?>'><?= $utas['igtipus'] ?></option>
+                        </select>
+                        <label>Igazolványszám:</label>
+                        <input type='text' name='igszam_0' value='<?= $utas['igszam'] ?>' readonly>
+                    </div>
+                </div>
             <?php
-            for ($i = 0; $i < $utasok_szama; $i++) {
+            }
+            else {
+            ?>
+            <div class='utas'>
+                    <p class='utasszam'>1. utas</p>
+                    <hr class='vonal'>
+                    <div class='utasdata'>
+                        <label>Név:</label>
+                        <input type='text' name='nev_0'>
+                        <label>Telefonszám:</label>
+                        <input type='tel' name='tel_0'>
+                        <label>Email-cím:</label>
+                        <input type='email' name='email_0'>
+                        <label>Születési idő:</label>
+                        <input type='date' name='szulid_0' min='1800-01-01'>
+                        <label>Neme:</label>
+                        <select name='nem_0' >
+                            <option value='Férfi'>Férfi</option>
+                            <option value='Nő'>Nő</option>
+                            <option value='Egyéb'>Egyéb</option>
+                        </select>
+                        <label>Ország:</label>
+                        <input type='text' name='orszag_0'>
+                        <label>Irányítószám:</label>
+                        <input type='text' name='irszam_0'>
+                        <label>Település:</label>
+                        <input type='text' name='varos_0'>
+                        <label>Lakcím:</label>
+                        <input type='text' name='lakcim_0'>
+                        <label>Igazolványtípus:</label>
+                        <select name='igtipus_0' id='igtipus' >
+                            <option value='Személyi igazolvány'>Személyi igazolvány</option>
+                            <option value='Útlevél'>Útlevél</option>
+                        </select>
+                        <label>Igazolványszám:</label>
+                        <input type='text' name='igszam_0'>
+                    </div>
+                </div>
+            <?php
+            }
+            for ($i = 1; $i < $utasok_szama; $i++) {
                 $index = $i + 1;
             ?>
                 <div class='utas'>
@@ -179,7 +327,7 @@
                         <label>Email-cím:</label>
                         <input type='email' name='email_<?= $i ?>'>
                         <label>Születési idő:</label>
-                        <input type='date' name='szulid_<?= $i ?>'>
+                        <input type='date' name='szulid_<?= $i ?>' min='1800-01-01'>
                         <label>Neme:</label>
                         <select name='nem_<?= $i ?>'>
                             <option value='Férfi'>Férfi</option>
@@ -207,6 +355,10 @@
             }
 
             $ellatasar =  ($ar * $szorzo);
+            if ($csomag == "true")
+            {
+                echo "<input type='hidden' name='csomagid' value='$csomagid'>";
+            }
             ?>
             <input type="hidden" name="helyszin" value="<?= $hotel_nev ?>">
             <input type="hidden" name="utasok_szama" value="<?= $utasok_szama ?>">
