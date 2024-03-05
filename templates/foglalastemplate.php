@@ -1,7 +1,10 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
-    
+    function error_found(){
+        header("Location: ../index/404.php");
+      }
+    set_error_handler('error_found');
     $csomag = $_GET['csomag'];
     $hotel_nev = $_GET['helyszin'];
     $ellatas = $_GET['ellatas'];
@@ -48,6 +51,7 @@
     if ($csomag == "true")
         {
             $csomagid = $_GET['csomagid'];
+            $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
             if(!isset($_GET['toremove'])){
                 $igaze = true;
                 $i = 0;
@@ -115,6 +119,7 @@
                 $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
             }
         }  
+        $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
     ?>
     <script src="../js/tavolsagCalc.js"></script>
     <script>
