@@ -1,10 +1,21 @@
 <script src="../js/bekuld.js"></script>
+<script src="../js/confirm.js"></script>
 <?php
   require_once(__DIR__.'/../helpers/dbhandler.php');
   $dbhandler = new DbHandler();
   if(!isset($_SESSION)){
   session_start();
   }
+
+  function encrypt($data, $key)
+  {
+      $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+      $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+      return base64_encode($encrypted . '::' . $iv);
+  }
+
+  $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
+
   if(!isset($_SESSION['utasid'])){
       header("Location: ../index/login.php");
       exit();
@@ -65,6 +76,19 @@
   $_POST['lakcim'] = $utas['utca'];
   $_POST['igtipus'] = $utas['igtipus'];
   $_POST['igszam'] = $utas['igszam'];
+
+  if (isset($_POST['pass']))
+  {
+    if ($_POST['ujjelszo'] == $_POST['ismetles'])
+    {
+      $jelszo = encrypt($_POST['ujjelszo'], $key);
+      $dbhandler->noreturnselect("update userdata set jelszo = '$jelszo' where utasid = ".$_SESSION['utasid']);
+      echo "<script>alert('Sikeres változtatás!')</script>";
+    }
+    else {
+      echo "<script>alert('A két jelszó nem egyezik!')</script>";
+    }
+  }
 ?>
 <div class="profilmain">
 <div class="profil">
@@ -81,7 +105,7 @@
         <label for="ismetles">Új jelszó ismétlése:</label>
         <input type="password" name="ismetles" id="ismetles" class="textinput">
         </div>
-        <input type="submit" value="Jelszó<?php echo "\n"?>módosítása" class="jelszobtn">
+        <input type="submit" value="Jelszó<?php echo "\n"?>módosítása" class="jelszobtn" name='pass' onclick = "return conf_submit()">
     </form>
 </div>
 

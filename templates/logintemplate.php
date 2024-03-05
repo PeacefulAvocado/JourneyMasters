@@ -117,7 +117,9 @@ if (isset($_POST['bej']) && isset($_POST['jelszo']) && isset($_POST['email']))
         if ($emailkeres[$i]['email'] == $email) {
             $van = true;
         }
+        else {
         $i++;
+        }
     }
     if ($van)
     {
