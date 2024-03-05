@@ -9,7 +9,7 @@ function plusSlides(n) {
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
+//A megnyomott előre, vissza gomboknak megfelelően vált a képnézegetőben a képek között
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");

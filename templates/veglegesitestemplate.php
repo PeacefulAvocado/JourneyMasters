@@ -1,6 +1,7 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    //Ha hiba van a kódban rossz paraméterek miatt, a 404-es oldalra dob
     function error_found(){
         header("Location: ../index/404.php");
       }
@@ -11,7 +12,7 @@
 
     if ($csomag == "true")
     {
-    $csomagid = $_POST['csomagid'];
+        $csomagid = $_POST['csomagid'];
     }
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
@@ -45,7 +46,7 @@
     <div class="vegadatok">
         <div class='container'>
             <?php 
-       
+       //Kiírja az utazás végleges adatait
        $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
        
@@ -82,6 +83,7 @@
         <h3>Utasok adatai: </h3>
      
         <?php 
+        //Kiírja a felhasználók végleges adatait
         for($i = 0; $i<$utasok_szama; $i++) {
             $index = $i+1;
             $nev = $_POST["nev_$i"];
@@ -144,6 +146,7 @@
         <p class="vegejobb kover"><?= $ar?> HUF</p>
     </div>
         <?php
+        //Ha csomagról van szó, elküldi a csomagid-t
             if ($csomag == "true")
             {
                 echo "<input type='hidden' name='csomagid' value='$csomagid'>";

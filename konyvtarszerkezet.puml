@@ -31,14 +31,14 @@ map helpers{
 dbhandler => php
 fizetes => php
 invoice => php
-load-more-csomag-helyszin => php
-load-more-tervez-helyszin => php
-load-more => php
+loadmorecsomaghelyszin => php
+loadmoretervezhelyszin => php
+loadmore => php
 search => php
 }
 object img {
-    /helyszinimg
-    /icons 
+    helyszinimg
+    icons 
     }
 
 map index {
@@ -60,8 +60,8 @@ map js {
     dropdown => js 
     emptyDiv => js 
     icon => js 
-    load-more-tervez-helyszin => js 
-    load-more => js 
+    loadmoretervezhelyszin => js 
+    loadmore => js 
     loginpage => js 
     main => js 
     reszletekslider => js 
@@ -85,9 +85,9 @@ map templates {
 }
 
 JourneyMasers::css -down-> css
-JourneyMasers::fpdf186 -down-> fpdf186
+JourneyMasers::fpdf186 -right-> fpdf186
 JourneyMasers::helpers -down-> helpers
-JourneyMasers::img -down-> img
+JourneyMasers::img -right-> img
 JourneyMasers::index -down-> index
 JourneyMasers::js -down-> js
 JourneyMasers::templates -down-> templates
@@ -148,4 +148,41 @@ templates::jquery -down- js::main
 templates::jquery -down- js::dropdown
 
 templates::kosartemplate -right- helpers::dbhandler
+templates::kosartemplate -down- img::helyszinimg
+
+templates::logintemplate -down- helpers::dbhandler
+templates::logintemplate -down- js::loginpage
+
+templates::main -down- helpers::dbhandler
+templates::main -down- img::helyszinimg
+
+templates::profiletemplate -right- helpers::dbhandler
+templates::profiletemplate -down- js::bekuld
+templates::profiletemplate -down- js::confirm
+
+templates::reszletektemplate -right- helpers::dbhandler
+templates::reszletektemplate -down- img::helyszinimg
+templates::reszletektemplate -down- img::icons
+
+templates::tervezestemplate -right- helpers::dbhandler
+templates::tervezestemplate -down- js::bekuld
+templates::tervezestemplate -down- js::loadmoretervezhelyszin
+templates::tervezestemplate -down- js::emptyDiv
+
+templates::utazasoktemplate -right- helpers::dbhandler
+templates::utazasoktemplate -down- js::loadmore
+templates::utazasoktemplate -down- img::helyszinimg
+
+templates::veglegesitestemplate -right- helpers::dbhandler
+templates::veglegesitestemplate -down- img::helyszinimg
+
+helpers::invoice -right- fpdf186::fpdf
+
+js::loadmoretervezhelyszin -up- helpers::loadmoretervezhelyszin
+js::loadmoretervezhelyszin -up- helpers::loadmorecsomaghelyszin
+
+js::loadmore -up- helpers::loadmore
+
+js::search -up- helpers::search
+
 @enduml

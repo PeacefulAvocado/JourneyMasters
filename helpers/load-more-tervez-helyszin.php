@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
-// load_more.php
+
 
 // Assuming $dbhandler is your database handler
 
@@ -49,14 +49,5 @@ $helyszin = $dbhandler->select($query);
 
     $helyszin = $dbhandler->getCsomagok($offset+$len);
 
-/*
-    $len = count($helyszin);
 
-    if ($len == 0) {
-        echo "<style>
-            #loadMoreHelyszinBtn {
-            display: none;
-            }   
-        </style>"; 
-     }*/
 ?>

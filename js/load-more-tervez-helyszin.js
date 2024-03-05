@@ -2,8 +2,8 @@ $(document).ready(function() {
     var hoffset = 0;// Initial offset for loading more records
     var coffset = 0;// Initial offset for loading more records
     var limit = 3;  // Number of records to load per request
-    //var currentScriptUrl = document.currentScript.src;
-
+    
+    //A tervezés oldalon a leütött billentyűnek megfelelően tölt be utazásokat ajax segítségével
     $('#celpont').keyup(function(){
 
         var nev = document.getElementById('celpont').value;
@@ -29,19 +29,19 @@ $(document).ready(function() {
         
     });
 
-
+    //A több betöltése gombra kattintva további 3 utazást tölt be az oldal újratöltése nélkül
     $('#loadMoreHelyszinBtn').click(function() {
 
         var nev = document.getElementById('celpont').value;
         hoffset+=3;
 
         $.ajax({
-            url: '../helpers/load-more-tervez-helyszin.php', //currentScriptUrl/../helpers/load-more.php
+            url: '../helpers/load-more-tervez-helyszin.php',
             type: 'post',
             data: {hoffset: hoffset, coffset: coffset, limit: limit,nev: nev},
             success: function(response) {
-                $('#helyszinek').append(response); // Append loaded records to container
-                 // Increment offset for next request
+                $('#helyszinek').append(response); 
+                 
 
             } 
             

@@ -1,7 +1,6 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
-// load_more.php
 
 // Assuming $dbhandler is your database handler
 

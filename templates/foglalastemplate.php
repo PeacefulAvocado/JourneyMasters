@@ -1,17 +1,21 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    //Ha hiba van a kódban rossz paraméterek miatt, a 404-es oldalra dob
     function error_found(){
         header("Location: ../index/404.php");
       }
     set_error_handler('error_found');
+
     $csomag = $_GET['csomag'];
     $hotel_nev = $_GET['helyszin'];
     $ellatas = $_GET['ellatas'];
     $utasok_szama = $_GET['utasok_szama'];
+    //Elindítja a SESSION-t ha eddig nem futott
     if(!isset($_SESSION)){
     session_start();
     }
+    //Ha nem volt még létrehozva a $_SESSION['kosar_items'], létrehozza
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
@@ -23,7 +27,7 @@
         unset($tomb[$melyik]);
         $_SESSION['kosar_items'] = array_values($tomb);
     }
-
+    //Az ellátás függvényéban kiválasztja a szorzót, amely a végösszeghez kell
     switch ($ellatas)
     {
         case "Csak Szállás":
@@ -123,6 +127,7 @@
     ?>
     <script src="../js/tavolsagCalc.js"></script>
     <script>
+        //A tavolsagCalc segítségével kiszámolja a távot és ez alapján az árat az indulási hely és a célpont között
     const tavolsagCalc = new TavolsagCalc();
     window.onload = function() {
         let dist = tavolsagCalc.calcDistance('<?php echo $honnan; ?>', '<?php echo $varos; ?>');
@@ -149,18 +154,20 @@
             <img class='kep' src='../img/helyszinimg/<?= $hotel_nev ?>/1.jpg'>
             <div class="adatok">
                 <?php
+                //Kiírja a foglalás részleteit
                 $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
                 $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
                 $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
                 $ar = $dbhandler->getKeresett('helyszin', 'ar', 'nev', "'$hotel_nev'")[0];
 
                 if($csomag=="false"){
-                    
+                    //Kiszámolja a végösszeget a napok és utasok száma és az ellátás segítségével 
                     $from = DateTime::createFromFormat('m-d-Y', $mettol);
                     $to = DateTime::createFromFormat('m-d-Y', $meddig);
                     $days = $to->diff($from)->d;
                     $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo);
                 }
+                //A csillagok száma alapján készít egy stringet annyi csillagból
                 $stars_str = "";
                 for ($n = 0; $n < $stars; $n++) {
                     $stars_str .= "<i class='fa-solid fa-star'></i>";
@@ -226,6 +233,7 @@
 
         <form action='../index/veglegesites.php' method='post' id="tovabb_form">
         <?php
+        //Beírja az utas születési adatait, ha be van jelentkezve
             if (isset($_SESSION['utasid']))
             {
                 $utas = $dbhandler->select("select * from utasok where utasazon = ".$_SESSION['utasid'])[0];
@@ -243,6 +251,7 @@
                     <p class='utasszam'>1. utas</p>
                     <hr class='vonal'>
                     <div class='utasdata'>
+                        <!--A bejelentkezett utas összes adatát beírja-->
                         <label>Név:</label>
                         <input type='text' name='nev_0' value='<?= $utas['nev'] ?>' readonly>
                         <label>Telefonszám:</label>
@@ -273,6 +282,7 @@
                 </div>
             <?php
             }
+            //Ha nincs bejelentkezve, a felhasználónak kell kitöltenie
             else {
             ?>
             <div class='utas'>
@@ -373,7 +383,7 @@
             <input type="hidden" name="ellatas_ar" value="<?= $ellatasar ?>">
             <input type="hidden" name="csomag" value="<?= $csomag ?>">
             <input type="hidden" name="days" value="<?= $days ?>">
-            
+            <!--Az értesítési adatokat csak 1-szer kell megadni-->
             <div class="allando">
                 <label>Értesítési telefonszám:</label>
                 <input type="tel" name="erttel" id="erttel">
@@ -388,6 +398,7 @@
                     <option value="Hitelkártya">Hitelkártya</option>
                 </select>
             </div>
+            <!--Megnézi, hogy minden adat ki van-e töltve, ha igen, elküldi a formot-->
             <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?= $utasok_szama ?>)'>
         </form>
 

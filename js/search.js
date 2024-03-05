@@ -1,3 +1,4 @@
+//A főoldalon a célpont beírásánál lenyíló ablakban megjelennek a lehetséges célpontok
 $(document).ready(function(){
     $('#searchInput').keyup(function(){
         var query = $(this).val();

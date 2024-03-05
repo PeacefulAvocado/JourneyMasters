@@ -15,7 +15,7 @@
  <hr id='utazasokvonal'>
 
  <?php
-    //$len = $dbhandler->getTableCount('csomagok')[0];
+    //Kiírja az adatbázisban található csomagokat, különböző színnel
     $csomagok = $dbhandler->getCsomagok(0);
     $j = 1;
     for ($i=0; $i < 3; $i++)

@@ -1,10 +1,12 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    //Ha hiba van a kódban rossz paraméterek miatt, a 404-es oldalra dob
     function error_found(){
         header("Location: ../index/404.php");
       }
     set_error_handler('error_found');
+    //Ha a kosárból térünk vissza, kitörli a kosárból azt az elemet, majd később újra hozzáadja
     if(isset($_GET['todelete'])){
         $delete = $_GET['todelete'];
     }
@@ -36,6 +38,7 @@
 <div class="reszletekmain">
 <div class="reszletek">
     <?php
+    //Az oldal tetejére kirak egy képet és a hotel adatait
         $csomag = $_GET['csomag'];
         if ($csomag == "true")
         {
@@ -83,6 +86,7 @@
 
     <div class="slideshow-container">
  <?php
+    //Betölti egy képnézegetőbe a hotelhez tartozó képeket
     if ($csomag == "true")
     {
         $directory = "../img/helyszinimg/" . $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $csomagid)[0];
@@ -119,9 +123,9 @@
     <div class="lenti">
 
     <?php
+        //A szolgáltatások táblának megfelelően kiírja a szálláshely szolgáltatásait ikonokkal
         $szolgaltatasok = $dbhandler->select("SELECT szolgaltatasok.* FROM szolgaltatasok INNER JOIN helyszin ON helyszin.nev = szolgaltatasok.nev WHERE szolgaltatasok.nev = '$hotel_nev'");
         array_shift($szolgaltatasok[0]);
-        //ikonok img/icons/ugyanaz a nevük mint az adatbázisban
         $szolgaltatasok_str = "";
         $szoveg = array('sajat_furdo' => "Saját fürdő", 'terasz' => "Terasz", 'franciaagy' => "Franciaágy", 'gyerekbarat' => "Gyerekbarát", 'ac' => "Légkondícionált", 'konyha' => "Konyha", 'parkolas' => "Parkolás", 'tv' => "TV", 'gym' => "Gym", 'medence' => "Medence", 'bar' => "Bár", 'internet' => "Internet", 'szef' => "Széf", 'akadalymentes' => "Akadálymentes");
         foreach ($szolgaltatasok[0] as $key => $szolg)
@@ -175,12 +179,11 @@
                 $ar = $dbhandler->getKeresett('helyszin', 'ar', 'nev', "'$hotel_nev'")[0];
             }
         ?>
-    <!-- Hidden input field to store the original price -->
     <?php echo "<input type='hidden' id='originalPrice' value='$ar'>"?>
-    <!-- Displayed price -->
     <p><span id="displayedPrice"><?php echo $ar?></span> Ft/fő</p>
         </div>
         <?php
+            //Ha ki kell törölni az elemet a foglalás oldalon, mert a kosárból jöttünk erre az oldalra, ezt továbbküldi
             if ($csomag == "true" && !isset($_GET['todelete']))
             {
                 echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
