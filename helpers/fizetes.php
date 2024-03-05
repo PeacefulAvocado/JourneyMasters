@@ -90,8 +90,7 @@
     $nev = $_POST['nev_0'];
 
  //Megnyitja a számlát új ablakban illetve visszadob a főoldalra
-    echo "<script type='text/javascript'>window.open('invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar');</script>";
-    echo "<script type='text/javascript'>window.location = '../index/success.php';</script>";
+    echo "<script type='text/javascript'>window.location = 'invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar';</script>";
     
 
 ?>
