@@ -26,9 +26,25 @@
     $utazas = $_POST['utazas'];
     $ellatas_ar = $_POST['ellatas_ar'];
 
+    $ar -= $utazas;
 
+    switch ($utazasmod) {
+        case "Repülő":
+            $szorz = 12;
+            break;
+        case "Vonat":
+            $szorz = 8;
+            break;
+        case "Busz":
+            $szorz = 5;
+            break;
+        case "Egyéni":
+            $szorz = 0;
+            break;
+    }
     
-
+    $utazas = $utazas * $szorz;
+    $ar += $utazas;
 ?>
 
 

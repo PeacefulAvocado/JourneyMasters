@@ -19,6 +19,8 @@
         $_SESSION['kosar_items'] = array_values($tomb);
     }
     
+    
+    $utazas_ar = $_SESSION['utazas_ar'];
 
     switch ($ellatas)
     {
@@ -139,11 +141,11 @@
                     <p class="sz1">Ellátás</p>
                     <p class='sz2'><?= $utasok_szama ?> x <?= $ar * $szorzo ?> HUF</p>
                     <p class="sz1">Utazás</p>
-                    <p class='sz2'><?= $utasok_szama ?> x valami HUF</p>
+                    <p class='sz2'><?= $utasok_szama ?> x <span id="utazas_ar"><?= $utazas_ar ?></span> HUF</p>
                 </div>
-                <p class='osszeg'><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) ?> HUF</p>
+                <p class='osszeg'><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) + $utazas_ar ?> HUF</p>
                 <?php
-                $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo);
+                $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) + $utazas_ar;
                 ?>
             </div>
         </div>
@@ -193,7 +195,7 @@
                 </div>
             <?php
             }
-            $utazas = 0;
+
             $ellatasar =  ($ar * $szorzo);
             ?>
             <input type="hidden" name="helyszin" value="<?= $hotel_nev ?>">
@@ -206,7 +208,7 @@
             <input type="hidden" name="meddig" value="<?= $meddig ?>">
             <input type="hidden" name="ar" value="<?= $total ?>">
             <input type="hidden" name="szallas" value="<?= $ar ?>">
-            <input type="hidden" name="utazas" value="<?= $utazas ?>">
+            <input type="hidden" name="utazas" value="<?= $utazas_ar ?>">
             <input type="hidden" name="ellatas_ar" value="<?= $ellatasar ?>">
             <input type="hidden" name="csomag" value="<?= $csomag ?>">
             <input type="hidden" name="days" value="<?= $days ?>">
@@ -231,3 +233,29 @@
     </div>
 </div>
 <script src="../js/bekuld.js"></script>
+<script src="../js/tavolsagCalc.js"></script>
+<script>
+    const tavolsagCalc = new TavolsagCalc();
+    window.onload = function() {
+        let dist = tavolsagCalc.calcDistance('<?php echo $honnan; ?>', '<?php echo $varos; ?>');
+        
+        // Make an AJAX request to store the JavaScript value in PHP
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../helpers/store_value.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log('Value stored in PHP successfully.');
+            } else {
+                console.error('Error storing value in PHP.');
+            }
+        };
+        dist.then((result) => {
+            xhr.send('utazas_ar=' + result);
+        })  
+    };
+
+ 
+</script>
+
+
