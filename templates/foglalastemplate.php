@@ -11,6 +11,7 @@
     if(!isset($_SESSION['kosar_items'])){
         $_SESSION['kosar_items'] = array();
     }
+    //Ha a kosárból térünk vissza, nem adja újra hozzá az elemet a kosárhoz
     if(isset($_GET['toremove'])){
         $delete = explode('_',$_GET['toremove']);
         $melyik = intval(trim($delete[1]));
@@ -18,7 +19,6 @@
         unset($tomb[$melyik]);
         $_SESSION['kosar_items'] = array_values($tomb);
     }
-    
 
     switch ($ellatas)
     {
@@ -43,18 +43,77 @@
             $szorzo = 0.2;
             break;
     }
+    //Belerakja a kosárba az utazást az alapján, hogy benne van-e már
    if ($csomag == "true")
     {
         $csomagid = $_GET['csomagid'];
-        $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+        if(!isset($_GET['toremove'])){
+            $igaze = true;
+            $i = 0;
+            $csomagcounter = 0;
+            $csomagvoltecounter = 0;
+            //Megnézi, hogy az adott elem benne van-e a kosárban
+            foreach($_SESSION['kosar_items'] as $item){
+                if($item['csomage'] == "true"){
+                    $csomagcounter++;
+                    if(!($item['csomagid'] == $csomagid && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utasok_szama)){
+                        $csomagvoltecounter++;
+                    }
+                }
+
+            }
+            //Ha nincs benne, belerakja
+            if(count($_SESSION['kosar_items']) == 0){
+                if(($csomagcounter == $csomagvoltecounter)){
+                    $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+                }
+            }
+            else if(count($_SESSION['kosar_items']) != 0){
+                if(($csomagcounter == $csomagvoltecounter)){
+                    $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+                }
+            }
+            
+        }
+        else if(isset($_GET['toremove'])){
+            $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+        }
+        
 
     }
     else {
         $honnan = $_GET['honnan'];
         $mettol = $_GET['mettol'];
         $meddig = $_GET['meddig'];
-        $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
-    }
+        if(!isset($_GET['toremove'])){
+            $egyenicounter = 0;
+            $egyenivoltecounter = 0;
+            //Megnézi, hogy az adott elem benne van-e a kosárban
+            foreach($_SESSION['kosar_items'] as $item){
+                if($item['csomage'] == "false"){
+                    $egyenicounter++;
+                    if(!($item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utasok_szama && $item['mettol'] == $mettol && $item['meddig'] == $meddig)){
+                        $egyenivoltecounter++;
+                    }
+                }
+
+            }
+            //Ha nincs benne, belerakja
+            if(count($_SESSION['kosar_items']) == 0){
+                if(($egyenicounter == $egyenivoltecounter)){
+                    $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+                }
+            }
+            else if(count($_SESSION['kosar_items']) != 0){
+                if(($egyenicounter == $egyenivoltecounter)){
+                    $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+                }
+            }
+        }
+        else if(isset($_GET['toremove'])){
+            $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
+        }
+    }   
 
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>

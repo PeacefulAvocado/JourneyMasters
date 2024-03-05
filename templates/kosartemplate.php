@@ -41,6 +41,7 @@
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
+        
         $csomagid = $item['csomagid'];
         $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
         $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
