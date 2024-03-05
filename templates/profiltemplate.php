@@ -159,7 +159,7 @@
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
         $cim = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$celpont'")[0].", ".$dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$celpont'")[0];
-        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid'].");")[0][0];
+        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid']." and utazasid = ".$utazasok[$i]['utazasazon'].");")[0][0];
         echo "
           <form action='' method='post' class='tervezesegyeni inaktiv'>
             <img src='../img/helyszinimg/$celpont/1.jpg' alt='Helyszín'>

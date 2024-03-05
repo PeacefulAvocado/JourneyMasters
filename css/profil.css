@@ -28,7 +28,7 @@
 
 .nincs {
     color: red;
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin-left: 4vw;
 }
 .emailcim{
@@ -266,7 +266,7 @@ color: var(--black);
 }
 @media screen and (max-width: 1000px){
     .profil{
-        padding: 1vw 5vw 15vw 5vw;
+        padding: 1vw 5vw 19vw 5vw;
     }
     .emailcim{
         font-size: 3.5vw;
@@ -291,6 +291,9 @@ color: var(--black);
     .jelszavak label{
         font-size: 3vw;
         margin: 0.5vw 0;
+    }
+    .nincs {
+        font-size: 2vw;
     }
     .textinput{
         font-size: 3vw;
@@ -419,6 +422,9 @@ color: var(--black);
     .jelszavak label{
         font-size: 5vw;
         margin: 0.5vw 0;
+    }
+    .nincs {
+        font-size: 3vw;
     }
     .textinput{
         font-size: 6vw;
