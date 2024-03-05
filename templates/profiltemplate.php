@@ -29,7 +29,7 @@
   }
   $email = $dbhandler->getKeresettNoAktiv('userdata', 'email', 'utasid', $_SESSION['utasid'])[0];
 
-  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']); 
+  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']."AND aktiv = 1 "); 
 
   if (isset($_POST['torles']))
   {
