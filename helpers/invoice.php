@@ -50,7 +50,9 @@
     }
     $_SESSION['kosar_items'] = array_values($tomb);
 
+
     //PDF adatainak betöltése a tömbbe
+
 
   $info=[
     "customer"=>$_GET['nev'],
@@ -174,7 +176,9 @@
   //Megjeleníti az elkészített PDF-et
   $pdf=new PDF("P","mm","A4");
   $pdf->AddPage();
+  $rand = rand(100000,1000000);
   $pdf->body($info,$products_info);
-  $pdf->Output();
+  $_SESSION['pdfnev'] = $rand;
+  $pdf->Output('F',"../userpdf/$rand.pdf");
 
 ?>
