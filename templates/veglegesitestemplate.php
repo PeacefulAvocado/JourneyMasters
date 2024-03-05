@@ -1,11 +1,19 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    //Ha hiba van a kódban rossz paraméterek miatt, a 404-es oldalra dob
+    function error_found(){
+        header("Location: ../index/404.php");
+      }
+    set_error_handler('error_found');
    
     $utasok_szama = $_POST['utasok_szama'];
     $csomag = $_POST['csomag'];
 
-
+    if ($csomag == "true")
+    {
+        $csomagid = $_POST['csomagid'];
+    }
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
     $utazasmod = $_POST['utazasmod'];
@@ -13,7 +21,8 @@
     $varos = $_POST['hova'];
     $mettol = $_POST['mettol'];
     $meddig = $_POST['meddig'];
-    $ar = $_POST['ar'];
+    $ar = intval($_POST['ar']);
+
 
     $erttel = $_POST["erttel"];
     $ertemail = $_POST["ertemail"];
@@ -23,12 +32,8 @@
 
     $szallas = $_POST['szallas'];
     $days = $_POST['days'];
-    $utazas = $_POST['utazas'];
+    $utazas = intval($_POST['utazas']);
     $ellatas_ar = $_POST['ellatas_ar'];
-
-
-    
-
 ?>
 
 
@@ -41,7 +46,7 @@
     <div class="vegadatok">
         <div class='container'>
             <?php 
-       
+       //Kiírja az utazás végleges adatait
        $cim = $dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$hotel_nev'")[0];
        $stars = $dbhandler->getKeresett('helyszin', 'csillag', 'nev', "'$hotel_nev'")[0];
        
@@ -78,6 +83,7 @@
         <h3>Utasok adatai: </h3>
      
         <?php 
+        //Kiírja a felhasználók végleges adatait
         for($i = 0; $i<$utasok_szama; $i++) {
             $index = $i+1;
             $nev = $_POST["nev_$i"];
@@ -139,6 +145,13 @@
         <p class="vegebal kover">Összesen:</p>
         <p class="vegejobb kover"><?= $ar?> HUF</p>
     </div>
+        <?php
+        //Ha csomagról van szó, elküldi a csomagid-t
+            if ($csomag == "true")
+            {
+                echo "<input type='hidden' name='csomagid' value='$csomagid'>";
+            }
+        ?>
         <input type="hidden" name="helyszin" value="<?php echo $hotel_nev?>">
         <input type="hidden" name="utasok_szama" value="<?php echo $utasok_szama?>">
         <input type="hidden" name="csomag_e" value="<?php echo $csomag?>">
@@ -157,7 +170,7 @@
         <input type="hidden" name="ertemail" value="<?php echo $ertemail?>">
         <input type="hidden" name="biztnev" value="<?php echo $biztnev?>">
         <input type="hidden" name="fizmod" value="<?php echo $fizmod?>">
-        <input type="submit" class="fizetes" value="Fizetes">
+        <input type="submit" class="fizetes" value="Fizetés">
 </form>
 
     </div>

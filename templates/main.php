@@ -1,11 +1,11 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    //Elindítja a SESSION-t ha eddig nem futott
     if(!isset($_SESSION)){
     session_start();
     }
     $_SESSION["username"] = "Ben";
-
 
 ?>
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
@@ -31,6 +31,7 @@
         <h1 class="kiemelt">Kiemelt ajánlataink</h1>
         <div class="slideshow-container">
             <?php
+                //Betölt 3 csomagot a képnézegetőbe
                 $csomagok =  $dbhandler->getMindenAdat('csomagok', 3);
                 $len = 3;
                 $helyszinindex = null;

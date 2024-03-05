@@ -56,6 +56,7 @@
   <hr class="vonal">
   <div class="szallashelycontainer" id="helyszinek">
     <?php 
+    //A céplontnak megfelelően betölt hoteleket, a több gombra nyomva további 3-at tölt be, amíg a végére nem ér
     if($celpont != ""){
       $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 and varos like '%$celpont%' limit 0, 3");
       $vege = count($helyszin);
@@ -83,6 +84,7 @@
       </form>";
     }
   }
+  //Ha nem írtunk be célpontot, random helyeket tölt be
     else{
     $helyszin = $dbhandler->select("select * from helyszin where aktiv = 1 and varos like '%%' limit 0, 3");
     for($i = 0; $i < 3;$i++) {
@@ -114,7 +116,6 @@
 
 </div>
 <button class='tobb' id="loadMoreHelyszinBtn">Több<br>betöltése</button>
-<!--<p id="end_of_page" class='vege' style="display: none;">A végére ért</p>-->
 </div>
 
 
@@ -123,6 +124,7 @@
   <hr class="vonal">
   <div class="csomagcontainer" id="csomagcontainer">
   <?php 
+      //A céplontnak megfelelően betölt hoteleket, a több gombra nyomva további 3-at tölt be, amíg a végére nem ér
   if($celpont != ""){
     $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%$celpont%' limit 0, 3");
     $vege = count($csomagok);
@@ -165,6 +167,7 @@
     </form>";
     }
 }
+  //Ha nem írtunk be célpontot, random helyeket tölt be
 else{
     $csomagok = $dbhandler->select("SELECT * from helyszin inner join csomagok on helyszin.nev = csomagok.celpont where csomagok.aktiv = 1 and varos like '%%' limit 0, 3");
 
@@ -192,7 +195,7 @@ else{
         }
 
 
-      echo "<form action='../index/foglalas.php' method='get' class='csomagform' id='a1'>
+      echo "<form action='../index/reszletek.php' method='get' class='csomagform' id='a1'>
       <img src='../img/helyszinimg/$celpont/1.jpg' alt='$varos'>
       <p class='varosnev'>$varos</p>
       <br>
@@ -222,6 +225,7 @@ else{
 
 
 <script>
+  //A daterangepicker-hez szükséges függvény
 $('input[name="dates"]').daterangepicker();
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -13,10 +13,10 @@ file szamla
 database DB
 
 :User:--->(fooldal)
-:User:-right->(profil)
-:User:.right.>(kosar)
 (fooldal) -->(tervezes)
 (fooldal) -->(utazasok)
+(fooldal) -->(kosar)
+(fooldal) -->(profil)
 (utazasok)-->(reszletek)
 (tervezes)-->(reszletek)
 (reszletek)-->(kosar)

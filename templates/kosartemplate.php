@@ -1,13 +1,16 @@
 <?php
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
+    //Elindítja a SESSION-t ha eddig nem futott
     if(!isset($_SESSION)){
     session_start();
     }
+    //Ha nincs bejelentkezve utas, a bejelentkezésre dob
     if(!isset($_SESSION['utasid'])){
         header("Location: ../index/login.php");
         exit();
     }
+    //Ha korábban rányomtunk, hogy törölje ki az egyik elemet, most azt kitörli
     if(isset($_POST['delete'])){
       $delete = explode('_',$_POST['delete']);
       $melyik = intval(trim($delete[1]));
@@ -42,6 +45,7 @@
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
+        
         $csomagid = $item['csomagid'];
         $mettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $csomagid)[0];
         $meddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $csomagid)[0];
@@ -60,7 +64,7 @@
         $csomag = 'true';
 
         echo "<div class='kiscsomag'> <form action='../index/kosar.php' method='post' class='csomagform' id='form_$i'>
-      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='$varos'>
       <p class='csomaghotelnev'>".$celpont."</p>
       <p class='stars'>$stars_str</p>
       <p class='csomaghonnanhova'>$honnan — $varos</p>
@@ -97,7 +101,7 @@
       $csomag = 'false';
 
       echo "<div class='kiscsomag'> <form action='../index/kosar.php' method='post' class='tervezesegyeni' id='form_$i'>
-      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='$varos'>
       <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars_str</p>
       <p class='egyenihonnanhova'>$honnan — $varos</p>

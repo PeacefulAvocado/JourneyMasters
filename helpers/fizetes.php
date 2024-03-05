@@ -5,7 +5,7 @@
     
     $utasok_szama = $_POST['utasok_szama'];
     $csomag_e = $_POST['csomag_e'];
-
+    $csomagid = $_POST['csomagid']; 
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
     $utazasmod = $_POST['utazasmod'];
@@ -14,12 +14,10 @@
     $mettol = $_POST['mettol'];
     $meddig = $_POST['meddig'];
     $ar = $_POST['ar'];
-
     $erttel = $_POST["erttel"];
     $ertemail = $_POST["ertemail"];
     $biztnev = $_POST["biztnev"];
     $fizmod = $_POST["fizmod"];
-
     $szallas = $_POST['szallas'];
     $days = $_POST['days'];
     $utazas = $_POST['utazas'];
@@ -30,6 +28,7 @@
 
     $csomagid = $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count']+1;
     $utazasazon = $dbhandler->select("select COUNT(*) as utazasazon from utazas ")[0]['utazasazon']+1;
+    //Beleírja az utasok és az utazás adatait az adatbázisba
     for($i = 0; $i<$utasok_szama; $i++) {
         $index = $i+1;
 
@@ -62,7 +61,7 @@
 
         if($dbhandler->getKeresett("utasok","utasazon","nev","'$nev'")[0] != "") {
             //update if exists
-      $utasazon = $dbhandler->getKeresett("utasok","utasazon","nev","'$nev'")[0];
+            $utasazon = $dbhandler->getKeresett("utasok","utasazon","nev","'$nev'")[0];
 
             $dbhandler->updateUtas($utasazon,$igtipus,$igszam,$tel,$orszag,$iranyitoszam,$telepules,$lakcim,$erttel,$ertemail,$biztnev,$fizmod);
         } else {
@@ -90,8 +89,9 @@
     $lakhely = $_POST["iranyitoszam_0"].' '.$_POST["telepules_0"].','.$_POST["lakcim_0"];
     $nev = $_POST['nev_0'];
 
+ //Megnyitja a számlát új ablakban illetve visszadob a főoldalra
     echo "<script type='text/javascript'>window.open('invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar');</script>";
     echo "<script type='text/javascript'>window.location = '../index/success.php';</script>";
-    //header("Location: invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar");
     
+
 ?>

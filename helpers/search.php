@@ -1,35 +1,34 @@
 <?php
-// Database connection parameters
+// Adatbázis kapcsolat paraméterek
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "journeymastersdatabase";
 
-// Create connection
+// Kapcsolat létrehozása
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
+// Kapcsolat ellenőrzése
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve the search query
+// Search query megszerzése
 $query = $_POST['query'];
 
-// Prepare SQL statement to search for places
+// Helykereső SQL
 $result = $conn->query("SELECT varos FROM helyszin WHERE varos LIKE '%$query%'");
 
-// Check if query execution was successful
+// Sikeres volt-e a lekérdezés
 if ($result === false) {
     die("Query failed: " . $conn->error);
 }
 
-// Convert result into an associative array
 $rows = array();
 while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
 }
-// Output the filtered places in a dropdown menu
+// Helyek kiírása dropdown-ba
 if (!isset($elozo))
 {
     $elozo[] = array();
@@ -44,8 +43,6 @@ foreach ($rows as $row) {
 }
 echo '</ul>';
 
-
-// Close connection
 $conn->close();
 
 

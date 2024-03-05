@@ -1,4 +1,5 @@
 <?php
+    //pdf megjelenítéséhez szükséges fpdf
     require('../fpdf186/fpdf.php');
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
@@ -9,15 +10,14 @@
     $ellatas = $_GET['ellatas'];
     $mettol = $_GET['mettol'];
     $meddig = $_GET['meddig'];
-
     $ar = $_GET['ar'];
     $orszag = $_GET['orszag'];
     $cim = $_GET['lakcim'];
-
     $szallas = $_GET['szallas'];
     $days = $_GET['days'];
     $utazas = $_GET['utazas'];
     $ellatas_ar = $_GET['ellatas_ar'];
+    //Megnézi, hogy a $_SESSION['kosar_items'] melyik eleméről van éppen szó, és azt kiszedi a sessionből azaz a kosárból
     session_start();
     $tomb = array();
     foreach($_SESSION['kosar_items'] as $item){
@@ -49,8 +49,10 @@
         }
     }
     $_SESSION['kosar_items'] = array_values($tomb);
-    
-    //customer and invoice details
+
+
+    //PDF adatainak betöltése a tömbbe
+
 
   $info=[
     "customer"=>$_GET['nev'],
@@ -60,7 +62,7 @@
   ];
   
   
-  //invoice Products
+
   $products_info=[
     [
       "name"=>"Utazas",
@@ -81,15 +83,17 @@
       "total"=>strval(intval($ellatas_ar)*intval($utas_szam))." HUF"
     ],
   ];
-  function Convert($string){
-    return iconv('UTF-8', 'ISO-8859-2', "$string");
-}
+    //A nem megjeleníthető karakterek átkonvertálása
+    function Convert($string){
+      return iconv('UTF-8', 'ISO-8859-2', "$string");
+    }
+    //PDF elkészítése
   class PDF extends FPDF
   {
     
     function Header(){
       
-      //Display Company Info
+
       $this->Image('../img/kislogo2.png', 10, 10, -300);
       $this->SetFont('Arial','B',14);
       $this->Cell(100,10,Convert("JourneyMasters"),0,1,'C');
@@ -98,19 +102,19 @@
       $this->Cell(100,7,"HUNGARY",0,1,'C');
 
       
-      //Display INVOICE text
+
       $this->SetY(15);
       $this->SetX(-40);
       $this->SetFont('Arial','B',18);
       $this->Cell(50,10, Convert("SZÁMLA"),0,1);
       
-      //Display Horizontal line
+
       $this->Line(0,48,210,48);
     }
     
     function body($info,$products_info){
       
-      //Billing Details
+
       $this->SetY(55);
       $this->SetX(10);
       $this->SetFont('Arial','B',12);
@@ -124,7 +128,7 @@
       $this->SetX(-60);
       $this->Cell(50,7,"KELTEZES. : ".date("Y-m-d"));
       
-      //Display Table headings
+
       $this->SetY(95);
       $this->SetX(10);
       $this->SetFont('Arial','B',12);
@@ -134,14 +138,14 @@
       $this->Cell(40,9,"OSSZESEN",1,1,"C");
       $this->SetFont('Arial','',12);
       
-      //Display table product rows
+
       foreach($products_info as $row){
         $this->Cell(80,9,Convert($row["name"]),"LR",0);
         $this->Cell(40,9,$row["price"],"R",0,"R");
         $this->Cell(30,9,$row["qty"],"R",0,"C");
         $this->Cell(40,9,$row["total"],"R",1,"R");
       }
-      //Display table empty rows
+
       for($i=0;$i<12-count($products_info);$i++)
       {
         $this->Cell(80,9,"","LR",0);
@@ -149,7 +153,7 @@
         $this->Cell(30,9,"","R",0,"C");
         $this->Cell(40,9,"","R",1,"R");
       }
-      //Display table total row
+
       $this->SetFont('Arial','B',12);
       $this->Cell(150,9,"OSSZESEN",1,0,"R");
       $this->Cell(40,9,$info["total_amt"]." HUF",1,1,"R");
@@ -158,7 +162,6 @@
     }
     function Footer(){
       
-      //set footer position
       $this->SetY(-50);
       $this->SetFont('Arial','B',12);
       $this->Ln(15);
@@ -170,7 +173,7 @@
     }
     
   }
-  //Create A4 Page with Portrait 
+  //Megjeleníti az elkészített PDF-et
   $pdf=new PDF("P","mm","A4");
   $pdf->AddPage();
   $rand = rand(100000,1000000);

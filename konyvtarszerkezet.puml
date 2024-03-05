@@ -1,0 +1,188 @@
+@startuml
+
+object JourneyMasers {
+    css
+    fpdf186
+    helpers
+    img
+    index
+    js
+    templates
+}
+
+map css{
+footer => css
+foglalas => css
+kosar => css
+login => css
+main => css
+navbar => css
+profil => css
+reszletek => css
+tervezes => css
+utazasok => css
+veglegesites => css
+}
+map fpdf186{
+fpdf => php
+}
+
+map helpers{
+dbhandler => php
+fizetes => php
+invoice => php
+loadmorecsomaghelyszin => php
+loadmoretervezhelyszin => php
+loadmore => php
+search => php
+}
+object img {
+    helyszinimg
+    icons 
+    }
+
+map index {
+    404 => php
+    foglalas =>php
+    index => php
+    kosar =>php
+    login =>php
+    profil =>php
+    reszletek =>php
+    tervezes =>php
+    utazasok => php
+    veglegesites => php 
+}
+
+map js {
+    bekuld => js 
+    confirm => js 
+    dropdown => js 
+    emptyDiv => js 
+    icon => js 
+    loadmoretervezhelyszin => js 
+    loadmore => js 
+    loginpage => js 
+    main => js 
+    reszletekslider => js 
+    search => js 
+    tavolsagCalc => js 
+ }
+
+map templates {
+    foglalastemplate => php
+    footer => php
+    jquery => php
+    kosartemplate => php
+    logintemplate => php
+    main => php
+    navbar => php
+    profiltemplate => php
+    reszletektemplate => php
+    tervezestemplate => php
+    utazasoktemplate => php
+    veglegesitestemplate => php
+}
+
+JourneyMasers::css -down-> css
+JourneyMasers::fpdf186 -right-> fpdf186
+JourneyMasers::helpers -down-> helpers
+JourneyMasers::img -right-> img
+JourneyMasers::index -down-> index
+JourneyMasers::js -down-> js
+JourneyMasers::templates -down-> templates
+
+index::index -right[#blue]-- templates::navbar
+index::index -right[#blue]-- templates::footer
+index::index -right[#blue]-- templates::main
+index::index -left[#blue]-- css::main
+
+index::kosar -right[#Green]-- templates::navbar 
+index::kosar -right[#Green]-- templates::footer
+index::kosar -right[#Green]-- templates::kosar
+index::kosar -left[#Green]-- css::kosar
+
+index::login -right[#red]-- templates::navbar
+index::login -right[#red]-- templates::footer
+index::login -right[#red]-- templates::login
+index::login -left[#red]-- css::login
+
+index::foglalas -right[#Orange]-- templates::footer
+index::foglalas -right[#Orange]-- templates::navbar
+index::foglalas -right[#Orange]-- templates::foglalastemplate
+index::foglalas -left[#Orange]-- css::foglalas
+
+index::profil -right[#Magenta]-- templates::footer
+index::profil -right[#Magenta]-- templates::navbar
+index::profil -right[#Magenta]-- templates::profiltemplate
+index::profil -left[#Magenta]-- css::profil
+
+index::reszletek -right[#RosyBrown]-- templates::footer
+index::reszletek -right[#RosyBrown]-- templates::navbar
+index::reszletek -right[#RosyBrown]-- templates::reszletektemplate
+index::reszletek -right[#RosyBrown]-- css::reszletek
+
+index::tervezes -right[#LightGreen]-- templates::footer
+index::tervezes -right[#LightGreen]-- templates::navbar
+index::tervezes -right[#LightGreen]-- templates::tervezestemplate
+index::tervezes -left[#LightGreen]-- css::tervezes
+
+index::utazasok -right[#LightCoral]-- templates::footer
+index::utazasok -right[#LightCoral]-- templates::navbar
+index::utazasok -right[#LightCoral]-- templates::utazasoktemplate
+index::utazasok -left[#LightCoral]-- css::utazasok
+
+index::veglegesites -right-- templates::footer
+index::veglegesites -right-- templates::navbar
+index::veglegesites -right-- templates::veglegesitestemplate
+index::veglegesites -left-- css::veglegesites
+
+templates::footer -right-- css::footer
+templates::navbar -right-- css::navbar
+
+templates::foglalastemplate -right- helpers::dbhandler
+templates::foglalastemplate -down- js::tavolsagCalc
+templates::foglalastemplate -down- js::bekuld
+
+templates::jquery -down- js::main
+templates::jquery -down- js::dropdown
+
+templates::kosartemplate -right- helpers::dbhandler
+templates::kosartemplate -down- img::helyszinimg
+
+templates::logintemplate -down- helpers::dbhandler
+templates::logintemplate -down- js::loginpage
+
+templates::main -down- helpers::dbhandler
+templates::main -down- img::helyszinimg
+
+templates::profiletemplate -right- helpers::dbhandler
+templates::profiletemplate -down- js::bekuld
+templates::profiletemplate -down- js::confirm
+
+templates::reszletektemplate -right- helpers::dbhandler
+templates::reszletektemplate -down- img::helyszinimg
+templates::reszletektemplate -down- img::icons
+
+templates::tervezestemplate -right- helpers::dbhandler
+templates::tervezestemplate -down- js::bekuld
+templates::tervezestemplate -down- js::loadmoretervezhelyszin
+templates::tervezestemplate -down- js::emptyDiv
+
+templates::utazasoktemplate -right- helpers::dbhandler
+templates::utazasoktemplate -down- js::loadmore
+templates::utazasoktemplate -down- img::helyszinimg
+
+templates::veglegesitestemplate -right- helpers::dbhandler
+templates::veglegesitestemplate -down- img::helyszinimg
+
+helpers::invoice -right- fpdf186::fpdf
+
+js::loadmoretervezhelyszin -up- helpers::loadmoretervezhelyszin
+js::loadmoretervezhelyszin -up- helpers::loadmorecsomaghelyszin
+
+js::loadmore -up- helpers::loadmore
+
+js::search -up- helpers::search
+
+@enduml
