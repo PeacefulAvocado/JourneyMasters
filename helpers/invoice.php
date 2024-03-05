@@ -1,6 +1,7 @@
 <?php
     require('../fpdf186/fpdf.php');
-    
+    require_once(__DIR__."/../helpers/dbhandler.php");
+    $dbhandler = new DbHandler();
     $utas_szam = $_GET['utasszam'];
     $csomag_e = $_GET['csomag_e'];
     $honnan = $_GET['honnan'];
@@ -20,12 +21,35 @@
     session_start();
     $tomb = array();
     foreach($_SESSION['kosar_items'] as $item){
-        if(!($item['csomage'] == $csomag_e && $item['honnan'] == $honnan && $item['hotel_nev'] == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam && $item['mettol'] == $mettol && $item['meddig'] == $meddig )){
-          $tomb[] = array('csomage' => $csomag_e,'honnan' => $honnan , 'hotel_nev' => $hotel_nev , 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam , 'mettol' => $mettol , 'meddig' => $meddig);
+      $sessionhonnan = '';
+      $sessionhotelnev = '';
+      $sessionmettol = '';
+      $sessionmeddig = '';
+        if($item['csomage']=="true"){
+          $sessionhonnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $item['csomagid'])[0];
+          $sessionhotelnev = $dbhandler->getKeresett('csomagok', 'celpont', 'csomagid', $item['csomagid'])[0];
+          $sessionmettol = $dbhandler->getKeresett('csomagok', 'mettol', 'csomagid', $item['csomagid'])[0];
+          $sessionmeddig = $dbhandler->getKeresett('csomagok', 'meddig', 'csomagid', $item['csomagid'])[0];
+        }
+        else{
+          $sessionhonnan = $item['honnan'];
+          $sessionhotelnev = $item['hotel_nev'];
+          $sessionmettol = $item['mettol'];
+          $sessionmeddig = $item['meddig'];
+        }
+
+        if(!($item['csomage'] == $csomag_e && $sessionhonnan == $honnan && $sessionhotelnev == $hotel_nev && $item['ellatas'] == $ellatas && $item['utasok_szama'] == $utas_szam && $sessionmettol == $mettol && $sessionmeddig == $meddig )){
+          if($item['csomage']=="true"){
+            $tomb[] = array('csomage' => $item['csomage'],'csomagid' => $item['csomagid'], 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam);
+          }
+          else{
+            $tomb[] = array('csomage' => $item['csomage'],'honnan' => $honnan , 'hotel_nev' => $hotel_nev , 'ellatas' => $ellatas , 'utasok_szama' => $utas_szam , 'mettol' => $mettol , 'meddig' => $meddig);
+          }
+          
         }
     }
     $_SESSION['kosar_items'] = array_values($tomb);
-
+    
     //customer and invoice details
 
   $info=[
@@ -152,4 +176,10 @@
   $pdf->body($info,$products_info);
   $pdf->Output();
 
+  $pdf2=new PDF("P","mm","A4");
+  $pdf2->AddPage();
+  $pdf2->body($info,$products_info);
+  $pdfnev = rand(10000, 1000000);
+  $_SESSION['pdfnev'] = $pdfnev;
+  $pdf2->Output('F',"../userpdf/$pdfnev.pdf");
 ?>

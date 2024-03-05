@@ -38,6 +38,7 @@
      $kosar_items = $_SESSION['kosar_items'];
      //Végigmegy a $_SESSION['kosar_items'] tömbön, eldönti, hogy az adott elem csomag-e vagy nem, és ennek megfelelően lekérdezi, majd betölti az adatokat egy formba
   $i=0;
+
   foreach($kosar_items as $item) {
     
     if($item['csomage'] == "true") {
