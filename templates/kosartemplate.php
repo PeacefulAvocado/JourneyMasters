@@ -97,7 +97,7 @@
       $csomag = 'false';
 
       echo "<div class='kiscsomag'> <form action='../index/kosar.php' method='post' class='tervezesegyeni' id='form_$i'>
-      <img src='../img/sydneyproba.jpg' alt='$varos'>
+      <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='$varos'>
       <p class='hotelnev'>$hotel_nev</p>
       <p class='stars'>$stars_str</p>
       <p class='egyenihonnanhova'>$honnan — $varos</p>
