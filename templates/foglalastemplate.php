@@ -19,9 +19,7 @@
         $_SESSION['kosar_items'] = array_values($tomb);
     }
     
-    
-    $utazas_ar = $_SESSION['utazas_ar'];
-
+   
     switch ($ellatas)
     {
         case "Csak Szállás":
@@ -46,10 +44,11 @@
             break;
     }
    if ($csomag == "true")
-    {
-        $csomagid = $_GET['csomagid'];
-        $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
-
+   {
+       $csomagid = $_GET['csomagid'];
+       $_SESSION['kosar_items'][] = array('csomage'=> $csomag, 'csomagid' => $csomagid,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama);
+       $honnan = $dbhandler->getKeresett('csomagok', 'honnan', 'csomagid', $csomagid)[0];
+       
     }
     else {
         $honnan = $_GET['honnan'];
@@ -57,8 +56,22 @@
         $meddig = $_GET['meddig'];
         $_SESSION['kosar_items'][]= array('csomage'=>$csomag,'honnan'=>$honnan,'hotel_nev'=>$hotel_nev,'ellatas'=>$ellatas,'utasok_szama'=>$utasok_szama,'mettol'=>$mettol,'meddig'=>$meddig);
     }
+    $varos = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$hotel_nev'")[0];
+    
+    
+    ?>
+    <script src="../js/tavolsagCalc.js"></script>
+    <script>
+    const tavolsagCalc = new TavolsagCalc();
+    window.onload = function() {
+        let dist = tavolsagCalc.calcDistance('<?php echo $honnan; ?>', '<?php echo $varos; ?>');
+        dist.then((result) => {
+        document.getElementById('utazas_ar').innerHTML = Math.ceil(result);
+        Icon();
+        })
+    };
 
-?>
+</script> 
 <script src="https://kit.fontawesome.com/7ad21db75c.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,12 +154,9 @@
                     <p class="sz1">Ellátás</p>
                     <p class='sz2'><?= $utasok_szama ?> x <?= $ar * $szorzo ?> HUF</p>
                     <p class="sz1">Utazás</p>
-                    <p class='sz2'><?= $utasok_szama ?> x <span id="utazas_ar"><?= $utazas_ar ?></span> HUF</p>
+                    <p class='sz2'><?= $utasok_szama ?> x <span id="utazas_ar"></span> HUF</p>
                 </div>
-                <p class='osszeg'><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) + $utazas_ar ?> HUF</p>
-                <?php
-                $total = $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) + $utazas_ar;
-                ?>
+                <p class='osszeg' ><span id="osszeg"><?= $days * $utasok_szama * $ar + $utasok_szama * ($ar * $szorzo) ?></span> HUF</p>
             </div>
         </div>
     </div>
@@ -206,9 +216,9 @@
             <input type="hidden" name="hova" value="<?= $varos ?>">
             <input type="hidden" name="mettol" value="<?= $mettol ?>">
             <input type="hidden" name="meddig" value="<?= $meddig ?>">
-            <input type="hidden" name="ar" value="<?= $total ?>">
+            <input type="hidden" name="ar" value="" id="total">
             <input type="hidden" name="szallas" value="<?= $ar ?>">
-            <input type="hidden" name="utazas" value="<?= $utazas_ar ?>">
+            <input type="hidden" name="utazas" value="" id="ar">
             <input type="hidden" name="ellatas_ar" value="<?= $ellatasar ?>">
             <input type="hidden" name="csomag" value="<?= $csomag ?>">
             <input type="hidden" name="days" value="<?= $days ?>">
@@ -233,29 +243,5 @@
     </div>
 </div>
 <script src="../js/bekuld.js"></script>
-<script src="../js/tavolsagCalc.js"></script>
-<script>
-    const tavolsagCalc = new TavolsagCalc();
-    window.onload = function() {
-        let dist = tavolsagCalc.calcDistance('<?php echo $honnan; ?>', '<?php echo $varos; ?>');
-        
-        // Make an AJAX request to store the JavaScript value in PHP
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../helpers/store_value.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log('Value stored in PHP successfully.');
-            } else {
-                console.error('Error storing value in PHP.');
-            }
-        };
-        dist.then((result) => {
-            xhr.send('utazas_ar=' + result);
-        })  
-    };
-
- 
-</script>
 
 

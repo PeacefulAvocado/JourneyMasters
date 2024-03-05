@@ -13,7 +13,8 @@
     $varos = $_POST['hova'];
     $mettol = $_POST['mettol'];
     $meddig = $_POST['meddig'];
-    $ar = $_POST['ar'];
+    $ar = intval($_POST['ar']);
+
 
     $erttel = $_POST["erttel"];
     $ertemail = $_POST["ertemail"];
@@ -23,28 +24,8 @@
 
     $szallas = $_POST['szallas'];
     $days = $_POST['days'];
-    $utazas = $_POST['utazas'];
+    $utazas = intval($_POST['utazas']);
     $ellatas_ar = $_POST['ellatas_ar'];
-
-    $ar -= $utazas;
-
-    switch ($utazasmod) {
-        case "Repülő":
-            $szorz = 12;
-            break;
-        case "Vonat":
-            $szorz = 8;
-            break;
-        case "Busz":
-            $szorz = 5;
-            break;
-        case "Egyéni":
-            $szorz = 0;
-            break;
-    }
-    
-    $utazas = $utazas * $szorz;
-    $ar += $utazas;
 ?>
 
 

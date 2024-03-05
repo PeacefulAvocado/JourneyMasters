@@ -1,5 +1,6 @@
 // Define a global variable to store the base amount
 var baseAmount = null;
+var baseAmountO = null;
 
 function Icon() {
     var icon = document.getElementById("utazas").value;
@@ -9,7 +10,12 @@ function Icon() {
     // Check if the base amount has been set
     if (baseAmount === null) {
         // If it hasn't been set, set it to the current value of utazas_ar
-        baseAmount = parseFloat(document.getElementById("utazas_ar").innerText);
+        baseAmount = document.getElementById("utazas_ar").innerHTML;
+    }
+
+    if (baseAmountO === null) {
+        // If it hasn't been set, set it to the current value of utazas_ar
+        baseAmountO = document.getElementById("osszeg").innerHTML;
     }
 
     switch (icon) {
@@ -30,9 +36,10 @@ function Icon() {
             szorz = 0;
             break;
     }
-
     var utazas = document.getElementById("utazas_ar");
+    var osszeg = document.getElementById('osszeg');
 
     // Calculate the new total amount based on the base amount and szorz
     utazas.innerText = baseAmount * szorz;
+    osszeg.innerText = parseInt(baseAmountO) + parseInt(baseAmount * szorz);
 }
