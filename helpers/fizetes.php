@@ -5,7 +5,9 @@
     
     $utasok_szama = $_POST['utasok_szama'];
     $csomag_e = $_POST['csomag_e'];
-    $csomagid = $_POST['csomagid']; 
+    if(isset($_POST['csomagid'])){
+        $csomagid = $_POST['csomagid']; 
+    }
     $hotel_nev = $_POST['helyszin'];
     $ellatas = $_POST['ellatas'];
     $utazasmod = $_POST['utazasmod'];
@@ -36,7 +38,12 @@
         $tel = $_POST["tel_$i"];
         $email = $_POST["email_$i"];
         $szulid = $_POST["szulid_$i"];
-
+        if($csomag_e == "false"){
+            $mettoltemp = explode('-', $mettol);
+            $mettol = $mettoltemp[2]."-".$mettoltemp[0]."-".$mettoltemp[1];
+            $meddigtemp = explode('-', $meddig);
+            $meddig = $meddigtemp[2]."-".$meddigtemp[0]."-".$meddigtemp[1];
+        }
         $szulido = explode('-', $szulid);
         $szulev = $szulido[0];
         $szulho = $szulido[1];
@@ -88,6 +95,12 @@
     $orszag = $_POST['orszag_0']; 
     $lakhely = $_POST["iranyitoszam_0"].' '.$_POST["telepules_0"].','.$_POST["lakcim_0"];
     $nev = $_POST['nev_0'];
+    if($csomag_e == "false"){
+        $mettoltemp = explode('-', $mettol);
+        $mettol = $mettoltemp[1]."-".$mettoltemp[2]."-".$mettoltemp[0];
+        $meddigtemp = explode('-', $meddig);
+        $meddig = $meddigtemp[1]."-".$meddigtemp[2]."-".$meddigtemp[0];
+    }
     //Megnyitja a számlát új ablakban illetve visszadob a főoldalra
     echo "<script type='text/javascript'>window.location = 'invoice.php?nev=$nev&utasszam=$utasok_szama&csomag_e=$csomag_e&honnan=$honnan&hotel_nev=$hotel_nev&ellatas=$ellatas&mettol=$mettol&meddig=$meddig&ar=$ar&orszag=$orszag&lakcim=$lakhely&szallas=$szallas&days=$days&utazas=$utazas&ellatas_ar=$ellatas_ar';</script>";
 
