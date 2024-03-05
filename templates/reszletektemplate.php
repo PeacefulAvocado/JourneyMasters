@@ -201,7 +201,7 @@
                 echo "  <input type='hidden' name='csomag' id='csomag' value='true'>
                         <input type='hidden' name='helyszin' id='helyszin' value='$hotel_nev'>
                         <input type='hidden' name='csomagid' id='csomagid' value='".$csomagid."'>
-                        <input type='hidden' name='toremove' id='csomagid' value='$delete'>
+                        <input type='hidden' name='toremove' id='toremove' value='$delete'>
                         <input class='submit tobb' type='submit' value='Foglalás'>";
             }
             else if($csomag = "false" && isset($_GET['todelete'])) {
@@ -210,7 +210,7 @@
                         <input type='hidden' name='honnan' id='honnan' value='$honnan'>
                         <input type='hidden' name='mettol' id='mettol' value='$mettol'>
                         <input type='hidden' name='meddig' id='meddig' value='$meddig'>
-                        <input type='hidden' name='toremove' id='csomagid' value='$delete'>
+                        <input type='hidden' name='toremove' id='toremove' value='$delete'>
                         <input class='submit tobb' type='submit' value='Foglalás'>";
             }
         ?>
