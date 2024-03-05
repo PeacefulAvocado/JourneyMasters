@@ -385,7 +385,10 @@
             <input type="hidden" name="days" value="<?= $days ?>">
             <!--Az értesítési adatokat csak 1-szer kell megadni-->
             <div class="allando">
-                <label>Értesítési telefonszám:</label>
+                <p class="utasszam">Állandó adatok</p>
+                <hr class="vonal">
+                <div class="allandodata">
+                <label>Értesítési tel. szám:</label>
                 <input type="tel" name="erttel" id="erttel">
                 <label>Értesítési email-cím:</label>
                 <input type="email" name="ertemail" id="ertemail">
@@ -397,6 +400,7 @@
                     <option value="Banki átutalás">Banki átutalás</option>
                     <option value="Hitelkártya">Hitelkártya</option>
                 </select>
+                </div>
             </div>
             <!--Megnézi, hogy minden adat ki van-e töltve, ha igen, elküldi a formot-->
             <input type='button' value='Tovább a fizetéshez' class='fizetes' onclick='send_foglalas(<?= $utasok_szama ?>)'>

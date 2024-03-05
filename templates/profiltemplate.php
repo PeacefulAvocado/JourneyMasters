@@ -145,7 +145,6 @@
         <p class='hotelcim'>$cim</p>
         <p class='fok'>$fo fő</p>
         <input type='hidden' name='utazasid' value='".$utazasok[$i]['utazasazon']."'>
-        <button class='newbutton' onclick='' type='button'></button>
         <input type='submit' class='torlesbutton' name='torles' value=''>
       </form>
         ";
@@ -181,7 +180,7 @@
 
 <div class="profiladatok">
   <div class='utasdata'>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="edit">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="edit" class="adatok">
   <label for="nev">Név:</label>
 <input type='text' name='nev' id='nev' value="<?php echo isset($_POST['nev']) ? $_POST['nev'] : '' ?>">
 <label for="tel">Telefonszám:</label>
@@ -210,10 +209,10 @@
 <label for="igszam">Igazolványszám:</label>
 <input type='text' name='igszam' id='igszam' value="<?php echo isset($_POST['igszam']) ? $_POST['igszam'] : '' ?>">
   </div>
-</div>
+
   <input type="hidden" name="edit" value = "true">
     <input type="button" value="Módosítás" class="adatmodositas" onclick="send_profil()">
-
+    </div>
 </form>
 </div>
 </div>
