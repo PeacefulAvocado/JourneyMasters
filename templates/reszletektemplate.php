@@ -1,6 +1,10 @@
 <?php
     require_once(__DIR__."/../helpers/dbhandler.php");
     $dbhandler = new DbHandler();
+    function error_found(){
+        header("Location: ../index/404.php");
+      }
+    set_error_handler('error_found');
     if(isset($_GET['todelete'])){
         $delete = $_GET['todelete'];
     }

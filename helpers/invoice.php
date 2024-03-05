@@ -1,6 +1,9 @@
 <?php
     require('../fpdf186/fpdf.php');
-    
+    function error_found(){
+      header("Location: ../index/404.php");
+    }
+    set_error_handler('error_found');
     $utas_szam = $_GET['utasszam'];
     $csomag_e = $_GET['csomag_e'];
     $honnan = $_GET['honnan'];
