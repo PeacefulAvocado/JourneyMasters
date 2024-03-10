@@ -7,35 +7,39 @@
   session_start();
   }
 
+  //titkosítás (jelszó módosításhoz)
   function encrypt($data, $key)
   {
       $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
       $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
       return base64_encode($encrypted . '::' . $iv);
   }
-
+ //titkosítási kulcs
   $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
 
+  //ha nincs bejelentkezve bejelentkezés oldalra dob ($_SESSION['utasid'] nincs beállítva = nincs bejelentkezve)
   if(!isset($_SESSION['utasid'])){
       header("Location: ../index/login.php");
       exit();
   }
 
+  //kijelentkezés
   if (isset($_POST['kijel']))
   {
     $_SESSION['utasid'] = null;
     echo "<script>alert('Sikeresen kijelentkezett!')
     window.location.href = '../index/login.php';</script>";
   }
+
   $email = $dbhandler->getKeresettNoAktiv('userdata', 'email', 'utasid', $_SESSION['utasid'])[0];
 
   $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']." and aktiv = 1 "); 
-
+//utazás törlése
   if (isset($_POST['torles']))
   {
     $dbhandler->noreturnselect("update utazas set aktiv = 0 where utazasazon = ".$_POST['utazasid']);
   }
-
+//személyes adatok módosítása
   if (isset($_POST['edit']))
   {
     $date = explode('-', $_POST['szulid']);
@@ -81,6 +85,7 @@
   $_POST['igtipus'] = $utas['igtipus'];
   $_POST['igszam'] = $utas['igszam'];
 
+  //jelszó módosítás
   if (isset($_POST['pass']))
   {
     if ($_POST['ujjelszo'] == $_POST['ismetles'])

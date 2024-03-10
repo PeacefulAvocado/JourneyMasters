@@ -63,8 +63,6 @@
         $igszam = $_POST["igszam_$i"];
 
 
-      //  $utasazon = $dbhandler->getKeresett("utasok","utasazon","nev","'$nev'");
-        //print_r($utasazon);
 
         if($dbhandler->getKeresett("utasok","utasazon","nev","'$nev'")[0] != "") {
             //update if exists
@@ -80,10 +78,6 @@
         $dbhandler->setUtazas($utazasazon,$utasazon,$honnan,$hotel_nev,$mettol,$meddig,$utazasmod,$ellatas,$ar);
 
     
-        //echo $utasazon;
-        //echo $utazasazon;
-
-       // echo $dbhandler->select("SELECT COUNT(*) AS count FROM utasok")[0]['count'];
 
         $dbhandler->setCsoport($utasazon, $utazasazon, $csoportID);
 
