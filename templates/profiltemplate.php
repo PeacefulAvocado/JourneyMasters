@@ -32,9 +32,8 @@
   }
 
   $email = $dbhandler->getKeresettNoAktiv('userdata', 'email', 'utasid', $_SESSION['utasid'])[0];
-
-  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']." and aktiv = 1 "); 
 //utazás törlése
+  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']." and aktiv = 1 "); 
   if (isset($_POST['torles']))
   {
     $dbhandler->noreturnselect("update utazas set aktiv = 0 where utazasazon = ".$_POST['utazasid']);
@@ -60,6 +59,7 @@
 
   }
 
+  //személyes adatok automatikus betöltése
   $utas = $dbhandler->select("select * from utasok where utasazon = ".$_SESSION['utasid'])[0];
   $_POST['nev'] = $utas['nev'];
   $_POST['tel'] = $utas['tel'];
