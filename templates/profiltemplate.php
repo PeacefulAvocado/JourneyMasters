@@ -7,35 +7,38 @@
   session_start();
   }
 
+  //titkosítás (jelszó módosításhoz)
   function encrypt($data, $key)
   {
       $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
       $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
       return base64_encode($encrypted . '::' . $iv);
   }
-
+ //titkosítási kulcs
   $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
 
+  //ha nincs bejelentkezve bejelentkezés oldalra dob ($_SESSION['utasid'] nincs beállítva = nincs bejelentkezve)
   if(!isset($_SESSION['utasid'])){
       header("Location: ../index/login.php");
       exit();
   }
 
+  //kijelentkezés
   if (isset($_POST['kijel']))
   {
     $_SESSION['utasid'] = null;
     echo "<script>alert('Sikeresen kijelentkezett!')
     window.location.href = '../index/login.php';</script>";
   }
+
   $email = $dbhandler->getKeresettNoAktiv('userdata', 'email', 'utasid', $_SESSION['utasid'])[0];
-
-  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']); 
-
+//utazás törlése
+  $utazasok = $dbhandler->select("select * from utazas where utasazon = ".$_SESSION['utasid']." and aktiv = 1 "); 
   if (isset($_POST['torles']))
   {
     $dbhandler->noreturnselect("update utazas set aktiv = 0 where utazasazon = ".$_POST['utazasid']);
   }
-
+//személyes adatok módosítása
   if (isset($_POST['edit']))
   {
     $date = explode('-', $_POST['szulid']);
@@ -56,6 +59,7 @@
 
   }
 
+  //személyes adatok automatikus betöltése
   $utas = $dbhandler->select("select * from utasok where utasazon = ".$_SESSION['utasid'])[0];
   $_POST['nev'] = $utas['nev'];
   $_POST['tel'] = $utas['tel'];
@@ -81,6 +85,7 @@
   $_POST['igtipus'] = $utas['igtipus'];
   $_POST['igszam'] = $utas['igszam'];
 
+  //jelszó módosítás
   if (isset($_POST['pass']))
   {
     if ($_POST['ujjelszo'] == $_POST['ismetles'])
@@ -145,7 +150,6 @@
         <p class='hotelcim'>$cim</p>
         <p class='fok'>$fo fő</p>
         <input type='hidden' name='utazasid' value='".$utazasok[$i]['utazasazon']."'>
-        <button class='newbutton' onclick='' type='button'></button>
         <input type='submit' class='torlesbutton' name='torles' value=''>
       </form>
         ";
@@ -160,7 +164,7 @@
             $stars_str .= "<i class='fa-solid fa-star'></i>";
         }
         $cim = $dbhandler->getKeresett('helyszin', 'varos', 'nev', "'$celpont'")[0].", ".$dbhandler->getKeresett('helyszin', 'cim', 'nev', "'$celpont'")[0];
-        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid'].");")[0][0];
+        $fo = $dbhandler->select("select count(*) as '0' from csoport where csoportid = (select csoportid from csoport where utasid =".$_SESSION['utasid']." and utazasid = ".$utazasok[$i]['utazasazon'].");")[0][0];
         echo "
           <form action='' method='post' class='tervezesegyeni inaktiv'>
             <img src='../img/helyszinimg/$celpont/1.jpg' alt='Helyszín'>
@@ -181,7 +185,7 @@
 
 <div class="profiladatok">
   <div class='utasdata'>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="edit">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="edit" class="adatok">
   <label for="nev">Név:</label>
 <input type='text' name='nev' id='nev' value="<?php echo isset($_POST['nev']) ? $_POST['nev'] : '' ?>">
 <label for="tel">Telefonszám:</label>
@@ -210,10 +214,10 @@
 <label for="igszam">Igazolványszám:</label>
 <input type='text' name='igszam' id='igszam' value="<?php echo isset($_POST['igszam']) ? $_POST['igszam'] : '' ?>">
   </div>
-</div>
+
   <input type="hidden" name="edit" value = "true">
     <input type="button" value="Módosítás" class="adatmodositas" onclick="send_profil()">
-
+    </div>
 </form>
 </div>
 </div>

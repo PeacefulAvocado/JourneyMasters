@@ -4,21 +4,25 @@ $dbhandler = new DbHandler();
 if(!isset($_SESSION)){
 session_start();
 }
+
+//titkosítás
 function encrypt($data, $key)
 {
     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
     $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
     return base64_encode($encrypted . '::' . $iv);
 }
-
-// Function to decrypt data
+//dekódolás
 function decrypt($data, $key)
 {
     list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
 }
 
+//titkosítási kulcs
 $key = "dhsagjhkgsafg3t278fshfb2hg4r2467gr2bh23vr23gjh4b23hv2g3v42jhb2jh";
+
+//regisztráció kitöltés ellenőrzés
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['regemail']) && isset($_POST['regjelszo']) && isset($_POST['nev']) && isset($_POST['telefonszam']) && isset($_POST['szulid']) && isset($_POST['lakcim']) && isset($_POST['igszam']) && isset($_POST['irszam']) && isset($_POST['varos']) && isset($_POST['orszag']) && isset($_POST['reg'])) {
         $regemail = $_POST['regemail'];
@@ -106,6 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+//bejelentkezés kitöltés ellenőrzés
 if (isset($_POST['bej']) && isset($_POST['jelszo']) && isset($_POST['email']))
 {
     $email = $_POST['email'];

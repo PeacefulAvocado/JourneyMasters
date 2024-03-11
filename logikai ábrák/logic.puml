@@ -1,0 +1,29 @@
+@startuml
+
+:User:
+
+(fooldal)
+(utazasok)
+(tervezes)
+(profil)
+(kosar)
+(reszletek)
+(foglalas)
+file szamla
+database DB
+
+:User:--->(fooldal)
+(fooldal) -->(tervezes)
+(fooldal) -->(utazasok)
+(fooldal) -->(kosar)
+(fooldal) -->(profil)
+(utazasok)-->(reszletek)
+(tervezes)-->(reszletek)
+(reszletek)-->(kosar)
+(reszletek)-->(foglalas)
+(kosar)-->(foglalas)
+(foglalas) --> (veglegesites)
+(veglegesites) -[#black,dotted,thickness=3]-> DB  :adat 
+(veglegesites) -[#black,dotted,thickness=3]up- szamla  
+szamla -[#black,dotted,thickness=3]up-> :User:
+@enduml

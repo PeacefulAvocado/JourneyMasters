@@ -2,8 +2,6 @@
     require_once(__DIR__.'/../helpers/dbhandler.php');
     $dbhandler = new DbHandler();
 
-// Assuming $dbhandler is your database handler
-
 $offset = $_POST['offset']; // Offset for fetching records
 
 $csomagok = $dbhandler->getCsomagok($offset);

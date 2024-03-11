@@ -178,7 +178,10 @@
   $pdf->AddPage();
   $rand = rand(100000,1000000);
   $pdf->body($info,$products_info);
-  $_SESSION['pdfnev'] = $rand;
-  $pdf->Output('F',"../userpdf/$rand.pdf");
+  $neve = $_GET['nev'];
+  $_SESSION['pdfnev'] = "$neve-$rand";
+  $pdf->Output('F',"../userpdf/$neve-$rand.pdf");
+
+  header("Location: ../index/success.php")
 
 ?>

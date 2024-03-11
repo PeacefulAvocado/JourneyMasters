@@ -23,12 +23,12 @@
     margin-top: 5.5vw;
     height: auto;
     background: linear-gradient(var(--light-yellow), var(--yellow));
-    padding: 5vw 5vw;
+    padding: 5vw 5vw 10vw 5vw;
 }
 
 .nincs {
     color: red;
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin-left: 4vw;
 }
 .emailcim{
@@ -207,7 +207,8 @@ color: var(--black);
 }
 .profiladatok{
     position: relative;
-    height: 17vw;
+    height: 23vw;
+    display: grid;
 }
 .adatok{
     
@@ -251,9 +252,21 @@ color: var(--black);
     cursor: pointer;
     color: var(--white);
 }
+.kijel{
+    position: absolute;
+    top: 10vw;
+    right:5vw;
+    font-size: 1.8vw;
+    color: var(--white);
+    background-color: var(--orange);
+    border: none;
+    border-radius: 1vw;
+    padding: 0.5vw 1vw;
+    cursor: pointer;
+}
 @media screen and (max-width: 1000px){
     .profil{
-        padding: 1vw 5vw 5vw 5vw;
+        padding: 1vw 5vw 19vw 5vw;
     }
     .emailcim{
         font-size: 3.5vw;
@@ -278,6 +291,9 @@ color: var(--black);
     .jelszavak label{
         font-size: 3vw;
         margin: 0.5vw 0;
+    }
+    .nincs {
+        font-size: 2vw;
     }
     .textinput{
         font-size: 3vw;
@@ -382,6 +398,7 @@ color: var(--black);
     .profil{
         padding: 1vw 5vw 5vw 5vw;
         margin-top: 9vw
+        
     }
     .emailcim{
         font-size: 6vw;
@@ -405,6 +422,9 @@ color: var(--black);
     .jelszavak label{
         font-size: 5vw;
         margin: 0.5vw 0;
+    }
+    .nincs {
+        font-size: 3vw;
     }
     .textinput{
         font-size: 6vw;
@@ -506,5 +526,11 @@ color: var(--black);
         right: 8.5vw;
         bottom: 2vw;
         font-size: 6vw;
+    }
+    .kijel{
+        top: 18vw;
+        right:2vw;
+        font-size: 3vw;
+        padding: 1vw 1vw;
     }
 }

@@ -66,9 +66,10 @@
         
 
         function setUtazas($utazasazon,$utasazon, $honnan, $celpont, $mettol, $meddig, $utazasmod, $ellatas, $ar) {
-            $query = "INSERT IGNORE INTO utazas (utazasazon,utasazon, honnan, celpont, mettol, meddig, utazasmod, ellatas, ar, aktiv)  
+            $query = "INSERT ignore INTO utazas (utazasazon,utasazon, honnan, celpont, mettol, meddig, utazasmod, ellatas, ar, aktiv)  
                       VALUES ($utazasazon, $utasazon, '$honnan', '$celpont', '$mettol', '$meddig', '$utazasmod', '$ellatas', $ar, 1);";
             $this->conn->query($query);
+            
         }
 
         function setCsoport($utasid, $utazasid, $csoportid) {
@@ -89,7 +90,6 @@
             $result = $this->conn->query($sql);
         } 
 
-        //SELECT * FROM helyszin ORDER BY nev LIMIT 2 OFFSET 2;
 
         function getHelyszinek() {
             $result = $this->conn->query("select * from helyszin where aktiv = 1");

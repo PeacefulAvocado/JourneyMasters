@@ -296,10 +296,37 @@ h3 {
     font-size: 1.2vw;
 }
 .allando{
+    padding: 0 10vw;
+    position: relative;
+}
+.allandodata{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: auto;
-    width: 60vw;
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+    text-align: right;
+    width: 55vw;
+    margin:3vw auto 0 auto;
+}
+.allandodata label{
+    padding-right: 1vw;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+}
+.allandodata input{
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: 1px solid var(--black);
+    width: 100%;
+    height: 2vw;
+    font-size: 1.2vw;
+}
+.allandodata select{
+    margin-bottom: 1vw;
+    margin-top: 0;
+    border-radius: 0.5vw;
+    border: 1px solid var(--black);
+    width: 100%;
+    height: 2vw;
+    font-size: 1.2vw;
 }
 .fizetes{
     background-color: var(--orange);
@@ -469,6 +496,30 @@ h3 {
         height: 3.3vw;
         font-size: 2.5vw;
     }
+    .allando{
+        padding: 0 2vw;
+    }
+    .allandodata{
+        display: grid;
+        grid-template-columns: 2.5fr 3fr 2.5fr 3fr;
+        width: 86vw;
+        margin:1vw auto 0 auto;
+    
+    }
+    .allandodata label{
+        padding-right: 1vw;
+        font-size: 2.1vw;
+    }
+    .allandodata input{
+
+        height: 2.5vw;
+        font-size: 2.5vw;
+    }
+    .allandodata select{
+
+        height: 3.3vw;
+        font-size: 2.5vw;
+    }
     .fizetes{
         margin-top: 3vw;
         font-size: 3vw;
@@ -626,6 +677,29 @@ h3 {
         font-size: 3vw;
     }
     .utasdata select{
+        height: 5vw;
+        font-size: 2.5vw;
+    }
+    .allando{
+        padding: 0;
+    }
+    .allandodata{
+        display: grid;
+        grid-template-columns: 1.5fr 3fr;
+        width: 90vw;
+        margin:1vw auto 0 auto;
+    
+    }
+    .allandodata label{
+        padding-right: 1vw;
+        font-size: 3vw;
+    }
+    .allandodata input{
+
+        height: 4vw;
+        font-size: 3vw;
+    }
+    .allandodata select{
         height: 5vw;
         font-size: 2.5vw;
     }

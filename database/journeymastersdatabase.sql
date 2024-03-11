@@ -90,8 +90,8 @@ CREATE TABLE `helyszin` (
 --
 
 INSERT INTO `helyszin` (`nev`, `varos`, `cim`, `minoseg`, `csillag`, `ar`, `leiras`, `aktiv`) VALUES
-('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 78000, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
-('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 107000, 'Élvezze az arab világ csendes luxusát. \r\nÉlvezze az arab világ csendes luxusát. Fedezze fel a világ legnagyobb sivatagának határvidékét!', b'1'),
+('Bayview Retreat', 'San Francisco', 'Ocean Beach 15', 'Apartman', 3, 78000, 'Discover the charm of San Francisco at the Golden Gate Hotel. Situated on Lombard Street, this historic hotel offers elegant accommodations and easy access to San Francisco\'s top attractions.', b'1'),
+('Bondi Beach House', 'Sydney', 'Campbell Parade 20', 'Apartman', 3, 107000, 'Fedezd fel a világ legikonikusabb operaházát!\r\nAhol az elegancia és a kifinomultság találkozik a lenyűgöző kilátással a Sydney kikötőre! Fedezze fel velünk az exkluzív kényelem és a páratlan vendégszeretet harmonikus összhangját.', b'1'),
 ('Central Hotel', 'Budapest', 'Károly körút 10', 'Hotel', 4, 136000, 'Discover the charm of the Central Hotel in the heart of Budapest. Situated on Károly körút, this historic hotel offers elegant accommodations and easy access to the city\'s iconic landmarks.', b'1'),
 ('Cityscape Hotel', 'Chicago', 'Michigan Ave 500', 'Hotel', 4, 165000, 'Explore the vibrant city life of Chicago with a stay at the Cityscape Hotel. Conveniently located on Michigan Avenue, enjoy easy access to the city\'s top attractions and stunning views of the skyline.', b'1'),
 ('Danube View Hotel', 'Vienna', 'Donaukanal Promenade 8', 'Hotel', 4, 194000, 'Experience the breathtaking views of the Danube River from the Danube View Hotel in Vienna. Located on Donaukanal Promenade, this hotel offers luxurious accommodations and easy access to Vienna\'s top attractions.', b'1'),

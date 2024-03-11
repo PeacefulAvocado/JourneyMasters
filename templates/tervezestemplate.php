@@ -72,7 +72,7 @@
         }
   
         echo "<form action='../index/reszletek.php' method='get' class='tervezesegyeni' id='hely".$i."'>
-        <img src='../img/sydneyproba.jpg' alt='$varos'>
+        <img src='../img/helyszinimg/$hotel_nev/1.jpg' alt='$varos'>
         <p class='hotelnev'>$hotel_nev</p>
         <p class='stars'>$stars</p>
         <br>
